@@ -1,122 +1,107 @@
+/* ── Progress bar — hover-reveal floating pill ── */
 .pb-hover {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 60px;
+  height: 64px;
   z-index: 10;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   pointer-events: auto;
 }
+
 .pb {
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(20px);
-  padding: 12px 20px;
-  border-radius: 12px 12px 0 0;
+  background: var(--surface);
+  border: 1.5px solid var(--rule);
+  border-bottom: none;
+  box-shadow: 0 -4px 24px rgba(26, 56, 88, 0.14);
+  backdrop-filter: blur(12px);
+  padding: 10px 20px 12px;
+  border-radius: 16px 16px 0 0;
   display: flex;
-  gap: 6px;
-  /* Adapt to content; if it would exceed the viewport, scroll horizontally
-     instead of squeezing chapter pills / step pips. */
-  max-width: calc(100vw - 32px);
+  gap: 4px;
+  max-width: calc(100vw - 48px);
   overflow-x: auto;
   overflow-y: hidden;
-  scrollbar-width: thin;
-  scrollbar-color: var(--text-faint) transparent;
+  scrollbar-width: none;
   opacity: 0;
   transform: translateY(100%);
-  transition: opacity var(--dur-base) var(--ease-quart),
-    transform var(--dur-base) var(--ease-quart);
+  transition: opacity 200ms ease, transform 200ms ease;
 }
-.pb::-webkit-scrollbar {
-  height: 4px;
-}
-.pb::-webkit-scrollbar-track {
-  background: transparent;
-}
-.pb::-webkit-scrollbar-thumb {
-  background: var(--text-faint);
-  border-radius: 2px;
-}
+.pb::-webkit-scrollbar { display: none; }
+
 .pb-hover:hover .pb {
   opacity: 1;
   transform: translateY(0);
 }
 
+/* ── Chapter pill ── */
 .pb-chapter {
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   background: transparent;
-  border: 1px solid transparent;
+  border: 1.5px solid transparent;
   color: var(--text-mute);
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-family: var(--font-mono);
-  font-size: 11px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-family: var(--font-display-cn);
+  font-size: 13px;
   cursor: pointer;
-  transition: color var(--dur-quick), border-color var(--dur-quick);
+  transition: color 150ms ease, border-color 150ms ease, background 150ms ease;
+  white-space: nowrap;
 }
 .pb-chapter:hover {
   color: var(--text);
+  background: var(--surface-2);
+  border-color: var(--rule);
 }
 .pb-active {
-  color: var(--text);
-  border-color: var(--accent);
-}
-.pb-num {
-  color: var(--accent);
-  font-weight: 600;
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  background: var(--accent-soft) !important;
 }
 
+.pb-num {
+  font-family: var(--font-display-en);
+  font-style: italic;
+  font-size: 12px;
+  font-weight: 700;
+  color: inherit;
+  opacity: 0.7;
+}
+.pb-active .pb-num { opacity: 1; }
+
+/* ── Step pips ── */
 .pb-pips {
   flex-shrink: 0;
   display: flex;
-  gap: 3px;
-  margin-left: 8px;
+  gap: 4px;
+  margin-left: 6px;
+  align-items: center;
 }
 .pb-pip {
   flex-shrink: 0;
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--text-faint);
+  background: var(--rule);
   cursor: pointer;
-  transition: background var(--dur-quick);
+  transition: background 150ms ease, transform 150ms ease;
 }
-.pb-pip-on {
-  background: var(--accent);
-}
+.pb-pip:hover { transform: scale(1.4); background: var(--accent); }
+.pb-pip-on   { background: var(--accent); }
 
-.pb-github {
-  position: absolute;
-  right: 16px;
-  bottom: 12px;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(20px);
-  border-radius: 8px;
-  color: var(--text);
-  text-decoration: none;
-  opacity: 0;
-  transform: translateY(100%);
-  transition: opacity var(--dur-base) var(--ease-quart),
-    transform var(--dur-base) var(--ease-quart),
-    color var(--dur-quick);
-}
-.pb-github:hover {
-  color: var(--accent);
-}
-.pb-hover:hover .pb-github {
-  opacity: 1;
-  transform: translateY(0);
-}
-.pb-github svg {
+/* ── Divider between chapters ── */
+.pb-chapter + .pb-chapter::before {
+  content: "";
   display: block;
+  width: 1px;
+  height: 14px;
+  background: var(--rule);
+  margin-right: 4px;
+  flex-shrink: 0;
 }
