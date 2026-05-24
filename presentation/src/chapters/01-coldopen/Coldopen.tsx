@@ -18,7 +18,7 @@ function Step0() {
     <div className="co-hero">
       <img
         className="co-hero-img"
-        src="/images/cover.jpg"
+        src={`${import.meta.env.BASE_URL}images/cover.jpg`}
         alt="澎湖家族旅遊封面"
       />
       <div className="co-hero-gradient" />
@@ -102,7 +102,7 @@ function Step3() {
       <div className="co-preview-right">
         <img
           className="co-preview-img"
-          src="/images/cover.jpg"
+          src={`${import.meta.env.BASE_URL}images/cover.jpg`}
           alt="全家澎湖旅遊插圖"
         />
       </div>

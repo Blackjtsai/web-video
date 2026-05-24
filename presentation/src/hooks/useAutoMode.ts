@@ -23,12 +23,14 @@ function readModeFromURL(): PlaybackMode {
  * cycle: manual → audio → auto → manual. URL stays in sync so reload
  * preserves the mode.
  *
- * `autoStarted` exists separately because browsers require a user gesture
- * before audio can autoplay — `AutoStartGate` flips it on space-press.
+ * In `auto` mode, Space toggles pause/resume. First press starts playback
+ * (satisfies browser autoplay policy). Subsequent presses pause/resume.
+ * The AutoStartGate overlay has been removed — no visual gate is shown.
  */
 export function useAutoMode() {
   const [mode, setModeState] = useState<PlaybackMode>(() => readModeFromURL());
   const [autoStarted, setAutoStarted] = useState(false);
+  const [paused, setPaused] = useState(false);
 
   const setMode = useCallback((m: PlaybackMode) => {
     setModeState(m);
@@ -39,28 +41,36 @@ export function useAutoMode() {
     if (m === "audio") url.searchParams.set("audio", "1");
     if (m === "auto") url.searchParams.set("auto", "1");
     window.history.replaceState(null, "", url.toString());
-    if (m !== "auto") setAutoStarted(false);
+    if (m !== "auto") {
+      setAutoStarted(false);
+      setPaused(false);
+    }
   }, []);
 
   const cycleMode = useCallback(() => {
     setMode(ORDER[(ORDER.indexOf(mode) + 1) % ORDER.length]!);
   }, [mode, setMode]);
 
-  // Keyboard: `M` cycles mode. `Space` starts auto if gated.
+  // Keyboard: `M` cycles mode.
+  // `Space` in auto mode: first press starts, subsequent presses pause/resume.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement) return;
       if (e.key === "m" || e.key === "M") {
         e.preventDefault();
         cycleMode();
-      } else if (e.key === " " && mode === "auto" && !autoStarted) {
+      } else if (e.key === " " && mode === "auto") {
         e.preventDefault();
-        setAutoStarted(true);
+        if (!autoStarted) {
+          setAutoStarted(true);
+        } else {
+          setPaused((p) => !p);
+        }
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [mode, autoStarted, cycleMode]);
 
-  return { mode, setMode, cycleMode, autoStarted, setAutoStarted };
+  return { mode, setMode, cycleMode, autoStarted, setAutoStarted, paused };
 }

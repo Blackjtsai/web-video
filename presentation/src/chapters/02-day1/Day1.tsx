@@ -125,7 +125,7 @@ function Fireworks() {
     <div className="d1-fireworks">
       <img
         className="d1-fw-bg"
-        src="/images/day1.jpg"
+        src={`${import.meta.env.BASE_URL}images/day1.jpg`}
         alt="Day 1 澎湖花火節"
       />
       <div className="d1-fw-overlay" />

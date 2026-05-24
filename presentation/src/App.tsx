@@ -4,7 +4,6 @@ import "./styles/base.css";
 import "./styles/animations.css";
 
 import { useCallback } from "react";
-import { AutoStartGate } from "./components/AutoStartGate";
 import { AutoToggle } from "./components/AutoToggle";
 import { NavArrows } from "./components/NavArrows";
 import { ProgressBar } from "./components/ProgressBar";
@@ -43,7 +42,7 @@ export default function App() {
   const Cmp = ch.Component;
   const stepText = ch.narrations[stepper.cursor.step] ?? "";
 
-  const { mode, cycleMode, autoStarted, setAutoStarted } = useAutoMode();
+  const { mode, cycleMode, autoStarted, paused } = useAutoMode();
 
   // Audio path follows the convention: /audio/<chapter-id>/<step+1>.mp3
   // (1-indexed file names match what `extract-narrations.ts` outputs.)
@@ -62,6 +61,7 @@ export default function App() {
     estimateFallbackMs: estimateMs(stepText),
     onAutoAdvance,
     autoStarted,
+    paused,
   });
 
   const splitImage = isSplitMode ? SPLIT_IMAGES[ch.id] : undefined;
@@ -86,10 +86,6 @@ export default function App() {
       />
       <NavArrows onPrev={stepper.prev} onNext={stepper.next} />
       <AutoToggle mode={mode} onCycle={cycleMode} />
-      <AutoStartGate
-        visible={mode === "auto" && !autoStarted}
-        onStart={() => setAutoStarted(true)}
-      />
     </>
   );
 }

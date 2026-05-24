@@ -24,7 +24,7 @@ function Opening() {
       <div className="d4-open-right">
         <img
           className="d4-open-img"
-          src="/images/day4.jpg"
+          src={`${import.meta.env.BASE_URL}images/day4.jpg`}
           alt="Day 4 市區巡禮"
         />
       </div>
@@ -80,7 +80,7 @@ function ReturnCar() {
 function Airport() {
   return (
     <div className="d4-airport">
-      <img className="d4-airport-bg" src="/images/day4.jpg" alt="" />
+      <img className="d4-airport-bg" src={`${import.meta.env.BASE_URL}images/day4.jpg`} alt="" />
       <div className="d4-airport-overlay" />
       <div className="d4-airport-content">
         <div className="d4-airport-checkin">14:00 開始報到</div>

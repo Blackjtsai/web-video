@@ -32,7 +32,7 @@ function Opening() {
       <div className="d2-open-right">
         <img
           className="d2-open-img"
-          src="/images/day2.jpg"
+          src={`${import.meta.env.BASE_URL}images/day2.jpg`}
           alt="Day 2 員貝島嶼遊"
         />
       </div>

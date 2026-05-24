@@ -18,8 +18,10 @@ interface Options {
   /** Called when `auto` mode determines the step is finished. */
   onAutoAdvance: () => void;
   /** Has the user started auto playback? (Browsers block autoplay until
-   *  the page receives a user gesture; the AutoStartGate flips this.) */
+   *  the page receives a user gesture.) */
   autoStarted: boolean;
+  /** When true, pauses the currently playing audio without discarding it. */
+  paused?: boolean;
 }
 
 /**
@@ -45,11 +47,15 @@ export function useAudioPlayer({
   estimateFallbackMs = 1500,
   onAutoAdvance,
   autoStarted,
+  paused = false,
 }: Options) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   // Latest callback ref so timers don't capture stale closures.
   const onAdvanceRef = useRef(onAutoAdvance);
   onAdvanceRef.current = onAutoAdvance;
+  // Track paused without triggering the main effect.
+  const pausedRef = useRef(paused);
+  pausedRef.current = paused;
 
   useEffect(() => {
     const prev = audioRef.current;
@@ -69,7 +75,8 @@ export function useAudioPlayer({
     const advanceAfter = (ms: number) => {
       if (mode !== "auto" || advanced) return;
       timer = window.setTimeout(() => {
-        if (advanced) return;
+        // Don't advance if the user paused in the meantime.
+        if (advanced || pausedRef.current) return;
         advanced = true;
         onAdvanceRef.current();
       }, Math.max(0, ms));
@@ -80,18 +87,21 @@ export function useAudioPlayer({
       audioRef.current = audio;
       audio.preload = "auto";
 
-      audio.addEventListener("ended", () => advanceAfter(trailMs));
+      // Only advance on `ended` if not paused at that moment.
+      audio.addEventListener("ended", () => {
+        if (!pausedRef.current) advanceAfter(trailMs);
+      });
       audio.addEventListener("error", () => {
-        // Audio file missing or undecodable — fall back to estimate.
-        if (mode === "auto") advanceAfter(estimateFallbackMs);
+        if (mode === "auto" && !pausedRef.current) advanceAfter(estimateFallbackMs);
       });
 
-      audio.play().catch((err) => {
-        // Autoplay blocked (rare, AutoStartGate should prevent this) or
-        // file missing — fall back to estimate in auto mode.
-        console.warn("audio play failed:", err);
-        if (mode === "auto") advanceAfter(estimateFallbackMs);
-      });
+      // Only play immediately if not paused.
+      if (!pausedRef.current) {
+        audio.play().catch((err) => {
+          console.warn("audio play failed:", err);
+          if (mode === "auto" && !pausedRef.current) advanceAfter(estimateFallbackMs);
+        });
+      }
     } else if (mode === "auto") {
       // No audio for this step (silent / empty narration) — use estimate.
       advanceAfter(estimateFallbackMs);
@@ -109,4 +119,15 @@ export function useAudioPlayer({
       }
     };
   }, [src, mode, trailMs, estimateFallbackMs, autoStarted]);
+
+  // Separate effect: pause / resume without restarting audio.
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (paused) {
+      audio.pause();
+    } else {
+      audio.play().catch(() => {});
+    }
+  }, [paused]);
 }

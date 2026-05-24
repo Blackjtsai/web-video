@@ -32,7 +32,7 @@ function Market() {
       <div className="d3-market-right">
         <img
           className="d3-market-img"
-          src="/images/day3.jpg"
+          src={`${import.meta.env.BASE_URL}images/day3.jpg`}
           alt="Day 3 西嶼探秘 & 夜釣"
         />
       </div>

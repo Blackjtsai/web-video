@@ -44,13 +44,8 @@
 ═══════════════════════════════════════════════════════════════════════ */
 
 /* Day 1 · Step 5 · Fireworks — image is already on left, use dark surface */
-.split-right .d1-fw-bg     { display: none; }
-.split-right .d1-fireworks  { background: rgba(26, 56, 88, 0.96); }
-
-/* Day 4 · Step 3 · Airport — same treatment */
-.split-right .d4-airport-bg      { display: none; }
-.split-right .d4-airport-overlay { display: none; }
-.split-right .d4-airport         { background: rgba(26, 56, 88, 0.96); }
+.split-right .d1-fw-bg    { display: none; }
+.split-right .d1-fireworks { background: rgba(26, 56, 88, 0.96); }
 
 /* Day 2 · Step 0 · Opening — remove right-side img, center the text block */
 .split-right .d2-open-right  { display: none; }
