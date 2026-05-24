@@ -1,30 +1,22 @@
 /* ─────────────────────────────────────────────────────────────────────
- * Theme · sunset-zine
- *   Indie risograph zine. Warm peach paper, riso-magenta accent,
- *   Fraunces serif (with playful curves), DASHED rules (cut-and-paste
- *   feel), springy motion. Hero numbers are oversized italic Fraunces.
- *
- *   character knobs:
- *     • hero numbers   — italic Fraunces, very tight tracking
- *     • rule           — 1.5px DASHED (zine cut line)
- *     • card           — 12px radius (slight softening)
- *     • surface        — coarser peach paper grain (riso noise)
- *     • motion         — springy with overshoot (playful)
+ * Theme · sunset-zine (澎湖藍天白雲版)
+ *   藍天白雲色調 ── 雲白為底、天藍為殼、海洋藍強調色。
+ *   保留 Fraunces serif 的 zine 俏皮感，換上夏日海島的清爽配色。
  * ───────────────────────────────────────────────────────────────────── */
 :root {
-  /* ─── palette ─── */
-  --shell:        #f4d4b6;
-  --surface:      #fcecd4;
-  --surface-2:    #ffe6c8;
-  --surface-3:    #f0d4a8;
-  --text:         #2a1810;
-  --text-2:       #4a2c20;
-  --text-mute:    #7a5040;
-  --text-faint:   #a07866;
-  --rule:         #c89878;
-  --accent:       #e91e63;             /* riso magenta */
-  --accent-soft:  rgba(233, 30, 99, 0.10);
-  --accent-glow:  rgba(233, 30, 99, 0.40);
+  /* ─── palette · 藍天白雲 ─── */
+  --shell:        #b8d8f0;             /* 地平線天藍 */
+  --surface:      #f0f8ff;             /* 雲白（alice blue） */
+  --surface-2:    #d8eeff;             /* 淡天空藍 */
+  --surface-3:    #c0d8f0;             /* 中空藍 */
+  --text:         #1a3858;             /* 深海海軍藍 */
+  --text-2:       #2d5580;
+  --text-mute:    #5a82a0;
+  --text-faint:   #8ab0cc;
+  --rule:         #7abce8;             /* 天際線藍 */
+  --accent:       #1e8fcc;             /* 海洋藍 */
+  --accent-soft:  rgba(30, 143, 204, 0.12);
+  --accent-glow:  rgba(30, 143, 204, 0.42);
 
   /* ─── fonts ─── */
   --font-display-cn: "Noto Serif SC", "Source Han Serif SC", serif;

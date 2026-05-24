@@ -1,0 +1,466 @@
+/* ── day1 ── CSS prefix: .d1- ── */
+
+/* ── shared base ── */
+.d1-flight, .d1-split, .d1-hotel, .d1-tea, .d1-dinner, .d1-fireworks {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ═══════════════════════════════════════════
+   Step 0 · Flight · 航班路線動畫
+═══════════════════════════════════════════ */
+.d1-day-label {
+  position: absolute;
+  top: 72px;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 28px;
+  color: var(--text-mute);
+  letter-spacing: 0.12em;
+  animation: d1-fade 500ms ease-out both;
+}
+
+.d1-departure-word {
+  font-family: var(--font-display-cn);
+  font-size: 112px;
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 48px;
+  animation: d1-up 700ms 150ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* 航班路線 row */
+.d1-flight-row {
+  display: flex;
+  align-items: center;
+  width: 880px;
+  animation: d1-fade 400ms 350ms ease-out both;
+}
+
+.d1-airport {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.d1-airport-name {
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.d1-airport-time {
+  font-family: var(--hero-num-font);
+  font-style: var(--hero-num-style);
+  font-weight: var(--hero-num-weight);
+  font-size: 60px;
+  color: var(--accent);
+  letter-spacing: var(--hero-num-track);
+  line-height: 1;
+}
+
+/* 路線線段 */
+.d1-path {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 0 28px;
+}
+
+.d1-path-line {
+  align-self: stretch;
+  height: 0;
+  border-bottom: 2px dashed var(--rule);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: d1-scale-x 900ms 700ms ease-out forwards;
+}
+
+.d1-path-label {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 28px;
+  color: var(--text-mute);
+  animation: d1-fade 500ms 1300ms ease-out both;
+}
+
+/* 航空公司標籤 */
+.d1-airline-tag {
+  margin-top: 36px;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--text-mute);
+  letter-spacing: 0.1em;
+  animation: d1-fade 500ms 1500ms ease-out both;
+}
+
+/* ═══════════════════════════════════════════
+   Step 1 · Split · 機場分流
+═══════════════════════════════════════════ */
+.d1-split-title {
+  font-family: var(--font-display-cn);
+  font-size: 64px;
+  font-weight: 900;
+  color: var(--text);
+  margin-bottom: 52px;
+  animation: d1-up 600ms ease-out both;
+}
+
+.d1-split-cols {
+  display: flex;
+  align-items: stretch;
+  width: 900px;
+  gap: 32px;
+}
+
+.d1-split-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 40px 32px;
+  background: var(--surface-2);
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+}
+
+.d1-split-group:nth-child(1) { animation: d1-slide-left 600ms 200ms cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+.d1-split-group:nth-child(3) { animation: d1-slide-right 600ms 200ms cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+
+.d1-sep-line {
+  width: 0;
+  border-right: 2px dashed var(--rule);
+  align-self: stretch;
+  animation: d1-fade 400ms 400ms ease-out both;
+}
+
+.d1-group-num {
+  font-family: var(--hero-num-font);
+  font-style: var(--hero-num-style);
+  font-weight: var(--hero-num-weight);
+  font-size: 68px;
+  color: var(--accent);
+  letter-spacing: var(--hero-num-track);
+  line-height: 1;
+}
+
+.d1-group-name {
+  font-family: var(--font-display-cn);
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.d1-group-desc {
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+.d1-group-detail {
+  font-family: var(--font-body);
+  font-size: 22px;
+  color: var(--text-mute);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* 行李提示 */
+.d1-luggage-note {
+  margin-top: 36px;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  color: var(--text-2);
+  animation: d1-up 600ms 500ms ease-out both;
+}
+
+.d1-luggage-badge {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--surface);
+  font-size: 26px;
+  font-weight: 700;
+  padding: 4px 18px;
+  border-radius: 100px;
+  margin-right: 10px;
+}
+
+/* ═══════════════════════════════════════════
+   Step 2 · Hotel · 住宿
+═══════════════════════════════════════════ */
+.d1-hotel-eyebrow {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 30px;
+  color: var(--text-mute);
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+  animation: d1-fade 500ms ease-out both;
+}
+
+.d1-hotel-name {
+  font-family: var(--font-display-cn);
+  font-size: 108px;
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1;
+  animation: d1-up 700ms 200ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.d1-hotel-rule {
+  width: 400px;
+  height: 0;
+  border-top: 2px dashed var(--rule);
+  margin: 36px 0;
+  animation: d1-scale-x 600ms 700ms ease-out both;
+}
+
+.d1-hotel-badges {
+  display: flex;
+  gap: 24px;
+  animation: d1-up 600ms 800ms ease-out both;
+}
+
+.d1-hotel-badge {
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--surface);
+  background: var(--accent);
+  padding: 10px 36px;
+  border-radius: 100px;
+}
+
+/* ═══════════════════════════════════════════
+   Step 3 · Tea · 下午茶三選一
+═══════════════════════════════════════════ */
+.d1-tea-title {
+  font-family: var(--font-display-cn);
+  font-size: 76px;
+  font-weight: 900;
+  color: var(--text);
+  animation: d1-up 600ms ease-out both;
+}
+
+.d1-tea-time {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 30px;
+  color: var(--text-mute);
+  margin-top: 8px;
+  margin-bottom: 44px;
+  animation: d1-fade 500ms 200ms ease-out both;
+}
+
+.d1-tea-cards {
+  display: flex;
+  gap: 28px;
+}
+
+.d1-tea-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 36px 40px;
+  background: var(--surface-2);
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+  min-width: 240px;
+}
+
+.d1-tea-card:nth-child(1) { animation: d1-up 580ms 300ms cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+.d1-tea-card:nth-child(2) { animation: d1-up 580ms 480ms cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+.d1-tea-card:nth-child(3) { animation: d1-up 580ms 660ms cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+
+.d1-tea-card-name {
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+  text-align: center;
+}
+
+.d1-tea-card-addr {
+  font-family: var(--font-body);
+  font-size: 22px;
+  color: var(--text-mute);
+}
+
+.d1-tea-note {
+  margin-top: 28px;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 28px;
+  color: var(--text-mute);
+  animation: d1-fade 500ms 850ms ease-out both;
+}
+
+/* ═══════════════════════════════════════════
+   Step 4 · Dinner · 阿東餐廳
+═══════════════════════════════════════════ */
+.d1-dinner-time {
+  font-family: var(--hero-num-font);
+  font-style: var(--hero-num-style);
+  font-weight: var(--hero-num-weight);
+  font-size: 72px;
+  color: var(--text-mute);
+  letter-spacing: var(--hero-num-track);
+  animation: d1-fade 500ms ease-out both;
+}
+
+.d1-dinner-name {
+  font-family: var(--font-display-cn);
+  font-size: 120px;
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1;
+  margin-top: 8px;
+  animation: d1-up 700ms 200ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.d1-dinner-sub {
+  font-family: var(--font-display-cn);
+  font-size: 38px;
+  font-weight: 400;
+  color: var(--text-2);
+  margin-top: 18px;
+  animation: d1-fade 500ms 650ms ease-out both;
+}
+
+.d1-dinner-reserved {
+  margin-top: 32px;
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--surface);
+  background: var(--accent);
+  padding: 10px 36px;
+  border-radius: 100px;
+  animation: d1-up 600ms 900ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* ═══════════════════════════════════════════
+   Step 5 · Fireworks · 煙火秀
+═══════════════════════════════════════════ */
+.d1-fireworks {
+  overflow: hidden;
+}
+
+.d1-fw-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 80%;
+  animation: d1-img-in 1000ms ease-out both;
+}
+
+.d1-fw-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(26, 56, 88, 0.90) 0%,
+    rgba(26, 56, 88, 0.55) 50%,
+    rgba(26, 56, 88, 0.15) 100%
+  );
+}
+
+.d1-fw-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding-top: 80px;
+}
+
+.d1-fw-time {
+  font-family: var(--hero-num-font);
+  font-style: var(--hero-num-style);
+  font-weight: var(--hero-num-weight);
+  font-size: 160px;
+  color: var(--surface);
+  letter-spacing: var(--hero-num-track);
+  line-height: 1;
+  animation: d1-up 700ms 400ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.d1-fw-title {
+  font-family: var(--font-display-cn);
+  font-size: 78px;
+  font-weight: 900;
+  color: var(--surface);
+  animation: d1-up 600ms 700ms ease-out both;
+}
+
+.d1-fw-sub {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 36px;
+  color: rgba(240, 248, 255, 0.80);
+  animation: d1-fade 500ms 950ms ease-out both;
+}
+
+.d1-fw-tip {
+  margin-top: 20px;
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--surface);
+  background: var(--accent);
+  padding: 10px 32px;
+  border-radius: 100px;
+  animation: d1-up 500ms 1150ms ease-out both;
+}
+
+/* ═══════════════════════════════════════════
+   Keyframes
+═══════════════════════════════════════════ */
+@keyframes d1-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes d1-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes d1-slide-left {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes d1-slide-right {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes d1-scale-x {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes d1-img-in {
+  from { opacity: 0; transform: scale(1.04); }
+  to   { opacity: 1; transform: scale(1); }
+}

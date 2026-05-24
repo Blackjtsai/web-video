@@ -1,0 +1,311 @@
+/* ── day4 ── CSS prefix: .d4- ── */
+
+/* ── shared ── */
+.d4-opening, .d4-spots, .d4-car, .d4-airport {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ═══════════════════════════════════════════
+   Step 0 · Opening · 最後一天
+═══════════════════════════════════════════ */
+.d4-opening {
+  flex-direction: row;
+  align-items: center;
+  gap: 80px;
+  padding: 0 100px;
+}
+
+.d4-open-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.d4-open-daytag {
+  font-family: var(--font-display-en);
+  font-style: italic;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  animation: d4-fade 500ms ease-out both;
+}
+
+.d4-open-title {
+  font-family: var(--font-display-cn);
+  font-size: 112px;
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1;
+  animation: d4-up 700ms 150ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.d4-open-sub {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 40px;
+  color: var(--text-mute);
+  animation: d4-fade 600ms 400ms ease-out both;
+}
+
+.d4-open-right {
+  flex: 0 0 480px;
+  animation: d4-slide-right 700ms 250ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.d4-open-img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow:
+    8px 8px 0 var(--accent-soft),
+    0 2px 0 var(--rule);
+  object-fit: cover;
+}
+
+/* ═══════════════════════════════════════════
+   Step 1 · Spots · 市區五景點
+═══════════════════════════════════════════ */
+.d4-spots-label {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: 32px;
+  animation: d4-fade 400ms ease-out both;
+}
+
+.d4-spots-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 720px;
+}
+
+.d4-spot-item {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 24px 44px;
+  background: var(--surface-2);
+  border: 2px dashed var(--rule);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  animation: d4-slide-left 550ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.d4-spot-item:first-child  { border-radius: var(--r-card) var(--r-card) 0 0; }
+.d4-spot-item:last-child   { border-radius: 0 0 var(--r-card) var(--r-card); }
+.d4-spot-item + .d4-spot-item { border-top: none; }
+
+.d4-spot-num {
+  font-family: var(--hero-num-font);
+  font-style: var(--hero-num-style);
+  font-weight: var(--hero-num-weight);
+  font-size: 36px;
+  color: var(--accent);
+  letter-spacing: var(--hero-num-track);
+  flex: 0 0 56px;
+}
+
+.d4-spot-name {
+  font-family: var(--font-display-cn);
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.d4-spots-note {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 26px;
+  color: var(--text-mute);
+  margin-top: 28px;
+  animation: d4-fade 400ms 800ms ease-out both;
+}
+
+/* ═══════════════════════════════════════════
+   Step 2 · ReturnCar · 歸還車輛
+═══════════════════════════════════════════ */
+.d4-car-time {
+  font-family: var(--hero-num-font);
+  font-style: var(--hero-num-style);
+  font-weight: var(--hero-num-weight);
+  font-size: 112px;
+  color: var(--accent);
+  letter-spacing: var(--hero-num-track);
+  line-height: 1;
+  animation: d4-up 700ms ease-out both;
+}
+
+.d4-car-title {
+  font-family: var(--font-display-cn);
+  font-size: 72px;
+  font-weight: 900;
+  color: var(--text);
+  margin-top: 8px;
+  animation: d4-up 700ms 200ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.d4-car-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background: var(--surface-2);
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  padding: 28px 56px;
+  margin-top: 36px;
+  box-shadow: var(--card-shadow);
+  animation: d4-up 600ms 400ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.d4-car-warn {
+  font-family: var(--font-display-cn);
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.d4-car-types {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  color: var(--text-mute);
+}
+
+.d4-car-type {
+  color: var(--text-2);
+  font-weight: 600;
+}
+
+.d4-car-sep {
+  color: var(--text-faint);
+}
+
+.d4-car-all {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ═══════════════════════════════════════════
+   Step 3 · Airport · 機場報到 & 圓滿賦歸
+═══════════════════════════════════════════ */
+.d4-airport-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.d4-airport-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(26, 56, 88, 0.60) 0%,
+    rgba(26, 56, 88, 0.80) 100%
+  );
+}
+
+.d4-airport-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.d4-airport-checkin {
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 700;
+  color: rgba(240, 248, 255, 0.70);
+  animation: d4-fade 500ms ease-out both;
+}
+
+.d4-airport-flight-row {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  animation: d4-fade 400ms 300ms ease-out both;
+}
+
+.d4-airport-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.d4-airport-time {
+  font-family: var(--hero-num-font);
+  font-style: var(--hero-num-style);
+  font-weight: var(--hero-num-weight);
+  font-size: 84px;
+  color: #f0f8ff;
+  letter-spacing: var(--hero-num-track);
+  line-height: 1;
+}
+
+.d4-airport-label {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  color: rgba(240, 248, 255, 0.70);
+}
+
+.d4-airport-line {
+  flex: 0 0 120px;
+  height: 2px;
+  background: rgba(240, 248, 255, 0.40);
+  position: relative;
+  animation: d4-scale-x 800ms 400ms ease-out both;
+  transform-origin: left;
+}
+
+.d4-airport-finale {
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  color: #f0f8ff;
+  letter-spacing: 0.06em;
+  animation: d4-up 700ms 800ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* ═══════════════════════════════════════════
+   Keyframes
+═══════════════════════════════════════════ */
+@keyframes d4-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes d4-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes d4-slide-left {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes d4-slide-right {
+  from { opacity: 0; transform: translateX(36px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes d4-scale-x {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}

@@ -1,0 +1,44 @@
+/* Navigation arrows — fixed to left/right sides, vertically centered */
+.nav-arrows {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+}
+
+.nav-btn {
+  pointer-events: all;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(26, 56, 88, 0.18);
+  color: var(--text);
+  font-size: 32px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1.5px solid rgba(122, 188, 232, 0.4);
+  opacity: 0.45;
+  transition: opacity 200ms ease, background 200ms ease, transform 150ms ease;
+  user-select: none;
+  padding-bottom: 2px; /* optical centre for › ‹ */
+}
+
+.nav-btn:hover {
+  opacity: 1;
+  background: rgba(30, 143, 204, 0.22);
+  transform: scale(1.12);
+}
+
+.nav-btn:active {
+  transform: scale(0.95);
+}

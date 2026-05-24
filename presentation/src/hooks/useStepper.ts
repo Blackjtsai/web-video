@@ -5,7 +5,7 @@ import type { ChapterDef } from "../registry/types";
  * Bump this when chapter step counts / structure change so old persisted
  * cursors don't land mid-removed-step.
  */
-const STORAGE_KEY = "presentation-cursor-v4";
+const STORAGE_KEY = "presentation-cursor-v5";
 
 export type Cursor = { chapter: number; step: number };
 
@@ -39,17 +39,8 @@ function sanitize(cursor: Cursor, chapters: ChapterDef[]): Cursor {
 }
 
 export function useStepper(chapters: ChapterDef[]): StepperState {
-  const [cursor, setCursor] = useState<Cursor>(() => {
-    const fallback = { chapter: 0, step: 0 };
-    if (typeof window === "undefined") return fallback;
-    try {
-      const raw = window.localStorage.getItem(STORAGE_KEY);
-      if (raw) return sanitize(JSON.parse(raw), chapters);
-    } catch {
-      /* ignore */
-    }
-    return fallback;
-  });
+  // 每次載入都從頭開始（step 0），不從 localStorage 恢復
+  const [cursor, setCursor] = useState<Cursor>({ chapter: 0, step: 0 });
 
   // Re-sanitize if the chapter list shape changes after mount (e.g. HMR
   // updates `chapters.ts`) — keeps a stale persisted cursor from leaking
@@ -63,13 +54,7 @@ export function useStepper(chapters: ChapterDef[]): StepperState {
     });
   }, [chapters]);
 
-  useEffect(() => {
-    try {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(cursor));
-    } catch {
-      /* ignore */
-    }
-  }, [cursor]);
+  // localStorage 寫入已停用，刷新後從頭播放
 
   const offsets = useMemo(() => {
     const arr: number[] = [];

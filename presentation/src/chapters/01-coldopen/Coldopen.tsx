@@ -41,9 +41,9 @@ function Step1() {
     <div className="co-statement">
       <div className="co-statement-label">2026 · 五月</div>
       <div className="co-statement-text">
-        我們真的
+        我們真的要
         <br />
-        <em>敢這樣玩。</em>
+        <em>出發瞜～</em>
       </div>
       <div className="co-statement-underline" />
     </div>

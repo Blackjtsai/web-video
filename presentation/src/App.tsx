@@ -6,12 +6,25 @@ import "./styles/animations.css";
 import { useCallback } from "react";
 import { AutoStartGate } from "./components/AutoStartGate";
 import { AutoToggle } from "./components/AutoToggle";
+import { NavArrows } from "./components/NavArrows";
 import { ProgressBar } from "./components/ProgressBar";
+import { SplitLayout } from "./components/SplitLayout";
 import { Stage } from "./components/Stage";
 import { useAudioPlayer } from "./hooks/useAudioPlayer";
 import { useAutoMode } from "./hooks/useAutoMode";
 import { useStepper } from "./hooks/useStepper";
 import { CHAPTERS } from "./registry/chapters";
+
+/** Chapters that get the left-image / right-content split in ?layout=split mode. */
+const SPLIT_IMAGES: Record<string, string> = {
+  day1: "images/day1.jpg",
+  day2: "images/day2.jpg",
+  day3: "images/day3.jpg",
+  day4: "images/day4.jpg",
+};
+
+const isSplitMode =
+  new URLSearchParams(window.location.search).get("layout") === "split";
 
 /**
  * Estimate spoken duration of a Chinese narration string. Native pace
@@ -51,18 +64,27 @@ export default function App() {
     autoStarted,
   });
 
+  const splitImage = isSplitMode ? SPLIT_IMAGES[ch.id] : undefined;
+
   return (
     <>
       <Stage onAdvance={stepper.next}>
-        <div key={ch.id} className="scene">
-          <Cmp step={stepper.cursor.step} />
-        </div>
+        {splitImage ? (
+          <SplitLayout key={ch.id} imageSrc={splitImage}>
+            <Cmp step={stepper.cursor.step} />
+          </SplitLayout>
+        ) : (
+          <div key={ch.id} className="scene">
+            <Cmp step={stepper.cursor.step} />
+          </div>
+        )}
       </Stage>
       <ProgressBar
         chapters={CHAPTERS}
         cursor={stepper.cursor}
         onJumpChapter={stepper.jumpToChapter}
       />
+      <NavArrows onPrev={stepper.prev} onNext={stepper.next} />
       <AutoToggle mode={mode} onCycle={cycleMode} />
       <AutoStartGate
         visible={mode === "auto" && !autoStarted}

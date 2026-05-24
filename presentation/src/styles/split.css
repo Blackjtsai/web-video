@@ -1,0 +1,96 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * split.css — ?layout=split mode
+ *
+ * Left 960px: fixed chapter image (object-fit: cover)
+ * Right 960px: step content (position: relative so chapter's inset:0 works)
+ * ───────────────────────────────────────────────────────────────────── */
+
+.split-layout {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  z-index: 2;
+}
+
+/* ── Left panel — full image, no crop ── */
+.split-left {
+  flex: 0 0 960px;
+  position: relative;
+  overflow: hidden;
+  border-right: 2px solid var(--rule);
+  background: var(--surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.split-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── Right panel — step content ── */
+.split-right {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Fix: steps that embed the same image — hide the duplicate in split mode
+═══════════════════════════════════════════════════════════════════════ */
+
+/* Day 1 · Step 5 · Fireworks — image is already on left, use dark surface */
+.split-right .d1-fw-bg     { display: none; }
+.split-right .d1-fireworks  { background: rgba(26, 56, 88, 0.96); }
+
+/* Day 4 · Step 3 · Airport — same treatment */
+.split-right .d4-airport-bg      { display: none; }
+.split-right .d4-airport-overlay { display: none; }
+.split-right .d4-airport         { background: rgba(26, 56, 88, 0.96); }
+
+/* Day 2 · Step 0 · Opening — remove right-side img, center the text block */
+.split-right .d2-open-right  { display: none; }
+.split-right .d2-opening {
+  flex-direction: column;
+  padding: 0 80px;
+  align-items: flex-start;
+  justify-content: center;
+}
+.split-right .d2-open-left { flex: none; }
+
+/* Day 3 · Step 0 · Market — remove right-side img */
+.split-right .d3-market-right { display: none; }
+.split-right .d3-market {
+  flex-direction: column;
+  padding: 0 80px;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+}
+.split-right .d3-market-left { flex: none; }
+
+/* Day 4 · Step 0 · Opening — remove right-side img */
+.split-right .d4-open-right { display: none; }
+.split-right .d4-opening {
+  flex-direction: column;
+  padding: 0 80px;
+  align-items: flex-start;
+  justify-content: center;
+}
+.split-right .d4-open-left { flex: none; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Fix: elements with fixed widths wider than the 960px right panel
+═══════════════════════════════════════════════════════════════════════ */
+.split-right .d2-tl-row       { width: auto; max-width: 820px; }
+.split-right .d2-aquarium-slots { width: auto; max-width: 820px; }
+.split-right .d2-island-items   { width: auto; max-width: 780px; }
+.split-right .d3-exp-items      { width: auto; max-width: 820px; }
+.split-right .d4-spots-list     { width: auto; max-width: 740px; }
+.split-right .mk-sv1-table      { width: auto; max-width: 700px; }
+.split-right .mk-checkin-times  { gap: 0; }
+.split-right .mk-checkin-node   { padding: 0 48px; }

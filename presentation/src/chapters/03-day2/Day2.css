@@ -1,0 +1,518 @@
+/* ── day2 ── CSS prefix: .d2- ── */
+
+/* ── shared ── */
+.d2-opening, .d2-timeline, .d2-birding, .d2-choice,
+.d2-island, .d2-aquarium {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ═══════════════════════════════════════════
+   Step 0 · Opening · Day 2 開場（左文右圖）
+═══════════════════════════════════════════ */
+.d2-opening {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  padding: 0 100px;
+}
+
+.d2-open-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.d2-open-daytag {
+  font-family: var(--font-display-en);
+  font-style: italic;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  animation: d2-fade 500ms ease-out both;
+}
+
+.d2-open-title {
+  font-family: var(--font-display-cn);
+  font-size: 76px;
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1.1;
+  animation: d2-up 700ms 150ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.d2-open-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.d2-open-badge {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface-2);
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  padding: 14px 28px;
+  box-shadow: var(--card-shadow);
+  animation: d2-up 600ms 400ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.d2-open-badge-time {
+  font-family: var(--hero-num-font);
+  font-style: var(--hero-num-style);
+  font-weight: var(--hero-num-weight);
+  font-size: 56px;
+  color: var(--accent);
+  letter-spacing: var(--hero-num-track);
+  line-height: 1;
+}
+
+.d2-open-badge-label {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-2);
+}
+
+.d2-open-right {
+  flex: 0 0 480px;
+  animation: d2-slide-right 700ms 250ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.d2-open-img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow:
+    8px 8px 0 var(--accent-soft),
+    0 2px 0 var(--rule);
+  object-fit: cover;
+}
+
+/* ═══════════════════════════════════════════
+   Step 1 · Timeline · 員貝六小時
+═══════════════════════════════════════════ */
+.d2-tl-title {
+  font-family: var(--font-display-cn);
+  font-size: 72px;
+  font-weight: 900;
+  color: var(--text);
+  margin-bottom: 52px;
+  animation: d2-up 650ms ease-out both;
+}
+
+.d2-tl-row {
+  display: flex;
+  align-items: center;
+  width: 860px;
+  animation: d2-fade 400ms 300ms ease-out both;
+}
+
+.d2-tl-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.d2-tl-time {
+  font-family: var(--hero-num-font);
+  font-style: var(--hero-num-style);
+  font-weight: var(--hero-num-weight);
+  font-size: 60px;
+  color: var(--text-mute);
+  letter-spacing: var(--hero-num-track);
+  line-height: 1;
+}
+
+.d2-tl-time-label {
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  color: var(--text-mute);
+}
+
+/* 中間段：6小時 */
+.d2-tl-mid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 0 24px;
+}
+
+.d2-tl-bar-track {
+  align-self: stretch;
+  height: 8px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.d2-tl-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 100px;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: d2-scale-x 1200ms 500ms cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.d2-tl-hours {
+  font-family: var(--hero-num-font);
+  font-style: var(--hero-num-style);
+  font-weight: var(--hero-num-weight);
+  font-size: 80px;
+  color: var(--accent);
+  letter-spacing: var(--hero-num-track);
+  line-height: 1;
+  animation: d2-up 600ms 900ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.d2-tl-hours-unit {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  color: var(--text-mute);
+  animation: d2-fade 400ms 1000ms ease-out both;
+}
+
+/* ═══════════════════════════════════════════
+   Step 2 · Birding · 賞燕鷗（季節限定）
+═══════════════════════════════════════════ */
+.d2-birding {
+  gap: 0;
+}
+
+.d2-bird-stamp {
+  border: 3px dashed var(--accent);
+  border-radius: 24px;
+  padding: 52px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  animation: d2-stamp 700ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.d2-bird-tag {
+  font-family: var(--font-display-en);
+  font-style: italic;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 6px 24px;
+  border-radius: 100px;
+  letter-spacing: 0.06em;
+  animation: d2-fade 400ms 400ms ease-out both;
+}
+
+.d2-bird-main {
+  font-family: var(--font-display-cn);
+  font-size: 120px;
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1;
+  animation: d2-up 700ms 200ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.d2-bird-sub {
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--text-2);
+  animation: d2-fade 500ms 500ms ease-out both;
+}
+
+.d2-bird-note {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 28px;
+  color: var(--text-mute);
+  animation: d2-fade 500ms 700ms ease-out both;
+}
+
+/* ═══════════════════════════════════════════
+   Step 3 · Choice · 二選一體驗
+═══════════════════════════════════════════ */
+.d2-choice-title {
+  font-family: var(--font-display-cn);
+  font-size: 72px;
+  font-weight: 900;
+  color: var(--text);
+  margin-bottom: 48px;
+  animation: d2-up 600ms ease-out both;
+}
+
+.d2-choice-cards {
+  display: flex;
+  gap: 40px;
+}
+
+.d2-choice-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background: var(--surface-2);
+  border: 2px dashed var(--rule);
+  border-radius: var(--r-card);
+  padding: 48px 56px;
+  box-shadow: var(--card-shadow);
+  min-width: 300px;
+}
+
+.d2-choice-card:nth-child(1) {
+  animation: d2-slide-left 650ms 200ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.d2-choice-card:nth-child(2) {
+  animation: d2-slide-right 650ms 200ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.d2-choice-icon-text {
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.d2-choice-name {
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text);
+  text-align: center;
+}
+
+.d2-choice-desc {
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--text-mute);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.d2-choice-or {
+  font-family: var(--font-display-en);
+  font-style: italic;
+  font-size: 52px;
+  font-weight: 700;
+  color: var(--text-faint);
+  align-self: center;
+  animation: d2-fade 500ms 400ms ease-out both;
+}
+
+/* ═══════════════════════════════════════════
+   Step 4 · Island · 島上午餐 & 小管體驗
+═══════════════════════════════════════════ */
+.d2-island-eyebrow {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 30px;
+  color: var(--text-mute);
+  margin-bottom: 40px;
+  animation: d2-fade 500ms ease-out both;
+}
+
+.d2-island-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 760px;
+}
+
+.d2-island-item {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  padding: 36px 48px;
+  background: var(--surface-2);
+  border: 2px dashed var(--rule);
+  box-shadow: var(--card-shadow);
+}
+
+.d2-island-item:first-child {
+  border-radius: var(--r-card) var(--r-card) 0 0;
+  border-bottom: none;
+  animation: d2-slide-left 650ms 200ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.d2-island-item:last-child {
+  border-radius: 0 0 var(--r-card) var(--r-card);
+  animation: d2-slide-right 650ms 400ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.d2-island-num {
+  font-family: var(--hero-num-font);
+  font-style: var(--hero-num-style);
+  font-weight: var(--hero-num-weight);
+  font-size: 64px;
+  color: var(--accent);
+  letter-spacing: var(--hero-num-track);
+  line-height: 1;
+  flex: 0 0 auto;
+}
+
+.d2-island-text {
+  flex: 1;
+}
+
+.d2-island-name {
+  font-family: var(--font-display-cn);
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.d2-island-sub {
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--text-mute);
+  margin-top: 6px;
+}
+
+/* ═══════════════════════════════════════════
+   Step 5 · Aquarium · 水族館三時段
+═══════════════════════════════════════════ */
+.d2-aquarium-header {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 16px;
+  animation: d2-up 600ms ease-out both;
+}
+
+.d2-aquarium-title {
+  font-family: var(--font-display-cn);
+  font-size: 80px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.d2-aquarium-badge {
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--surface);
+  background: var(--accent);
+  padding: 6px 20px;
+  border-radius: 100px;
+}
+
+.d2-aquarium-note {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 28px;
+  color: var(--text-mute);
+  margin-bottom: 44px;
+  animation: d2-fade 500ms 200ms ease-out both;
+}
+
+.d2-aquarium-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 800px;
+}
+
+.d2-slot {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 2px dashed var(--rule);
+  background: var(--surface-2);
+  box-shadow: var(--card-shadow);
+}
+
+.d2-slot:nth-child(1) {
+  border-radius: var(--r-card) var(--r-card) 0 0;
+  border-bottom: none;
+  animation: d2-slide-left 550ms 350ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.d2-slot:nth-child(2) {
+  border-top: none;
+  border-bottom: none;
+  animation: d2-slide-left 550ms 520ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.d2-slot:nth-child(3) {
+  border-radius: 0 0 var(--r-card) var(--r-card);
+  border-top: none;
+  animation: d2-slide-left 550ms 690ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.d2-slot-time {
+  font-family: var(--hero-num-font);
+  font-style: var(--hero-num-style);
+  font-weight: var(--hero-num-weight);
+  font-size: 44px;
+  color: var(--accent);
+  letter-spacing: var(--hero-num-track);
+  padding: 20px 32px;
+  border-right: 2px dashed var(--rule);
+  min-width: 160px;
+  text-align: center;
+}
+
+.d2-slot-body {
+  padding: 20px 32px;
+  flex: 1;
+}
+
+.d2-slot-pool {
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.d2-slot-event {
+  font-family: var(--font-body);
+  font-size: 22px;
+  color: var(--text-mute);
+  margin-top: 4px;
+}
+
+/* ═══════════════════════════════════════════
+   Keyframes
+═══════════════════════════════════════════ */
+@keyframes d2-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes d2-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes d2-slide-left {
+  from { opacity: 0; transform: translateX(-36px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes d2-slide-right {
+  from { opacity: 0; transform: translateX(36px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes d2-stamp {
+  from { opacity: 0; transform: scale(0.88) rotate(-1deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+@keyframes d2-scale-x {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}

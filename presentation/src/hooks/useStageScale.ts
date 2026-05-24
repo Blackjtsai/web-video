@@ -8,8 +8,8 @@ import { useEffect, useState } from "react";
 export function useStageScale(
   baseW = 1920,
   baseH = 1080,
-  marginX = 80,
-  marginY = 100,
+  marginX = 24,
+  marginY = 16,
 ) {
   const [scale, setScale] = useState(1);
 
