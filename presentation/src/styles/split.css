@@ -44,8 +44,18 @@
 ═══════════════════════════════════════════════════════════════════════ */
 
 /* Day 1 · Step 5 · Fireworks — image is already on left, use dark surface */
-.split-right .d1-fw-bg    { display: none; }
-.split-right .d1-fireworks { background: rgba(26, 56, 88, 0.96); }
+.split-right .d1-fw-bg     { display: none !important; }
+.split-right .d1-fireworks  { background: rgba(26, 56, 88, 0.96); }
+
+/* Day 4 · Step 3 · Airport — remove bg image & overlay, use light surface */
+.split-right .d4-airport-bg      { display: none !important; }
+.split-right .d4-airport-overlay { display: none !important; }
+/* Override hardcoded white text → dark theme colors */
+.split-right .d4-airport-checkin { color: var(--accent); }
+.split-right .d4-airport-time    { color: var(--text); }
+.split-right .d4-airport-label   { color: var(--text-mute); }
+.split-right .d4-airport-line    { background: var(--rule); }
+.split-right .d4-airport-finale  { color: var(--text); }
 
 /* Day 2 · Step 0 · Opening — remove right-side img, center the text block */
 .split-right .d2-open-right  { display: none; }

@@ -3,10 +3,10 @@ import "./styles/tokens.css";
 import "./styles/base.css";
 import "./styles/animations.css";
 
-import { useCallback } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { AutoToggle } from "./components/AutoToggle";
-import { NavArrows } from "./components/NavArrows";
 import { ProgressBar } from "./components/ProgressBar";
+import { SplitEnding } from "./components/SplitEnding";
 import { SplitLayout } from "./components/SplitLayout";
 import { Stage } from "./components/Stage";
 import { useAudioPlayer } from "./hooks/useAudioPlayer";
@@ -36,6 +36,55 @@ export default function App() {
   const stepText = ch.narrations[stepper.cursor.step] ?? "";
 
   const { mode, cycleMode, autoStarted, setAutoStarted } = useAutoMode();
+
+  // Unified keyboard handler for both modes.
+  // Both modes: ↑ = prev, ↓ = next.
+  // Split mode extra: ↓ on last step → ending overlay; ↑ on ending → dismiss.
+  // Regular mode extra: Home / End / 1–9 chapter jump.
+  const [showEnding, setShowEnding] = useState(false);
+  const stepperRef = useRef(stepper);
+  stepperRef.current = stepper;
+  const showEndingRef = useRef(showEnding);
+  showEndingRef.current = showEnding;
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement) return;
+
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        if (isSplitMode && showEndingRef.current) {
+          setShowEnding(false);
+        } else {
+          stepperRef.current.prev();
+        }
+      } else if (e.key === "ArrowDown") {
+        e.preventDefault();
+        if (showEndingRef.current) return;
+        if (isSplitMode) {
+          const { cursor } = stepperRef.current;
+          const isLast =
+            cursor.chapter === CHAPTERS.length - 1 &&
+            cursor.step === CHAPTERS[cursor.chapter]!.narrations.length - 1;
+          if (isLast) { setShowEnding(true); return; }
+        }
+        stepperRef.current.next();
+      } else if (!isSplitMode) {
+        // Regular-mode-only shortcuts
+        if (e.key === "Home") {
+          stepperRef.current.jumpToChapter(0, 0);
+        } else if (e.key === "End") {
+          const last = CHAPTERS.length - 1;
+          stepperRef.current.jumpToChapter(last, CHAPTERS[last]!.narrations.length - 1);
+        } else if (e.key >= "1" && e.key <= "9") {
+          const n = Number(e.key) - 1;
+          if (n < CHAPTERS.length) stepperRef.current.jumpToChapter(n, 0);
+        }
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   const audioSrc =
     mode === "manual" || stepText === ""
@@ -67,13 +116,15 @@ export default function App() {
             <Cmp step={stepper.cursor.step} />
           </div>
         )}
+        {isSplitMode && showEnding && (
+          <SplitEnding baseUrl={import.meta.env.BASE_URL} />
+        )}
       </Stage>
       <ProgressBar
         chapters={CHAPTERS}
         cursor={stepper.cursor}
         onJumpChapter={stepper.jumpToChapter}
       />
-      <NavArrows onPrev={stepper.prev} onNext={stepper.next} />
       <AutoToggle mode={mode} onCycle={cycleMode} />
     </>
   );
