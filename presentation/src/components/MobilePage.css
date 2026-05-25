@@ -647,6 +647,30 @@
 }
 
 
+/* ── PDF 下載 ── */
+.mp-pdf-section {
+  padding: 20px 16px 48px;
+  display: flex;
+  justify-content: center;
+}
+
+.mp-pdf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: var(--font-display-cn);
+  box-shadow: 0 4px 12px rgba(30,143,204,0.35);
+  transition: opacity 150ms ease;
+}
+.mp-pdf-btn:active { opacity: 0.85; }
+
 /* ── Footer ── */
 .mp-footer {
   text-align: center;

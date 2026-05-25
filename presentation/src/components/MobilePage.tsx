@@ -650,6 +650,20 @@ export function MobilePage({ baseUrl }: Props) {
       </section>
 
       <div className="mp-footer">澎湖，我們來了。</div>
+
+      {/* ── PDF 下載 ── */}
+      <div className="mp-pdf-section">
+        <a
+          href={`${baseUrl}澎湖家族旅遊行程手冊.pdf`}
+          download="澎湖家族旅遊行程手冊.pdf"
+          className="mp-pdf-btn"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
+            <path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5v-2z"/>
+          </svg>
+          下載行程手冊 PDF
+        </a>
+      </div>
       {/* 右下角圓形播放鍵 */}
       <MobileAudioFab baseUrl={baseUrl} />
     </div>
