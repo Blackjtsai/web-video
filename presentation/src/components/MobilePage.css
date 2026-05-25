@@ -649,9 +649,18 @@
 
 /* ── PDF 下載 ── */
 .mp-pdf-section {
-  padding: 20px 16px 48px;
+  padding: 20px 16px 40px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.mp-pdf-date {
+  font-size: 12px;
+  color: var(--text-mute);
+  letter-spacing: 0.12em;
+  padding-bottom: 60px;
 }
 
 .mp-pdf-btn {

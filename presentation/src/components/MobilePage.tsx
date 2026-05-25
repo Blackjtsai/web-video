@@ -663,6 +663,7 @@ export function MobilePage({ baseUrl }: Props) {
           </svg>
           下載行程手冊 PDF
         </a>
+        <div className="mp-pdf-date">2026 / 05 / 28 ~ 2026 / 05 / 31</div>
       </div>
       {/* 右下角圓形播放鍵 */}
       <MobileAudioFab baseUrl={baseUrl} />
