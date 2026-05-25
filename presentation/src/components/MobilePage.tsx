@@ -223,27 +223,21 @@ interface Props {
 export function MobilePage({ baseUrl }: Props) {
   const img = (name: string) => `${baseUrl}images/${name}`;
 
-  // base.css locks html/body/root with overflow:hidden for the stage layout.
-  // Mobile is a plain scrollable page — unlock on mount, restore on unmount.
+  // base.css sets html/body/root to overflow:hidden for the stage.
+  // Mobile mode: make #root itself the scroll container so behaviour is
+  // identical on real devices AND Chrome DevTools device emulation.
   useEffect(() => {
-    const els = [document.documentElement, document.body];
     const root = document.getElementById("root");
-    if (root) els.push(root);
-    els.forEach(el => {
-      el.style.overflow = "visible";
-      el.style.height = "auto";
-    });
-
-    // 停用瀏覽器的捲動位置記憶，重新整理後回到最頂
-    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-    window.scrollTo(0, 0);
+    if (!root) return;
+    root.style.overflowY = "auto";
+    root.style.overflowX = "hidden";
+    root.style.height    = "100dvh";
+    root.scrollTop = 0;            // 重新整理後回到頂部
 
     return () => {
-      els.forEach(el => {
-        el.style.overflow = "";
-        el.style.height = "";
-      });
-      if ("scrollRestoration" in history) history.scrollRestoration = "auto";
+      root.style.overflowY = "";
+      root.style.overflowX = "";
+      root.style.height    = "";
     };
   }, []);
 
