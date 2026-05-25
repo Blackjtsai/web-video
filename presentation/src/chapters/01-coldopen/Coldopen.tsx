@@ -16,6 +16,14 @@ export default function Coldopen({ step }: Props) {
 function Step0() {
   return (
     <div className="co-hero">
+      {/* 模糊背景：填滿直版圖左右的空白 */}
+      <img
+        className="co-hero-bg"
+        src={`${import.meta.env.BASE_URL}images/cover.jpg`}
+        alt=""
+        aria-hidden="true"
+      />
+      {/* 主圖：contain 完整顯示，人物不裁切 */}
       <img
         className="co-hero-img"
         src={`${import.meta.env.BASE_URL}images/cover.jpg`}
