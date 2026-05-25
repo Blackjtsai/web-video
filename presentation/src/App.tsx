@@ -4,6 +4,7 @@ import "./styles/base.css";
 import "./styles/animations.css";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { AutoStartGate } from "./components/AutoStartGate";
 import { AutoToggle } from "./components/AutoToggle";
 import { ProgressBar } from "./components/ProgressBar";
 import { SplitEnding } from "./components/SplitEnding";
@@ -106,6 +107,10 @@ export default function App() {
 
   return (
     <>
+      <AutoStartGate
+        visible={mode === "auto" && !autoStarted}
+        onStart={() => setAutoStarted(true)}
+      />
       <Stage onAdvance={stepper.next}>
         {splitImage ? (
           <SplitLayout key={ch.id} imageSrc={splitImage}>
