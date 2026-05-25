@@ -1,5 +1,199 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./MobilePage.css";
+
+/* ── 31 段口播，每段對應頁面上的精確卡片 id ── */
+const SEGMENTS = [
+  // coldopen 1-4：開場
+  { id: "coldopen",  step: 1, cardId: "mp-s-hero" },
+  { id: "coldopen",  step: 2, cardId: "mp-s-hero" },
+  { id: "coldopen",  step: 3, cardId: "mp-s-hero" },
+  { id: "coldopen",  step: 4, cardId: "mp-s-day1" },   // 「這趟怎麼玩」預告 → 捲到 Day1
+  // day1 1-6
+  { id: "day1",      step: 1, cardId: "mp-c-d1-flight" },
+  { id: "day1",      step: 2, cardId: "mp-c-d1-groups" },
+  { id: "day1",      step: 3, cardId: "mp-c-d1-hotel" },
+  { id: "day1",      step: 4, cardId: "mp-c-d1-snack" },
+  { id: "day1",      step: 5, cardId: "mp-c-d1-dinner" },
+  { id: "day1",      step: 6, cardId: "mp-c-d1-fireworks" },
+  // day2 1-6
+  { id: "day2",      step: 1, cardId: "mp-c-d2-boat" },
+  { id: "day2",      step: 2, cardId: "mp-c-d2-boat" },
+  { id: "day2",      step: 3, cardId: "mp-c-d2-birds" },
+  { id: "day2",      step: 4, cardId: "mp-c-d2-choice" },
+  { id: "day2",      step: 5, cardId: "mp-c-d2-lunch" },
+  { id: "day2",      step: 6, cardId: "mp-c-d2-aquarium" },
+  // day3 1-5
+  { id: "day3",      step: 1, cardId: "mp-c-d3-market" },
+  { id: "day3",      step: 2, cardId: "mp-c-d3-xiyue" },
+  { id: "day3",      step: 3, cardId: "mp-c-d3-fishing" },
+  { id: "day3",      step: 4, cardId: "mp-c-d3-fishing" },
+  { id: "day3",      step: 5, cardId: "mp-c-d3-warn" },
+  // day4 1-4
+  { id: "day4",      step: 1, cardId: "mp-s-day4" },
+  { id: "day4",      step: 2, cardId: "mp-c-d4-walk" },
+  { id: "day4",      step: 3, cardId: "mp-c-d4-car" },
+  { id: "day4",      step: 4, cardId: "mp-c-d4-flight" },
+  // must-know 1-6
+  { id: "must-know", step: 1, cardId: "mp-c-mk-docs" },
+  { id: "must-know", step: 2, cardId: "mp-c-mk-luggage" },
+  { id: "must-know", step: 3, cardId: "mp-c-mk-checkin" },
+  { id: "must-know", step: 4, cardId: "mp-c-mk-seasick" },
+  { id: "must-know", step: 5, cardId: "mp-c-mk-souvenir" },
+  { id: "must-know", step: 6, cardId: "mp-c-mk-souvenir" },
+];
+
+/* ── 章節分組（供 scrubber 用） ── */
+const CHAPTER_GROUPS = [
+  { label: "開場",   start: 0,  end: 3  },
+  { label: "Day 1",  start: 4,  end: 9  },
+  { label: "Day 2",  start: 10, end: 15 },
+  { label: "Day 3",  start: 16, end: 20 },
+  { label: "Day 4",  start: 21, end: 24 },
+  { label: "出發前", start: 25, end: 30 },
+];
+
+function scrollToCard(idx: number) {
+  const seg = SEGMENTS[idx];
+  if (!seg) return;
+  const el = document.getElementById(seg.cardId);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+/* ── 右下角圓形 FAB + 長按 Scrubber ── */
+function MobileAudioFab({ baseUrl }: { baseUrl: string }) {
+  const [playing, setPlaying]       = useState(false);
+  const [index, setIndex]           = useState(0);
+  const [showScrubber, setShowScrubber] = useState(false);
+  const [scrubIdx, setScrubIdx]     = useState(0);
+  const audioRef    = useRef<HTMLAudioElement | null>(null);
+  const indexRef    = useRef(index);
+  const lpTimer     = useRef<ReturnType<typeof setTimeout> | null>(null);
+  indexRef.current  = index;
+
+  /* 初始化 Audio */
+  useEffect(() => {
+    const audio = new Audio();
+    audioRef.current = audio;
+    audio.addEventListener("ended", () => {
+      const next = indexRef.current + 1;
+      if (next < SEGMENTS.length) setIndex(next);
+      else { setPlaying(false); setIndex(0); }
+    });
+    return () => { audio.pause(); audio.src = ""; };
+  }, []);
+
+  /* index 變化 → 捲動 + 播放 */
+  useEffect(() => { scrollToCard(index); }, [index]);
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const seg = SEGMENTS[index];
+    if (!seg) return;
+    if (playing) { audio.src = `${baseUrl}audio/${seg.id}/${seg.step}.mp3`; audio.play().catch(() => {}); }
+    else audio.pause();
+  }, [index, playing, baseUrl]);
+
+  /* 長按偵測 */
+  const startLongPress = () => {
+    lpTimer.current = setTimeout(() => {
+      setPlaying(false);             // 暫停當前播放
+      setScrubIdx(index);            // scrubber 預設從當前位置開始
+      setShowScrubber(true);
+      if (navigator.vibrate) navigator.vibrate(40);
+    }, 500);
+  };
+  const cancelLongPress = () => {
+    if (lpTimer.current) { clearTimeout(lpTimer.current); lpTimer.current = null; }
+  };
+
+  /* scrubber 確認：從選中位置播放 */
+  const confirmScrub = (idx: number) => {
+    setShowScrubber(false);
+    setIndex(idx);
+    setPlaying(true);
+  };
+
+  /* 進度環 */
+  const circ = 125.7;
+  const dash = circ - (index / SEGMENTS.length) * circ;
+
+  return (
+    <>
+      {/* ── FAB ── */}
+      <button
+        className={`mp-audio-fab ${playing ? "mp-audio-fab--playing" : ""}`}
+        onPointerDown={startLongPress}
+        onPointerUp={() => { cancelLongPress(); if (!showScrubber) setPlaying(p => !p); }}
+        onPointerLeave={cancelLongPress}
+        onPointerCancel={cancelLongPress}
+        aria-label={playing ? "暫停" : "播放口播導覽"}
+      >
+        <svg className="mp-fab-ring" viewBox="0 0 44 44" aria-hidden="true">
+          <circle cx="22" cy="22" r="20" className="mp-fab-ring-bg" />
+          <circle cx="22" cy="22" r="20" className="mp-fab-ring-fill"
+            strokeDasharray={circ} strokeDashoffset={dash} />
+        </svg>
+        <span className="mp-fab-icon">{playing ? "⏸" : "🔊"}</span>
+      </button>
+
+      {/* ── Scrubber 面板 ── */}
+      {showScrubber && (
+        <div className="mp-scrubber-overlay" onPointerDown={() => setShowScrubber(false)}>
+          <div className="mp-scrubber-sheet" onPointerDown={e => e.stopPropagation()}>
+
+            {/* 拖曳把手 */}
+            <div className="mp-scrubber-handle" />
+
+            {/* 當前位置標示 */}
+            <div className="mp-scrubber-current">
+              <span className="mp-scrubber-current-ch">
+                {CHAPTER_GROUPS.find(c => scrubIdx >= c.start && scrubIdx <= c.end)?.label}
+              </span>
+              <span className="mp-scrubber-current-num">{scrubIdx + 1} / {SEGMENTS.length}</span>
+            </div>
+
+            {/* 章節快選 */}
+            <div className="mp-scrubber-chips">
+              {CHAPTER_GROUPS.map(ch => (
+                <button
+                  key={ch.label}
+                  className={`mp-scrubber-chip ${scrubIdx >= ch.start && scrubIdx <= ch.end ? "mp-scrubber-chip--active" : ""}`}
+                  onPointerDown={e => { e.stopPropagation(); setScrubIdx(ch.start); scrollToCard(ch.start); }}
+                >
+                  {ch.label}
+                </button>
+              ))}
+            </div>
+
+            {/* 滑動條 */}
+            <input
+              type="range"
+              className="mp-scrubber-range"
+              min={0} max={SEGMENTS.length - 1}
+              value={scrubIdx}
+              onChange={e => { const v = Number(e.target.value); setScrubIdx(v); scrollToCard(v); }}
+            />
+
+            {/* 章節刻度 */}
+            <div className="mp-scrubber-ticks">
+              {CHAPTER_GROUPS.map(ch => (
+                <span key={ch.label} className="mp-scrubber-tick"
+                  style={{ left: `${(ch.start / (SEGMENTS.length - 1)) * 100}%` }}>
+                  {ch.label}
+                </span>
+              ))}
+            </div>
+
+            {/* 確認按鈕 */}
+            <button className="mp-scrubber-confirm" onPointerDown={() => confirmScrub(scrubIdx)}>
+              從這裡播放
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
 
 interface Props {
   baseUrl: string;
@@ -18,11 +212,17 @@ export function MobilePage({ baseUrl }: Props) {
       el.style.overflow = "visible";
       el.style.height = "auto";
     });
+
+    // 停用瀏覽器的捲動位置記憶，重新整理後回到最頂
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    window.scrollTo(0, 0);
+
     return () => {
       els.forEach(el => {
         el.style.overflow = "";
         el.style.height = "";
       });
+      if ("scrollRestoration" in history) history.scrollRestoration = "auto";
     };
   }, []);
 
@@ -30,7 +230,7 @@ export function MobilePage({ baseUrl }: Props) {
     <div className="mp-root">
 
       {/* ── Hero ── */}
-      <div className="mp-hero">
+      <div id="mp-s-hero" className="mp-hero">
         <img className="mp-hero-img" src={img("cover.jpg")} alt="澎湖家族行" />
         <div className="mp-hero-text">
           <div className="mp-hero-sub">帶著一歲半的小寶寶</div>
@@ -44,14 +244,14 @@ export function MobilePage({ baseUrl }: Props) {
       </div>
 
       {/* ── Day 1 ── */}
-      <section className="mp-day">
+      <section id="mp-s-day1" className="mp-day">
         <img className="mp-day-img" src={img("day1.jpg")} alt="Day 1" />
         <div className="mp-day-header">
           <span className="mp-day-tag">Day 1</span>
           <span className="mp-day-date">5月28日（四）</span>
         </div>
 
-        <div className="mp-card">
+        <div id="mp-c-d1-flight" className="mp-card">
           <div className="mp-card-title">✈️ 航班</div>
           <div className="mp-row-between">
             <div className="mp-flight-node">
@@ -67,7 +267,7 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-tag-inline">華信航空</div>
         </div>
 
-        <div className="mp-card">
+        <div id="mp-c-d1-groups" className="mp-card">
           <div className="mp-card-title">🚗 抵達後分兩組</div>
           <div className="mp-two-col">
             <div className="mp-col-item">
@@ -81,13 +281,13 @@ export function MobilePage({ baseUrl }: Props) {
           </div>
         </div>
 
-        <div className="mp-card">
+        <div id="mp-c-d1-hotel" className="mp-card">
           <div className="mp-card-title">🏠 住宿</div>
           <div className="mp-hotel">夏天正涼民宿</div>
           <div className="mp-muted">3 晚 · 每日含早餐</div>
         </div>
 
-        <div className="mp-card">
+        <div id="mp-c-d1-snack" className="mp-card">
           <div className="mp-card-title">🧋 下午茶（三選一）約 15:00</div>
           {[
             { name: "楊媽媽韭菜盒", addr: "樹德路 15 號" },
@@ -102,13 +302,13 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-note">當天視距離順路決定</div>
         </div>
 
-        <div className="mp-card">
+        <div id="mp-c-d1-dinner" className="mp-card">
           <div className="mp-card-title">🍽️ 晚餐 17:30</div>
           <div className="mp-highlight">阿東餐廳</div>
           <div className="mp-muted">澎湖在地海鮮桌菜 · 已預訂</div>
         </div>
 
-        <div className="mp-card mp-card--dark">
+        <div id="mp-c-d1-fireworks" className="mp-card mp-card--dark">
           <div className="mp-card-title mp-card-title--light">🎆 花火節 21:00</div>
           <div className="mp-big-light">觀音亭煙火秀</div>
           <div className="mp-muted-light">提早去找好位置</div>
@@ -116,14 +316,14 @@ export function MobilePage({ baseUrl }: Props) {
       </section>
 
       {/* ── Day 2 ── */}
-      <section className="mp-day">
+      <section id="mp-s-day2" className="mp-day">
         <img className="mp-day-img" src={img("day2.jpg")} alt="Day 2" />
         <div className="mp-day-header">
           <span className="mp-day-tag">Day 2</span>
           <span className="mp-day-date">5月29日（五）整趟最豐富的一天</span>
         </div>
 
-        <div className="mp-card">
+        <div id="mp-c-d2-boat" className="mp-card">
           <div className="mp-card-title">⛵ 員貝島嶼遊</div>
           <div className="mp-row-between mp-time-row">
             <div className="mp-flight-node">
@@ -138,13 +338,13 @@ export function MobilePage({ baseUrl }: Props) {
           </div>
         </div>
 
-        <div className="mp-card">
+        <div id="mp-c-d2-birds" className="mp-card">
           <div className="mp-card-title">🦅 季節限定</div>
           <div className="mp-highlight">賞燕鷗</div>
           <div className="mp-muted">搭船出海，邂逅夏日候鳥</div>
         </div>
 
-        <div className="mp-card">
+        <div id="mp-c-d2-choice" className="mp-card">
           <div className="mp-card-title">🌊 二選一體驗</div>
           <div className="mp-two-col">
             <div className="mp-col-item">
@@ -158,7 +358,7 @@ export function MobilePage({ baseUrl }: Props) {
           </div>
         </div>
 
-        <div className="mp-card">
+        <div id="mp-c-d2-lunch" className="mp-card">
           <div className="mp-card-title">🍱 島上午餐 & 體驗</div>
           {[
             { name: "豪華海島午餐", sub: "島上現做，邊吃邊看海" },
@@ -171,7 +371,7 @@ export function MobilePage({ baseUrl }: Props) {
           ))}
         </div>
 
-        <div className="mp-card">
+        <div id="mp-c-d2-aquarium" className="mp-card">
           <div className="mp-card-title">🐠 澎湖水族館 14:40 抵達</div>
           {[
             { time: "14:00", event: "礁岩池 — 魚魚啄菜球時間" },
@@ -188,21 +388,21 @@ export function MobilePage({ baseUrl }: Props) {
       </section>
 
       {/* ── Day 3 ── */}
-      <section className="mp-day">
+      <section id="mp-s-day3" className="mp-day">
         <img className="mp-day-img" src={img("day3.jpg")} alt="Day 3" />
         <div className="mp-day-header">
           <span className="mp-day-tag">Day 3</span>
           <span className="mp-day-date">5月30日（六）</span>
         </div>
 
-        <div className="mp-card">
+        <div id="mp-c-d3-market" className="mp-card">
           <div className="mp-card-title">🐟 第三魚市場（自由參加）</div>
           <div className="mp-highlight">05:00 – 07:00</div>
           <div className="mp-muted">澎湖最在地的清晨漁獲拍賣</div>
           <div className="mp-note">不想去的人繼續睡就好 😴</div>
         </div>
 
-        <div className="mp-card">
+        <div id="mp-c-d3-xiyue" className="mp-card">
           <div className="mp-card-title">🌉 西嶼鄉一日遊 09:30</div>
           <div className="mp-tags-row">
             <span className="mp-tag-chip">跨海大橋</span>
@@ -211,7 +411,7 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-muted">沿途慢慢走</div>
         </div>
 
-        <div className="mp-card">
+        <div id="mp-c-d3-fishing" className="mp-card">
           <div className="mp-card-title">🦑 晶翔號夜釣小管</div>
           <div className="mp-row-between mp-time-row">
             <div className="mp-flight-node">
@@ -237,7 +437,7 @@ export function MobilePage({ baseUrl }: Props) {
           </div>
         </div>
 
-        <div className="mp-card mp-card--warn">
+        <div id="mp-c-d3-warn" className="mp-card mp-card--warn">
           <div className="mp-card-title">⚠️ 重要提醒</div>
           <div className="mp-big-light">小管噴墨汁</div>
           <div className="mp-muted-light">當晚絕對不要穿淺色衣服</div>
@@ -246,14 +446,14 @@ export function MobilePage({ baseUrl }: Props) {
       </section>
 
       {/* ── Day 4 ── */}
-      <section className="mp-day">
+      <section id="mp-s-day4" className="mp-day">
         <img className="mp-day-img" src={img("day4.jpg")} alt="Day 4" />
         <div className="mp-day-header">
           <span className="mp-day-tag">Day 4</span>
           <span className="mp-day-date">5月31日（日）最後一天</span>
         </div>
 
-        <div className="mp-card">
+        <div id="mp-c-d4-walk" className="mp-card">
           <div className="mp-card-title">🗺️ 市區自由行 09:00 – 12:00</div>
           <div className="mp-tags-row">
             {["北辰市場", "天后宮", "中央老街", "菊島之星", "澎湖開拓館"].map(s => (
@@ -263,12 +463,12 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-note">自由逛街，順便帶伴手禮回家</div>
         </div>
 
-        <div className="mp-card">
+        <div id="mp-c-d4-car" className="mp-card">
           <div className="mp-card-title">🚗 歸還車輛 13:30</div>
           <div className="mp-muted">還車前先加滿油 — 汽車 + 機車 × 2</div>
         </div>
 
-        <div className="mp-card mp-card--dark">
+        <div id="mp-c-d4-flight" className="mp-card mp-card--dark">
           <div className="mp-card-title mp-card-title--light">✈️ 返程</div>
           <div className="mp-row-between">
             <div className="mp-flight-node">
@@ -287,13 +487,13 @@ export function MobilePage({ baseUrl }: Props) {
       </section>
 
       {/* ── Must-Know ── */}
-      <section className="mp-day">
+      <section id="mp-s-know" className="mp-day">
         <div className="mp-day-header mp-day-header--nophoto">
           <span className="mp-day-tag">出發前</span>
           <span className="mp-day-date">必知事項 & 伴手禮攻略</span>
         </div>
 
-        <div className="mp-card">
+        <div id="mp-c-mk-docs" className="mp-card">
           <div className="mp-card-title">📋 必備證件</div>
           {[
             { name: "身分證", who: "大人必備" },
@@ -307,7 +507,7 @@ export function MobilePage({ baseUrl }: Props) {
           ))}
         </div>
 
-        <div className="mp-card">
+        <div id="mp-c-mk-luggage" className="mp-card">
           <div className="mp-card-title">🧳 行李限制</div>
           <div className="mp-two-col">
             <div className="mp-col-item">
@@ -322,7 +522,7 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-note">別超重！</div>
         </div>
 
-        <div className="mp-card">
+        <div id="mp-c-mk-checkin" className="mp-card">
           <div className="mp-card-title">⏰ 報到截止</div>
           <div className="mp-two-col">
             <div className="mp-col-item">
@@ -337,13 +537,13 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-note">提早到，別遲到</div>
         </div>
 
-        <div className="mp-card mp-card--warn">
+        <div id="mp-c-mk-seasick" className="mp-card mp-card--warn">
           <div className="mp-card-title">💊 夜釣必備</div>
           <div className="mp-big-light">暈船藥</div>
           <div className="mp-muted-light">船停在海上還是會搖，容易暈的提前吃好</div>
         </div>
 
-        <div className="mp-card">
+        <div id="mp-c-mk-souvenir" className="mp-card">
           <div className="mp-card-title">🎁 伴手禮攻略</div>
           <div className="mp-souvenir-grid">
             {[
@@ -363,6 +563,8 @@ export function MobilePage({ baseUrl }: Props) {
       </section>
 
       <div className="mp-footer">澎湖，我們來了。</div>
+      {/* 右下角圓形播放鍵 */}
+      <MobileAudioFab baseUrl={baseUrl} />
     </div>
   );
 }
