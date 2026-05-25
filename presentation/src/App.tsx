@@ -6,6 +6,7 @@ import "./styles/animations.css";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AutoStartGate } from "./components/AutoStartGate";
 import { AutoToggle } from "./components/AutoToggle";
+import { MobilePage } from "./components/MobilePage";
 import { ProgressBar } from "./components/ProgressBar";
 import { SplitEnding } from "./components/SplitEnding";
 import { SplitLayout } from "./components/SplitLayout";
@@ -22,15 +23,16 @@ const SPLIT_IMAGES: Record<string, string> = {
   day4: "images/day4.jpg",
 };
 
-const isSplitMode =
-  new URLSearchParams(window.location.search).get("layout") === "split";
+const params = new URLSearchParams(window.location.search);
+const isSplitMode = params.get("layout") === "split";
+const isMobileMode = params.get("layout") === "mobile";
 
 function estimateMs(text: string): number {
   if (!text) return 1500;
   return Math.max(1500, text.length * 250);
 }
 
-export default function App() {
+function Presentation() {
   const stepper = useStepper(CHAPTERS);
   const ch = CHAPTERS[stepper.cursor.chapter]!;
   const Cmp = ch.Component;
@@ -133,4 +135,11 @@ export default function App() {
       <AutoToggle mode={mode} onCycle={cycleMode} />
     </>
   );
+}
+
+export default function App() {
+  if (isMobileMode) {
+    return <MobilePage baseUrl={import.meta.env.BASE_URL} />;
+  }
+  return <Presentation />;
 }

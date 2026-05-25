@@ -1,0 +1,394 @@
+/* ── MobilePage — 手機友善可捲動行程頁 ── */
+
+/* Reset & Root */
+.mp-root {
+  font-family: var(--font-display-cn);
+  background: var(--surface);
+  color: var(--text);
+  min-height: 100vh;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding-bottom: 48px;
+}
+
+/* ── Hero ── */
+.mp-hero {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+/* 封面圖：100% 寬，自然高度，不裁切 */
+.mp-hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* 說明文字區：淺粉藍漸層，填滿剩餘螢幕空間 */
+.mp-hero-text {
+  flex: 1;
+  background: linear-gradient(to top, #5a9ec0 0%, #b0d4ea 50%, #f0f8ff 100%);
+  padding: 24px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.mp-hero-sub {
+  font-size: 13px;
+  color: #3a6080;
+  margin-bottom: 6px;
+  letter-spacing: 0.06em;
+}
+
+.mp-hero-title {
+  font-size: 34px;
+  font-weight: 700;
+  color: #1a3858;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.mp-hero-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mp-badge {
+  background: rgba(30,100,160,0.12);
+  border: 1px solid rgba(30,100,160,0.25);
+  color: #1a3858;
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* ── Day section ── */
+.mp-day {
+  margin-top: 0;
+}
+
+.mp-day-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.mp-day-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 16px 16px 8px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.mp-day-header--nophoto {
+  margin-top: 8px;
+}
+
+.mp-day-tag {
+  font-family: var(--font-display-en);
+  font-style: italic;
+  font-weight: 900;
+  font-size: 20px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.mp-day-date {
+  font-size: 13px;
+  color: var(--text-mute);
+  font-weight: 500;
+}
+
+/* ── Cards ── */
+.mp-card {
+  margin: 10px 12px;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.mp-card--dark {
+  background: #1a3858;
+  border-color: #1a3858;
+}
+
+.mp-card--warn {
+  background: #fff8e1;
+  border-color: #f5c842;
+}
+.mp-card--warn .mp-big-light {
+  color: #7a4a00;
+}
+.mp-card--warn .mp-muted-light {
+  color: #a06020;
+}
+
+.mp-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.mp-card-title--light {
+  color: rgba(240,248,255,0.8);
+}
+
+/* ── Flight display ── */
+.mp-row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mp-flight-node {
+  text-align: center;
+  flex: 1;
+}
+
+.mp-flight-airport {
+  font-size: 13px;
+  color: var(--text-mute);
+  margin-bottom: 2px;
+}
+
+.mp-flight-airport-light {
+  font-size: 13px;
+  color: rgba(240,248,255,0.7);
+  margin-bottom: 2px;
+}
+
+.mp-flight-time {
+  font-family: var(--font-display-en);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.mp-flight-time-light {
+  font-family: var(--font-display-en);
+  font-size: 22px;
+  font-weight: 700;
+  color: #f0f8ff;
+  line-height: 1;
+  margin: 2px 0;
+}
+
+.mp-flight-time-sm {
+  font-size: 12px;
+  color: var(--text-mute);
+  margin-top: 2px;
+}
+
+.mp-flight-mid {
+  font-size: 13px;
+  color: var(--text-mute);
+  padding: 0 8px;
+  flex-shrink: 0;
+}
+
+.mp-flight-mid-light {
+  font-size: 18px;
+  color: rgba(240,248,255,0.5);
+  padding: 0 8px;
+  flex-shrink: 0;
+}
+
+.mp-tag-inline {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+/* ── Two-column layout ── */
+.mp-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.mp-col-item {
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.mp-col-label {
+  font-size: 12px;
+  color: var(--text-mute);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.mp-col-val {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ── Hotel / highlight ── */
+.mp-hotel {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.mp-highlight {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.mp-big-light {
+  font-size: 22px;
+  font-weight: 700;
+  color: #f0f8ff;
+  margin-bottom: 4px;
+}
+
+.mp-muted {
+  font-size: 13px;
+  color: var(--text-mute);
+  line-height: 1.5;
+}
+
+.mp-muted-light {
+  font-size: 13px;
+  color: rgba(240,248,255,0.65);
+  line-height: 1.5;
+}
+
+/* ── List items ── */
+.mp-list-item {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.mp-list-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.mp-list-item:first-child {
+  padding-top: 0;
+}
+
+.mp-list-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.mp-list-sub {
+  font-size: 12px;
+  color: var(--text-mute);
+  line-height: 1.5;
+}
+
+/* ── Notes ── */
+.mp-note {
+  font-size: 12px;
+  color: var(--accent);
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+/* ── Tags row ── */
+.mp-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 6px 0 4px;
+}
+
+.mp-tag-chip {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+/* ── Time row ── */
+.mp-time-row {
+  margin-top: 8px;
+}
+
+/* ── Finale ── */
+.mp-finale {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 15px;
+  color: rgba(240,248,255,0.85);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* ── Souvenir grid ── */
+.mp-souvenir-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.mp-souvenir-item {
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+}
+
+.mp-souvenir-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+.mp-souvenir-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  padding: 8px 10px 2px;
+}
+
+.mp-souvenir-shops {
+  font-size: 11px;
+  color: var(--text-mute);
+  padding: 0 10px 10px;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+/* ── Footer ── */
+.mp-footer {
+  text-align: center;
+  padding: 32px 16px 16px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+}
