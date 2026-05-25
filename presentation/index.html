@@ -4,6 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>澎湖家族行 · 四天三夜行程手冊</title>
+    <script>
+      /* 偵測 LINE 內建瀏覽器，自動加 openExternalBrowser=1 跳出外部瀏覽器 */
+      (function () {
+        if (navigator.userAgent.indexOf('Line/') > -1) {
+          var href = location.href;
+          if (href.indexOf('openExternalBrowser') === -1) {
+            location.replace(href + (href.indexOf('?') > -1 ? '&' : '?') + 'openExternalBrowser=1');
+          }
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -1,6 +1,24 @@
 import { useEffect, useRef, useState } from "react";
 import "./MobilePage.css";
 
+/* ── Google Maps 小按鈕 ── */
+function MapBtn({ q }: { q: string }) {
+  return (
+    <a
+      href={`https://maps.google.com/?q=${encodeURIComponent(q)}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="mp-map-btn"
+      aria-label="開啟 Google 地圖"
+      onClick={e => e.stopPropagation()}
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+      </svg>
+    </a>
+  );
+}
+
 /* ── 31 段口播，每段對應頁面上的精確卡片 id ── */
 const SEGMENTS = [
   // coldopen 1-4：開場
@@ -241,8 +259,21 @@ export function MobilePage({ baseUrl }: Props) {
     };
   }, []);
 
+  /* 舊版 LINE 不支援 openExternalBrowser 時，顯示提示 banner */
+  const isLineBrowser = navigator.userAgent.indexOf('Line/') > -1;
+
   return (
     <div className="mp-root">
+
+      {isLineBrowser && (
+        <div className="mp-line-banner">
+          <span>請點右上角</span>
+          <strong> ··· </strong>
+          <span>→</span>
+          <strong> 在瀏覽器中開啟 </strong>
+          <span>以獲得最佳體驗</span>
+        </div>
+      )}
 
       {/* ── Hero ── */}
       <div id="mp-s-hero" className="mp-hero">
@@ -287,7 +318,10 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-two-col">
             <div className="mp-col-item">
               <div className="mp-col-label">取車組（3人）</div>
-              <div className="mp-col-val">順順租車行<br />Tiida + 機車 2 台</div>
+              <div className="mp-col-val mp-col-val--row">
+                <span>順順租車行<br />Tiida + 機車 2 台</span>
+                <MapBtn q="順順租車行 澎湖馬公" />
+              </div>
             </div>
             <div className="mp-col-item">
               <div className="mp-col-label">民宿組（其餘）</div>
@@ -300,18 +334,28 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-card-title">🏠 住宿</div>
           <div className="mp-hotel">夏天正涼民宿</div>
           <div className="mp-muted">3 晚 · 每日含早餐</div>
+          <div className="mp-hotel-info">
+            <div className="mp-hotel-info-row">
+              📍 澎湖縣馬公市安宅里1鄰宅腳嶼93之23號
+              <MapBtn q="澎湖縣馬公市安宅里宅腳嶼93之23號 夏天正涼民宿" />
+            </div>
+            <div className="mp-hotel-info-row">📞 0933-372550　0910-884413</div>
+          </div>
         </div>
 
         <div id="mp-c-d1-snack" className="mp-card">
           <div className="mp-card-title">🧋 下午茶（三選一）約 15:00</div>
           {[
-            { name: "楊媽媽韭菜盒", addr: "樹德路 15 號" },
-            { name: "蔬脆蛋餅", addr: "光明路 45 號" },
-            { name: "老家餡餅", addr: "民權路 72 號" },
+            { name: "楊媽媽韭菜盒", addr: "馬公市民權路89-1號", q: "澎湖縣馬公市民權路89-1號 楊媽媽韭菜盒" },
+            { name: "蔬脆蛋餅",   addr: "馬公市光明路45號",   q: "蔬脆蛋餅 澎湖馬公光明路45號" },
+            { name: "老家餡餅",   addr: "馬公市民權路72號",   q: "老家餡餅 澎湖馬公民權路72號" },
           ].map(o => (
-            <div className="mp-list-item" key={o.name}>
-              <div className="mp-list-name">{o.name}</div>
-              <div className="mp-list-sub">{o.addr}</div>
+            <div className="mp-list-item mp-list-item--row" key={o.name}>
+              <div>
+                <div className="mp-list-name">{o.name}</div>
+                <div className="mp-list-sub">{o.addr}</div>
+              </div>
+              <MapBtn q={o.q} />
             </div>
           ))}
           <div className="mp-note">當天視距離順路決定</div>
@@ -319,14 +363,24 @@ export function MobilePage({ baseUrl }: Props) {
 
         <div id="mp-c-d1-dinner" className="mp-card">
           <div className="mp-card-title">🍽️ 晚餐 17:30</div>
-          <div className="mp-highlight">阿東餐廳</div>
-          <div className="mp-muted">澎湖在地海鮮桌菜 · 已預訂</div>
+          <div className="mp-row-between mp-vcenter">
+            <div>
+              <div className="mp-highlight">阿東餐廳</div>
+              <div className="mp-muted">澎湖在地海鮮桌菜 · 已預訂</div>
+            </div>
+            <MapBtn q="澎湖縣馬公市新店路6巷6號 阿東海鮮餐廳" />
+          </div>
         </div>
 
         <div id="mp-c-d1-fireworks" className="mp-card mp-card--dark">
           <div className="mp-card-title mp-card-title--light">🎆 花火節 21:00</div>
-          <div className="mp-big-light">觀音亭煙火秀</div>
-          <div className="mp-muted-light">提早去找好位置</div>
+          <div className="mp-row-between mp-vcenter">
+            <div>
+              <div className="mp-big-light">觀音亭煙火秀</div>
+              <div className="mp-muted-light">提早去找好位置</div>
+            </div>
+            <MapBtn q="澎湖縣馬公市介壽路7號 觀音亭" />
+          </div>
         </div>
       </section>
 
@@ -339,7 +393,10 @@ export function MobilePage({ baseUrl }: Props) {
         </div>
 
         <div id="mp-c-d2-boat" className="mp-card">
-          <div className="mp-card-title">⛵ 員貝島嶼遊</div>
+          <div className="mp-card-title mp-card-title--row">
+            <span>⛵ 員貝島嶼遊</span>
+            <MapBtn q="澎湖縣白沙鄉岐頭村16-5號 岐頭遊客中心" />
+          </div>
           <div className="mp-row-between mp-time-row">
             <div className="mp-flight-node">
               <div className="mp-flight-airport">07:40 集合</div>
@@ -387,7 +444,10 @@ export function MobilePage({ baseUrl }: Props) {
         </div>
 
         <div id="mp-c-d2-aquarium" className="mp-card">
-          <div className="mp-card-title">🐠 澎湖水族館 14:40 抵達</div>
+          <div className="mp-card-title mp-card-title--row">
+            <span>🐠 澎湖水族館 14:40 抵達</span>
+            <MapBtn q="澎湖縣白沙鄉岐頭村58號 澎湖水族館" />
+          </div>
           {[
             { time: "14:00", event: "礁岩池 — 魚魚啄菜球時間" },
             { time: "15:00", event: "大洋池 — 精彩餵食秀" },
@@ -411,7 +471,10 @@ export function MobilePage({ baseUrl }: Props) {
         </div>
 
         <div id="mp-c-d3-market" className="mp-card">
-          <div className="mp-card-title">🐟 第三魚市場（自由參加）</div>
+          <div className="mp-card-title mp-card-title--row">
+            <span>🐟 第三魚市場（自由參加）</span>
+            <MapBtn q="澎湖縣馬公市新生路158號 第三漁市場" />
+          </div>
           <div className="mp-highlight">05:00 – 07:00</div>
           <div className="mp-muted">澎湖最在地的清晨漁獲拍賣</div>
           <div className="mp-note">不想去的人繼續睡就好 😴</div>
@@ -420,8 +483,8 @@ export function MobilePage({ baseUrl }: Props) {
         <div id="mp-c-d3-xiyue" className="mp-card">
           <div className="mp-card-title">🌉 西嶼鄉一日遊 09:30</div>
           <div className="mp-tags-row">
-            <span className="mp-tag-chip">跨海大橋</span>
-            <span className="mp-tag-chip">二崁聚落</span>
+            <a href={`https://maps.google.com/?q=${encodeURIComponent("澎湖跨海大橋")}`} target="_blank" rel="noopener noreferrer" className="mp-tag-chip mp-tag-chip--map">跨海大橋 🗺</a>
+            <a href={`https://maps.google.com/?q=${encodeURIComponent("澎湖縣西嶼鄉二崁聚落")}`} target="_blank" rel="noopener noreferrer" className="mp-tag-chip mp-tag-chip--map">二崁聚落 🗺</a>
           </div>
           <div className="mp-muted">沿途慢慢走</div>
         </div>
@@ -439,7 +502,10 @@ export function MobilePage({ baseUrl }: Props) {
               <div className="mp-flight-airport">結束</div>
             </div>
           </div>
-          <div className="mp-muted">集合：白沙鄉沙港村碼頭 · 提前 10 分鐘到</div>
+          <div className="mp-muted mp-muted--row">
+            <span>集合：白沙鄉沙港村碼頭 · 提前 10 分鐘到</span>
+            <MapBtn q="澎湖白沙鄉沙港東村漁港 晶翔號" />
+          </div>
           <div className="mp-two-col" style={{ marginTop: 12 }}>
             <div className="mp-col-item">
               <div className="mp-col-label">夜間海上垂釣</div>
@@ -471,8 +537,14 @@ export function MobilePage({ baseUrl }: Props) {
         <div id="mp-c-d4-walk" className="mp-card">
           <div className="mp-card-title">🗺️ 市區自由行 09:00 – 12:00</div>
           <div className="mp-tags-row">
-            {["北辰市場", "天后宮", "中央老街", "菊島之星", "澎湖開拓館"].map(s => (
-              <span className="mp-tag-chip" key={s}>{s}</span>
+            {[
+              { name: "北辰市場", q: "澎湖縣馬公市北辰街20號" },
+              { name: "天后宮",   q: "澎湖縣馬公市正義街1號 天后宮" },
+              { name: "中央老街", q: "澎湖縣馬公市中央街" },
+              { name: "菊島之星", q: "菊島之星 澎湖馬公" },
+              { name: "澎湖開拓館", q: "澎湖開拓館 馬公" },
+            ].map(s => (
+              <a key={s.name} href={`https://maps.google.com/?q=${encodeURIComponent(s.q)}`} target="_blank" rel="noopener noreferrer" className="mp-tag-chip mp-tag-chip--map">{s.name} 🗺</a>
             ))}
           </div>
           <div className="mp-note">自由逛街，順便帶伴手禮回家</div>
