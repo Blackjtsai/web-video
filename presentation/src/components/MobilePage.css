@@ -401,6 +401,9 @@
   box-shadow: 0 4px 16px rgba(30,143,204,0.45);
   transition: transform 150ms ease, box-shadow 150ms ease;
   padding: 0;
+  /* FAB 自己處理所有指標事件，不讓瀏覽器把它當捲動起始點 */
+  touch-action: none;
+  user-select: none;
 }
 .mp-audio-fab:active {
   transform: scale(0.92);

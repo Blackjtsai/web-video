@@ -93,17 +93,36 @@ function MobileAudioFab({ baseUrl }: { baseUrl: string }) {
     else audio.pause();
   }, [index, playing, baseUrl]);
 
-  /* 長按偵測 */
-  const startLongPress = () => {
-    lpTimer.current = setTimeout(() => {
-      setPlaying(false);             // 暫停當前播放
-      setScrubIdx(index);            // scrubber 預設從當前位置開始
-      setShowScrubber(true);
-      if (navigator.vibrate) navigator.vibrate(40);
-    }, 500);
+  /* 長按偵測：pointer 事件（真機 + Chrome 模擬器都適用）
+     移動超過 8px = 使用者在捲動 → 取消計時                    */
+  const longFired  = useRef(false);
+  const startPos   = useRef<{ x: number; y: number } | null>(null);
+
+  const openScrubber = () => {
+    longFired.current = true;
+    setPlaying(false);
+    setScrubIdx(index);
+    setShowScrubber(true);
+    if (navigator.vibrate) navigator.vibrate(40);
   };
   const cancelLongPress = () => {
     if (lpTimer.current) { clearTimeout(lpTimer.current); lpTimer.current = null; }
+  };
+  const handlePointerDown = (e: React.PointerEvent) => {
+    startPos.current = { x: e.clientX, y: e.clientY };
+    longFired.current = false;
+    lpTimer.current = setTimeout(openScrubber, 500);
+  };
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!startPos.current || !lpTimer.current) return;
+    const dx = Math.abs(e.clientX - startPos.current.x);
+    const dy = Math.abs(e.clientY - startPos.current.y);
+    if (dx > 8 || dy > 8) cancelLongPress();  // 有位移 = 捲動手勢，不是長按
+  };
+  const handlePointerUp = () => cancelLongPress();
+  const handleClick = () => {
+    if (longFired.current) { longFired.current = false; return; }
+    if (!showScrubber) setPlaying(p => !p);
   };
 
   /* scrubber 確認：從選中位置播放 */
@@ -122,8 +141,10 @@ function MobileAudioFab({ baseUrl }: { baseUrl: string }) {
       {/* ── FAB ── */}
       <button
         className={`mp-audio-fab ${playing ? "mp-audio-fab--playing" : ""}`}
-        onPointerDown={startLongPress}
-        onPointerUp={() => { cancelLongPress(); if (!showScrubber) setPlaying(p => !p); }}
+        onClick={handleClick}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
         onPointerLeave={cancelLongPress}
         onPointerCancel={cancelLongPress}
         aria-label={playing ? "暫停" : "播放口播導覽"}
