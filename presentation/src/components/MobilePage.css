@@ -9,7 +9,7 @@
   width: 100%;
   max-width: 480px;
   margin: 0 auto;
-  padding-bottom: calc(96px + env(safe-area-inset-bottom)); /* FAB 不擋最後內容 */
+  padding-bottom: 0; /* 底部由各區塊自行處理 */
 }
 
 /* ── Hero ── */
@@ -649,7 +649,7 @@
 
 /* ── PDF 下載 ── */
 .mp-pdf-section {
-  padding: 20px 16px 40px;
+  padding: 20px 16px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -660,7 +660,7 @@
   font-size: 12px;
   color: var(--text-mute);
   letter-spacing: 0.12em;
-  padding-bottom: 60px;
+  padding-bottom: calc(30px + env(safe-area-inset-bottom));
 }
 
 .mp-pdf-btn {
@@ -683,7 +683,7 @@
 /* ── Footer ── */
 .mp-footer {
   text-align: center;
-  padding: 32px 16px 16px;
+  padding: 32px 16px 24px;
   font-size: 16px;
   font-weight: 700;
   color: var(--accent);
