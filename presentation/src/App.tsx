@@ -16,16 +16,18 @@ import { useAutoMode } from "./hooks/useAutoMode";
 import { useStepper } from "./hooks/useStepper";
 import { CHAPTERS } from "./registry/chapters";
 
+const base = import.meta.env.BASE_URL;
 const SPLIT_IMAGES: Record<string, string> = {
-  day1: "images/day1.jpg",
-  day2: "images/day2.jpg",
-  day3: "images/day3.jpg",
-  day4: "images/day4.jpg",
+  day1: `${base}images/day1.jpg`,
+  day2: `${base}images/day2.jpg`,
+  day3: `${base}images/day3.jpg`,
+  day4: `${base}images/day4.jpg`,
 };
 
 const params = new URLSearchParams(window.location.search);
-const isSplitMode = params.get("layout") === "split";
 const isMobileMode = params.get("layout") === "mobile";
+// 網頁版是唯一的非手機版，不再有獨立 16:9 基本版
+const isSplitMode = !isMobileMode;
 
 function estimateMs(text: string): number {
   if (!text) return 1500;
@@ -40,10 +42,8 @@ function Presentation() {
 
   const { mode, cycleMode, autoStarted, setAutoStarted } = useAutoMode();
 
-  // Unified keyboard handler for both modes.
-  // Both modes: ↑ = prev, ↓ = next.
-  // Split mode extra: ↓ on last step → ending overlay; ↑ on ending → dismiss.
-  // Regular mode extra: Home / End / 1–9 chapter jump.
+  // 鍵盤操作：↑ 上一步 / ↓ 下一步
+  // 最後一步 ↓ → 結尾資源面板；結尾面板 ↑ → 回去
   const [showEnding, setShowEnding] = useState(false);
   const stepperRef = useRef(stepper);
   stepperRef.current = stepper;
@@ -56,7 +56,7 @@ function Presentation() {
 
       if (e.key === "ArrowUp") {
         e.preventDefault();
-        if (isSplitMode && showEndingRef.current) {
+        if (showEndingRef.current) {
           setShowEnding(false);
         } else {
           stepperRef.current.prev();
@@ -64,25 +64,12 @@ function Presentation() {
       } else if (e.key === "ArrowDown") {
         e.preventDefault();
         if (showEndingRef.current) return;
-        if (isSplitMode) {
-          const { cursor } = stepperRef.current;
-          const isLast =
-            cursor.chapter === CHAPTERS.length - 1 &&
-            cursor.step === CHAPTERS[cursor.chapter]!.narrations.length - 1;
-          if (isLast) { setShowEnding(true); return; }
-        }
+        const { cursor } = stepperRef.current;
+        const isLast =
+          cursor.chapter === CHAPTERS.length - 1 &&
+          cursor.step === CHAPTERS[cursor.chapter]!.narrations.length - 1;
+        if (isLast) { setShowEnding(true); return; }
         stepperRef.current.next();
-      } else if (!isSplitMode) {
-        // Regular-mode-only shortcuts
-        if (e.key === "Home") {
-          stepperRef.current.jumpToChapter(0, 0);
-        } else if (e.key === "End") {
-          const last = CHAPTERS.length - 1;
-          stepperRef.current.jumpToChapter(last, CHAPTERS[last]!.narrations.length - 1);
-        } else if (e.key >= "1" && e.key <= "9") {
-          const n = Number(e.key) - 1;
-          if (n < CHAPTERS.length) stepperRef.current.jumpToChapter(n, 0);
-        }
       }
     };
     window.addEventListener("keydown", onKey);
@@ -105,7 +92,7 @@ function Presentation() {
     autoStarted,
   });
 
-  const splitImage = isSplitMode ? SPLIT_IMAGES[ch.id] : undefined;
+  const splitImage = SPLIT_IMAGES[ch.id];
 
   return (
     <>
@@ -123,7 +110,7 @@ function Presentation() {
             <Cmp step={stepper.cursor.step} />
           </div>
         )}
-        {isSplitMode && showEnding && (
+        {showEnding && (
           <SplitEnding baseUrl={import.meta.env.BASE_URL} />
         )}
       </Stage>
@@ -131,6 +118,7 @@ function Presentation() {
         chapters={CHAPTERS}
         cursor={stepper.cursor}
         onJumpChapter={stepper.jumpToChapter}
+        githubUrl={null}
       />
       <AutoToggle mode={mode} onCycle={cycleMode} />
     </>

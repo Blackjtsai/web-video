@@ -1,13 +1,22 @@
-/* ── SplitEnding — full-stage finale overlay for split mode ── */
+/* ── SplitEnding — 網頁版結尾畫面（左：封面 END，右：資源面板）── */
 
 .se-root {
   position: absolute;
   inset: 0;
   z-index: 50;
   display: flex;
+  animation: se-fade-in 600ms ease-out both;
+}
+
+/* ── 左側：封面圖 + END ── */
+.se-left {
+  flex: 0 0 960px;
+  position: relative;
+  overflow: hidden;
+  border-right: 2px solid rgba(255, 255, 255, 0.12);
+  display: flex;
   align-items: center;
   justify-content: center;
-  animation: se-fade-in 700ms ease-out both;
 }
 
 .se-bg {
@@ -22,28 +31,153 @@
 .se-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(10, 28, 50, 0.72);
+  background: rgba(10, 28, 50, 0.68);
 }
 
-.se-end {
+.se-left-content {
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  animation: se-up 600ms 200ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.se-end-tag {
   font-family: var(--font-display-en);
   font-style: italic;
-  font-size: 200px;
+  font-size: 130px;
   font-weight: 900;
   color: #f0f8ff;
   letter-spacing: 0.06em;
   line-height: 1;
-  animation: se-up 700ms 200ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
+.se-end-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: rgba(240, 248, 255, 0.9);
+  letter-spacing: 0.08em;
+}
+
+.se-end-date {
+  font-family: var(--font-display-en);
+  font-size: 14px;
+  color: rgba(240, 248, 255, 0.5);
+  letter-spacing: 0.18em;
+}
+
+/* ── 右側：資源面板 ── */
+.se-right {
+  flex: 1;
+  background: var(--surface);
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.se-right-content {
+  padding: 56px 72px;
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  animation: se-up 600ms 320ms ease-out both;
+}
+
+/* ── 區塊 ── */
+.se-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.se-block-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+/* ── PDF 按鈕 ── */
+.se-pdf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  align-self: flex-start;
+  box-shadow: 0 4px 14px rgba(30, 143, 204, 0.35);
+  transition: opacity 150ms, transform 100ms;
+}
+.se-pdf-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.se-pdf-btn:active { opacity: 1; transform: translateY(0); }
+
+/* ── 民宿卡片 ── */
+.se-hotel-card {
+  border-left: 3px solid var(--accent);
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.se-hotel-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.se-hotel-phone {
+  font-size: 13px;
+  color: var(--text-mute);
+  letter-spacing: 0.02em;
+}
+
+/* ── 地圖連結 ── */
+.se-maps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.se-map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: background 150ms, border-color 150ms;
+}
+.se-map-link:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+/* ── Animations ── */
 @keyframes se-fade-in {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
 
 @keyframes se-up {
-  from { opacity: 0; transform: translateY(32px); }
+  from { opacity: 0; transform: translateY(22px); }
   to   { opacity: 1; transform: translateY(0); }
 }

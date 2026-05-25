@@ -84,7 +84,7 @@ function Hotel() {
 
 /* ── Step 3: 下午茶三選一 ── */
 const TEA_OPTIONS = [
-  { name: "楊媽媽韭菜盒", addr: "樹德路 15 號" },
+  { name: "楊媽媽韭菜盒", addr: "民權路 89-1 號" },
   { name: "蔬脆蛋餅",     addr: "光明路 45 號" },
   { name: "老家餡餅",     addr: "民權路 72 號" },
 ];
