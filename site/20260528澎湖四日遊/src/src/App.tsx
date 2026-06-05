@@ -26,8 +26,6 @@ const SPLIT_IMAGES: Record<string, string> = {
 
 const params = new URLSearchParams(window.location.search);
 const isMobileMode = params.get("layout") === "mobile";
-// 網頁版是唯一的非手機版，不再有獨立 16:9 基本版
-const isSplitMode = !isMobileMode;
 
 function estimateMs(text: string): number {
   if (!text) return 1500;
