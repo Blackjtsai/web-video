@@ -68,86 +68,28 @@ done
 
 檢查完畢後，簡短回報結果，缺什麼就說要裝什麼，不要讓使用者自己發現。
 
-這是一個用 `web-video-presentation` skill 製作的家族旅遊說明影片。
-產出兩個版本：**網頁版**（現場講解 / 投影）+ **手機版**（LINE 分享），兩版皆支援口播音頻。
+## 專案總覽
 
-## 專案狀態
+每個行程放在 `site/<行程名稱>/`，各有自己的 `CLAUDE.md` 記錄章節、指令、主題色。
 
-**已完成** — 6 章 31 步全部實作，音頻合成完畢。
-
-| 章節 | 標題 | Steps | CSS prefix |
-|---|---|---|---|
-| coldopen | 開場：九個人，澎湖見 | 4 | `.co-` |
-| day1 | Day 1：花火慶典日 | 6 | `.d1-` |
-| day2 | Day 2：員貝島嶼遊 & 水族館 | 6 | `.d2-` |
-| day3 | Day 3：西嶼探秘 & 晶翔號夜釣 | 5 | `.d3-` |
-| day4 | Day 4：市區巡禮，圓滿賦歸 | 4 | `.d4-` |
-| must-know | 出發前必知 & 伴手禮攻略 | 6 | `.mk-` |
+| 行程 | 狀態 | 章節 / Steps |
+|---|---|---|
+| [20260528澎湖四日遊](site/20260528澎湖四日遊/CLAUDE.md) | 完成 | 6 章 31 步 |
+| [20261220仙台](site/20261220仙台/CLAUDE.md) | 完成 | 7 章 34 步 |
 
 ## 目錄結構
 
 ```
 web-video/
-├── CLAUDE.md             ← 你在這裡
-├── _skill/travel/        # 旅遊簡報 SOP（SKILL.md + _references/）
+├── CLAUDE.md               ← 你在這裡（通用規則）
+├── _skill/travel/          # 旅遊簡報 SOP
 └── site/
-    └── 20260528澎湖四日遊/      ← 每個行程一個資料夾
-        ├── doc/                  # 原始素材（圖片 / PDF）
-        ├── article.md            # 原始行程資料
-        ├── script.md             # 口播稿
-        ├── outline.md            # 章節計畫
-        └── src/                  # Vite + React + TS 專案
-            ├── src/
-            │   ├── registry/chapters.ts            # 章節總登錄
-            │   ├── chapters/<NN>-<id>/             # 每章 .tsx + .css + narrations.ts
-            │   ├── components/
-            │   │   ├── MobilePage.tsx / .css       # 手機版（mp- prefix）
-            │   │   ├── SplitLayout.tsx             # 網頁版容器
-            │   │   ├── SplitEnding.tsx / .css      # 網頁版結尾資源面板
-            │   │   └── ProgressBar.tsx / ...       # 其他共用組件
-            │   ├── styles/tokens.css               # 主題色（藍天白雲）
-            │   └── hooks/useStepper.ts             # localStorage 已停用，刷新從頭
-            ├── public/
-            │   ├── audio/<chapter-id>/<N>.mp3      # 口播音頻（31 段）
-            │   ├── images/                         # cover / day1-4 / souvenir-*.jpg
-            │   └── 澎湖家族旅遊行程手冊.pdf        # 手機版 + 網頁版結尾可下載
-            ├── audio-segments.json
-            └── scripts/tts-providers/edge-tts.sh
+    └── <行程名稱>/
+        ├── CLAUDE.md       # 該行程的章節、指令、主題色
+        ├── doc/            # 原始素材（圖片 / PDF）
+        ├── article.md / script.md / outline.md
+        └── src/            # Vite + React + TS 專案
 ```
-
-## 常用指令
-
-```bash
-cd site/20260528澎湖四日遊/src
-npm install                 # 第一次 clone 後裝依賴
-npm run dev                 # 啟動 dev server
-
-npx tsc --noEmit            # TypeScript 檢查
-
-npm run extract-narrations  # 掃所有 narrations.ts → audio-segments.json
-PRESENTATION_TTS=edge-tts npm run synthesize-audio  # 合成音頻（增量）
-```
-
-## 版本網址
-
-| 版本 | 網址 | 說明 |
-|---|---|---|
-| 手機版 | `http://localhost:5173/web-video/?layout=mobile` | LINE 分享、隨時查閱 |
-| 網頁版 | `http://localhost:5173/web-video/` | 現場講解、投影 |
-
-> **網頁版操作**：`↓` 下一步 / `↑` 上一步；最後一步再按 `↓` 彈出結尾資源面板（含 PDF 下載 + 地圖連結），`↑` 可回去。
-
-## TTS 音頻合成
-
-使用 **edge-tts**（免費，Microsoft 神經語音，無需 API key）。
-
-```bash
-pip install edge-tts        # 第一次需要安裝
-PRESENTATION_TTS=edge-tts npm run synthesize-audio
-```
-
-- 聲音：`zh-TW-HsiaoChenNeural`（台灣中文女聲）
-- Provider 檔：`scripts/tts-providers/edge-tts.sh`
 
 ## 關鍵架構規則
 
@@ -166,10 +108,12 @@ PRESENTATION_TTS=edge-tts npm run synthesize-audio
 5. `PRESENTATION_TTS=edge-tts npm run synthesize-audio` 合成新段音頻
 6. Bump `STORAGE_KEY`（v5 → v6）
 
-## 主題色（已從 sunset-zine 暖橘改為藍天白雲）
+## TTS 音頻合成
 
-`src/styles/tokens.css` 已修改：
-- `--surface: #f0f8ff`（雲白）
-- `--accent: #1e8fcc`（海洋藍）
-- `--text: #1a3858`（深海深藍）
-- 字體 / motion / border-radius 維持 sunset-zine 原設計
+```bash
+pip install edge-tts
+PRESENTATION_TTS=edge-tts npm run synthesize-audio
+```
+
+- 聲音：`zh-TW-HsiaoChenNeural`（台灣中文女聲）
+- Provider 檔：`src/scripts/tts-providers/edge-tts.sh`
