@@ -1,0 +1,59 @@
+/* Day 5 — prefix: .d5- */
+
+.d5-stage {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  padding: var(--stage-pad-y) var(--stage-pad-x); overflow: hidden; font-family: 'Inter', var(--font-body);
+}
+.d5-header { flex-shrink: 0; margin-bottom: 32px; }
+.d5-day-tag { font-size: 13px; font-weight: 700; letter-spacing: 0.26em; color: var(--accent); text-transform: uppercase; }
+.d5-day-title { font-family: 'Inter', var(--font-display-cn); font-size: clamp(32px,3.6vw,48px); font-weight: 900; color: var(--text); line-height: 1.15; margin-top: 4px; }
+
+.d5-shopping,.d5-outlet,.d5-return,.d5-finale {
+  flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 24px;
+}
+
+/* Step 0 */
+.d5-shopping { animation: d5-in 450ms ease-out both; }
+.d5-shop-title { font-family: 'Inter', var(--font-display-cn); font-size: clamp(40px,5vw,64px); font-weight: 900; color: var(--text); line-height: 1.1; }
+.d5-souvenir-row { display: flex; gap: 16px; }
+.d5-sv-card { flex: 1; background: var(--surface-2); border: 1px solid var(--rule); padding: 20px 24px; display: flex; flex-direction: column; gap: 10px; opacity: 0; }
+.d5-sv-card--visible { animation: d5-up 400ms cubic-bezier(0.34,1.56,0.64,1) both; }
+.d5-sv-name { font-family: 'Inter', var(--font-display-cn); font-size: clamp(20px,2.2vw,28px); font-weight: 700; color: var(--text); }
+.d5-sv-note { font-size: clamp(14px,1.4vw,18px); color: var(--text-mute); line-height: 1.6; }
+.d5-shop-note { font-size: clamp(15px,1.4vw,18px); color: var(--text-faint); padding-left: 14px; border-left: 2px solid var(--rule); line-height: 1.6; }
+
+/* Step 1 */
+.d5-outlet { flex-direction: row; align-items: center; gap: 40px; animation: d5-in 450ms ease-out both; }
+.d5-outlet-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.d5-outlet-name { font-family: 'Inter', var(--font-display-cn); font-size: clamp(26px,2.8vw,40px); font-weight: 900; color: var(--text); line-height: 1.1; }
+.d5-outlet-en { font-size: 12px; color: var(--accent); letter-spacing: 0.07em; margin-top: -10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.d5-outlet-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.d5-otag { background: var(--surface-3); border: 1px solid var(--rule); color: var(--text-2); font-size: clamp(12px,1.2vw,16px); padding: 4px 10px; }
+.d5-outlet-sub { font-size: clamp(15px,1.5vw,20px); color: var(--text-mute); line-height: 1.6; }
+.d5-outlet-map { width: clamp(150px,13vw,185px); flex-shrink: 0; background: var(--surface-2); border: 1px solid var(--rule); padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; }
+.d5-map-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; color: var(--text-mute); text-transform: uppercase; }
+.d5-map-distance { display: flex; align-items: center; gap: 8px; }
+.d5-dist-num { font-family: 'Inter', sans-serif; font-size: clamp(36px,4vw,52px); font-weight: 900; color: var(--accent); line-height: 1; letter-spacing: -0.03em; }
+.d5-dist-label { font-size: clamp(14px,1.4vw,18px); color: var(--text-2); line-height: 1.5; }
+.d5-map-note { font-size: clamp(13px,1.3vw,16px); color: var(--text-mute); line-height: 1.6; }
+
+/* Step 2 */
+.d5-return { animation: d5-in 450ms ease-out both; }
+.d5-steps-list { display: flex; flex-direction: column; gap: 8px; }
+.d5-step-item { display: flex; align-items: flex-start; gap: 18px; padding: 14px 20px; background: var(--surface-2); border-left: 3px solid var(--rule); opacity: 0; }
+.d5-step-item--visible { animation: d5-in 380ms ease-out both; }
+.d5-step-num { font-family: 'Inter', sans-serif; font-size: clamp(18px,2vw,26px); font-weight: 900; color: var(--accent); flex-shrink: 0; line-height: 1.2; }
+.d5-step-text { font-size: clamp(17px,1.7vw,22px); color: var(--text-2); line-height: 1.6; }
+.d5-warn-box { background: rgba(255,180,50,0.07); border: 1px solid rgba(255,180,50,0.22); padding: 14px 20px; font-size: clamp(16px,1.6vw,20px); color: var(--text-2); line-height: 1.6; }
+
+/* Step 3 */
+.d5-finale { align-items: center; animation: d5-in 500ms ease-out both; }
+.d5-finale-icon { font-size: clamp(52px,7vw,88px); animation: d5-pop 600ms cubic-bezier(0.34,1.56,0.64,1) 150ms both; }
+.d5-finale-title { font-family: 'Inter', var(--font-display-cn); font-size: clamp(40px,5vw,64px); font-weight: 900; color: var(--text); text-align: center; line-height: 1.2; }
+.d5-finale-recap { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.d5-recap-item { font-size: clamp(14px,1.4vw,18px); color: var(--text-mute); padding: 6px 16px; border: 1px solid var(--rule); }
+.d5-finale-sub { font-size: 13px; color: var(--text-faint); letter-spacing: 0.18em; text-align: center; text-transform: uppercase; }
+
+@keyframes d5-in { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes d5-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes d5-pop { from { opacity: 0; transform: scale(0.65); } to { opacity: 1; transform: scale(1); } }

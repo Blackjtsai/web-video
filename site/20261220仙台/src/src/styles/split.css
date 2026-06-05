@@ -1,0 +1,42 @@
+/* split.css — ?layout=split mode（viewport-sized canvas，50/50 分割）*/
+
+.split-layout {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  z-index: 2;
+}
+
+.split-left {
+  flex: 0 0 50%;          /* 固定 50% 而非 960px */
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid var(--rule);
+  /* ski snow gradient placeholder（圖片載入失敗時顯示） */
+  background:
+    linear-gradient(
+      170deg,
+      #071523 0%,
+      #0a1c30 25%,
+      #0d2540 50%,
+      #112d50 75%,
+      #1a3a60 100%
+    );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.split-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.split-right {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+}

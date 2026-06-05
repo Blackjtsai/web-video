@@ -1,0 +1,545 @@
+/* MobilePage — 手機版 · 滑雪風深夜藍 */
+
+.mp-root {
+  font-family: var(--font-body);
+  background: var(--surface);
+  color: var(--text);
+  min-height: 100vh;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding-bottom: 0;
+}
+
+/* ── LINE banner ── */
+.mp-line-banner {
+  background: rgba(79,195,247,0.12);
+  border-bottom: 1px solid rgba(79,195,247,0.25);
+  color: var(--accent);
+  font-size: 13px;
+  padding: 10px 16px;
+  text-align: center;
+}
+
+/* ── Hero ── */
+.mp-hero {
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.mp-hero-gradient {
+  flex: 1;
+  min-height: 100dvh;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(79,195,247,0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(30,80,140,0.3) 0%, transparent 50%),
+    linear-gradient(160deg, #071523 0%, #0d1b2a 50%, #0a1628 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 24px 48px;
+}
+
+.mp-hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+
+.mp-hero-sub {
+  font-size: 12px;
+  color: var(--text-mute);
+  letter-spacing: 0.1em;
+}
+
+.mp-hero-title {
+  font-family: var(--font-display-cn);
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1.1;
+  letter-spacing: 0.05em;
+}
+
+.mp-hero-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mp-badge {
+  background: var(--accent-soft);
+  border: 1px solid rgba(79,195,247,0.25);
+  color: var(--accent);
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 0;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* ── Day section ── */
+.mp-day {
+  margin-top: 0;
+}
+
+.mp-day-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 16px 16px 8px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.mp-day-header--nophoto {
+  margin-top: 8px;
+}
+
+.mp-day-tag {
+  font-family: var(--font-display-en);
+  font-weight: 900;
+  font-size: 18px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.mp-day-date {
+  font-size: 13px;
+  color: var(--text-mute);
+  font-weight: 500;
+}
+
+/* ── Cards ── */
+.mp-card {
+  margin: 10px 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mp-card--dark {
+  background: var(--surface-3);
+  border-color: rgba(79,195,247,0.15);
+}
+
+.mp-card--warn {
+  background: rgba(255,180,50,0.07);
+  border-color: rgba(255,180,50,0.22);
+}
+
+.mp-card-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-mute);
+  letter-spacing: 0.04em;
+}
+
+.mp-card-title--light {
+  color: var(--text-2);
+}
+
+.mp-card-title--row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* ── Content Helpers ── */
+.mp-highlight {
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.mp-muted {
+  font-size: 13px;
+  color: var(--text-mute);
+  line-height: 1.5;
+}
+
+.mp-muted--row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.mp-note {
+  font-size: 12px;
+  color: var(--text-faint);
+  line-height: 1.5;
+  padding-top: 4px;
+  border-top: 1px solid var(--rule);
+  margin-top: 4px;
+}
+
+.mp-big-light {
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.mp-muted-light {
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+.mp-finale {
+  font-family: var(--font-display-cn);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+
+/* ── Two-column layout ── */
+.mp-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.mp-col-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mp-col-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--text-mute);
+}
+
+.mp-col-val {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+.mp-col-val--row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+/* ── List items ── */
+.mp-list-item {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(79,195,247,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mp-list-item:last-child { border-bottom: none; }
+
+.mp-list-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.mp-list-sub {
+  font-size: 12px;
+  color: var(--text-mute);
+}
+
+/* ── Tag chips ── */
+.mp-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.mp-tag-chip {
+  font-size: 12px;
+  padding: 4px 10px;
+  background: var(--surface-3);
+  border: 1px solid var(--rule);
+  color: var(--text-2);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.mp-tag-chip--map {
+  color: var(--accent);
+  border-color: rgba(79,195,247,0.2);
+  background: var(--accent-soft);
+}
+
+/* ── Flight row ── */
+.mp-row-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.mp-time-row {
+  margin-top: 4px;
+}
+
+.mp-vcenter { align-items: center; }
+
+.mp-flight-node {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mp-flight-airport { font-size: 13px; color: var(--text-mute); }
+.mp-flight-airport-light { font-size: 13px; color: var(--text-2); }
+.mp-flight-time { font-family: var(--font-display-en); font-size: 28px; font-weight: 900; color: var(--text); line-height: 1; }
+.mp-flight-time-light { font-family: var(--font-display-en); font-size: 24px; font-weight: 900; color: var(--accent); line-height: 1; }
+.mp-flight-time-sm { font-size: 12px; color: var(--text-mute); }
+.mp-flight-mid { font-size: 13px; color: var(--text-mute); }
+.mp-flight-mid-light { font-size: 13px; color: var(--text-2); }
+
+/* ── Map btn ── */
+.mp-map-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  border: 1px solid rgba(79,195,247,0.25);
+  color: var(--accent);
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+/* ── Hotel info ── */
+.mp-hotel {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.mp-hotel-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.mp-hotel-info-row {
+  font-size: 12px;
+  color: var(--text-mute);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ── Footer ── */
+.mp-footer {
+  font-family: var(--font-display-cn);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-mute);
+  text-align: center;
+  padding: 32px 16px 8px;
+  letter-spacing: 0.08em;
+}
+
+.mp-pdf-section {
+  padding: 20px 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.mp-pdf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent);
+  color: #071523;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 0;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  box-shadow: 0 4px 20px rgba(79,195,247,0.35);
+}
+
+.mp-pdf-date {
+  font-size: 12px;
+  color: var(--text-mute);
+  letter-spacing: 0.12em;
+  padding-bottom: calc(30px + env(safe-area-inset-bottom));
+}
+
+/* ── FAB ── */
+.mp-audio-fab {
+  position: fixed;
+  right: 20px;
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.mp-audio-fab--playing {
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px rgba(79,195,247,0.35);
+}
+
+.mp-fab-ring {
+  position: absolute;
+  inset: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+
+.mp-fab-ring-bg {
+  fill: none;
+  stroke: rgba(79,195,247,0.15);
+  stroke-width: 3;
+}
+
+.mp-fab-ring-fill {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: butt;
+  transition: stroke-dashoffset 300ms;
+}
+
+.mp-fab-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* ── Scrubber ── */
+.mp-scrubber-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+}
+
+.mp-scrubber-sheet {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--surface-2);
+  border-top: 1px solid var(--rule);
+  padding: 16px 20px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mp-scrubber-handle {
+  width: 36px;
+  height: 4px;
+  background: var(--rule);
+  border-radius: 2px;
+  align-self: center;
+  margin-bottom: 4px;
+}
+
+.mp-scrubber-current {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mp-scrubber-current-ch {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.mp-scrubber-current-num {
+  font-size: 13px;
+  color: var(--text-mute);
+  font-family: var(--font-display-en);
+}
+
+.mp-scrubber-chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.mp-scrubber-chip {
+  font-size: 12px;
+  padding: 5px 12px;
+  background: var(--surface-3);
+  border: 1px solid var(--rule);
+  color: var(--text-mute);
+  cursor: pointer;
+}
+
+.mp-scrubber-chip--active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.mp-scrubber-range {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.mp-scrubber-ticks {
+  position: relative;
+  height: 16px;
+}
+
+.mp-scrubber-tick {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
+.mp-scrubber-confirm {
+  background: var(--accent);
+  color: #071523;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+}

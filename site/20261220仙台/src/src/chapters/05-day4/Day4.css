@@ -1,0 +1,83 @@
+/* Day 4 — prefix: .d4- */
+
+.d4-stage {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  padding: var(--stage-pad-y) var(--stage-pad-x); overflow: hidden; font-family: 'Inter', var(--font-body);
+}
+.d4-header { flex-shrink: 0; margin-bottom: 32px; }
+.d4-day-tag { font-size: 13px; font-weight: 700; letter-spacing: 0.26em; color: var(--accent); text-transform: uppercase; }
+.d4-day-title { font-family: 'Inter', var(--font-display-cn); font-size: clamp(32px,3.6vw,48px); font-weight: 900; color: var(--text); line-height: 1.15; margin-top: 4px; }
+
+.d4-farewell,.d4-lunch,.d4-valley,.d4-nightski,.d4-ramen {
+  flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 24px;
+}
+
+/* Step 0 */
+.d4-farewell { animation: d4-in 450ms ease-out both; }
+.d4-farewell-tag { font-size: 13px; font-weight: 700; letter-spacing: 0.22em; color: var(--text-mute); text-transform: uppercase; }
+.d4-farewell-title { font-family: 'Inter', var(--font-display-cn); font-size: clamp(36px,4.2vw,54px); font-weight: 900; color: var(--text); line-height: 1.15; }
+.d4-route-strip { display: flex; align-items: center; }
+.d4-route-node { display: flex; flex-direction: column; gap: 5px; }
+.d4-route-city { font-family: 'Inter', var(--font-display-cn); font-size: clamp(22px,2.4vw,30px); font-weight: 700; color: var(--text); }
+.d4-route-time { font-size: clamp(13px,1.2vw,16px); color: var(--text-mute); }
+.d4-route-mid-strip { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 0 20px; }
+.d4-route-line-h { width: 100%; height: 1px; background: linear-gradient(to right, rgba(79,195,247,0.4), var(--accent), rgba(79,195,247,0.4)); }
+.d4-route-km { font-size: 13px; color: var(--text-mute); }
+.d4-optional-note { font-size: clamp(16px,1.5vw,20px); color: var(--text-faint); padding-left: 14px; border-left: 2px solid var(--rule); line-height: 1.6; }
+
+/* Step 1 */
+.d4-lunch { flex-direction: row; align-items: center; gap: 48px; animation: d4-in 450ms ease-out both; }
+.d4-lunch-visual {
+  width: clamp(120px,14vw,180px); height: clamp(120px,14vw,180px); background: var(--surface-2);
+  border: 1px solid rgba(180,120,40,0.22); display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 8px; flex-shrink: 0; position: relative;
+}
+.d4-lunch-glow { position: absolute; inset: 0; background: radial-gradient(circle at 40% 40%, rgba(180,120,40,0.15) 0%, transparent 60%); z-index: 0; }
+.d4-lunch-icon { font-size: clamp(44px,5vw,64px); position: relative; z-index: 1; animation: d4-pop 550ms cubic-bezier(0.34,1.56,0.64,1) 150ms both; }
+.d4-lunch-cn { font-size: 13px; color: rgba(180,120,40,0.9); letter-spacing: 0.08em; position: relative; z-index: 1; }
+.d4-lunch-info { display: flex; flex-direction: column; gap: 14px; }
+.d4-lunch-name { font-family: 'Inter', var(--font-display-cn); font-size: clamp(40px,4.5vw,60px); font-weight: 900; color: var(--text); line-height: 1.1; }
+.d4-lunch-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.d4-ltag { background: var(--surface-3); border: 1px solid var(--rule); color: var(--text-2); font-size: clamp(14px,1.4vw,18px); padding: 5px 14px; }
+.d4-lunch-sub { font-size: clamp(17px,1.7vw,22px); color: var(--text-mute); line-height: 1.6; }
+
+/* Step 2 */
+.d4-valley { flex-direction: row; align-items: center; gap: 40px; animation: d4-in 450ms ease-out both; }
+.d4-resort-card { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
+.d4-resort-name { font-family: 'Inter', var(--font-display-cn); font-size: clamp(24px,2.6vw,38px); font-weight: 900; color: var(--text); line-height: 1.1; }
+.d4-resort-en { font-size: 12px; color: var(--accent); letter-spacing: 0.07em; margin-top: -10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.d4-resort-stats { display: flex; gap: 20px; flex-wrap: wrap; }
+.d4-rs-item { display: flex; flex-direction: column; gap: 5px; padding-right: 16px; border-right: 1px solid var(--rule); flex-shrink: 0; }
+.d4-rs-item:last-child { border-right: none; padding-right: 0; }
+.d4-rs-num { font-family: 'Inter', sans-serif; font-size: clamp(20px,2.2vw,30px); font-weight: 900; color: var(--accent); line-height: 1; }
+.d4-rs-label { font-size: clamp(11px,1.0vw,14px); color: var(--text-mute); }
+.d4-night-visual {
+  width: clamp(150px,12vw,185px); flex-shrink: 0; background: #050e1a;
+  border: 1px solid rgba(79,195,247,0.15); padding: 18px; display: flex; flex-direction: column; gap: 12px; position: relative; overflow: hidden;
+}
+.d4-night-stars { position: absolute; inset: 0; z-index: 0; }
+.d4-night-star { position: absolute; width: 2px; height: 2px; border-radius: 50%; background: rgba(255,255,255,0.55); animation: d4-twinkle 2s ease-in-out infinite; }
+.d4-night-tag { font-size: 12px; font-weight: 700; letter-spacing: 0.18em; color: var(--accent); text-transform: uppercase; position: relative; z-index: 1; }
+.d4-night-time { font-family: 'Inter', sans-serif; font-size: clamp(17px,1.8vw,24px); font-weight: 900; color: var(--text); position: relative; z-index: 1; }
+.d4-night-desc { font-size: clamp(14px,1.4vw,18px); color: var(--text-mute); line-height: 1.6; position: relative; z-index: 1; }
+
+/* Step 3 */
+.d4-nightski { animation: d4-in 450ms ease-out both; }
+.d4-ns-hero { font-family: 'Inter', var(--font-display-cn); font-size: clamp(44px,5.5vw,70px); font-weight: 900; color: var(--text); line-height: 1.1; }
+.d4-ns-highlights { display: flex; flex-direction: column; gap: 12px; }
+.d4-ns-item { display: flex; align-items: flex-start; gap: 12px; font-size: clamp(17px,1.7vw,22px); color: var(--text-2); line-height: 1.6; opacity: 0; }
+.d4-ns-item--visible { animation: d4-ns 380ms ease-out both; }
+.d4-ns-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 9px; }
+.d4-ns-warn { background: rgba(255,180,50,0.07); border: 1px solid rgba(255,180,50,0.22); padding: 14px 20px; font-size: clamp(16px,1.6vw,20px); color: var(--text-2); line-height: 1.6; }
+
+/* Step 4 */
+.d4-ramen { align-items: center; gap: 16px; animation: d4-in 500ms ease-out both; }
+.d4-ramen-icon { font-size: clamp(48px,5.5vw,72px); animation: d4-pop 600ms cubic-bezier(0.34,1.56,0.64,1) 150ms both; }
+.d4-ramen-title { font-family: 'Inter', var(--font-display-cn); font-size: clamp(34px,4vw,52px); font-weight: 900; color: var(--text); text-align: center; line-height: 1.1; }
+.d4-ramen-time { font-family: 'Inter', sans-serif; font-size: clamp(56px,7vw,90px); font-weight: 900; color: var(--accent); letter-spacing: -0.03em; text-shadow: 0 0 40px rgba(79,195,247,0.4); }
+.d4-ramen-sub { font-size: clamp(15px,1.5vw,19px); color: var(--text-mute); text-align: center; line-height: 1.6; }
+
+@keyframes d4-in { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes d4-pop { from { opacity: 0; transform: scale(0.65); } to { opacity: 1; transform: scale(1); } }
+@keyframes d4-ns { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes d4-twinkle { 0%,100% { opacity: 0.3; } 50% { opacity: 0.85; } }

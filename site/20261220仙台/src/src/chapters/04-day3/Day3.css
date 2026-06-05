@@ -1,0 +1,80 @@
+/* Day 3 — prefix: .d3- */
+
+.d3-stage {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  padding: var(--stage-pad-y) var(--stage-pad-x); overflow: hidden; font-family: 'Inter', var(--font-body);
+}
+.d3-header { flex-shrink: 0; margin-bottom: 32px; }
+.d3-day-tag { font-size: 13px; font-weight: 700; letter-spacing: 0.26em; color: var(--accent); text-transform: uppercase; }
+.d3-day-title { font-family: 'Inter', var(--font-display-cn); font-size: clamp(32px,3.6vw,48px); font-weight: 900; color: var(--text); line-height: 1.15; margin-top: 4px; }
+
+.d3-noDrive,.d3-zao,.d3-ski-full,.d3-bath,.d3-genghis {
+  flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 24px;
+}
+
+/* Step 0 */
+.d3-noDrive { animation: d3-in 450ms ease-out both; }
+.d3-no-car-badge { display: inline-flex; align-items: center; gap: 12px; background: var(--accent-soft); border: 1px solid var(--accent); padding: 12px 22px; align-self: flex-start; }
+.d3-no-car-text { font-family: 'Inter', var(--font-display-cn); font-size: clamp(18px,1.8vw,24px); font-weight: 700; color: var(--accent); }
+.d3-schedule-row { display: flex; align-items: flex-start; gap: 0; }
+.d3-sched-item { display: flex; flex-direction: column; gap: 6px; opacity: 0; flex: 1; }
+.d3-sched-item--visible { animation: d3-up 400ms cubic-bezier(0.34,1.56,0.64,1) both; }
+.d3-sched-time { font-size: 14px; font-weight: 700; color: var(--accent); letter-spacing: 0.08em; }
+.d3-sched-title { font-family: 'Inter', var(--font-display-cn); font-size: clamp(18px,1.8vw,24px); font-weight: 700; color: var(--text); }
+.d3-sched-sub { font-size: clamp(14px,1.3vw,17px); color: var(--text-mute); line-height: 1.6; }
+.d3-sched-sep { font-size: 22px; color: var(--text-faint); margin-top: 14px; flex-shrink: 0; padding: 0 12px; }
+
+/* Step 1 */
+.d3-zao { flex-direction: row; align-items: center; animation: d3-in 450ms ease-out both; }
+.d3-zao-card { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
+.d3-zao-name { font-family: 'Inter', var(--font-display-cn); font-size: clamp(28px,3vw,46px); font-weight: 900; color: var(--text); line-height: 1.1; }
+.d3-zao-en { font-size: 12px; color: var(--accent); letter-spacing: 0.08em; margin-top: -10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.d3-zao-stats { display: flex; gap: 16px; flex-wrap: wrap; }
+.d3-z-stat { display: flex; flex-direction: column; gap: 4px; padding-right: 16px; border-right: 1px solid var(--rule); flex-shrink: 0; }
+.d3-z-stat:last-child { border-right: none; padding-right: 0; }
+.d3-z-num { font-family: 'Inter', sans-serif; font-size: clamp(22px,2.4vw,36px); font-weight: 900; color: var(--accent); line-height: 1; }
+.d3-z-unit { font-size: clamp(13px,1.2vw,16px); color: var(--text-2); }
+.d3-z-label { font-size: clamp(12px,1.1vw,15px); color: var(--text-mute); }
+.d3-tree-ice { width: clamp(150px,12vw,190px); flex-shrink: 0; background: var(--surface-2); border: 1px solid var(--rule); padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; }
+.d3-tree-label { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; color: var(--accent); text-transform: uppercase; }
+.d3-tree-title { font-family: 'Inter', var(--font-display-cn); font-size: clamp(18px,1.8vw,24px); font-weight: 900; color: var(--text); }
+.d3-tree-sub { font-size: clamp(12px,1.1vw,14px); color: var(--text-mute); line-height: 1.55; }
+.d3-tree-ice-svg { margin-top: 4px; width: 100%; height: auto; }
+
+/* Step 2 */
+.d3-ski-full { animation: d3-in 450ms ease-out both; }
+.d3-lift-block { display: flex; gap: 36px; align-items: center; }
+.d3-lift-icon { font-size: clamp(52px,6vw,80px); animation: d3-up 550ms cubic-bezier(0.34,1.56,0.64,1) 150ms both; }
+.d3-lift-info { display: flex; flex-direction: column; gap: 10px; }
+.d3-lift-title { font-family: 'Inter', var(--font-display-cn); font-size: clamp(26px,2.8vw,36px); font-weight: 900; color: var(--text); }
+.d3-lift-sub { font-size: clamp(17px,1.7vw,22px); color: var(--text-mute); line-height: 1.6; }
+.d3-lunch-note { background: var(--surface-2); border-left: 3px solid var(--accent); padding: 14px 20px; font-size: clamp(17px,1.7vw,22px); color: var(--text-2); line-height: 1.6; }
+
+/* Step 3 */
+.d3-bath { animation: d3-in 450ms ease-out both; }
+.d3-bath-row { display: flex; gap: 16px; }
+.d3-bath-place { display: flex; flex-direction: column; gap: 10px; padding: 20px 24px; background: var(--surface-2); border: 1px solid var(--rule); flex: 1; opacity: 0; }
+.d3-bath-place--visible { animation: d3-up 400ms cubic-bezier(0.34,1.56,0.64,1) both; }
+.d3-bath-name { font-family: 'Inter', var(--font-display-cn); font-size: clamp(20px,2.2vw,28px); font-weight: 700; color: var(--text); }
+.d3-bath-desc { font-size: clamp(15px,1.4vw,19px); color: var(--text-mute); line-height: 1.6; }
+.d3-bath-warn { background: rgba(255,180,50,0.07); border: 1px solid rgba(255,180,50,0.25); padding: 14px 20px; font-size: clamp(17px,1.7vw,22px); color: var(--text-2); line-height: 1.6; }
+
+/* Step 4 */
+.d3-genghis { flex-direction: row; align-items: center; gap: 48px; animation: d3-in 450ms ease-out both; }
+.d3-grill-visual {
+  width: clamp(140px,16vw,200px); height: clamp(140px,16vw,200px); background: var(--surface-2);
+  border: 1px solid rgba(220,100,40,0.22); display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 8px; flex-shrink: 0; position: relative;
+}
+.d3-grill-glow { position: absolute; inset: 0; background: radial-gradient(circle at 50% 70%, rgba(220,100,40,0.15) 0%, transparent 60%); animation: d3-glow 2s ease-in-out infinite; z-index: 0; }
+.d3-grill-icon { font-size: clamp(48px,5.5vw,72px); position: relative; z-index: 1; }
+.d3-grill-cn { font-size: 13px; color: rgba(220,120,60,0.9); letter-spacing: 0.1em; position: relative; z-index: 1; }
+.d3-genghis-info { display: flex; flex-direction: column; gap: 14px; }
+.d3-genghis-name { font-family: 'Inter', var(--font-display-cn); font-size: clamp(40px,4.8vw,64px); font-weight: 900; color: var(--text); line-height: 1.1; }
+.d3-genghis-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.d3-gtag { background: var(--surface-3); border: 1px solid var(--rule); color: var(--text-2); font-size: clamp(14px,1.4vw,18px); padding: 5px 14px; }
+.d3-genghis-desc { font-size: clamp(17px,1.7vw,22px); color: var(--text-mute); line-height: 1.6; }
+
+@keyframes d3-in { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes d3-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes d3-glow { 0%,100% { opacity: 0.6; } 50% { opacity: 1; } }

@@ -1,0 +1,57 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * Theme · midnight-ice（仙台滑雪版）
+ *   深夜雪山 ── 午夜深藍為底、冰雪藍為殼、極光白強調色。
+ *   Archivo Black 顯示英文字、Noto Sans SC 搭配，工整俐落高速感。
+ * ───────────────────────────────────────────────────────────────────── */
+:root {
+  /* ─── palette · 深夜雪山 ─── */
+  --shell:        #071523;              /* 極夜山頂 */
+  --surface:      #0d1b2a;             /* 深夜藍（雪影） */
+  --surface-2:    #132338;             /* 稍淺深藍 */
+  --surface-3:    #1c3050;             /* 中等深藍 */
+  --text:         #e8f4fd;             /* 雪白 */
+  --text-2:       #b8d8f0;             /* 冰藍白 */
+  --text-mute:    #7ab8d8;             /* 淡冰藍 */
+  --text-faint:   #4a7a9a;             /* 遠山藍灰 */
+  --rule:         rgba(79, 195, 247, 0.18);
+  --accent:       #4fc3f7;             /* 冰晶藍 */
+  --accent-soft:  rgba(79, 195, 247, 0.12);
+  --accent-glow:  rgba(79, 195, 247, 0.45);
+
+  /* ─── fonts ─── */
+  --font-display-cn: "Noto Sans SC", "Noto Serif SC", sans-serif;
+  --font-display-en: "Archivo Black", "Inter", sans-serif;
+  --font-body:       "Manrope", "Inter", "Noto Sans SC", sans-serif;
+  --font-mono:       "IBM Plex Mono", "JetBrains Mono", ui-monospace, monospace;
+  --font-features:   "tnum", "ss01";
+
+  /* ─── motion: sharp & fast ─── */
+  --dur-base:       380ms;
+  --dur-slow:       650ms;
+  --dur-cinematic:  1100ms;
+
+  /* ─── design identity: crisp editorial ─── */
+  --r-card:        0px;
+  --r-stage:       0;
+  --rule-w:        1px;
+  --rule-style:    solid;
+  --hero-num-font:    var(--font-display-en);
+  --hero-num-style:   normal;
+  --hero-num-weight:  900;
+  --hero-num-track:   -0.02em;
+  --stage-pad-x:   100px;
+  --stage-pad-y:   76px;
+  --card-shadow:
+    0 1px 0 rgba(79, 195, 247, 0.12),
+    0 2px 16px rgba(0, 0, 0, 0.4);
+  --shadow-stage:
+    0 60px 160px rgba(0, 10, 30, 0.60),
+    0 0 0 1px rgba(79, 195, 247, 0.06);
+
+  /* ─── decoration: subtle ice crystal noise ─── */
+  --surface-pattern:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' seed='7'/><feColorMatrix values='0 0 0 0 0.30 0 0 0 0 0.55 0 0 0 0 0.75 0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  --surface-pattern-size: 200px 200px;
+  --surface-pattern-blend: screen;
+  --surface-pattern-opacity: 0.4;
+}

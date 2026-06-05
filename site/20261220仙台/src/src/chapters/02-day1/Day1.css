@@ -1,0 +1,97 @@
+/* Day 1 — prefix: .d1-
+   視窗真實 px，clamp() 在各種螢幕自動縮放 */
+
+.d1-stage {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  overflow: hidden; font-family: 'Inter', var(--font-body);
+}
+
+/* ── Header：固定左上角，title 48px，margin-bottom 32px ── */
+.d1-header { flex-shrink: 0; margin-bottom: 32px; }
+.d1-day-tag { font-size: 13px; font-weight: 700; letter-spacing: 0.26em; color: var(--accent); text-transform: uppercase; }
+.d1-day-title {
+  font-family: 'Inter', var(--font-display-cn);
+  font-size: clamp(32px, 3.6vw, 48px); font-weight: 900; color: var(--text);
+  line-height: 1.15; margin-top: 4px;
+}
+
+/* ── 所有 content block：flex:1 填滿剩餘空間 ── */
+.d1-arrive, .d1-hotel-block, .d1-beef, .d1-izakaya, .d1-sleep {
+  flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 28px;
+}
+
+/* Step 0: 機場 */
+.d1-arrive { animation: d1-in 450ms ease-out both; }
+.d1-flight-row { display: flex; align-items: center; gap: 32px; }
+.d1-airport-node { display: flex; flex-direction: column; gap: 6px; }
+.d1-airport-name { font-size: clamp(15px, 1.4vw, 20px); color: var(--text-mute); }
+.d1-airport-time {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(52px, 6vw, 80px); font-weight: 900; color: var(--text); letter-spacing: -0.03em; line-height: 1;
+}
+.d1-flight-arrow { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.d1-flight-line { width: 160px; height: 2px; background: linear-gradient(to right, var(--text-mute), var(--accent), var(--text-mute)); }
+.d1-flight-dur { font-size: 13px; color: var(--text-mute); letter-spacing: 0.08em; }
+.d1-note-box {
+  background: var(--surface-2); border-left: 3px solid var(--accent);
+  padding: 16px 22px; max-width: 680px;
+}
+.d1-note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.18em; color: var(--accent); text-transform: uppercase; margin-bottom: 6px; }
+.d1-note-text { font-size: clamp(18px, 1.8vw, 24px); color: var(--text-2); line-height: 1.6; }
+
+/* Step 1: 取車 */
+.d1-hotel-block { animation: d1-in 450ms ease-out both; }
+.d1-info-row { display: flex; gap: 56px; align-items: flex-start; }
+.d1-info-item { display: flex; flex-direction: column; gap: 8px; }
+.d1-info-label { font-size: 12px; font-weight: 700; letter-spacing: 0.18em; color: var(--text-mute); text-transform: uppercase; }
+.d1-info-value { font-family: 'Inter', var(--font-display-cn); font-size: clamp(22px, 2.2vw, 30px); font-weight: 700; color: var(--text); }
+.d1-info-sub { font-size: clamp(16px, 1.5vw, 20px); color: var(--text-mute); line-height: 1.6; }
+.d1-checklist { display: flex; flex-direction: column; gap: 10px; }
+.d1-check-item { display: flex; align-items: center; gap: 14px; font-size: clamp(18px, 1.8vw, 24px); color: var(--text-2); line-height: 1.6; opacity: 0; }
+.d1-check-item--visible { animation: d1-list 380ms ease-out both; }
+.d1-check-icon { width: 22px; height: 22px; border-radius: 50%; background: var(--accent-soft); border: 1px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--accent); flex-shrink: 0; }
+
+/* Step 2: 牛舌 */
+.d1-beef { animation: d1-in 450ms ease-out both; flex-direction: row; align-items: center; gap: 48px; }
+.d1-dish-visual {
+  width: clamp(160px, 18vw, 240px); height: clamp(160px, 18vw, 240px);
+  border-radius: 50%; background: radial-gradient(circle at 40% 40%, rgba(200,140,60,0.18) 0%, transparent 60%), var(--surface-2);
+  border: 2px solid rgba(200,140,60,0.22); display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 8px; flex-shrink: 0;
+}
+.d1-dish-icon { font-size: clamp(56px, 6vw, 80px); animation: d1-pop 550ms cubic-bezier(0.34,1.56,0.64,1) 150ms both; }
+.d1-dish-cn { font-size: 14px; font-weight: 700; color: rgba(200,140,60,0.9); letter-spacing: 0.08em; }
+.d1-dish-info { display: flex; flex-direction: column; gap: 18px; }
+.d1-dish-name { font-family: 'Inter', var(--font-display-cn); font-size: clamp(40px, 4.5vw, 60px); font-weight: 900; color: var(--text); line-height: 1.1; }
+.d1-dish-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.d1-tag { background: var(--surface-3); border: 1px solid var(--rule); color: var(--text-2); font-size: clamp(14px, 1.4vw, 18px); padding: 5px 14px; }
+.d1-restaurant-list { display: flex; flex-direction: column; gap: 8px; }
+.d1-rest-item { display: flex; align-items: center; gap: 12px; font-size: clamp(17px, 1.7vw, 22px); color: var(--text-2); opacity: 0; }
+.d1-rest-item--visible { animation: d1-list 380ms ease-out both; }
+.d1-rest-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+/* Step 3: 居酒屋 */
+.d1-izakaya { animation: d1-in 450ms ease-out both; flex-direction: row; align-items: center; gap: 48px; }
+.d1-izakaya-visual {
+  width: clamp(120px, 14vw, 180px); height: clamp(120px, 14vw, 180px);
+  background: var(--surface-2); border: 1px solid var(--rule);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; flex-shrink: 0;
+}
+.d1-izakaya-icon { font-size: clamp(44px, 5vw, 64px); }
+.d1-izakaya-cn { font-size: 13px; color: var(--text-mute); letter-spacing: 0.1em; }
+.d1-izakaya-info { display: flex; flex-direction: column; gap: 14px; }
+.d1-izakaya-name { font-family: 'Inter', var(--font-display-cn); font-size: clamp(40px, 4.5vw, 60px); font-weight: 900; color: var(--text); }
+.d1-izakaya-sub { font-size: clamp(18px, 1.8vw, 24px); color: var(--text-mute); line-height: 1.6; }
+
+/* Step 4: 早點睡 */
+.d1-sleep { align-items: center; animation: d1-in 500ms ease-out both; }
+.d1-sleep-icon { font-size: clamp(56px, 7vw, 90px); animation: d1-pop 600ms cubic-bezier(0.34,1.56,0.64,1) 150ms both; }
+.d1-sleep-title { font-family: 'Inter', var(--font-display-cn); font-size: clamp(40px, 4.5vw, 60px); font-weight: 900; color: var(--text); text-align: center; }
+.d1-time-badge { font-family: 'Inter', sans-serif; font-size: clamp(72px, 9vw, 120px); font-weight: 900; color: var(--accent); letter-spacing: -0.03em; text-shadow: 0 0 40px rgba(79,195,247,0.4); }
+.d1-sleep-sub { font-size: clamp(17px, 1.7vw, 22px); color: var(--text-mute); text-align: center; line-height: 1.6; }
+
+@keyframes d1-in { from { opacity: 0; transform: translateX(22px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes d1-list { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes d1-pop { from { opacity: 0; transform: scale(0.65); } to { opacity: 1; transform: scale(1); } }

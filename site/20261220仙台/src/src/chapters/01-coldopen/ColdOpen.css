@@ -1,0 +1,126 @@
+/* coldopen — prefix: .co-
+   字體均為視窗真實 px（無縮放補償）*/
+
+.co-stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: 'Inter', var(--font-body);
+}
+
+/* ── 雪粒子（裝飾，z-index 低）── */
+.co-snow { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.co-flake {
+  position: absolute; top: -8px; border-radius: 50%;
+  background: rgba(79,195,247,0.45);
+  animation: co-fall linear infinite;
+}
+@keyframes co-fall {
+  0%   { transform: translateY(0); opacity: 0.7; }
+  100% { transform: translateY(110vh) translateX(20px); opacity: 0; }
+}
+
+/* ── Step 0: Hero ── */
+.co-hero {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;
+  animation: co-up 600ms cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.co-year {
+  font-size: 14px; letter-spacing: 0.32em; color: var(--text-mute);
+  text-transform: uppercase; animation: co-fade 600ms 100ms ease-out both;
+}
+.co-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(72px, 8vw, 110px);
+  font-weight: 900; color: var(--text); letter-spacing: -0.03em; line-height: 0.95;
+}
+.co-title-cn {
+  font-family: 'Inter', var(--font-display-cn);
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 900; color: var(--accent); letter-spacing: 0.08em;
+  text-shadow: 0 0 40px rgba(79,195,247,0.4);
+  animation: co-fade 600ms 300ms ease-out both;
+}
+.co-dates {
+  font-size: 13px; letter-spacing: 0.22em; color: var(--text-mute);
+  text-transform: uppercase; animation: co-fade 600ms 450ms ease-out both;
+}
+
+/* ── Step 1: 三位成員 ── */
+.co-members-wrap {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center; gap: 40px; width: 100%;
+}
+.co-members {
+  display: flex; justify-content: space-around; align-items: flex-start;
+  width: 90%; max-width: 900px;
+}
+.co-member {
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+}
+.co-member-avatar {
+  width: clamp(120px, 12vw, 160px); height: clamp(120px, 12vw, 160px);
+  border-radius: 50%; background: var(--surface-3); border: 2px solid var(--accent);
+  display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;
+  box-shadow: 0 0 28px rgba(79,195,247,0.18);
+}
+.co-member-icon { font-size: clamp(48px, 5vw, 64px); line-height: 1; }
+.co-member-num { font-size: 12px; font-weight: 700; letter-spacing: 0.2em; color: var(--accent); text-transform: uppercase; }
+.co-member-label { font-size: clamp(18px, 1.8vw, 24px); font-weight: 600; color: var(--text); }
+.co-member--visible { animation: co-up-m 500ms cubic-bezier(0.34,1.56,0.64,1) both; }
+.co-members-label { font-size: 13px; letter-spacing: 0.22em; color: var(--text-faint); text-transform: uppercase; }
+
+/* ── Step 2: 雪場路線 ── */
+.co-route {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; gap: 40px; width: 88%; max-width: 980px;
+}
+.co-route-title { font-size: 13px; letter-spacing: 0.26em; color: var(--text-mute); text-align: center; text-transform: uppercase; }
+.co-route-line { display: flex; align-items: flex-start; justify-content: center; }
+.co-resort {
+  display: flex; flex-direction: column; align-items: center; gap: 14px; opacity: 0; flex: 1;
+}
+.co-resort--visible { animation: co-resort 500ms cubic-bezier(0.34,1.56,0.64,1) both; }
+.co-resort-dot {
+  width: 18px; height: 18px; border-radius: 50%; background: var(--accent);
+  box-shadow: 0 0 18px rgba(79,195,247,0.65); flex-shrink: 0;
+}
+.co-resort-name {
+  font-family: 'Inter', var(--font-display-cn);
+  font-size: clamp(18px, 1.8vw, 24px); font-weight: 700; color: var(--text);
+  text-align: center; white-space: pre-line; line-height: 1.35;
+}
+.co-resort-date { font-size: 14px; font-weight: 700; color: var(--accent); letter-spacing: 0.1em; }
+.co-route-connector {
+  height: 2px; flex: 0 0 clamp(60px, 8vw, 120px);
+  background: linear-gradient(to right, var(--accent), rgba(79,195,247,0.3));
+  opacity: 0; margin-top: 8px; align-self: flex-start;
+}
+.co-route-connector--visible { animation: co-line 400ms ease-out both; }
+
+/* ── Step 3: 關鍵數字 ── */
+.co-stats {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: space-around; width: 88%; max-width: 900px;
+}
+.co-stat { display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0; flex: 1; }
+.co-stat--visible { animation: co-up-m 550ms cubic-bezier(0.34,1.56,0.64,1) both; }
+.co-stat-num {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(80px, 9vw, 120px); font-weight: 900; color: var(--accent); line-height: 1;
+  letter-spacing: -0.03em; text-shadow: 0 0 40px rgba(79,195,247,0.4);
+}
+.co-stat-unit { font-size: clamp(22px, 2.4vw, 32px); color: var(--text-2); font-weight: 700; }
+.co-stat-label { font-family: 'Inter', var(--font-display-cn); font-size: clamp(16px, 1.6vw, 22px); color: var(--text-mute); letter-spacing: 0.06em; text-align: center; }
+.co-stat-divider { width: 1px; height: clamp(60px, 7vh, 90px); background: var(--rule); flex-shrink: 0; }
+
+@keyframes co-up { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes co-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes co-up-m { from { opacity: 0; transform: translateY(24px) scale(0.9); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes co-resort { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes co-line { from { opacity: 0; transform: scaleX(0); } to { opacity: 1; transform: scaleX(1); } }

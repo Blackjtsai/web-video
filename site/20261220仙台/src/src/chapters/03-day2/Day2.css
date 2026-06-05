@@ -1,0 +1,106 @@
+/* Day 2 — prefix: .d2- */
+
+.d2-stage {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  padding: var(--stage-pad-y) var(--stage-pad-x); overflow: hidden; font-family: 'Inter', var(--font-body);
+}
+.d2-header { flex-shrink: 0; margin-bottom: 32px; }
+.d2-day-tag { font-size: 13px; font-weight: 700; letter-spacing: 0.26em; color: var(--accent); text-transform: uppercase; }
+.d2-day-title { font-family: 'Inter', var(--font-display-cn); font-size: clamp(32px,3.6vw,48px); font-weight: 900; color: var(--text); line-height: 1.15; margin-top: 4px; }
+
+.d2-depart,.d2-eboshi,.d2-ski-day,.d2-drive,.d2-dinner,.d2-onsen {
+  flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 24px;
+}
+
+/* Step 0 時間軸 */
+.d2-depart { animation: d2-in 450ms ease-out both; }
+.d2-tl-item { display: flex; gap: 24px; align-items: flex-start; opacity: 0; }
+.d2-tl-item--visible { animation: d2-tl 400ms ease-out both; }
+.d2-tl-left { flex-shrink: 0; width: 80px; }
+.d2-tl-time { font-size: clamp(14px,1.4vw,18px); font-weight: 700; color: var(--text-mute); }
+.d2-tl-right { padding-bottom: 20px; border-left: 1px solid var(--rule); padding-left: 20px; flex: 1; }
+.d2-tl-title { font-family: 'Inter', var(--font-display-cn); font-size: clamp(18px,1.8vw,24px); font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.d2-tl-sub { font-size: clamp(15px,1.4vw,19px); color: var(--text-mute); line-height: 1.6; }
+
+/* Step 1 Eboshi */
+.d2-eboshi { flex-direction: row; align-items: center; animation: d2-in 450ms ease-out both; }
+.d2-resort-card { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
+.d2-resort-name { font-family: 'Inter', var(--font-display-cn); font-size: clamp(26px,2.8vw,40px); font-weight: 900; color: var(--text); line-height: 1.1; }
+.d2-resort-en { font-size: 12px; color: var(--accent); letter-spacing: 0.08em; margin-top: -10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.d2-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.d2-stat-box { background: var(--surface-2); border: 1px solid var(--rule); padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; }
+.d2-stat-num { font-family: 'Inter', sans-serif; font-size: clamp(22px,2.4vw,32px); font-weight: 900; color: var(--accent); line-height: 1; }
+.d2-stat-unit { font-size: clamp(13px,1.2vw,16px); color: var(--text-2); }
+.d2-stat-label { font-size: clamp(12px,1.1vw,15px); color: var(--text-mute); }
+.d2-slope-visual { width: clamp(160px,13vw,200px); flex-shrink: 0; background: var(--surface-2); border: 1px solid var(--rule); padding: 18px 20px; display: flex; flex-direction: column; gap: 14px; }
+.d2-slope-label { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; color: var(--text-mute); text-transform: uppercase; }
+.d2-slope-bars { display: flex; flex-direction: column; gap: 12px; }
+.d2-slope-row { display: flex; align-items: center; gap: 10px; }
+.d2-slope-name { font-size: 14px; color: var(--text-mute); width: 40px; flex-shrink: 0; }
+.d2-slope-bar-bg { flex: 1; height: 10px; background: var(--surface-3); overflow: hidden; }
+.d2-slope-bar-fill { height: 100%; background: var(--accent); transform-origin: left; animation: d2-bar 650ms cubic-bezier(0.34,1.56,0.64,1) both; }
+.d2-slope-km { font-size: 14px; color: var(--accent); font-weight: 700; width: 42px; text-align: right; flex-shrink: 0; }
+
+/* Step 2 */
+.d2-ski-day { animation: d2-in 450ms ease-out both; }
+.d2-time-block { display: flex; gap: 24px; align-items: center; }
+.d2-time-big { font-family: 'Inter', sans-serif; font-size: clamp(52px,6vw,80px); font-weight: 900; color: var(--text); letter-spacing: -0.03em; flex-shrink: 0; }
+.d2-time-sep { font-size: clamp(30px,3.5vw,48px); color: var(--text-faint); }
+.d2-time-label { font-family: 'Inter', var(--font-display-cn); font-size: clamp(16px,1.6vw,22px); color: var(--text-mute); line-height: 1.6; }
+.d2-tips { display: flex; flex-direction: column; gap: 10px; }
+.d2-tip-item { display: flex; align-items: flex-start; gap: 12px; font-size: clamp(17px,1.7vw,22px); color: var(--text-2); line-height: 1.6; opacity: 0; }
+.d2-tip-item--visible { animation: d2-tl 380ms ease-out both; }
+.d2-tip-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 9px; }
+
+/* Step 3 */
+.d2-drive { animation: d2-in 450ms ease-out both; }
+.d2-route-arrow { display: flex; align-items: center; gap: 24px; }
+.d2-route-place { display: flex; flex-direction: column; gap: 6px; }
+.d2-route-name { font-family: 'Inter', var(--font-display-cn); font-size: clamp(24px,2.8vw,36px); font-weight: 700; color: var(--text); line-height: 1.25; }
+.d2-route-sub { font-size: clamp(14px,1.4vw,18px); color: var(--text-mute); }
+.d2-route-mid { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.d2-route-line-h { width: 100%; height: 1px; background: linear-gradient(to right, var(--accent), rgba(79,195,247,0.3)); }
+.d2-route-dur { font-size: 13px; color: var(--text-mute); }
+.d2-warn-box { background: rgba(255,180,50,0.07); border: 1px solid rgba(255,180,50,0.25); padding: 16px 22px; }
+.d2-warn-title { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; color: rgba(255,180,50,0.85); text-transform: uppercase; margin-bottom: 6px; }
+.d2-warn-text { font-size: clamp(17px,1.7vw,22px); color: var(--text-2); line-height: 1.6; }
+
+/* Step 4 */
+.d2-dinner { flex-direction: row; align-items: center; gap: 48px; animation: d2-in 450ms ease-out both; }
+.d2-dinner-visual {
+  width: clamp(140px,16vw,200px); height: clamp(140px,16vw,200px); border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(180,120,40,0.18) 0%, transparent 60%), var(--surface-2);
+  border: 2px solid rgba(180,120,40,0.22);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; flex-shrink: 0;
+}
+.d2-dinner-icon { font-size: clamp(48px,5vw,68px); animation: d2-pop 550ms cubic-bezier(0.34,1.56,0.64,1) 150ms both; }
+.d2-dinner-cn { font-size: 13px; color: rgba(180,120,40,0.9); letter-spacing: 0.08em; }
+.d2-dinner-info { display: flex; flex-direction: column; gap: 14px; }
+.d2-dinner-name { font-family: 'Inter', var(--font-display-cn); font-size: clamp(40px,4.5vw,60px); font-weight: 900; color: var(--text); line-height: 1.1; }
+.d2-dinner-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.d2-dtag { background: var(--surface-3); border: 1px solid var(--rule); color: var(--text-2); font-size: clamp(14px,1.4vw,18px); padding: 5px 14px; }
+
+/* Step 5 */
+.d2-onsen { animation: d2-in 450ms ease-out both; }
+.d2-onsen-hero { display: flex; gap: 40px; align-items: center; }
+.d2-onsen-visual {
+  width: clamp(120px,14vw,180px); height: clamp(120px,14vw,180px); background: var(--surface-2);
+  border: 1px solid rgba(79,195,247,0.2); display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 8px; flex-shrink: 0; position: relative; overflow: hidden;
+}
+.d2-onsen-steam { position: absolute; top: 0; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; }
+.d2-steam-line { width: 2px; height: 32px; background: linear-gradient(to top, rgba(79,195,247,0.4), transparent); animation: d2-steam 2s ease-in-out infinite; }
+.d2-steam-line:nth-child(2) { animation-delay: 0.5s; }
+.d2-steam-line:nth-child(3) { animation-delay: 1s; }
+.d2-onsen-icon { font-size: clamp(44px,5vw,60px); position: relative; }
+.d2-onsen-cn { font-size: 13px; color: var(--text-mute); letter-spacing: 0.1em; position: relative; }
+.d2-onsen-info { display: flex; flex-direction: column; gap: 12px; }
+.d2-onsen-name { font-family: 'Inter', var(--font-display-cn); font-size: clamp(26px,3vw,38px); font-weight: 900; color: var(--text); line-height: 1.3; }
+.d2-onsen-desc { font-size: clamp(17px,1.7vw,22px); color: var(--text-mute); line-height: 1.6; }
+.d2-onsen-note { font-size: clamp(15px,1.4vw,18px); color: var(--text-faint); padding: 10px 14px; border-left: 2px solid rgba(79,195,247,0.3); line-height: 1.6; }
+
+@keyframes d2-in { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes d2-tl { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes d2-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes d2-pop { from { opacity: 0; transform: scale(0.65); } to { opacity: 1; transform: scale(1); } }
+@keyframes d2-steam { 0%,100% { transform: translateY(0) scaleX(1); opacity: 0.5; } 50% { transform: translateY(-12px) scaleX(1.5); opacity: 0.2; } }

@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1300" height="1480" viewBox="0 0 1300 1480"
+     xmlns="http://www.w3.org/2000/svg"
+     font-family="-apple-system, 'Noto Sans SC', 'PingFang TC', sans-serif">
+
+  <!-- ── BACKGROUND ── -->
+  <rect width="1300" height="1480" fill="#071523"/>
+  <defs>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(79,195,247,0.025)" stroke-width="1"/>
+    </pattern>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1300" height="1480" fill="url(#grid)"/>
+
+  <!-- ── TITLE AREA ── -->
+  <rect x="0" y="0" width="1300" height="88" fill="rgba(79,195,247,0.05)"/>
+  <line x1="0" y1="88" x2="1300" y2="88" stroke="rgba(79,195,247,0.2)" stroke-width="1"/>
+  <text x="480" y="38" text-anchor="middle" font-size="11" font-weight="700"
+        fill="#4a7a9a" letter-spacing="0.22em">TRAVEL PRESENTATION SKILL</text>
+  <text x="480" y="66" text-anchor="middle" font-size="26" font-weight="900"
+        fill="#e8f4fd" letter-spacing="-0.01em">活動執行流程 · Workflow</text>
+
+  <!-- right label -->
+  <text x="1220" y="38" text-anchor="end" font-size="11" fill="#4a7a9a">_skill/travel/SKILL.md</text>
+  <text x="1220" y="56" text-anchor="end" font-size="11" fill="#4a7a9a">2026-05-29</text>
+
+  <!-- ── COLUMN LABELS ── -->
+  <text x="480" y="116" text-anchor="middle" font-size="11" fill="#4a7a9a"
+        letter-spacing="0.14em">主流程</text>
+  <line x1="380" y1="120" x2="420" y2="120" stroke="rgba(79,195,247,0.2)" stroke-width="1"/>
+  <line x1="540" y1="120" x2="580" y2="120" stroke="rgba(79,195,247,0.2)" stroke-width="1"/>
+
+  <text x="980" y="116" text-anchor="middle" font-size="11" fill="#4a7a9a"
+        letter-spacing="0.14em">補充說明</text>
+  <line x1="850" y1="120" x2="900" y2="120" stroke="rgba(79,195,247,0.15)" stroke-width="1"/>
+  <line x1="1060" y1="120" x2="1110" y2="120" stroke="rgba(79,195,247,0.15)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════
+       MAIN FLOW
+  ══════════════════════════════════════════ -->
+
+  <!-- ── START pill ── -->
+  <rect x="390" y="128" width="180" height="34" rx="17"
+        fill="rgba(52,211,153,0.12)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="480" y="150" text-anchor="middle" font-size="13" font-weight="700"
+        fill="#34d399" letter-spacing="0.16em">START</text>
+
+  <!-- arrow -->
+  <line x1="480" y1="162" x2="480" y2="182" stroke="#4fc3f7" stroke-width="1.5" opacity="0.5"/>
+  <polygon points="480,186 474,178 486,178" fill="#4fc3f7" opacity="0.5"/>
+
+  <!-- ── BOX: TRIGGER ── -->
+  <rect x="300" y="186" width="360" height="58" rx="3"
+        fill="#0d1b2a" stroke="rgba(52,211,153,0.45)" stroke-width="1.5"/>
+  <text x="480" y="206" text-anchor="middle" font-size="11" fill="#34d399"
+        letter-spacing="0.16em" font-weight="700">TRIGGER</text>
+  <text x="480" y="230" text-anchor="middle" font-size="17" font-weight="900"
+        fill="#e8f4fd">用戶呼叫「美玲」</text>
+
+  <!-- arrow -->
+  <line x1="480" y1="244" x2="480" y2="264" stroke="#4fc3f7" stroke-width="1.5" opacity="0.5"/>
+  <polygon points="480,268 474,260 486,260" fill="#4fc3f7" opacity="0.5"/>
+
+  <!-- ── BOX: 美玲詢問 3 件事 ── -->
+  <rect x="250" y="268" width="460" height="92" rx="3"
+        fill="#0d1b2a" stroke="rgba(79,195,247,0.4)" stroke-width="1.5"/>
+  <!-- top accent bar -->
+  <rect x="250" y="268" width="460" height="22" rx="3" fill="rgba(79,195,247,0.1)"/>
+  <rect x="250" y="278" width="460" height="12" fill="rgba(79,195,247,0.1)"/>
+  <text x="480" y="284" text-anchor="middle" font-size="11" font-weight="700"
+        fill="#4fc3f7" letter-spacing="0.16em">美玲詢問 3 件事</text>
+  <text x="270" y="308" font-size="13" fill="#b8d8f0">①  旅遊專案名稱（YYYYMMDD地點，例 20261220仙台）</text>
+  <text x="270" y="328" font-size="13" fill="#b8d8f0">②  素材位置（圖片 / PDF 目前放在哪裡？）</text>
+  <text x="270" y="348" font-size="13" fill="#b8d8f0">③  主題風格（暖色 / 冷色 / 活潑 / 你幫我選）</text>
+
+  <!-- arrow -->
+  <line x1="480" y1="360" x2="480" y2="380" stroke="#4fc3f7" stroke-width="1.5" opacity="0.5"/>
+  <polygon points="480,384 474,376 486,376" fill="#4fc3f7" opacity="0.5"/>
+
+  <!-- ── BOX: 搬移素材 ── -->
+  <rect x="285" y="384" width="390" height="50" rx="3"
+        fill="#0d1b2a" stroke="rgba(79,195,247,0.22)" stroke-width="1"/>
+  <text x="480" y="402" text-anchor="middle" font-size="11" fill="#4a7a9a"
+        letter-spacing="0.12em">SETUP</text>
+  <text x="480" y="423" text-anchor="middle" font-size="14" font-weight="700"
+        fill="#b8d8f0">搬移素材 → ./site/{project}/</text>
+
+  <!-- arrow -->
+  <line x1="480" y1="434" x2="480" y2="454" stroke="#4fc3f7" stroke-width="1.5" opacity="0.5"/>
+  <polygon points="480,458 474,450 486,450" fill="#4fc3f7" opacity="0.5"/>
+
+  <!-- ════════ PHASE 1 ════════ -->
+  <rect x="250" y="458" width="460" height="76" rx="3"
+        fill="#091e34" stroke="#4fc3f7" stroke-width="2"/>
+  <rect x="250" y="458" width="460" height="22" rx="3" fill="rgba(79,195,247,0.14)"/>
+  <rect x="250" y="468" width="460" height="12" fill="rgba(79,195,247,0.14)"/>
+  <text x="265" y="474" font-size="11" font-weight="700" fill="#4fc3f7"
+        letter-spacing="0.18em">PHASE 1</text>
+  <text x="480" y="474" text-anchor="middle" font-size="11" fill="#4fc3f7"
+        letter-spacing="0.1em" font-weight="700">讀取素材</text>
+  <text x="480" y="500" text-anchor="middle" font-size="14" fill="#b8d8f0">
+    掃描 doc/  →  辨識封面 / 每日圖片語意
+  </text>
+  <text x="480" y="521" text-anchor="middle" font-size="14" fill="#b8d8f0">
+    產出 trip.json（行程骨架）
+  </text>
+
+  <!-- arrow to checkpoint 1 -->
+  <line x1="480" y1="534" x2="480" y2="553" stroke="#4fc3f7" stroke-width="1.5" opacity="0.5"/>
+  <polygon points="480,557 474,549 486,549" fill="#4fc3f7" opacity="0.5"/>
+
+  <!-- ════════ CHECKPOINT 1 ════════ -->
+  <polygon points="480,557 584,592 480,627 376,592"
+           fill="#111c0c" stroke="#f59e0b" stroke-width="2"/>
+  <text x="480" y="586" text-anchor="middle" font-size="11" font-weight="700"
+        fill="#f59e0b" letter-spacing="0.1em">✦  CHECKPOINT 1</text>
+  <text x="480" y="605" text-anchor="middle" font-size="12" fill="#fcd34d">
+    確認行程結構 · 圖片對應 · 天數
+  </text>
+
+  <!-- arrow from checkpoint 1 -->
+  <line x1="480" y1="627" x2="480" y2="647" stroke="#4fc3f7" stroke-width="1.5" opacity="0.5"/>
+  <polygon points="480,651 474,643 486,643" fill="#4fc3f7" opacity="0.5"/>
+
+  <!-- ════════ PHASE 2 ════════ -->
+  <rect x="250" y="651" width="460" height="136" rx="3"
+        fill="#091e34" stroke="#4fc3f7" stroke-width="2"/>
+  <rect x="250" y="651" width="460" height="22" rx="3" fill="rgba(79,195,247,0.14)"/>
+  <rect x="250" y="661" width="460" height="12" fill="rgba(79,195,247,0.14)"/>
+  <text x="265" y="667" font-size="11" font-weight="700" fill="#4fc3f7" letter-spacing="0.18em">PHASE 2</text>
+  <text x="480" y="667" text-anchor="middle" font-size="11" fill="#4fc3f7"
+        letter-spacing="0.1em" font-weight="700">脚手架 + 網頁版簡報</text>
+  <text x="270" y="692" font-size="13" fill="#b8d8f0">2.1  scaffold 建立 presentation/（選定主題）</text>
+  <text x="270" y="712" font-size="13" fill="#b8d8f0">2.2  複製圖片 → public/images/</text>
+  <text x="270" y="732" font-size="13" fill="#b8d8f0">2.3  實作各章節（coldopen / dayN / must-know）</text>
+  <text x="270" y="752" font-size="13" fill="#b8d8f0">2.4  設定 SPLIT_IMAGES（App.tsx）</text>
+  <text x="270" y="772" font-size="13" fill="#b8d8f0">2.5  SplitEnding 結尾資源面板（PDF + 地圖）</text>
+
+  <!-- connector to sub-panel -->
+  <line x1="710" y1="720" x2="752" y2="720" stroke="rgba(79,195,247,0.35)"
+        stroke-width="1.5" stroke-dasharray="5,3"/>
+  <polygon points="752,720 745,716 745,724" fill="rgba(79,195,247,0.35)"/>
+
+  <!-- ── Sub-panel: Phase 2 ── -->
+  <rect x="752" y="661" width="430" height="126" rx="3"
+        fill="#0d1e30" stroke="rgba(79,195,247,0.18)" stroke-width="1"/>
+  <text x="772" y="682" font-size="11" font-weight="700" fill="#4fc3f7"
+        letter-spacing="0.14em">章節規劃 / 關鍵規則</text>
+  <line x1="752" y1="688" x2="1182" y2="688" stroke="rgba(79,195,247,0.15)" stroke-width="1"/>
+  <text x="772" y="706" font-size="12" fill="#7ab8d8">coldopen：開場介紹  3–4 steps</text>
+  <text x="772" y="724" font-size="12" fill="#7ab8d8">day1~dayN：每日行程  4–6 steps</text>
+  <text x="772" y="742" font-size="12" fill="#7ab8d8">must-know：必知 + 伴手禮  4–6 steps</text>
+  <text x="772" y="762" font-size="11" fill="#4a7a9a">
+    ⚠ narrations.ts 長度 = step 數 = 音頻數（唯一真相源）
+  </text>
+
+  <!-- arrow to checkpoint 2 -->
+  <line x1="480" y1="787" x2="480" y2="806" stroke="#4fc3f7" stroke-width="1.5" opacity="0.5"/>
+  <polygon points="480,810 474,802 486,802" fill="#4fc3f7" opacity="0.5"/>
+
+  <!-- ════════ CHECKPOINT 2 ════════ -->
+  <polygon points="480,810 584,845 480,880 376,845"
+           fill="#111c0c" stroke="#f59e0b" stroke-width="2"/>
+  <text x="480" y="839" text-anchor="middle" font-size="11" font-weight="700"
+        fill="#f59e0b" letter-spacing="0.1em">✦  CHECKPOINT 2</text>
+  <text x="480" y="858" text-anchor="middle" font-size="12" fill="#fcd34d">
+    網頁版全章驗收 · 氣質 / 節奏 / split.css
+  </text>
+
+  <!-- arrow from checkpoint 2 -->
+  <line x1="480" y1="880" x2="480" y2="900" stroke="#4fc3f7" stroke-width="1.5" opacity="0.5"/>
+  <polygon points="480,904 474,896 486,896" fill="#4fc3f7" opacity="0.5"/>
+
+  <!-- ════════ PHASE 3 ════════ -->
+  <rect x="250" y="904" width="460" height="120" rx="3"
+        fill="#091e34" stroke="#4fc3f7" stroke-width="2"/>
+  <rect x="250" y="904" width="460" height="22" rx="3" fill="rgba(79,195,247,0.14)"/>
+  <rect x="250" y="914" width="460" height="12" fill="rgba(79,195,247,0.14)"/>
+  <text x="265" y="920" font-size="11" font-weight="700" fill="#4fc3f7" letter-spacing="0.18em">PHASE 3</text>
+  <text x="480" y="920" text-anchor="middle" font-size="11" fill="#4fc3f7"
+        letter-spacing="0.1em" font-weight="700">手機版</text>
+  <text x="270" y="946" font-size="13" fill="#b8d8f0">3.1  MobilePage.tsx — 行程卡片 + MapBtn + FAB</text>
+  <text x="270" y="966" font-size="13" fill="#b8d8f0">3.2  MobilePage.css — mp- prefix 樣式</text>
+  <text x="270" y="986" font-size="13" fill="#b8d8f0">3.3  PDF 下載按鈕 + 日期文字（頁底）</text>
+  <text x="270" y="1006" font-size="13" fill="#b8d8f0">3.4  LINE 偵測（自動跳外部瀏覽器 + banner 備案）</text>
+
+  <!-- connector to sub-panel -->
+  <line x1="710" y1="965" x2="752" y2="965" stroke="rgba(79,195,247,0.35)"
+        stroke-width="1.5" stroke-dasharray="5,3"/>
+  <polygon points="752,965 745,961 745,969" fill="rgba(79,195,247,0.35)"/>
+
+  <!-- ── Sub-panel: Phase 3 ── -->
+  <rect x="752" y="914" width="430" height="110" rx="3"
+        fill="#0d1e30" stroke="rgba(79,195,247,0.18)" stroke-width="1"/>
+  <text x="772" y="935" font-size="11" font-weight="700" fill="#4fc3f7"
+        letter-spacing="0.14em">手機版關鍵技術</text>
+  <line x1="752" y1="941" x2="1182" y2="941" stroke="rgba(79,195,247,0.15)" stroke-width="1"/>
+  <text x="772" y="959" font-size="12" fill="#7ab8d8">root overflow:auto（覆蓋 base.css hidden）</text>
+  <text x="772" y="977" font-size="12" fill="#7ab8d8">FAB 長按 500ms → Scrubber 跳段 + 震動</text>
+  <text x="772" y="995" font-size="12" fill="#7ab8d8">SEGMENTS = scrollIntoView 唯一真相源</text>
+  <text x="772" y="1013" font-size="11" fill="#4a7a9a">⚠ .mp-root padding-bottom 必須為 0</text>
+
+  <!-- arrow to checkpoint audio -->
+  <line x1="480" y1="1024" x2="480" y2="1044" stroke="#4fc3f7" stroke-width="1.5" opacity="0.5"/>
+  <polygon points="480,1048 474,1040 486,1040" fill="#4fc3f7" opacity="0.5"/>
+
+  <!-- ════════ CHECKPOINT AUDIO ════════ -->
+  <polygon points="480,1048 596,1088 480,1128 364,1088"
+           fill="#111c0c" stroke="#f59e0b" stroke-width="2"/>
+  <text x="480" y="1081" text-anchor="middle" font-size="11" font-weight="700"
+        fill="#f59e0b" letter-spacing="0.1em">✦  CHECKPOINT AUDIO</text>
+  <text x="480" y="1101" text-anchor="middle" font-size="13" fill="#fcd34d">
+    是否合成口播音頻？
+  </text>
+
+  <!-- YES arrow: straight down -->
+  <line x1="480" y1="1128" x2="480" y2="1148" stroke="#34d399" stroke-width="1.5" opacity="0.7"/>
+  <polygon points="480,1152 474,1144 486,1144" fill="#34d399" opacity="0.7"/>
+  <text x="462" y="1142" font-size="11" font-weight="700" fill="#34d399">YES</text>
+
+  <!-- NO bypass: right side -->
+  <line x1="596" y1="1088" x2="700" y2="1088" stroke="#f87171" stroke-width="1.5"
+        stroke-dasharray="6,3" opacity="0.7"/>
+  <line x1="700" y1="1088" x2="700" y2="1290" stroke="#f87171" stroke-width="1.5"
+        stroke-dasharray="6,3" opacity="0.7"/>
+  <line x1="700" y1="1290" x2="712" y2="1290" stroke="#f87171" stroke-width="1.5"
+        stroke-dasharray="6,3" opacity="0.7"/>
+  <polygon points="712,1290 705,1286 705,1294" fill="#f87171" opacity="0.7"/>
+  <text x="710" y="1084" font-size="11" font-weight="700" fill="#f87171">NO  →  skip</text>
+
+  <!-- ════════ PHASE 4 ════════ -->
+  <rect x="250" y="1152" width="460" height="100" rx="3"
+        fill="#091e34" stroke="#4fc3f7" stroke-width="2" stroke-dasharray="8,4"/>
+  <rect x="250" y="1152" width="460" height="22" rx="3"
+        fill="rgba(79,195,247,0.1)" stroke="none"/>
+  <rect x="250" y="1162" width="460" height="12" fill="rgba(79,195,247,0.1)"/>
+  <text x="265" y="1168" font-size="11" font-weight="700" fill="#4fc3f7" letter-spacing="0.18em">PHASE 4</text>
+  <text x="480" y="1168" text-anchor="middle" font-size="11" fill="#4fc3f7"
+        letter-spacing="0.1em" font-weight="700">音頻合成（可選）</text>
+  <text x="270" y="1194" font-size="13" fill="#b8d8f0">Provider：edge-tts（免費 · 無 API key）</text>
+  <text x="270" y="1214" font-size="13" fill="#b8d8f0">Voice：zh-TW-HsiaoChenNeural（台灣中文女聲）</text>
+  <text x="270" y="1234" font-size="12" fill="#7ab8d8">
+    npm run extract-narrations  →  npm run synthesize-audio
+  </text>
+
+  <!-- connector to sub-panel for Phase 4 -->
+  <line x1="710" y1="1205" x2="752" y2="1205" stroke="rgba(79,195,247,0.35)"
+        stroke-width="1.5" stroke-dasharray="5,3"/>
+  <polygon points="752,1205 745,1201 745,1209" fill="rgba(79,195,247,0.35)"/>
+
+  <!-- ── Sub-panel: Phase 4 ── -->
+  <rect x="752" y="1162" width="430" height="90" rx="3"
+        fill="#0d1e30" stroke="rgba(79,195,247,0.18)" stroke-width="1"/>
+  <text x="772" y="1183" font-size="11" font-weight="700" fill="#4fc3f7" letter-spacing="0.14em">音頻合成指令</text>
+  <line x1="752" y1="1189" x2="1182" y2="1189" stroke="rgba(79,195,247,0.15)" stroke-width="1"/>
+  <text x="772" y="1207" font-size="12" fill="#7ab8d8">pip install edge-tts  （第一次安裝）</text>
+  <text x="772" y="1225" font-size="12" fill="#7ab8d8">PRESENTATION_TTS=edge-tts npm run synthesize-audio</text>
+  <text x="772" y="1243" font-size="11" fill="#4a7a9a">⚠ 增量合成，只補缺少的 mp3 段落</text>
+
+  <!-- arrow from Phase 4 to Phase 5 -->
+  <line x1="480" y1="1252" x2="480" y2="1272" stroke="#4fc3f7" stroke-width="1.5" opacity="0.5"/>
+  <polygon points="480,1276 474,1268 486,1268" fill="#4fc3f7" opacity="0.5"/>
+
+  <!-- ════════ PHASE 5 ════════ -->
+  <rect x="250" y="1276" width="460" height="80" rx="3"
+        fill="#091e34" stroke="#4fc3f7" stroke-width="2"/>
+  <rect x="250" y="1276" width="460" height="22" rx="3" fill="rgba(79,195,247,0.14)"/>
+  <rect x="250" y="1286" width="460" height="12" fill="rgba(79,195,247,0.14)"/>
+  <text x="265" y="1292" font-size="11" font-weight="700" fill="#4fc3f7" letter-spacing="0.18em">PHASE 5</text>
+  <text x="480" y="1292" text-anchor="middle" font-size="11" fill="#4fc3f7"
+        letter-spacing="0.1em" font-weight="700">交付</text>
+  <text x="480" y="1318" text-anchor="middle" font-size="14" fill="#b8d8f0">
+    確認 port → 輸出兩個可點擊連結
+  </text>
+  <text x="342" y="1342" font-size="13" fill="#7ab8d8">🖥  網頁版（投影 / 講解）</text>
+  <text x="546" y="1342" font-size="13" fill="#7ab8d8">📱  手機版（LINE 分享）</text>
+
+  <!-- arrow -->
+  <line x1="480" y1="1356" x2="480" y2="1375" stroke="#4fc3f7" stroke-width="1.5" opacity="0.5"/>
+  <polygon points="480,1379 474,1371 486,1371" fill="#4fc3f7" opacity="0.5"/>
+
+  <!-- ════════ PHASE 5.5 ════════ -->
+  <rect x="250" y="1379" width="460" height="56" rx="3"
+        fill="#0d1e30" stroke="rgba(79,195,247,0.35)" stroke-width="1.5" stroke-dasharray="7,3"/>
+  <text x="265" y="1399" font-size="11" font-weight="700" fill="#4fc3f7" letter-spacing="0.18em">PHASE 5.5</text>
+  <text x="480" y="1399" text-anchor="middle" font-size="11" fill="#4fc3f7"
+        letter-spacing="0.1em" font-weight="700">寫入系統藍圖（每次交付必做）</text>
+  <text x="480" y="1421" text-anchor="middle" font-size="13" fill="#7ab8d8">
+    建立 site/{project}/blueprint.md
+  </text>
+
+  <!-- arrow to END -->
+  <line x1="480" y1="1435" x2="480" y2="1452" stroke="#34d399" stroke-width="1.5" opacity="0.6"/>
+  <polygon points="480,1456 474,1448 486,1448" fill="#34d399" opacity="0.6"/>
+
+  <!-- ── END pill ── -->
+  <rect x="390" y="1456" width="180" height="34" rx="17"
+        fill="rgba(52,211,153,0.12)" stroke="#34d399" stroke-width="1.5"/>
+  <text x="480" y="1478" text-anchor="middle" font-size="13" font-weight="700"
+        fill="#34d399" letter-spacing="0.12em">DONE ✓</text>
+
+  <!-- ══════════════════════════════════════════
+       LEGEND (bottom right)
+  ══════════════════════════════════════════ -->
+  <rect x="752" y="1290" width="430" height="140" rx="3"
+        fill="#0a1828" stroke="rgba(79,195,247,0.12)" stroke-width="1"/>
+  <text x="772" y="1313" font-size="11" font-weight="700" fill="#4a7a9a"
+        letter-spacing="0.16em">LEGEND</text>
+  <line x1="752" y1="1319" x2="1182" y2="1319" stroke="rgba(79,195,247,0.1)" stroke-width="1"/>
+
+  <!-- Phase box legend -->
+  <rect x="772" y="1330" width="24" height="16" rx="2"
+        fill="#091e34" stroke="#4fc3f7" stroke-width="2"/>
+  <text x="804" y="1343" font-size="12" fill="#7ab8d8">主要 Phase（必須執行）</text>
+
+  <!-- Phase optional legend -->
+  <rect x="772" y="1356" width="24" height="16" rx="2"
+        fill="#091e34" stroke="#4fc3f7" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="804" y="1369" font-size="12" fill="#7ab8d8">可選 Phase（依需求執行）</text>
+
+  <!-- Checkpoint legend -->
+  <polygon points="784,1393 797,1380 810,1393 797,1406"
+           fill="#111c0c" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="820" y="1396" font-size="12" fill="#7ab8d8">Checkpoint（需人工確認後繼續）</text>
+
+  <!-- Sub-panel legend -->
+  <rect x="772" y="1411" width="24" height="16" rx="2"
+        fill="#0d1e30" stroke="rgba(79,195,247,0.25)" stroke-width="1"/>
+  <text x="804" y="1424" font-size="12" fill="#7ab8d8">補充說明面板（細節 / 技術備忘）</text>
+
+</svg>
