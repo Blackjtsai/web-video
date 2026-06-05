@@ -214,8 +214,6 @@ function MobileAudioFab({ baseUrl }: { baseUrl: string }) {
 interface Props { baseUrl: string; }
 
 export function MobilePage({ baseUrl }: Props) {
-  const img = (name: string) => `${baseUrl}images/${name}`;
-
   useEffect(() => {
     const root = document.getElementById("root");
     if (!root) return;
