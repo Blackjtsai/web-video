@@ -20,15 +20,19 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Build 澎湖
-        run: npm install && VITE_BASE=/web-video/penghu/ npm run build
-        working-directory: "site/20260528澎湖四日遊/src"
+        run: |
+          cd "site/20260528澎湖四日遊/src"
+          npm install
+          VITE_BASE=/web-video/penghu/ npm run build
 
       - name: Build 仙台
-        run: npm install && VITE_BASE=/web-video/sendai/ npm run build
-        working-directory: "site/20261220仙台/src"
+        run: |
+          cd "site/20261220仙台/src"
+          npm install
+          VITE_BASE=/web-video/sendai/ npm run build
 
       - name: Assemble dist
         run: |
