@@ -3,9 +3,9 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/web-video/",
+  base: process.env.VITE_BASE ?? "./",
   server: {
-    port: 5174,
+    port: 5173,
     fs: { allow: [".."] },
   },
 });

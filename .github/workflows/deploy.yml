@@ -22,19 +22,26 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
-        run: npm install
-        working-directory: presentation
+      - name: Build 澎湖
+        run: npm install && VITE_BASE=/web-video/penghu/ npm run build
+        working-directory: "site/20260528澎湖四日遊/src"
 
-      - name: Build
-        run: npm run build
-        working-directory: presentation
+      - name: Build 仙台
+        run: npm install && VITE_BASE=/web-video/sendai/ npm run build
+        working-directory: "site/20261220仙台/src"
+
+      - name: Assemble dist
+        run: |
+          mkdir -p dist/penghu dist/sendai
+          cp -r "site/20260528澎湖四日遊/src/dist/." dist/penghu/
+          cp -r "site/20261220仙台/src/dist/." dist/sendai/
+          cp index.html dist/index.html
 
       - uses: actions/configure-pages@v4
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: presentation/dist
+          path: dist
 
       - uses: actions/deploy-pages@v4
         id: deployment
