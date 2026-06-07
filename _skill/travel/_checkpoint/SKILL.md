@@ -10,6 +10,18 @@ description: 掃描當前旅遊簡報專案，自動更新 blueprint.md，並將
 
 ---
 
+## 文件分工規則（寫 blueprint vs CLAUDE.md 的判斷依據）
+
+| 放 CLAUDE.md | 放 blueprint.md |
+|---|---|
+| 狀態（完成/進行中）、章節表（無 NN）、主題色摘要（3 行）、URL、port | 章節登錄（帶 NN）、完整 token、圖片資產清單、關鍵檔案表、特殊 hack、TTS 狀態、新增章節流程 |
+| 對話起點：Claude 讀了就知道這個專案是什麼 | 技術快照：程式碼對照、一致性驗證、操作細節 |
+
+> **原則**：CLAUDE.md = 「session 第一眼」；blueprint.md = 「需要查的時候才翻」。
+> 不要在 CLAUDE.md 放 blueprint 裡已有的完整細節，最後一行加 `→ 完整技術細節見 blueprint.md` 即可。
+
+---
+
 ## Step 0：回顧本次 session
 
 在掃描檔案前，先回想這次對話做了什麼，方便後續判斷哪些文件需要回寫：

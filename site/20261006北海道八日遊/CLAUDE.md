@@ -42,9 +42,4 @@ PRESENTATION_TTS=edge-tts npm run synthesize-audio
 - `--accent: #bf4400`（楓葉橙紅）
 - `--text: #2a1a0e`（深棕）
 
-## 手機版特性
-
-- Hero + 每日封面圖：`height: 100dvh`（滿版） + 底部漸層 overlay
-- 播放時啟用 scroll lock（`position: fixed` 透明遮罩，z-index: 50）
-- 點遮罩或暫停 → 解鎖手動捲動
-- 詳細架構見 `blueprint.md`
+完整技術細節（關鍵檔案、主題 token、圖片資產、手機版架構、特殊 hack）→ [blueprint.md](blueprint.md)
