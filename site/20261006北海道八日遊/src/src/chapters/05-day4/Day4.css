@@ -1,0 +1,86 @@
+/* ── 05-day4 · CSS prefix: .d4- ── */
+
+.d4-hero { position: absolute; inset: 0; display: flex; }
+.d4-hero-photo { flex: 0 0 50%; overflow: hidden; }
+.d4-hero-photo img { width: 100%; height: 100%; object-fit: cover; animation: d4-img-in 900ms ease-out both; }
+.d4-hero-info { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: clamp(32px,5vw,80px); gap: clamp(12px,2vh,22px); background: var(--surface); }
+.d4-day-label { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .3em; text-transform: uppercase; color: var(--text-mute); animation: d4-fade-up 400ms ease-out both; }
+.d4-day-title { font-family: var(--font-display-cn); font-size: clamp(38px,5vw,74px); font-weight: 900; color: var(--text); line-height: 1.1; animation: d4-stamp 650ms 150ms cubic-bezier(.34,1.56,.64,1) both; }
+.d4-day-sub { font-family: var(--font-body); font-size: clamp(14px,1.6vw,22px); color: var(--text-mute); line-height: 1.6; animation: d4-fade-up 400ms 350ms ease-out both; }
+.d4-accent-bar { width: clamp(40px,6vw,80px); height: 3px; background: var(--accent); transform-origin: left; animation: d4-bar-grow 500ms 600ms ease-out both; }
+
+/* ── Step 1: Car rental ── */
+.d4-car { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(20px,3vh,40px); padding: var(--stage-pad-y) var(--stage-pad-x); }
+.d4-car-label { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .28em; text-transform: uppercase; color: var(--text-mute); animation: d4-fade-up 400ms ease-out both; }
+.d4-car-title { font-family: var(--font-display-cn); font-size: clamp(40px,5.5vw,84px); font-weight: 900; color: var(--text); text-align: center; animation: d4-stamp 650ms 150ms cubic-bezier(.34,1.56,.64,1) both; }
+.d4-car-title span { color: var(--accent); }
+/* CSS car silhouette */
+.d4-car-visual { position: relative; animation: d4-fade-up 500ms 350ms ease-out both; }
+.d4-car-body {
+  width: clamp(160px,20vw,280px); height: clamp(50px,6.5vh,90px);
+  background: var(--accent); border-radius: clamp(12px,2vw,24px);
+  position: relative;
+}
+.d4-car-top {
+  position: absolute; bottom: 100%; left: 15%; width: 60%; height: clamp(32px,4vh,52px);
+  background: var(--accent); border-radius: clamp(8px,1.5vw,16px) clamp(8px,1.5vw,16px) 0 0;
+  opacity: 0.75;
+}
+.d4-car-wheel-row { display: flex; justify-content: space-between; padding: 0 clamp(16px,2.5vw,28px); margin-top: 4px; }
+.d4-car-wheel { width: clamp(24px,3vw,40px); height: clamp(24px,3vw,40px); border-radius: 50%; background: var(--text); border: 3px solid var(--surface-3); }
+.d4-car-info { font-family: var(--font-display-cn); font-size: clamp(14px,1.6vw,22px); color: var(--text-mute); text-align: center; margin-top: 8px; animation: d4-fade-up 400ms 600ms ease-out both; }
+
+/* ── Step 2: Crab feast ── */
+.d4-crab { position: absolute; inset: 0; display: flex; flex-direction: column; padding: var(--stage-pad-y) var(--stage-pad-x); gap: clamp(16px,2.5vh,32px); }
+.d4-crab-kicker { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .28em; text-transform: uppercase; color: var(--text-mute); animation: d4-fade-up 400ms ease-out both; }
+.d4-crab-title { font-family: var(--font-display-cn); font-size: clamp(36px,5vw,76px); font-weight: 900; color: var(--text); animation: d4-stamp 650ms 150ms cubic-bezier(.34,1.56,.64,1) both; }
+.d4-crab-title span { color: var(--accent); }
+.d4-crab-body { font-family: var(--font-body); font-size: clamp(14px,1.6vw,22px); color: var(--text-mute); line-height: 1.7; animation: d4-fade-up 400ms 350ms ease-out both; max-width: 60%; }
+.d4-crab-chips { display: flex; gap: clamp(10px,1.5vw,20px); margin-top: auto; flex-wrap: wrap; }
+.d4-crab-chip { font-family: var(--font-display-cn); font-size: clamp(14px,1.8vw,24px); font-weight: 700; background: var(--surface-2); border: 1.5px solid var(--rule); border-radius: var(--r-card); padding: clamp(8px,1.2vh,16px) clamp(16px,2.5vw,28px); box-shadow: var(--card-shadow); opacity: 0; }
+.d4-crab-chip:nth-child(1) { animation: d4-stamp 500ms 500ms cubic-bezier(.34,1.56,.64,1) forwards; }
+.d4-crab-chip:nth-child(2) { animation: d4-stamp 500ms 650ms cubic-bezier(.34,1.56,.64,1) forwards; }
+.d4-crab-chip:nth-child(3) { animation: d4-stamp 500ms 800ms cubic-bezier(.34,1.56,.64,1) forwards; }
+
+/* ── Step 3: Nakayama Pass ── */
+.d4-pass { position: absolute; inset: 0; display: flex; align-items: center; padding: var(--stage-pad-y) var(--stage-pad-x); gap: clamp(40px,7vw,100px); }
+.d4-pass-left { flex: 1; display: flex; flex-direction: column; gap: clamp(16px,2.5vh,28px); }
+.d4-pass-kicker { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .28em; text-transform: uppercase; color: var(--text-mute); animation: d4-fade-up 400ms ease-out both; }
+.d4-pass-title { font-family: var(--font-display-cn); font-size: clamp(36px,5vw,76px); font-weight: 900; color: var(--text); line-height: 1.1; animation: d4-stamp 650ms 200ms cubic-bezier(.34,1.56,.64,1) both; }
+.d4-pass-title span { color: var(--accent); }
+.d4-pass-body { font-family: var(--font-body); font-size: clamp(14px,1.6vw,22px); color: var(--text-mute); line-height: 1.7; animation: d4-fade-up 400ms 400ms ease-out both; }
+/* CSS mountain silhouette */
+.d4-pass-right { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 8px; animation: d4-fade-up 600ms 350ms ease-out both; }
+.d4-mountain {
+  width: 0; height: 0;
+  border-left: clamp(60px,9vw,130px) solid transparent;
+  border-right: clamp(60px,9vw,130px) solid transparent;
+  border-bottom: clamp(100px,14vh,180px) solid var(--accent);
+  opacity: 0.8;
+}
+.d4-mountain-label { font-family: var(--font-display-cn); font-size: clamp(14px,1.6vw,22px); font-weight: 700; color: var(--text-mute); text-align: center; }
+.d4-mountain-sub { font-family: var(--font-mono); font-size: clamp(10px,0.9vw,13px); letter-spacing: .15em; color: var(--text-faint); }
+
+/* ── Step 4: Toya Lake + fireworks ── */
+.d4-toya { position: absolute; inset: 0; display: flex; align-items: center; padding: var(--stage-pad-y) var(--stage-pad-x); gap: clamp(32px,5vw,80px); }
+.d4-toya-left { flex: 1; display: flex; flex-direction: column; gap: clamp(14px,2.2vh,28px); align-items: flex-start; }
+.d4-toya-photo { flex: 0 0 clamp(180px,30vw,380px); border-radius: var(--r-md); overflow: hidden; animation: d4-fade-up 600ms 350ms ease-out both; box-shadow: var(--card-shadow); align-self: stretch; }
+.d4-toya-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.d4-toya-kicker { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .28em; text-transform: uppercase; color: var(--text-mute); animation: d4-fade-up 400ms ease-out both; }
+.d4-toya-title { font-family: var(--font-display-cn); font-size: clamp(36px,5vw,76px); font-weight: 900; color: var(--text); animation: d4-stamp 650ms 150ms cubic-bezier(.34,1.56,.64,1) both; }
+.d4-toya-title span { color: var(--accent); }
+.d4-toya-row { display: flex; gap: clamp(20px,4vw,60px); }
+.d4-toya-card { display: flex; flex-direction: column; align-items: center; gap: clamp(8px,1.2vh,16px); background: var(--surface-2); border: 1.5px solid var(--rule); border-radius: var(--r-card); padding: clamp(20px,3vh,36px) clamp(24px,3.5vw,48px); box-shadow: var(--card-shadow); opacity: 0; }
+.d4-toya-card:nth-child(1) { animation: d4-stamp 500ms 350ms cubic-bezier(.34,1.56,.64,1) forwards; }
+.d4-toya-card:nth-child(2) { animation: d4-stamp 500ms 550ms cubic-bezier(.34,1.56,.64,1) forwards; }
+.d4-toya-card-name { font-family: var(--font-display-cn); font-size: clamp(18px,2.2vw,32px); font-weight: 700; color: var(--text); }
+.d4-toya-card-detail { font-family: var(--font-body); font-size: clamp(12px,1.2vw,17px); color: var(--text-mute); text-align: center; }
+/* fireworks CSS dots */
+.d4-fireworks { display: flex; gap: clamp(6px,1vw,12px); justify-content: center; animation: d4-fade-up 600ms 700ms ease-out both; }
+.d4-fw-dot { width: clamp(8px,1vw,14px); height: clamp(8px,1vw,14px); border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
+.d4-fw-dot:nth-child(even) { background: #e0a800; box-shadow: 0 0 8px rgba(224,168,0,0.5); }
+
+@keyframes d4-img-in { from { opacity:0; transform:scale(1.04); } to { opacity:1; transform:scale(1); } }
+@keyframes d4-stamp { from { opacity:0; transform:scale(0.84) translateY(14px); } to { opacity:1; transform:scale(1) translateY(0); } }
+@keyframes d4-fade-up { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+@keyframes d4-bar-grow { from { transform:scaleX(0); } to { transform:scaleX(1); } }

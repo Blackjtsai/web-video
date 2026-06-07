@@ -1,0 +1,43 @@
+/* ── 09-day8 · CSS prefix: .d8- ── */
+
+.d8-hero { position: absolute; inset: 0; display: flex; }
+.d8-hero-photo { flex: 0 0 50%; overflow: hidden; }
+.d8-hero-photo img { width: 100%; height: 100%; object-fit: cover; animation: d8-img-in 900ms ease-out both; }
+.d8-hero-info { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: clamp(32px,5vw,80px); gap: clamp(12px,2vh,22px); background: var(--surface); }
+.d8-day-label { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .3em; text-transform: uppercase; color: var(--text-mute); animation: d8-fade-up 400ms ease-out both; }
+.d8-day-title { font-family: var(--font-display-cn); font-size: clamp(38px,5vw,74px); font-weight: 900; color: var(--text); line-height: 1.1; animation: d8-stamp 650ms 150ms cubic-bezier(.34,1.56,.64,1) both; }
+.d8-day-sub { font-family: var(--font-body); font-size: clamp(14px,1.6vw,22px); color: var(--text-mute); line-height: 1.6; animation: d8-fade-up 400ms 350ms ease-out both; }
+.d8-accent-bar { width: clamp(40px,6vw,80px); height: 3px; background: var(--accent); transform-origin: left; animation: d8-bar-grow 500ms 600ms ease-out both; }
+
+/* ── Step 1: Airport shopping ── */
+.d8-shopping { position: absolute; inset: 0; display: flex; flex-direction: column; padding: var(--stage-pad-y) var(--stage-pad-x); gap: clamp(16px,2.5vh,32px); }
+.d8-shopping-kicker { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .28em; text-transform: uppercase; color: var(--text-mute); animation: d8-fade-up 400ms ease-out both; }
+.d8-shopping-title { font-family: var(--font-display-cn); font-size: clamp(36px,5vw,76px); font-weight: 900; color: var(--text); animation: d8-stamp 650ms 150ms cubic-bezier(.34,1.56,.64,1) both; }
+.d8-shopping-title span { color: var(--accent); }
+.d8-shopping-body { font-family: var(--font-body); font-size: clamp(14px,1.6vw,22px); color: var(--text-mute); line-height: 1.7; animation: d8-fade-up 400ms 350ms ease-out both; max-width: 55%; }
+.d8-souvenirs { display: flex; flex-wrap: wrap; gap: clamp(10px,1.5vw,20px); margin-top: auto; }
+.d8-sv-card { background: var(--surface-2); border: 1.5px solid var(--rule); border-radius: var(--r-card); padding: clamp(12px,1.8vh,22px) clamp(16px,2.5vw,28px); box-shadow: var(--card-shadow); opacity: 0; }
+.d8-sv-card:nth-child(1) { animation: d8-stamp 450ms 400ms cubic-bezier(.34,1.56,.64,1) forwards; }
+.d8-sv-card:nth-child(2) { animation: d8-stamp 450ms 540ms cubic-bezier(.34,1.56,.64,1) forwards; }
+.d8-sv-card:nth-child(3) { animation: d8-stamp 450ms 680ms cubic-bezier(.34,1.56,.64,1) forwards; }
+.d8-sv-card:nth-child(4) { animation: d8-stamp 450ms 820ms cubic-bezier(.34,1.56,.64,1) forwards; }
+.d8-sv-name { font-family: var(--font-display-cn); font-size: clamp(16px,2vw,28px); font-weight: 700; color: var(--text); }
+
+/* ── Step 2: Departure ── */
+.d8-depart { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(20px,3vh,40px); padding: var(--stage-pad-y) var(--stage-pad-x); }
+.d8-depart-label { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .28em; text-transform: uppercase; color: var(--text-mute); animation: d8-fade-up 400ms ease-out both; }
+.d8-depart-title { font-family: var(--font-display-cn); font-size: clamp(44px,6vw,92px); font-weight: 900; color: var(--text); text-align: center; animation: d8-stamp 650ms 150ms cubic-bezier(.34,1.56,.64,1) both; }
+.d8-depart-title span { color: var(--accent); }
+/* CSS plane */
+.d8-plane { position: relative; animation: d8-fly 1s 500ms ease-out both; display: flex; align-items: center; gap: 8px; }
+.d8-plane-body { width: clamp(80px,10vw,140px); height: clamp(20px,2.5vh,34px); background: var(--accent); border-radius: 40% 60% 60% 40% / 50%; }
+.d8-plane-wing { width: clamp(40px,5vw,70px); height: clamp(10px,1.5vh,18px); background: var(--accent); opacity: 0.7; border-radius: 0 0 8px 0; position: absolute; top: 50%; left: 30%; transform: translateY(-50%) rotate(-5deg); }
+.d8-plane-tail { width: clamp(16px,2vw,28px); height: clamp(16px,2vw,28px); background: var(--accent); border-radius: 0 0 0 50%; position: absolute; right: clamp(-8px,-1vw,-14px); top: 0; }
+.d8-flight-info { font-family: var(--font-mono); font-size: clamp(12px,1.3vw,18px); letter-spacing: .15em; color: var(--text-mute); animation: d8-fade-up 400ms 700ms ease-out both; text-align: center; }
+.d8-depart-sub { font-family: var(--font-display-cn); font-size: clamp(18px,2.2vw,32px); color: var(--text-mute); text-align: center; animation: d8-fade-up 400ms 900ms ease-out both; }
+
+@keyframes d8-img-in { from { opacity:0; transform:scale(1.04); } to { opacity:1; transform:scale(1); } }
+@keyframes d8-stamp { from { opacity:0; transform:scale(0.84) translateY(14px); } to { opacity:1; transform:scale(1) translateY(0); } }
+@keyframes d8-fade-up { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+@keyframes d8-bar-grow { from { transform:scaleX(0); } to { transform:scaleX(1); } }
+@keyframes d8-fly { from { opacity:0; transform:translateX(-30px) translateY(10px); } to { opacity:1; transform:translateX(0) translateY(0); } }

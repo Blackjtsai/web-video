@@ -1,0 +1,53 @@
+/* ── 07-day6 · CSS prefix: .d6- ── */
+
+.d6-hero { position: absolute; inset: 0; display: flex; }
+.d6-hero-photo { flex: 0 0 50%; overflow: hidden; }
+.d6-hero-photo img { width: 100%; height: 100%; object-fit: cover; animation: d6-img-in 900ms ease-out both; }
+.d6-hero-info { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: clamp(32px,5vw,80px); gap: clamp(12px,2vh,22px); background: var(--surface); }
+.d6-day-label { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .3em; text-transform: uppercase; color: var(--text-mute); animation: d6-fade-up 400ms ease-out both; }
+.d6-day-title { font-family: var(--font-display-cn); font-size: clamp(38px,5vw,74px); font-weight: 900; color: var(--text); line-height: 1.1; animation: d6-stamp 650ms 150ms cubic-bezier(.34,1.56,.64,1) both; }
+.d6-day-sub { font-family: var(--font-body); font-size: clamp(14px,1.6vw,22px); color: var(--text-mute); line-height: 1.6; animation: d6-fade-up 400ms 350ms ease-out both; }
+.d6-accent-bar { width: clamp(40px,6vw,80px); height: 3px; background: var(--accent); transform-origin: left; animation: d6-bar-grow 500ms 600ms ease-out both; }
+
+/* ── Step 1: Shakotan coastal drive ── */
+.d6-shakotan { position: absolute; inset: 0; display: flex; flex-direction: column; padding: var(--stage-pad-y) var(--stage-pad-x); gap: clamp(16px,2.5vh,32px); }
+.d6-shakotan-kicker { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .28em; text-transform: uppercase; color: var(--text-mute); animation: d6-fade-up 400ms ease-out both; }
+.d6-shakotan-title { font-family: var(--font-display-cn); font-size: clamp(36px,5vw,76px); font-weight: 900; color: var(--text); animation: d6-stamp 650ms 150ms cubic-bezier(.34,1.56,.64,1) both; }
+.d6-shakotan-title span { color: var(--accent); }
+.d6-shakotan-body { font-family: var(--font-body); font-size: clamp(14px,1.6vw,22px); color: var(--text-mute); line-height: 1.7; animation: d6-fade-up 400ms 350ms ease-out both; max-width: 60%; }
+/* Photo: 積丹 sea */
+.d6-sea { margin-top: auto; position: relative; height: clamp(80px,14vh,200px); animation: d6-fade-up 600ms 500ms ease-out both; overflow: hidden; border-radius: var(--r-md); }
+.d6-sea-photo { width: 100%; height: 100%; object-fit: cover; object-position: center 70%; display: block; }
+.d6-sea-label { position: absolute; bottom: 12px; right: 16px; font-family: var(--font-display-cn); font-size: clamp(14px,1.8vw,24px); font-weight: 700; color: #fff; text-shadow: 0 2px 6px rgba(0,0,0,0.7); white-space: nowrap; }
+
+/* ── Step 2: Glow villa ── */
+.d6-glow { position: absolute; inset: 0; display: flex; align-items: center; padding: var(--stage-pad-y) var(--stage-pad-x); gap: clamp(40px,7vw,100px); }
+.d6-glow-left { flex: 1; display: flex; flex-direction: column; gap: clamp(16px,2.5vh,28px); }
+.d6-glow-kicker { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .28em; text-transform: uppercase; color: var(--text-mute); animation: d6-fade-up 400ms ease-out both; }
+.d6-glow-title { font-family: var(--font-display-cn); font-size: clamp(36px,5vw,76px); font-weight: 900; color: var(--text); line-height: 1.1; animation: d6-stamp 650ms 200ms cubic-bezier(.34,1.56,.64,1) both; }
+.d6-glow-title span { color: var(--accent); }
+.d6-glow-body { font-family: var(--font-body); font-size: clamp(14px,1.6vw,22px); color: var(--text-mute); line-height: 1.7; animation: d6-fade-up 400ms 400ms ease-out both; }
+.d6-glow-shopping { display: flex; flex-wrap: wrap; gap: clamp(8px,1.2vw,16px); animation: d6-fade-up 400ms 600ms ease-out both; }
+.d6-shop-tag { font-family: var(--font-display-cn); font-size: clamp(13px,1.4vw,20px); font-weight: 600; background: var(--surface-2); border: 1.5px solid var(--rule); border-radius: var(--r-xs); padding: clamp(4px,.6vh,8px) clamp(10px,1.5vw,18px); color: var(--text); }
+/* house CSS illustration */
+.d6-glow-right { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 0; animation: d6-fade-up 600ms 350ms ease-out both; }
+.d6-house-roof { width: 0; height: 0; border-left: clamp(60px,8vw,110px) solid transparent; border-right: clamp(60px,8vw,110px) solid transparent; border-bottom: clamp(50px,7vh,80px) solid var(--accent); }
+.d6-house-body { width: clamp(100px,13vw,180px); background: var(--surface-2); border: 1.5px solid var(--rule); border-radius: 0 0 4px 4px; display: flex; flex-direction: column; align-items: center; padding: clamp(10px,1.5vh,18px) clamp(8px,1.2vw,16px) clamp(8px,1.2vh,14px); gap: 6px; }
+.d6-house-window { width: 60%; height: clamp(24px,3.5vh,40px); background: var(--accent-soft); border: 1.5px solid var(--accent); border-radius: 4px; }
+.d6-house-door { width: 35%; height: clamp(28px,4vh,44px); background: var(--accent); border-radius: 4px 4px 0 0; }
+
+/* ── Step 3: Wagyu BBQ ── */
+.d6-bbq { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(20px,3vh,40px); padding: var(--stage-pad-y) var(--stage-pad-x); }
+.d6-bbq-label { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .28em; text-transform: uppercase; color: var(--text-mute); animation: d6-fade-up 400ms ease-out both; }
+.d6-bbq-title { font-family: var(--font-display-cn); font-size: clamp(40px,5.5vw,84px); font-weight: 900; color: var(--text); text-align: center; animation: d6-stamp 650ms 150ms cubic-bezier(.34,1.56,.64,1) both; }
+.d6-bbq-title span { color: var(--accent); }
+.d6-bbq-body { font-family: var(--font-body); font-size: clamp(16px,1.9vw,28px); color: var(--text-mute); text-align: center; line-height: 1.7; max-width: 70%; animation: d6-fade-up 400ms 350ms ease-out both; }
+/* flame dots */
+.d6-flames { display: flex; gap: clamp(8px,1.2vw,16px); animation: d6-fade-up 500ms 550ms ease-out both; }
+.d6-flame { width: clamp(12px,1.5vw,20px); height: clamp(20px,2.5vh,32px); border-radius: 50% 50% 30% 30%; background: linear-gradient(to bottom, #ffcc00, var(--accent)); }
+.d6-flame:nth-child(odd) { height: clamp(28px,3.5vh,44px); opacity: 0.9; }
+
+@keyframes d6-img-in { from { opacity:0; transform:scale(1.04); } to { opacity:1; transform:scale(1); } }
+@keyframes d6-stamp { from { opacity:0; transform:scale(0.84) translateY(14px); } to { opacity:1; transform:scale(1) translateY(0); } }
+@keyframes d6-fade-up { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+@keyframes d6-bar-grow { from { transform:scaleX(0); } to { transform:scaleX(1); } }

@@ -1,0 +1,59 @@
+/* ── 04-day3 · CSS prefix: .d3- ── */
+
+/* ── Step 0: Hero (美玲の日) ── */
+.d3-hero { position: absolute; inset: 0; display: flex; }
+.d3-hero-photo { flex: 0 0 50%; overflow: hidden; }
+.d3-hero-photo img { width: 100%; height: 100%; object-fit: cover; animation: d3-img-in 900ms ease-out both; }
+.d3-hero-info { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: clamp(32px, 5vw, 80px); gap: clamp(12px, 2vh, 22px); background: var(--surface); }
+.d3-day-label { font-family: var(--font-mono); font-size: clamp(11px, 1vw, 14px); letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-mute); animation: d3-fade-up 400ms ease-out both; }
+.d3-day-title { font-family: var(--font-display-cn); font-size: clamp(38px, 5vw, 74px); font-weight: 900; color: var(--text); line-height: 1.1; animation: d3-stamp 650ms 150ms cubic-bezier(0.34,1.56,0.64,1) both; }
+.d3-day-special { font-family: var(--font-display-en); font-style: italic; font-size: clamp(18px, 2.2vw, 32px); color: var(--accent); animation: d3-fade-up 400ms 300ms ease-out both; }
+.d3-day-sub { font-family: var(--font-body); font-size: clamp(14px, 1.6vw, 22px); color: var(--text-mute); line-height: 1.6; animation: d3-fade-up 400ms 400ms ease-out both; }
+.d3-accent-bar { width: clamp(40px, 6vw, 80px); height: 3px; background: var(--accent); transform-origin: left; animation: d3-bar-grow 500ms 600ms ease-out both; }
+
+/* ── Step 1: 二条市場 seafood ── */
+.d3-market { position: absolute; inset: 0; display: flex; flex-direction: column; padding: var(--stage-pad-y) var(--stage-pad-x); gap: clamp(14px, 2.2vh, 28px); }
+.d3-market-kicker { font-family: var(--font-mono); font-size: clamp(11px, 1vw, 14px); letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-mute); animation: d3-fade-up 400ms ease-out both; }
+.d3-market-title { font-family: var(--font-display-cn); font-size: clamp(32px, 4.5vw, 68px); font-weight: 900; color: var(--text); animation: d3-stamp 650ms 150ms cubic-bezier(0.34,1.56,0.64,1) both; }
+.d3-market-title span { color: var(--accent); }
+.d3-market-body { font-family: var(--font-body); font-size: clamp(14px, 1.6vw, 22px); color: var(--text-mute); line-height: 1.7; animation: d3-fade-up 400ms 350ms ease-out both; max-width: 55%; }
+.d3-seafood-row { display: flex; gap: clamp(12px, 2vw, 24px); margin-top: auto; }
+.d3-sf-chip {
+  font-family: var(--font-display-cn); font-size: clamp(14px, 1.8vw, 24px); font-weight: 700;
+  color: var(--surface); background: var(--accent);
+  padding: clamp(8px, 1.2vh, 16px) clamp(14px, 2.5vw, 28px);
+  border-radius: var(--r-card); opacity: 0;
+}
+.d3-sf-chip.alt { background: var(--surface-3); color: var(--text); border: 1.5px solid var(--rule); }
+.d3-sf-chip:nth-child(1) { animation: d3-stamp 500ms 500ms cubic-bezier(0.34,1.56,0.64,1) forwards; }
+.d3-sf-chip:nth-child(2) { animation: d3-stamp 500ms 650ms cubic-bezier(0.34,1.56,0.64,1) forwards; }
+.d3-sf-chip:nth-child(3) { animation: d3-stamp 500ms 800ms cubic-bezier(0.34,1.56,0.64,1) forwards; }
+.d3-sf-chip:nth-child(4) { animation: d3-stamp 500ms 950ms cubic-bezier(0.34,1.56,0.64,1) forwards; }
+
+/* ── Step 2: 定山溪溫泉 ── */
+.d3-onsen { position: absolute; inset: 0; display: flex; align-items: center; padding: var(--stage-pad-y) var(--stage-pad-x); gap: clamp(40px, 7vw, 100px); }
+.d3-onsen-left { flex: 1; display: flex; flex-direction: column; gap: clamp(16px, 2.5vh, 28px); }
+.d3-onsen-kicker { font-family: var(--font-mono); font-size: clamp(11px, 1vw, 14px); letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-mute); animation: d3-fade-up 400ms ease-out both; }
+.d3-onsen-title { font-family: var(--font-display-cn); font-size: clamp(36px, 5vw, 76px); font-weight: 900; color: var(--text); line-height: 1.1; animation: d3-stamp 650ms 200ms cubic-bezier(0.34,1.56,0.64,1) both; }
+.d3-onsen-title span { color: var(--accent); }
+.d3-onsen-body { font-family: var(--font-body); font-size: clamp(14px, 1.6vw, 22px); color: var(--text-mute); line-height: 1.7; animation: d3-fade-up 400ms 400ms ease-out both; }
+/* Photo: 定山溪溫泉 */
+.d3-onsen-photo { flex: 0 0 clamp(180px,30vw,380px); border-radius: var(--r-md); overflow: hidden; animation: d3-fade-up 600ms 350ms ease-out both; box-shadow: var(--card-shadow); }
+.d3-onsen-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ── Step 3: Dining ── */
+.d3-dining { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(20px, 3vh, 40px); padding: var(--stage-pad-y) var(--stage-pad-x); }
+.d3-dining-label { font-family: var(--font-mono); font-size: clamp(11px, 1vw, 14px); letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-mute); animation: d3-fade-up 400ms ease-out both; }
+.d3-dining-title { font-family: var(--font-display-cn); font-size: clamp(36px, 4.5vw, 68px); font-weight: 900; color: var(--text); animation: d3-stamp 650ms 150ms cubic-bezier(0.34,1.56,0.64,1) both; }
+.d3-dining-row { display: flex; gap: clamp(20px, 4vw, 60px); }
+.d3-meal-card { display: flex; flex-direction: column; align-items: center; gap: clamp(8px, 1.2vh, 16px); background: var(--surface-2); border: 1.5px solid var(--rule); border-radius: var(--r-card); padding: clamp(20px, 3vh, 36px) clamp(28px, 4vw, 56px); box-shadow: var(--card-shadow); opacity: 0; }
+.d3-meal-card:nth-child(1) { animation: d3-stamp 500ms 350ms cubic-bezier(0.34,1.56,0.64,1) forwards; }
+.d3-meal-card:nth-child(2) { animation: d3-stamp 500ms 550ms cubic-bezier(0.34,1.56,0.64,1) forwards; }
+.d3-meal-time { font-family: var(--font-mono); font-size: clamp(10px, 0.9vw, 13px); letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); }
+.d3-meal-name { font-family: var(--font-display-cn); font-size: clamp(18px, 2.2vw, 30px); font-weight: 700; color: var(--text); text-align: center; }
+.d3-meal-detail { font-family: var(--font-body); font-size: clamp(12px, 1.2vw, 17px); color: var(--text-mute); text-align: center; }
+
+@keyframes d3-img-in { from { opacity: 0; transform: scale(1.04); } to { opacity: 1; transform: scale(1); } }
+@keyframes d3-stamp { from { opacity: 0; transform: scale(0.84) translateY(14px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+@keyframes d3-fade-up { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes d3-bar-grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }

@@ -1,0 +1,52 @@
+/* ── 06-day5 · CSS prefix: .d5- ── */
+
+.d5-hero { position: absolute; inset: 0; display: flex; }
+.d5-hero-photo { flex: 0 0 50%; overflow: hidden; }
+.d5-hero-photo img { width: 100%; height: 100%; object-fit: cover; animation: d5-img-in 900ms ease-out both; }
+.d5-hero-info { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: clamp(32px,5vw,80px); gap: clamp(12px,2vh,22px); background: var(--surface); }
+.d5-day-label { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .3em; text-transform: uppercase; color: var(--text-mute); animation: d5-fade-up 400ms ease-out both; }
+.d5-day-title { font-family: var(--font-display-cn); font-size: clamp(38px,5vw,74px); font-weight: 900; color: var(--text); line-height: 1.1; animation: d5-stamp 650ms 150ms cubic-bezier(.34,1.56,.64,1) both; }
+.d5-day-sub { font-family: var(--font-body); font-size: clamp(14px,1.6vw,22px); color: var(--text-mute); line-height: 1.6; animation: d5-fade-up 400ms 350ms ease-out both; }
+.d5-accent-bar { width: clamp(40px,6vw,80px); height: 3px; background: var(--accent); transform-origin: left; animation: d5-bar-grow 500ms 600ms ease-out both; }
+
+/* ── Step 1: Lake Hill Farm ── */
+.d5-farm { position: absolute; inset: 0; display: flex; align-items: center; padding: var(--stage-pad-y) var(--stage-pad-x); gap: clamp(40px,7vw,100px); }
+.d5-farm-left { flex: 1; display: flex; flex-direction: column; gap: clamp(16px,2.5vh,28px); }
+.d5-farm-kicker { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .28em; text-transform: uppercase; color: var(--text-mute); animation: d5-fade-up 400ms ease-out both; }
+.d5-farm-title { font-family: var(--font-display-cn); font-size: clamp(36px,5vw,76px); font-weight: 900; color: var(--text); line-height: 1.1; animation: d5-stamp 650ms 200ms cubic-bezier(.34,1.56,.64,1) both; }
+.d5-farm-title span { color: var(--accent); }
+.d5-farm-body { font-family: var(--font-body); font-size: clamp(14px,1.6vw,22px); color: var(--text-mute); line-height: 1.7; animation: d5-fade-up 400ms 400ms ease-out both; }
+/* CSS grass + mountain scene */
+.d5-farm-right { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 0; animation: d5-fade-up 600ms 350ms ease-out both; }
+.d5-mt-shape { width: 0; height: 0; border-left: clamp(50px,7vw,100px) solid transparent; border-right: clamp(50px,7vw,100px) solid transparent; border-bottom: clamp(80px,11vh,140px) solid var(--surface-3); }
+.d5-mt-snow { width: 0; height: 0; border-left: clamp(18px,2.5vw,32px) solid transparent; border-right: clamp(18px,2.5vw,32px) solid transparent; border-bottom: clamp(28px,4vh,44px) solid #fff; position: relative; top: clamp(80px,11vh,140px); margin-top: clamp(-80px,-11vh,-140px); opacity: 0.9; }
+.d5-grass { width: clamp(100px,14vw,200px); height: clamp(20px,3vh,36px); background: linear-gradient(to right, #8ab56a, #a8c878); border-radius: 0 0 8px 8px; }
+
+/* ── Step 2: Senen Numa with photo ── */
+.d5-numa { position: absolute; inset: 0; display: flex; align-items: center; padding: var(--stage-pad-y) var(--stage-pad-x); gap: clamp(32px,5vw,80px); }
+.d5-numa-left { flex: 1; display: flex; flex-direction: column; gap: clamp(14px,2.2vh,28px); }
+.d5-numa-kicker { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .28em; text-transform: uppercase; color: var(--text-mute); animation: d5-fade-up 400ms ease-out both; }
+.d5-numa-title { font-family: var(--font-display-cn); font-size: clamp(36px,5vw,76px); font-weight: 900; color: var(--text); animation: d5-stamp 650ms 150ms cubic-bezier(.34,1.56,.64,1) both; }
+.d5-numa-title span { color: var(--accent); }
+.d5-numa-badge { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display-cn); font-size: clamp(14px,1.6vw,22px); font-weight: 700; color: var(--surface); background: var(--accent); padding: clamp(6px,1vh,10px) clamp(14px,2vw,24px); border-radius: 100px; animation: d5-stamp 500ms 350ms cubic-bezier(.34,1.56,.64,1) both; }
+.d5-numa-body { font-family: var(--font-body); font-size: clamp(14px,1.6vw,22px); color: var(--text-mute); line-height: 1.7; animation: d5-fade-up 400ms 500ms ease-out both; }
+/* Photo: 神仙沼 */
+.d5-numa-photo { flex: 0 0 clamp(160px,28vw,360px); border-radius: var(--r-md); overflow: hidden; animation: d5-fade-up 600ms 350ms ease-out both; box-shadow: var(--card-shadow); align-self: stretch; }
+.d5-numa-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ── Step 3: Dining ── */
+.d5-dining { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(20px,3vh,40px); padding: var(--stage-pad-y) var(--stage-pad-x); }
+.d5-dining-label { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .28em; text-transform: uppercase; color: var(--text-mute); animation: d5-fade-up 400ms ease-out both; }
+.d5-dining-title { font-family: var(--font-display-cn); font-size: clamp(36px,4.5vw,68px); font-weight: 900; color: var(--text); animation: d5-stamp 650ms 150ms cubic-bezier(.34,1.56,.64,1) both; }
+.d5-dining-row { display: flex; gap: clamp(20px,4vw,60px); }
+.d5-meal-card { display: flex; flex-direction: column; align-items: center; gap: clamp(8px,1.2vh,16px); background: var(--surface-2); border: 1.5px solid var(--rule); border-radius: var(--r-card); padding: clamp(20px,3vh,36px) clamp(28px,4vw,56px); box-shadow: var(--card-shadow); opacity: 0; }
+.d5-meal-card:nth-child(1) { animation: d5-stamp 500ms 350ms cubic-bezier(.34,1.56,.64,1) forwards; }
+.d5-meal-card:nth-child(2) { animation: d5-stamp 500ms 550ms cubic-bezier(.34,1.56,.64,1) forwards; }
+.d5-meal-time { font-family: var(--font-mono); font-size: clamp(10px,.9vw,13px); letter-spacing: .25em; text-transform: uppercase; color: var(--accent); }
+.d5-meal-name { font-family: var(--font-display-cn); font-size: clamp(18px,2.2vw,30px); font-weight: 700; color: var(--text); text-align: center; }
+.d5-meal-detail { font-family: var(--font-body); font-size: clamp(12px,1.2vw,17px); color: var(--text-mute); text-align: center; }
+
+@keyframes d5-img-in { from { opacity:0; transform:scale(1.04); } to { opacity:1; transform:scale(1); } }
+@keyframes d5-stamp { from { opacity:0; transform:scale(0.84) translateY(14px); } to { opacity:1; transform:scale(1) translateY(0); } }
+@keyframes d5-fade-up { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+@keyframes d5-bar-grow { from { transform:scaleX(0); } to { transform:scaleX(1); } }

@@ -1,0 +1,71 @@
+/* ── 10-must-know · CSS prefix: .mk- ── */
+
+/* ── Step 0: Title ── */
+.mk-title-screen { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(20px,3vh,40px); padding: var(--stage-pad-y) var(--stage-pad-x); }
+.mk-title-kicker { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .28em; text-transform: uppercase; color: var(--text-mute); animation: mk-fade-up 400ms ease-out both; }
+.mk-title-main { font-family: var(--font-display-cn); font-size: clamp(52px,7vw,108px); font-weight: 900; color: var(--text); text-align: center; line-height: 1.05; animation: mk-stamp 700ms 150ms cubic-bezier(.34,1.56,.64,1) both; }
+.mk-title-main span { color: var(--accent); }
+.mk-title-sub { font-family: var(--font-body); font-size: clamp(16px,1.9vw,28px); color: var(--text-mute); text-align: center; animation: mk-fade-up 400ms 450ms ease-out both; }
+.mk-checklist-row { display: flex; gap: clamp(12px,2vw,24px); animation: mk-fade-up 400ms 650ms ease-out both; }
+.mk-check-pill { font-family: var(--font-display-cn); font-size: clamp(13px,1.4vw,20px); font-weight: 600; background: var(--surface-2); border: 1.5px solid var(--rule); border-radius: 100px; padding: clamp(6px,1vh,10px) clamp(14px,2vw,24px); color: var(--text-mute); }
+
+/* ── Step 1: Pre-booking ── */
+.mk-booking { position: absolute; inset: 0; display: flex; flex-direction: column; padding: var(--stage-pad-y) var(--stage-pad-x); gap: clamp(16px,2.5vh,32px); }
+.mk-step-num { font-family: var(--font-display-en); font-style: italic; font-size: clamp(80px,11vw,160px); font-weight: 700; color: var(--accent-soft); line-height: 1; position: absolute; right: var(--stage-pad-x); top: 50%; transform: translateY(-50%); pointer-events: none; user-select: none; }
+.mk-booking-kicker { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .28em; text-transform: uppercase; color: var(--text-mute); animation: mk-fade-up 400ms ease-out both; }
+.mk-booking-title { font-family: var(--font-display-cn); font-size: clamp(36px,5vw,76px); font-weight: 900; color: var(--text); animation: mk-stamp 650ms 150ms cubic-bezier(.34,1.56,.64,1) both; }
+.mk-booking-title span { color: var(--accent); }
+.mk-booking-body { font-family: var(--font-body); font-size: clamp(14px,1.6vw,22px); color: var(--text-mute); line-height: 1.7; animation: mk-fade-up 400ms 350ms ease-out both; max-width: 60%; }
+.mk-booking-cards { display: flex; gap: clamp(16px,2.5vw,32px); animation: mk-fade-up 400ms 550ms ease-out both; }
+.mk-booking-card { background: var(--surface-2); border: 1.5px solid var(--rule); border-left: 4px solid var(--accent); border-radius: 0 var(--r-card) var(--r-card) 0; padding: clamp(14px,2vh,24px) clamp(18px,2.5vw,32px); box-shadow: var(--card-shadow); }
+.mk-booking-card-date { font-family: var(--font-mono); font-size: clamp(10px,.9vw,13px); letter-spacing: .2em; text-transform: uppercase; color: var(--accent); }
+.mk-booking-card-name { font-family: var(--font-display-cn); font-size: clamp(16px,2vw,28px); font-weight: 700; color: var(--text); margin-top: 4px; }
+
+/* ── Step 2: Warm clothing ── */
+.mk-warm { position: absolute; inset: 0; display: flex; align-items: center; padding: var(--stage-pad-y) var(--stage-pad-x); gap: clamp(40px,7vw,100px); }
+.mk-warm-left { flex: 1; display: flex; flex-direction: column; gap: clamp(16px,2.5vh,28px); }
+.mk-warm-kicker { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .28em; text-transform: uppercase; color: var(--text-mute); animation: mk-fade-up 400ms ease-out both; }
+.mk-warm-title { font-family: var(--font-display-cn); font-size: clamp(36px,5vw,76px); font-weight: 900; color: var(--text); line-height: 1.1; animation: mk-stamp 650ms 200ms cubic-bezier(.34,1.56,.64,1) both; }
+.mk-warm-title span { color: var(--accent); }
+.mk-warm-body { font-family: var(--font-body); font-size: clamp(14px,1.6vw,22px); color: var(--text-mute); line-height: 1.7; animation: mk-fade-up 400ms 400ms ease-out both; }
+/* temp gauge CSS */
+.mk-warm-right { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 12px; animation: mk-fade-up 600ms 350ms ease-out both; }
+.mk-gauge-track { width: clamp(24px,3vw,40px); height: clamp(120px,18vh,200px); background: var(--surface-3); border: 1.5px solid var(--rule); border-radius: 100px; position: relative; overflow: hidden; }
+.mk-gauge-fill { position: absolute; bottom: 0; left: 0; right: 0; height: 35%; background: linear-gradient(to top, #2a7fbd, #5bbfe8); border-radius: 100px; }
+.mk-gauge-labels { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+.mk-gauge-label { font-family: var(--font-mono); font-size: clamp(12px,1.2vw,17px); letter-spacing: .1em; color: var(--text-mute); }
+.mk-gauge-label.hi { color: var(--accent); font-weight: 700; }
+
+/* ── Step 3: Food + elderly transport ── */
+.mk-notes { position: absolute; inset: 0; display: flex; flex-direction: column; padding: var(--stage-pad-y) var(--stage-pad-x); gap: clamp(14px,2.2vh,28px); }
+.mk-notes-kicker { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .28em; text-transform: uppercase; color: var(--text-mute); animation: mk-fade-up 400ms ease-out both; }
+.mk-notes-title { font-family: var(--font-display-cn); font-size: clamp(36px,5vw,76px); font-weight: 900; color: var(--text); animation: mk-stamp 650ms 150ms cubic-bezier(.34,1.56,.64,1) both; }
+.mk-note-list { flex: 1; display: flex; flex-direction: column; gap: clamp(10px,1.5vh,18px); justify-content: center; }
+.mk-note-item { display: flex; align-items: flex-start; gap: clamp(12px,2vw,24px); background: var(--surface-2); border: 1.5px solid var(--rule); border-radius: var(--r-card); padding: clamp(14px,2vh,24px) clamp(18px,2.5vw,32px); box-shadow: var(--card-shadow); opacity: 0; }
+.mk-note-item:nth-child(1) { animation: mk-fade-right 500ms 300ms ease-out forwards; }
+.mk-note-item:nth-child(2) { animation: mk-fade-right 500ms 480ms ease-out forwards; }
+.mk-note-item:nth-child(3) { animation: mk-fade-right 500ms 660ms ease-out forwards; }
+.mk-note-dot { width: clamp(8px,1vw,14px); height: clamp(8px,1vw,14px); border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 6px; }
+.mk-note-content { flex: 1; }
+.mk-note-name { font-family: var(--font-display-cn); font-size: clamp(16px,2vw,28px); font-weight: 700; color: var(--text); }
+.mk-note-detail { font-family: var(--font-body); font-size: clamp(12px,1.2vw,17px); color: var(--text-mute); margin-top: 4px; line-height: 1.6; }
+
+/* ── Step 4: Souvenirs ── */
+.mk-souvenir { position: absolute; inset: 0; display: flex; flex-direction: column; padding: var(--stage-pad-y) var(--stage-pad-x); gap: clamp(12px,2vh,24px); }
+.mk-sv-kicker { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .28em; text-transform: uppercase; color: var(--text-mute); animation: mk-fade-up 400ms ease-out both; }
+.mk-sv-title { font-family: var(--font-display-cn); font-size: clamp(36px,5vw,76px); font-weight: 900; color: var(--text); animation: mk-stamp 650ms 150ms cubic-bezier(.34,1.56,.64,1) both; }
+.mk-sv-title span { color: var(--accent); }
+/* featured photo cards row */
+.mk-sv-featured { display: flex; gap: clamp(12px,2vw,24px); flex: 1; align-items: stretch; }
+.mk-sv-feat-card { flex: 1; background: var(--surface-2); border: 1.5px solid var(--rule); border-radius: var(--r-card); overflow: hidden; box-shadow: var(--card-shadow); display: flex; flex-direction: column; opacity: 0; animation: mk-stamp 450ms cubic-bezier(.34,1.56,.64,1) forwards; }
+.mk-sv-feat-img { height: clamp(80px,14vh,180px); overflow: hidden; }
+.mk-sv-feat-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mk-sv-feat-name { font-family: var(--font-display-cn); font-size: clamp(16px,2vw,28px); font-weight: 700; color: var(--text); padding: clamp(10px,1.5vh,18px) clamp(14px,2vw,22px) 4px; }
+.mk-sv-feat-note { font-family: var(--font-body); font-size: clamp(11px,1.1vw,16px); color: var(--text-mute); padding: 0 clamp(14px,2vw,22px) clamp(10px,1.5vh,18px); }
+/* bottom chips row */
+.mk-sv-chips { display: flex; gap: clamp(8px,1.5vw,18px); flex-wrap: wrap; }
+.mk-sv-chip { font-family: var(--font-display-cn); font-size: clamp(12px,1.3vw,18px); font-weight: 600; background: var(--surface-3); border: 1.5px solid var(--rule); border-radius: var(--r-xs); padding: clamp(6px,1vh,10px) clamp(12px,1.8vw,20px); color: var(--text-mute); opacity: 0; animation: mk-fade-up 400ms ease-out forwards; }
+
+@keyframes mk-stamp { from { opacity:0; transform:scale(0.84) translateY(14px); } to { opacity:1; transform:scale(1) translateY(0); } }
+@keyframes mk-fade-up { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+@keyframes mk-fade-right { from { opacity:0; transform:translateX(-16px); } to { opacity:1; transform:translateX(0); } }

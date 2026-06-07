@@ -1,0 +1,214 @@
+/* ── 02-day1 · CSS prefix: .d1- ── */
+
+/* ── Step 0: Hero split ── */
+.d1-hero {
+  position: absolute; inset: 0;
+  display: flex;
+}
+.d1-hero-photo {
+  flex: 0 0 50%;
+  overflow: hidden;
+}
+.d1-hero-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  animation: d1-img-in 900ms ease-out both;
+}
+.d1-hero-info {
+  flex: 1;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: clamp(32px, 5vw, 80px);
+  gap: clamp(12px, 2vh, 24px);
+  background: var(--surface);
+}
+.d1-day-label {
+  font-family: var(--font-mono);
+  font-size: clamp(11px, 1vw, 14px);
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--text-mute);
+  animation: d1-fade-up 400ms ease-out both;
+}
+.d1-day-title {
+  font-family: var(--font-display-cn);
+  font-size: clamp(40px, 5.5vw, 80px);
+  font-weight: 900; color: var(--text); line-height: 1.1;
+  animation: d1-stamp 650ms 150ms cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.d1-day-sub {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.6vw, 22px);
+  color: var(--text-mute); line-height: 1.6;
+  animation: d1-fade-up 400ms 350ms ease-out both;
+}
+.d1-accent-bar {
+  width: clamp(40px, 6vw, 80px); height: 3px;
+  background: var(--accent);
+  animation: d1-bar-grow 500ms 600ms ease-out both;
+  transform-origin: left;
+}
+
+/* ── Step 1: Flight + JR timeline ── */
+.d1-transit {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  gap: clamp(20px, 3vh, 40px);
+}
+.d1-transit-title {
+  font-family: var(--font-display-cn);
+  font-size: clamp(28px, 3.5vw, 52px);
+  font-weight: 900; color: var(--text);
+  animation: d1-stamp 600ms 100ms cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.d1-transit-title span { color: var(--accent); }
+.d1-timeline {
+  flex: 1;
+  display: flex; flex-direction: column; justify-content: center;
+  gap: clamp(12px, 2vh, 20px);
+}
+.d1-tl-row {
+  display: flex; align-items: flex-start; gap: clamp(16px, 2.5vw, 32px);
+  opacity: 0;
+}
+.d1-tl-row:nth-child(1) { animation: d1-fade-right 500ms 300ms ease-out forwards; }
+.d1-tl-row:nth-child(2) { animation: d1-fade-right 500ms 500ms ease-out forwards; }
+.d1-tl-row:nth-child(3) { animation: d1-fade-right 500ms 700ms ease-out forwards; }
+.d1-tl-dot-col {
+  display: flex; flex-direction: column; align-items: center;
+  flex-shrink: 0; padding-top: 4px;
+  gap: 4px;
+}
+.d1-tl-dot {
+  width: clamp(10px, 1.2vw, 16px); height: clamp(10px, 1.2vw, 16px);
+  border-radius: 50%; background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+  flex-shrink: 0;
+}
+.d1-tl-line {
+  width: 2px; flex: 1; min-height: 20px;
+  background: var(--rule);
+}
+.d1-tl-content { flex: 1; }
+.d1-tl-time {
+  font-family: var(--font-mono);
+  font-size: clamp(11px, 1vw, 14px);
+  letter-spacing: 0.15em; color: var(--text-mute); margin-bottom: 4px;
+}
+.d1-tl-name {
+  font-family: var(--font-display-cn);
+  font-size: clamp(18px, 2.2vw, 32px);
+  font-weight: 700; color: var(--text);
+}
+.d1-tl-detail {
+  font-family: var(--font-body);
+  font-size: clamp(12px, 1.2vw, 17px);
+  color: var(--text-mute); margin-top: 3px;
+}
+
+/* ── Step 2: Hotel + afternoon ── */
+.d1-arrival {
+  position: absolute; inset: 0;
+  display: flex; align-items: center;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  gap: clamp(32px, 5vw, 72px);
+}
+.d1-arrival-left { flex: 1; display: flex; flex-direction: column; gap: clamp(16px, 2.5vh, 28px); }
+.d1-arrival-label {
+  font-family: var(--font-mono);
+  font-size: clamp(11px, 1vw, 14px); letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--text-mute);
+  animation: d1-fade-up 400ms ease-out both;
+}
+.d1-arrival-title {
+  font-family: var(--font-display-cn);
+  font-size: clamp(32px, 4.5vw, 68px);
+  font-weight: 900; color: var(--text); line-height: 1.1;
+  animation: d1-stamp 650ms 150ms cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.d1-arrival-title span { color: var(--accent); }
+.d1-arrival-body {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.6vw, 22px);
+  color: var(--text-mute); line-height: 1.7;
+  animation: d1-fade-up 400ms 300ms ease-out both;
+}
+.d1-arrival-right { flex: 0 0 auto; display: flex; flex-direction: column; gap: clamp(10px, 1.5vh, 18px); }
+.d1-spot-card {
+  background: var(--surface-2); border: 1.5px solid var(--rule);
+  border-radius: var(--r-card); padding: clamp(14px, 2vh, 24px) clamp(18px, 2.5vw, 32px);
+  box-shadow: var(--card-shadow); opacity: 0;
+}
+.d1-spot-card:nth-child(1) { animation: d1-fade-up 500ms 400ms ease-out forwards; }
+.d1-spot-card:nth-child(2) { animation: d1-fade-up 500ms 600ms ease-out forwards; }
+.d1-spot-name {
+  font-family: var(--font-display-cn);
+  font-size: clamp(16px, 1.9vw, 26px);
+  font-weight: 700; color: var(--text);
+}
+.d1-spot-desc {
+  font-family: var(--font-body);
+  font-size: clamp(12px, 1.2vw, 16px);
+  color: var(--text-mute); margin-top: 4px;
+}
+
+/* ── Step 3: Dining ── */
+.d1-dining {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: clamp(20px, 3vh, 40px);
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+}
+.d1-dining-label {
+  font-family: var(--font-mono);
+  font-size: clamp(11px, 1vw, 14px); letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--text-mute);
+  animation: d1-fade-up 400ms ease-out both;
+}
+.d1-dining-title {
+  font-family: var(--font-display-cn);
+  font-size: clamp(36px, 4.5vw, 68px);
+  font-weight: 900; color: var(--text);
+  animation: d1-stamp 650ms 150ms cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.d1-dining-row {
+  display: flex; gap: clamp(20px, 4vw, 60px);
+}
+.d1-meal-card {
+  display: flex; flex-direction: column; align-items: center; gap: clamp(8px, 1.2vh, 16px);
+  background: var(--surface-2); border: 1.5px solid var(--rule);
+  border-radius: var(--r-card); padding: clamp(20px, 3vh, 36px) clamp(28px, 4vw, 56px);
+  box-shadow: var(--card-shadow); opacity: 0;
+}
+.d1-meal-card:nth-child(1) { animation: d1-stamp 500ms 350ms cubic-bezier(0.34,1.56,0.64,1) forwards; }
+.d1-meal-card:nth-child(2) { animation: d1-stamp 500ms 550ms cubic-bezier(0.34,1.56,0.64,1) forwards; }
+.d1-meal-time {
+  font-family: var(--font-mono); font-size: clamp(10px, 0.9vw, 13px);
+  letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent);
+}
+.d1-meal-name {
+  font-family: var(--font-display-cn);
+  font-size: clamp(18px, 2.2vw, 30px);
+  font-weight: 700; color: var(--text); text-align: center;
+}
+.d1-meal-detail {
+  font-family: var(--font-body); font-size: clamp(12px, 1.2vw, 17px);
+  color: var(--text-mute); text-align: center;
+}
+
+/* ── keyframes ── */
+@keyframes d1-img-in {
+  from { opacity: 0; transform: scale(1.04); } to { opacity: 1; transform: scale(1); }
+}
+@keyframes d1-stamp {
+  from { opacity: 0; transform: scale(0.84) translateY(14px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes d1-fade-up {
+  from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); }
+}
+@keyframes d1-fade-right {
+  from { opacity: 0; transform: translateX(-16px); } to { opacity: 1; transform: translateX(0); }
+}
+@keyframes d1-bar-grow {
+  from { transform: scaleX(0); } to { transform: scaleX(1); }
+}

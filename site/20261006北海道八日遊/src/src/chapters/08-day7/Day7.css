@@ -1,0 +1,53 @@
+/* ── 08-day7 · CSS prefix: .d7- ── */
+
+.d7-hero { position: absolute; inset: 0; display: flex; }
+.d7-hero-photo { flex: 0 0 50%; overflow: hidden; }
+.d7-hero-photo img { width: 100%; height: 100%; object-fit: cover; animation: d7-img-in 900ms ease-out both; }
+.d7-hero-info { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: clamp(32px,5vw,80px); gap: clamp(12px,2vh,22px); background: var(--surface); }
+.d7-day-label { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .3em; text-transform: uppercase; color: var(--text-mute); animation: d7-fade-up 400ms ease-out both; }
+.d7-day-title { font-family: var(--font-display-cn); font-size: clamp(38px,5vw,74px); font-weight: 900; color: var(--text); line-height: 1.1; animation: d7-stamp 650ms 150ms cubic-bezier(.34,1.56,.64,1) both; }
+.d7-day-sub { font-family: var(--font-body); font-size: clamp(14px,1.6vw,22px); color: var(--text-mute); line-height: 1.6; animation: d7-fade-up 400ms 350ms ease-out both; }
+.d7-accent-bar { width: clamp(40px,6vw,80px); height: 3px; background: var(--accent); transform-origin: left; animation: d7-bar-grow 500ms 600ms ease-out both; }
+
+/* ── Step 1: Canal cruise ── */
+.d7-canal { position: absolute; inset: 0; display: flex; flex-direction: column; padding: var(--stage-pad-y) var(--stage-pad-x); gap: clamp(16px,2.5vh,32px); }
+.d7-canal-kicker { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .28em; text-transform: uppercase; color: var(--text-mute); animation: d7-fade-up 400ms ease-out both; }
+.d7-canal-title { font-family: var(--font-display-cn); font-size: clamp(36px,5vw,76px); font-weight: 900; color: var(--text); animation: d7-stamp 650ms 150ms cubic-bezier(.34,1.56,.64,1) both; }
+.d7-canal-title span { color: var(--accent); }
+.d7-canal-badge { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display-cn); font-size: clamp(14px,1.6vw,22px); font-weight: 700; color: var(--surface); background: var(--accent); padding: clamp(6px,1vh,10px) clamp(14px,2vw,24px); border-radius: 100px; animation: d7-stamp 500ms 350ms cubic-bezier(.34,1.56,.64,1) both; }
+.d7-canal-body { font-family: var(--font-body); font-size: clamp(14px,1.6vw,22px); color: var(--text-mute); line-height: 1.7; max-width: 65%; animation: d7-fade-up 400ms 500ms ease-out both; }
+/* Photo: 小樽運河 */
+.d7-canal-photo { margin-top: auto; height: clamp(80px,14vh,200px); overflow: hidden; border-radius: var(--r-md); animation: d7-fade-up 500ms 650ms ease-out both; }
+.d7-canal-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 50%; display: block; }
+
+/* ── Step 2: Shopping ── */
+.d7-shop { position: absolute; inset: 0; display: flex; align-items: center; padding: var(--stage-pad-y) var(--stage-pad-x); gap: clamp(40px,7vw,100px); }
+.d7-shop-left { flex: 1; display: flex; flex-direction: column; gap: clamp(16px,2.5vh,28px); }
+.d7-shop-kicker { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .28em; text-transform: uppercase; color: var(--text-mute); animation: d7-fade-up 400ms ease-out both; }
+.d7-shop-title { font-family: var(--font-display-cn); font-size: clamp(36px,5vw,76px); font-weight: 900; color: var(--text); line-height: 1.1; animation: d7-stamp 650ms 200ms cubic-bezier(.34,1.56,.64,1) both; }
+.d7-shop-title span { color: var(--accent); }
+.d7-shop-body { font-family: var(--font-body); font-size: clamp(14px,1.6vw,22px); color: var(--text-mute); line-height: 1.7; animation: d7-fade-up 400ms 400ms ease-out both; }
+.d7-shop-tags { display: flex; flex-wrap: wrap; gap: clamp(8px,1.2vw,16px); animation: d7-fade-up 400ms 600ms ease-out both; }
+.d7-shop-tag { font-family: var(--font-display-cn); font-size: clamp(13px,1.4vw,20px); font-weight: 600; background: var(--surface-2); border: 1.5px solid var(--rule); border-radius: var(--r-xs); padding: clamp(4px,.6vh,8px) clamp(10px,1.5vw,18px); color: var(--text); }
+/* gift box CSS */
+.d7-shop-right { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 4px; animation: d7-fade-up 600ms 350ms ease-out both; }
+.d7-box-body { width: clamp(80px,10vw,140px); height: clamp(60px,8vh,100px); background: var(--surface-2); border: 2px solid var(--rule); border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+.d7-box-ribbon-h { width: 100%; height: 3px; background: var(--accent); }
+.d7-box-ribbon-v { width: 3px; height: 100%; background: var(--accent); }
+.d7-box-ribbons { position: relative; width: clamp(80px,10vw,140px); height: clamp(60px,8vh,100px); }
+.d7-box-lid { width: clamp(90px,11.5vw,155px); height: clamp(20px,3vh,32px); background: var(--accent); border-radius: 4px 4px 0 0; }
+
+/* ── Step 3: Wagyu celebration dinner ── */
+.d7-wagyu { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(20px,3vh,40px); padding: var(--stage-pad-y) var(--stage-pad-x); }
+.d7-wagyu-label { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .28em; text-transform: uppercase; color: var(--text-mute); animation: d7-fade-up 400ms ease-out both; }
+.d7-wagyu-title { font-family: var(--font-display-cn); font-size: clamp(40px,5.5vw,84px); font-weight: 900; color: var(--text); text-align: center; animation: d7-stamp 650ms 150ms cubic-bezier(.34,1.56,.64,1) both; }
+.d7-wagyu-title span { color: var(--accent); }
+.d7-wagyu-no-lamb { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display-cn); font-size: clamp(14px,1.6vw,22px); font-weight: 700; color: #c0392b; border: 2px solid #c0392b; border-radius: var(--r-xs); padding: clamp(6px,1vh,10px) clamp(14px,2vw,24px); animation: d7-stamp 500ms 350ms cubic-bezier(.34,1.56,.64,1) both; }
+.d7-wagyu-body { font-family: var(--font-body); font-size: clamp(16px,1.9vw,28px); color: var(--text-mute); text-align: center; line-height: 1.7; max-width: 70%; animation: d7-fade-up 400ms 500ms ease-out both; }
+.d7-wagyu-places { display: flex; gap: clamp(12px,2vw,24px); animation: d7-fade-up 400ms 700ms ease-out both; }
+.d7-wagyu-place { font-family: var(--font-display-cn); font-size: clamp(13px,1.4vw,19px); font-weight: 600; background: var(--accent); color: var(--surface); padding: clamp(6px,1vh,10px) clamp(12px,1.8vw,22px); border-radius: 100px; }
+
+@keyframes d7-img-in { from { opacity:0; transform:scale(1.04); } to { opacity:1; transform:scale(1); } }
+@keyframes d7-stamp { from { opacity:0; transform:scale(0.84) translateY(14px); } to { opacity:1; transform:scale(1) translateY(0); } }
+@keyframes d7-fade-up { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+@keyframes d7-bar-grow { from { transform:scaleX(0); } to { transform:scaleX(1); } }
