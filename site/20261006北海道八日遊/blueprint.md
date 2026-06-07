@@ -1,5 +1,5 @@
 # 系統藍圖 — 20261006北海道八日遊
-> 最後更新：2026-06-07
+> 最後更新：2026-06-08
 
 ## 章節登錄
 
@@ -60,8 +60,14 @@ public/images/          ← 高畫質原圖（網頁版 split-left 用）
   senen-numa.jpg、shakotan.jpg、toya-lake.jpg
   souvenir-rokkatei.jpg、souvenir-shiroi-koibito.jpg
 
-public/images-mobile/   ← 壓縮版（手機版 MobilePage 用，同樣 17 張）
-  sips quality 75；任一邊 > 1400px 縮 resize；壓縮後比原圖大則保留原圖
+public/images-mobile/   ← 壓縮版（手機版 MobilePage 用，共 18 張）
+  cover.jpg              530K  原始封面（未換）
+  day1.jpg               836K  1046×1504  ← 實際行程照片（已換）
+  day2.jpg–day7.jpg      各 270–620K
+  day8.jpg               572K  960×1440   ← 實際行程照片（已換）
+  og-img.jpg             572K  1200×800   ← LINE/OG 預覽專用圖（新增）
+  其餘景點圖：jozankei、koibito-park、otaru-canal、senen-numa、shakotan、
+              toya-lake、souvenir-rokkatei、souvenir-shiroi-koibito
 ```
 
 ## 手機版架構（MobilePage）
@@ -111,9 +117,39 @@ bottom: 96px;  right: 20px  ← 意見 FAB（z-index 100，正上方）
 bottom: 200px; z-index 200  ← Scrubber overlay（長壓開啟）
 ```
 
+### 每日住宿卡（MobilePage）
+
+每個 Day section 末尾都有一張住宿卡，格式統一：
+```tsx
+<div id="mp-c-dN-hotel" className="mp-card">
+  <div className="mp-card-title mp-card-title--row">
+    <span>🏨 今晚住宿</span>
+    <MapBtn q="Hotel English Name" />
+  </div>
+  <div className="mp-hotel-name">中文飯店名</div>
+  <div className="mp-hotel-en">English Name</div>
+  <span className="mp-meal-badge mp-meal-badge--bf">🍳 附早餐</span>
+</div>
+```
+
+餐食標籤三種：
+| 類型 | class | 顏色 |
+|---|---|---|
+| 附早餐 | `mp-meal-badge--bf` | 綠色 |
+| 附早晚餐（暗色卡用） | `mp-meal-badge--bfdn-dark` | 金黃 |
+| 無附早餐 | `mp-meal-badge--none` | 灰色 |
+
+住宿明細：
+| Day | 飯店 | MapBtn query | 餐食 |
+|---|---|---|---|
+| 1–3, 7 | 札幌伊夢酒店 | `Hotel Emion Sapporo` | 附早餐 |
+| 4 | 洞爺湖萬世閣 | `Toya Manseikaku Hotel Hokkaido` | 附早晚餐 |
+| 5 | 托里菲托新雪谷飯店 | `Torifito Hotel Niseko Hokkaido` | 附早餐 |
+| 6 | Glow 別墅 | `Glow villa Otaru Hokkaido` | 無附早餐 |
+
 ### 意見回饋（Formspree）
 - 端點：`https://formspree.io/f/xvznkbjo`
-- 欄位：`name`、`message`
+- 欄位：`name`（最多 20 字）、`message`（最多 300 字），含字數計數器
 - 包含行程日期提示（10/06 出發・10/13 回程）
 - 送出後顯示 success state；後台可 CSV 匯出給 Claude Desktop 分析
 
@@ -124,6 +160,8 @@ bottom: 200px; z-index 200  ← Scrubber overlay（長壓開啟）
 - `vite.config.ts` 補了 `base: process.env.VITE_BASE ?? "./"` 才能 GitHub Pages 部署
 - `edge-tts.sh` 從澎湖複製（路徑 `src/scripts/tts-providers/edge-tts.sh`）
 - 圖片必須用 `const img = (n: string) => \`${baseUrl}images-mobile/${n}\`` helper 而非硬碼路徑
+- `index.html` 的 `og:image` 指向 `images-mobile/og-img.jpg`（非 cover.jpg，獨立 OG 圖）
+- LINE 分享後快取 OG 圖需改 URL 或 `?v=N` 強制刷新
 
 ## TTS 狀態
 
