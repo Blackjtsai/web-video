@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import "./MobilePage.css";
 
 /* ── Google Maps 小按鈕 ── */
@@ -270,6 +270,9 @@ function FeedbackModal({ onClose }: { onClose: () => void }) {
               <div className="mp-fb-title">行程意見回饋</div>
               <button type="button" className="mp-fb-x" onClick={onClose}>✕</button>
             </div>
+            <div className="mp-fb-trip-info">
+              ✈️ 出發 2026/10/06 · 回程 2026/10/13
+            </div>
             <label className="mp-fb-label">你是誰？</label>
             <input
               className="mp-fb-input"
@@ -305,8 +308,11 @@ interface Props { baseUrl: string; }
 
 export function MobilePage({ baseUrl }: Props) {
   const img = (name: string) => `${baseUrl}images-mobile/${name}`;
-  const [scrollLocked,  setScrollLocked]  = useState(false);
-  const [feedbackOpen,  setFeedbackOpen]  = useState(false);
+  const [feedbackOpen, setFeedbackOpen] = useState(false);
+
+  const scrollLockedRef = useRef(false);
+  const handleLock   = useCallback(() => { scrollLockedRef.current = true;  }, []);
+  const handleUnlock = useCallback(() => { scrollLockedRef.current = false; }, []);
 
   useEffect(() => {
     const root = document.getElementById("root");
@@ -315,10 +321,18 @@ export function MobilePage({ baseUrl }: Props) {
     root.style.overflowX = "hidden";
     root.style.height    = "100dvh";
     root.scrollTop = 0;
+
+    /* 播放時攔截手動捲動（passive: false 才能 preventDefault） */
+    const preventScroll = (e: TouchEvent) => {
+      if (scrollLockedRef.current) e.preventDefault();
+    };
+    root.addEventListener("touchmove", preventScroll, { passive: false });
+
     return () => {
       root.style.overflowY = "";
       root.style.overflowX = "";
       root.style.height    = "";
+      root.removeEventListener("touchmove", preventScroll);
     };
   }, []);
 
@@ -326,13 +340,6 @@ export function MobilePage({ baseUrl }: Props) {
 
   return (
     <div className="mp-root">
-
-      {/* ── 滑動鎖定遮罩：播放時攔截手動捲動，點擊解鎖 ── */}
-      {scrollLocked && (
-        <div className="mp-scroll-lock" onClick={() => setScrollLocked(false)}>
-          <div className="mp-unlock-hint">點此自由瀏覽</div>
-        </div>
-      )}
 
       {isLineBrowser && (
         <div className="mp-line-banner">
@@ -859,19 +866,17 @@ export function MobilePage({ baseUrl }: Props) {
         <div className="mp-pdf-date">2026 / 10 / 06 ~ 2026 / 10 / 13</div>
       </div>
 
-      {/* 意見回饋按鈕（左下角，暫時性） */}
-      <button className="mp-feedback-btn" onClick={() => setFeedbackOpen(true)}>
-        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden>
+      <button className="mp-feedback-fab" onClick={() => setFeedbackOpen(true)} aria-label="意見回饋">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22" aria-hidden>
           <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
         </svg>
-        <span>意見</span>
       </button>
       {feedbackOpen && <FeedbackModal onClose={() => setFeedbackOpen(false)} />}
 
       <MobileAudioFab
         baseUrl={baseUrl}
-        onLock={() => setScrollLocked(true)}
-        onUnlock={() => setScrollLocked(false)}
+        onLock={handleLock}
+        onUnlock={handleUnlock}
       />
     </div>
   );

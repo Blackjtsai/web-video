@@ -13,30 +13,6 @@
   margin: 0 auto;
 }
 
-/* ── 滑動鎖定遮罩 ── */
-.mp-scroll-lock {
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  /* 全透明，只擋事件；FAB z-index:100 仍可操作 */
-  background: transparent;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 96px;
-  pointer-events: auto;
-}
-.mp-unlock-hint {
-  background: rgba(0, 0, 0, 0.55);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 600;
-  border-radius: 100px;
-  padding: 8px 20px;
-  letter-spacing: .04em;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-}
 
 /* ── LINE banner ── */
 .mp-line-banner {
@@ -50,40 +26,33 @@
 }
 .mp-line-banner strong { text-decoration: underline; }
 
-/* ── Hero（封面滿版） ── */
+/* ── Hero（封面等比例） ── */
 .mp-hero {
-  position: relative;
-  height: 100dvh;
   overflow: hidden;
 }
 .mp-hero-img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 30%;
+  height: auto;
   display: block;
 }
 .mp-hero-text {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.75) 55%, transparent 100%);
+  background: var(--surface, #f5ece0);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 20px 20px 32px;
+  padding: 16px 20px 20px;
   gap: 8px;
 }
 .mp-hero-sub {
   font-size: 13px;
   letter-spacing: .18em;
-  color: rgba(255,255,255,0.72);
+  color: var(--text-mute, #7a5a3a);
   text-transform: uppercase;
 }
 .mp-hero-title {
   font-family: var(--font-display-cn, var(--font-display-en, serif));
-  font-size: clamp(32px, 8vw, 52px);
+  font-size: clamp(28px, 7vw, 44px);
   font-weight: 900;
-  color: #fff;
+  color: var(--text, #2a1a0e);
   line-height: 1.1;
 }
 .mp-hero-badges {
@@ -95,47 +64,41 @@
 .mp-badge {
   font-size: 12px;
   font-weight: 600;
-  background: rgba(255,255,255,0.18);
-  border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(191,68,0,0.1);
+  border: 1px solid rgba(191,68,0,0.28);
   border-radius: 100px;
-  color: #fff;
+  color: var(--accent, #bf4400);
   padding: 3px 10px;
 }
 
-/* ── 下滑提示（在封面和每日圖上） ── */
+/* ── 下滑提示 ── */
 .mp-scroll-hint {
   font-size: 12px;
   letter-spacing: .1em;
-  color: rgba(255,255,255,0.55);
-  margin-top: 10px;
+  color: var(--text-mute, #7a5a3a);
+  margin-top: 6px;
   text-align: left;
+  opacity: 0.6;
 }
 
 /* ── Day section ── */
 .mp-day { margin-top: 0; }
 
-/* 每日滿版封面 */
+/* 每日等比例封面 */
 .mp-day-cover {
-  position: relative;
-  height: 100dvh;
   overflow: hidden;
 }
 .mp-day-img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 40%;
+  height: auto;
   display: block;
 }
 .mp-day-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.70) 50%, transparent 100%);
+  background: var(--surface, #f5ece0);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 20px 20px 36px;
-  gap: 6px;
+  padding: 12px 16px 4px;
+  gap: 4px;
 }
 .mp-day-label-row {
   display: flex;
@@ -144,7 +107,7 @@
   flex-wrap: wrap;
 }
 
-/* Day tag：在深色 overlay 上用白色 */
+/* Day tag */
 .mp-day-tag {
   font-family: var(--font-mono, monospace);
   font-size: 13px;
@@ -157,13 +120,12 @@
   padding: 4px 12px;
   flex-shrink: 0;
 }
-/* 無封面的 must-know section 用深色 */
 .mp-day-tag--dark {
   background: var(--accent, #bf4400);
 }
 .mp-day-date {
   font-size: 14px;
-  color: rgba(255,255,255,0.85);
+  color: var(--text-mute, #7a5a3a);
   font-weight: 500;
 }
 .mp-day-date--dark {
@@ -644,27 +606,28 @@
   width: 100%;
 }
 
-/* ── 意見回饋 ── */
-.mp-feedback-btn {
+/* ── 意見回饋 FAB（聲音 FAB 正上方） ── */
+.mp-feedback-fab {
   position: fixed;
-  bottom: 24px;
-  left: 20px;
-  z-index: 100;
+  bottom: 96px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent, #bf4400);
+  border: none;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px;
-  background: rgba(191, 68, 0, 0.88);
+  justify-content: center;
   color: #fff;
-  border: none;
-  border-radius: 100px;
-  padding: 10px 16px 10px 12px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.28);
+  box-shadow: 0 6px 20px rgba(191,68,0,0.45);
   -webkit-tap-highlight-color: transparent;
+  touch-action: none;
+  z-index: 100;
+  transition: transform 120ms ease;
 }
+.mp-feedback-fab:active { transform: scale(0.92); }
 .mp-fb-overlay {
   position: fixed;
   inset: 0;
@@ -703,6 +666,15 @@
   cursor: pointer;
   padding: 4px 8px;
   -webkit-tap-highlight-color: transparent;
+}
+.mp-fb-trip-info {
+  background: rgba(191,68,0,0.08);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  font-size: 12px;
+  color: #7a5c3e;
+  line-height: 1.9;
 }
 .mp-fb-label {
   display: block;

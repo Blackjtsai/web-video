@@ -262,9 +262,9 @@ useEffect(() => {
 <script>history.scrollRestoration = "manual";</script>
 ```
 
-### Hero 全螢幕（100dvh 滿版）
+### Hero 封面（等比例，無漸層遮罩）
 
-封面圖佔滿整個視窗，文字浮在底部漸層 overlay。
+封面圖以自然比例顯示（不裁切），文字區塊跟在圖片下方。
 
 ```tsx
 <div id="mp-s-hero" className="mp-hero">
@@ -281,20 +281,24 @@ useEffect(() => {
 </div>
 ```
 ```css
-.mp-hero { position: relative; height: 100dvh; overflow: hidden; }
-.mp-hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
+.mp-hero { overflow: hidden; }
+.mp-hero-img { width: 100%; height: auto; display: block; }
 .mp-hero-text {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.75) 55%, transparent 100%);
-  display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 20px 20px 32px; gap: 8px;
+  background: var(--surface); padding: 16px 20px 20px;
+  display: flex; flex-direction: column; gap: 8px;
 }
-.mp-scroll-hint { font-size: 12px; letter-spacing: .1em; color: rgba(255,255,255,0.55); margin-top: 10px; }
+.mp-hero-sub   { font-size: 13px; letter-spacing: .18em; color: var(--text-mute); text-transform: uppercase; }
+.mp-hero-title { font-size: clamp(28px, 7vw, 44px); font-weight: 900; color: var(--text); line-height: 1.1; }
+.mp-badge {
+  font-size: 12px; font-weight: 600; border-radius: 100px; padding: 3px 10px;
+  background: rgba(191,68,0,0.1); border: 1px solid rgba(191,68,0,0.28); color: var(--accent);
+}
+.mp-scroll-hint { font-size: 12px; letter-spacing: .1em; color: var(--text-mute); opacity: 0.6; margin-top: 6px; }
 ```
 
-### 每日 Section 滿版封面（mp-day-cover）
+### 每日 Section 封面（mp-day-cover，等比例）
 
-每個 Day section 用 `mp-day-cover` wrapper，結構和 Hero 一樣。
+每個 Day section 圖片自然等比例，Day tag + 日期放圖片下方淺色區塊。
 
 ```tsx
 <section id="mp-s-day1" className="mp-day">
@@ -312,20 +316,18 @@ useEffect(() => {
 </section>
 ```
 ```css
-.mp-day-cover { position: relative; height: 100dvh; overflow: hidden; }
-.mp-day-img   { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
+.mp-day-cover { overflow: hidden; }
+.mp-day-img   { width: 100%; height: auto; display: block; }
 .mp-day-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.70) 50%, transparent 100%);
-  display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 20px 20px 36px; gap: 6px;
+  background: var(--surface); padding: 12px 16px 4px;
+  display: flex; flex-direction: column; gap: 4px;
 }
 .mp-day-label-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .mp-day-tag  { font-size: 13px; font-weight: 700; background: var(--accent); color: #fff; border-radius: 6px; padding: 4px 12px; }
-.mp-day-date { font-size: 14px; color: rgba(255,255,255,0.85); font-weight: 500; }
+.mp-day-date { font-size: 14px; color: var(--text-mute); font-weight: 500; }
 ```
 
-SEGMENTS 中每個 chapter 的**第一步** cardId 指向 `mp-s-dayX`（section 頂部 = 滿版封面）；
+SEGMENTS 中每個 chapter 的**第一步** cardId 指向 `mp-s-dayX`（section 頂部）；
 後續步驟的 cardId 指向各卡片（`mp-c-dX-slug`）。
 
 ### Section / Card 命名規則
@@ -582,47 +584,46 @@ Tag chip 也可直接改 `<a>`：
 
 播放口播時，鎖定使用者手動捲動，讓 FAB 自動捲動主導頁面。
 
-**原理**：`position: fixed` 全透明遮罩（z-index 50）攔截所有 pointer/touch 事件。
-FAB z-index 100，在遮罩上方仍可操作。
-`scrollIntoView` 是 DOM 操作，**不走 pointer 事件**，所以自動捲動仍正常。
+**正確做法：`touchmove` 監聽器 + ref**（勿用透明 overlay）
+
+透明 overlay（`pointer-events: auto`）在 iOS Safari 上，unmount 後 scroll 狀態有時不立刻恢復，
+導致暫停後仍無法手動捲動。改用 `touchmove` addEventListener + `passive: false`：
 
 ```tsx
-// MobilePage
-const [scrollLocked, setScrollLocked] = useState(false);
+// MobilePage.tsx
+import { useCallback, useRef } from "react";
 
-{scrollLocked && (
-  <div className="mp-scroll-lock" onClick={() => setScrollLocked(false)}>
-    <div className="mp-unlock-hint">點此自由瀏覽</div>
-  </div>
-)}
+const scrollLockedRef = useRef(false);
+const handleLock   = useCallback(() => { scrollLockedRef.current = true;  }, []);
+const handleUnlock = useCallback(() => { scrollLockedRef.current = false; }, []);
 
-<MobileAudioFab
-  baseUrl={baseUrl}
-  onLock={() => setScrollLocked(true)}
-  onUnlock={() => setScrollLocked(false)}
-/>
+useEffect(() => {
+  const root = document.getElementById("root");
+  if (!root) return;
+  // 在初始 root setup 的 useEffect 裡一起掛，不另起 effect
+  const preventScroll = (e: TouchEvent) => {
+    if (scrollLockedRef.current) e.preventDefault();
+  };
+  root.addEventListener("touchmove", preventScroll, { passive: false });
+  return () => root.removeEventListener("touchmove", preventScroll);
+}, []);
+
+<MobileAudioFab baseUrl={baseUrl} onLock={handleLock} onUnlock={handleUnlock} />
 ```
-```tsx
-// MobileAudioFab
-interface FabProps { baseUrl: string; onLock: () => void; onUnlock: () => void; }
 
+```tsx
+// MobileAudioFab — onLock/onUnlock 傳入後由 playing effect 呼叫
 useEffect(() => {
   if (playing) onLock(); else onUnlock();
 }, [playing, onLock, onUnlock]);
+// onLock/onUnlock 用 useCallback，引用穩定，依賴陣列不會無限觸發
 ```
-```css
-.mp-scroll-lock {
-  position: fixed; inset: 0; z-index: 50;
-  background: transparent; pointer-events: auto;
-  display: flex; align-items: flex-end; justify-content: center; padding-bottom: 96px;
-}
-.mp-unlock-hint {
-  background: rgba(0,0,0,0.55); color: #fff;
-  font-size: 13px; font-weight: 600;
-  border-radius: 100px; padding: 8px 20px;
-  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
-}
-```
+
+**要點：**
+- `passive: false` 才能呼叫 `e.preventDefault()`（必須）
+- ref 即時更新，不需等 React 重渲染週期，暫停後下一個 touchmove 立刻解鎖
+- 無需任何 overlay div 或 CSS
+- `scrollIntoView` / `scrollTo` 是程式呼叫，不走 touch 事件，自動捲動仍正常
 
 ### 5. 深色卡片文字可見（warn card）
 ```css
@@ -801,12 +802,11 @@ bash ~/.claude/skills/web-video-presentation/scripts/scaffold.sh src --theme=sun
 - [ ] SplitEnding：PDF 按鈕可下載？地圖連結正確打開？
 
 ### 手機版驗收
-- [ ] Hero 滿版（100dvh），封面圖填滿整個螢幕？
-- [ ] 每個 Day section 也有滿版封面圖（mp-day-cover）？
-- [ ] Day tag + 日期顯示在圖片底部 overlay？
-- [ ] 播放時頁面鎖定，看得到「點此自由瀏覽」提示？
-- [ ] 點遮罩或暫停後可自由捲動（scroll lock 解除）？
-- [ ] FAB 在鎖定狀態下仍可操作（z-index 100）？
+- [ ] 封面圖（Hero）等比例顯示，寬度 100%，無裁切、無漸層 overlay？
+- [ ] 每個 Day section 圖片也等比例顯示，Day tag 在圖片下方？
+- [ ] 播放時無法手動捲動（touchmove 被攔截）？
+- [ ] 暫停後可立刻自由捲動（ref 即時解鎖，無殘留鎖定）？
+- [ ] FAB 在播放狀態下仍可操作（z-index 100）？
 - [ ] FAB 播放 / 長按 Scrubber 正常？
 - [ ] 地圖按鈕點開 Google Maps 正確？
 - [ ] 重新整理後回到頂部？

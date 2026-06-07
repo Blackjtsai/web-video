@@ -16,23 +16,24 @@
 | 09  | day8      | `.d8-`     |   3   | Day 8：新千歲大補貨 & 快樂賦歸      |
 | 10  | must-know | `.mk-`     |   5   | 出發前必知 & 北海道名產攻略         |
 
-**總步數：41 步 = narrations.ts 段數 = SEGMENTS 段數（三者一致 ✓）**
-
-> ⚠️ TTS 尚未合成（audio-segments.json 不存在；public/audio/ 不存在）
-> 需執行：`cd src && npm run extract-narrations && PRESENTATION_TTS=edge-tts npm run synthesize-audio`
+**總步數：41 步 = narrations.ts 段數 = SEGMENTS 段數 = 音頻數量（四者一致 ✓）**
 
 ## 關鍵檔案
 
 | 檔案（相對 src/）                     | 關鍵內容 |
 |--------------------------------------|---------|
 | `src/registry/chapters.ts`           | CHAPTERS 陣列，章節順序唯一真相源 |
-| `src/App.tsx`                        | `isMobile` 判斷 (`?layout=mobile`)；AudioPlayer；Stage 佈局 |
+| `src/App.tsx`                        | `isMobile` 判斷 (`?layout=mobile`) |
 | `src/hooks/useStepper.ts`            | `STORAGE_KEY = "presentation-cursor-v4"` |
 | `src/styles/tokens.css`              | 主題色 token（楓葉秋光） |
-| `src/components/MobilePage.tsx`      | SEGMENTS 陣列（41 段）+ CHAPTER_GROUPS（10 組） |
-| `src/components/MobilePage.css`      | 手機版：滿版封面（100dvh）+ scroll lock overlay |
+| `src/components/MobilePage.tsx`      | SEGMENTS 41 段；scroll lock 用 touchmove ref（見特殊 hack）|
+| `src/components/MobilePage.css`      | 手機版樣式（mp- prefix）；圖片等比例；FAB 設計 |
 | `src/components/ProgressBar.tsx`     | 傳 `githubUrl={null}` |
-| `public/images/`                     | 封面 + 每日圖（見下方清單） |
+| `src/scripts/tts-providers/edge-tts.sh` | 從澎湖複製來的（原本缺失）|
+| `vite.config.ts`                     | `base: process.env.VITE_BASE ?? "./"` |
+| `public/images/`                     | 高畫質原圖（網頁版用） |
+| `public/images-mobile/`              | 壓縮版（quality 75, max 1400px，手機版用）|
+| `public/audio/<id>/<N>.mp3`          | 口播音頻（41 段，已合成）|
 
 ## 主題色（楓葉秋光）
 
@@ -53,41 +54,85 @@
 ## 圖片資產
 
 ```
-public/images/
-  cover.jpg                  封面（hero）
-  day1.jpg ~ day8.jpg        每日滿版封面
-  jozankei.jpg               定山溪溫泉
-  koibito-park.jpg           白色戀人公園
-  otaru-canal.jpg            小樽運河
-  senen-numa.jpg             神仙沼濕地
-  shakotan.jpg               積丹海岸
-  toya-lake.jpg              洞爺湖花火
-  souvenir-rokkatei.jpg      六花亭伴手禮
-  souvenir-shiroi-koibito.jpg 白色戀人伴手禮
+public/images/          ← 高畫質原圖（網頁版 split-left 用）
+  cover.jpg、day1.jpg–day8.jpg
+  jozankei.jpg、koibito-park.jpg、otaru-canal.jpg
+  senen-numa.jpg、shakotan.jpg、toya-lake.jpg
+  souvenir-rokkatei.jpg、souvenir-shiroi-koibito.jpg
+
+public/images-mobile/   ← 壓縮版（手機版 MobilePage 用，同樣 17 張）
+  sips quality 75；任一邊 > 1400px 縮 resize；壓縮後比原圖大則保留原圖
 ```
 
 ## 手機版架構（MobilePage）
 
-- Hero + 每個 Day section 封面圖：`height: 100dvh` + `object-fit: cover` + 底部漸層 overlay
-- 播放時 scroll lock：`position: fixed; z-index: 50; background: transparent` 遮罩攔截觸控
-- FAB：`z-index: 100`（在 scroll lock 上方）
-- Scrubber（長壓 FAB）：`z-index: 200`
-- `scrollIntoView` 是 DOM 操作，不走 pointer 事件，自動捲動不受 scroll lock 影響
+### 圖片佈局（等比例，非 100dvh）
+```css
+/* 封面 / 每日圖：自然等比例，寬 100%，無裁切，無漸層 overlay */
+.mp-hero-img { width: 100%; height: auto; display: block; }
+.mp-day-img  { width: 100%; height: auto; display: block; }
+
+/* 文字區塊跟在圖片下方，淺色背景 */
+.mp-hero-text  { background: var(--surface); padding: 16px 20px 20px; }
+.mp-day-overlay { background: var(--surface); padding: 12px 16px 4px; }
+```
+
+### Scroll Lock（正確做法，非透明 overlay）
+iOS 上透明 overlay 移除後有時 scroll 狀態不立刻恢復。正確做法：
+
+```tsx
+// MobilePage
+const scrollLockedRef = useRef(false);
+const handleLock   = useCallback(() => { scrollLockedRef.current = true;  }, []);
+const handleUnlock = useCallback(() => { scrollLockedRef.current = false; }, []);
+
+useEffect(() => {
+  const root = document.getElementById("root");
+  if (!root) return;
+  const preventScroll = (e: TouchEvent) => {
+    if (scrollLockedRef.current) e.preventDefault();
+  };
+  root.addEventListener("touchmove", preventScroll, { passive: false });
+  return () => root.removeEventListener("touchmove", preventScroll);
+}, []);
+
+// 傳給 FAB
+<MobileAudioFab baseUrl={baseUrl} onLock={handleLock} onUnlock={handleUnlock} />
+```
+
+- `passive: false` 才能 `preventDefault()`
+- ref 即時更新，不需等 React 重渲染
+- 暫停後下一個 touchmove 立刻解鎖
+
+### FAB 佈局
+```
+bottom: 28px;  right: 20px  ← 聲音 FAB（z-index 100）
+bottom: 96px;  right: 20px  ← 意見 FAB（z-index 100，正上方）
+bottom: 200px; z-index 200  ← Scrubber overlay（長壓開啟）
+```
+
+### 意見回饋（Formspree）
+- 端點：`https://formspree.io/f/xvznkbjo`
+- 欄位：`name`、`message`
+- 包含行程日期提示（10/06 出發・10/13 回程）
+- 送出後顯示 success state；後台可 CSV 匯出給 Claude Desktop 分析
 
 ## 特殊 hack
 
-- 無 `split.css`（此版本不使用 SplitLayout，網頁版直接 Stage + ProgressBar）
-- `ProgressBar` 必須傳 `githubUrl={null}`（否則底部出現範本作者 GitHub 圖示）
-- MobilePage 的 `onLock`/`onUnlock` 由 `playing` state 驅動（playing→lock, !playing→unlock）
+- 無 `split.css`（網頁版直接用 Stage + ProgressBar，無 SplitLayout）
+- `ProgressBar` 必須傳 `githubUrl={null}`
+- `vite.config.ts` 補了 `base: process.env.VITE_BASE ?? "./"` 才能 GitHub Pages 部署
+- `edge-tts.sh` 從澎湖複製（路徑 `src/scripts/tts-providers/edge-tts.sh`）
+- 圖片必須用 `const img = (n: string) => \`${baseUrl}images-mobile/${n}\`` helper 而非硬碼路徑
 
 ## TTS 狀態
 
 | 項目 | 值 |
 |------|----|
-| Provider | edge-tts（待合成） |
+| Provider | edge-tts |
 | Voice | `zh-TW-HsiaoChenNeural` |
-| 已合成 | 0 / 41 段（尚未執行） |
-| 合成指令 | `cd site/20261006北海道八日遊/src && npm run extract-narrations && PRESENTATION_TTS=edge-tts npm run synthesize-audio` |
+| 已合成 | 41 / 41 段 ✅ |
+| 合成指令 | `cd site/20261006北海道八日遊/src && PRESENTATION_TTS=edge-tts npm run synthesize-audio` |
 
 ## 啟動指令
 
@@ -97,6 +142,7 @@ npm install      # 第一次需要
 npm run dev
 # 網頁版：http://localhost:5174/
 # 手機版：http://localhost:5174/?layout=mobile
+# ⚠️ 若仙台同時跑，port 自動 bump 到 5175
 ```
 
 ## 新增章節流程
