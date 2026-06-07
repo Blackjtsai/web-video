@@ -233,11 +233,80 @@ function MobileAudioFab({ baseUrl, onLock, onUnlock }: FabProps) {
   );
 }
 
+/* ── 行程意見回饋 Modal（暫時性功能，確認行程後可移除） ── */
+function FeedbackModal({ onClose }: { onClose: () => void }) {
+  const [name, setName]       = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus]   = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setStatus('sending');
+    try {
+      const res = await fetch('https://formspree.io/f/xvznkbjo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ name, message }),
+      });
+      setStatus(res.ok ? 'success' : 'error');
+    } catch {
+      setStatus('error');
+    }
+  }
+
+  return (
+    <div className="mp-fb-overlay" onClick={onClose}>
+      <div className="mp-fb-sheet" onClick={e => e.stopPropagation()}>
+        {status === 'success' ? (
+          <div className="mp-fb-success">
+            <div className="mp-fb-check">✓</div>
+            <div className="mp-fb-success-title">謝謝你的意見！</div>
+            <div className="mp-fb-success-sub">我們會認真參考的 🍁</div>
+            <button className="mp-fb-done-btn" onClick={onClose}>關閉</button>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit}>
+            <div className="mp-fb-header">
+              <div className="mp-fb-title">行程意見回饋</div>
+              <button type="button" className="mp-fb-x" onClick={onClose}>✕</button>
+            </div>
+            <label className="mp-fb-label">你是誰？</label>
+            <input
+              className="mp-fb-input"
+              type="text"
+              placeholder="輸入你的名字"
+              value={name}
+              onChange={e => setName(e.target.value)}
+              required
+            />
+            <label className="mp-fb-label">你的想法</label>
+            <textarea
+              className="mp-fb-textarea"
+              placeholder="對這次北海道行程有什麼期待或建議？"
+              value={message}
+              onChange={e => setMessage(e.target.value)}
+              required
+              rows={4}
+            />
+            {status === 'error' && (
+              <div className="mp-fb-error">送出失敗，請再試一次</div>
+            )}
+            <button type="submit" className="mp-fb-submit" disabled={status === 'sending'}>
+              {status === 'sending' ? '送出中…' : '送出意見'}
+            </button>
+          </form>
+        )}
+      </div>
+    </div>
+  );
+}
+
 interface Props { baseUrl: string; }
 
 export function MobilePage({ baseUrl }: Props) {
   const img = (name: string) => `${baseUrl}images-mobile/${name}`;
-  const [scrollLocked, setScrollLocked] = useState(false);
+  const [scrollLocked,  setScrollLocked]  = useState(false);
+  const [feedbackOpen,  setFeedbackOpen]  = useState(false);
 
   useEffect(() => {
     const root = document.getElementById("root");
@@ -789,6 +858,15 @@ export function MobilePage({ baseUrl }: Props) {
         </a>
         <div className="mp-pdf-date">2026 / 10 / 06 ~ 2026 / 10 / 13</div>
       </div>
+
+      {/* 意見回饋按鈕（左下角，暫時性） */}
+      <button className="mp-feedback-btn" onClick={() => setFeedbackOpen(true)}>
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden>
+          <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+        </svg>
+        <span>意見</span>
+      </button>
+      {feedbackOpen && <FeedbackModal onClose={() => setFeedbackOpen(false)} />}
 
       <MobileAudioFab
         baseUrl={baseUrl}
