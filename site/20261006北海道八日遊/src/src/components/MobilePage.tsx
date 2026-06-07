@@ -236,7 +236,7 @@ function MobileAudioFab({ baseUrl, onLock, onUnlock }: FabProps) {
 interface Props { baseUrl: string; }
 
 export function MobilePage({ baseUrl }: Props) {
-  const img = (name: string) => `${baseUrl}images/${name}`;
+  const img = (name: string) => `${baseUrl}images-mobile/${name}`;
   const [scrollLocked, setScrollLocked] = useState(false);
 
   useEffect(() => {
