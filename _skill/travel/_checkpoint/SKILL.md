@@ -64,7 +64,7 @@ echo "=== CHAPTERS ===" && grep -E "id:|Component" "$SRC/src/registry/chapters.t
 # ── 每章 step 數（讀 narrations.ts 陣列長度）──
 echo "=== STEPS ===" && for dir in "$SRC/src/chapters"/*/; do
   id=$(basename "$dir" | sed 's/^[0-9]*-//')
-  count=$(grep -c "^\s*['\`]" "$dir/narrations.ts" 2>/dev/null || echo "?")
+  count=$(grep -c '^\s*"' "$dir/narrations.ts" 2>/dev/null || echo "?")
   echo "$id: $count"
 done
 
@@ -218,12 +218,27 @@ npm run dev
 - [ ] 發現影響所有專案的框架規則 → 「關鍵架構規則」段落更新
 - [ ] 否則跳過
 
-### ② `site/index.html`（若存在）
+### ② 根目錄 `index.html`（GitHub Pages 總入口）
 
-- [ ] 新增旅遊專案 → 表格加一行（序號、名稱、連結、建立日期）
-- [ ] 新連結要有 `onclick="localStorage.removeItem('STORAGE_KEY_NAME')"`
-- [ ] 若 STORAGE_KEY 有 bump → 同步更新 onclick 裡的 key 名稱
-- [ ] 否則跳過
+**觸發條件：新專案實際部署到 GitHub Pages 之後才更新。** TTS 未合成 / 未部署的專案不加。
+
+index.html 的連結格式是部署後的短路徑（如 `penghu/`、`sendai/`），
+**不是** `site/20260528澎湖四日遊/`。新專案的短路徑需配合 `deploy.yml` 確認。
+
+加一個 `.card` 區塊，格式參考現有卡片：
+```html
+<div class="card">
+  <div class="card-tag">{YYYY · MM}</div>
+  <div class="card-title">{地點名稱}</div>
+  <div class="card-meta">{N} 章 · {M} 步 · {一句話描述}</div>
+  <div class="card-links">
+    <a class="btn btn-primary" href="{short-path}/">網頁版</a>
+    <a class="btn btn-secondary" href="{short-path}/?layout=mobile">手機版</a>
+  </div>
+</div>
+```
+
+若此次 checkpoint 的專案尚未部署 → 跳過。
 
 ---
 
