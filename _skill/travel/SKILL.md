@@ -336,11 +336,37 @@ SEGMENTS 中每個 chapter 的**第一步** cardId 指向 `mp-s-dayX`（section 
 
 ### 圖片路徑（重要）
 ```tsx
-const img = (name: string) => `${baseUrl}images/${name}`;
+const img = (name: string) => `${baseUrl}images-mobile/${name}`;
 // ✅ 正確：<img src={img("cover.jpg")} />
 // ❌ 錯誤：<img src="/images/cover.jpg" />  ← vite base 不是 /
 ```
-`vite.config.ts` 必須設 `base: "./"`.
+`vite.config.ts` 必須設 `base: process.env.VITE_BASE ?? "./"`.
+
+### 手機版圖片壓縮（必做）
+
+**手機版的所有圖片都必須有獨立的壓縮版本，放在 `public/images-mobile/`。**
+
+原始高畫質圖放 `public/images/`（給網頁版 split-left 用），
+MobilePage 的 `img()` helper 一律指向 `images-mobile/`。
+
+**壓縮標準：** quality 75 + max 1400px（用 macOS `sips`）
+
+```bash
+mkdir -p src/public/images-mobile
+for f in src/public/images/*.jpg; do
+  sips -Z 1400 -s format jpeg -s formatOptions 75 "$f" \
+    --out "src/public/images-mobile/$(basename $f)"
+done
+```
+
+**壓縮後預期大小：**
+- Hero / Day 封面圖（100dvh 滿版）：原 2–3MB → 約 500KB
+- 卡片小圖（koibito-park、souvenir 等）：原 1–2MB → 約 200–400KB
+
+若原圖已經 < 300KB，直接複製即可，不需要額外壓縮。
+
+**檢查時機：** Phase 3 開始時先跑 `ls -lh src/public/images/` 確認大小，
+再決定是否壓縮。若有圖片 > 500KB，必須建立 `images-mobile/`。
 
 ### PDF 下載按鈕（頁尾）
 ```tsx
