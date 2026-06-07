@@ -349,24 +349,29 @@ const img = (name: string) => `${baseUrl}images-mobile/${name}`;
 原始高畫質圖放 `public/images/`（給網頁版 split-left 用），
 MobilePage 的 `img()` helper 一律指向 `images-mobile/`。
 
-**壓縮標準：** quality 75 + max 1400px（用 macOS `sips`）
+**壓縮標準：** quality 75 輸出；任一邊 > 1400px 則同時 resize 到 max 1400px
 
 ```bash
 mkdir -p src/public/images-mobile
 for f in src/public/images/*.jpg; do
-  sips -Z 1400 -s format jpeg -s formatOptions 75 "$f" \
-    --out "src/public/images-mobile/$(basename $f)"
+  name=$(basename "$f")
+  out="src/public/images-mobile/$name"
+  sips -Z 1400 -s format jpeg -s formatOptions 75 "$f" --out "$out"
+  # 若壓縮後反而比原圖大，保留原圖
+  orig=$(stat -f%z "$f"); new=$(stat -f%z "$out")
+  [ "$new" -gt "$orig" ] && cp "$f" "$out" && echo "⚠️ $name 壓縮後更大，保留原圖"
 done
 ```
 
-**壓縮後預期大小：**
-- Hero / Day 封面圖（100dvh 滿版）：原 2–3MB → 約 500KB
-- 卡片小圖（koibito-park、souvenir 等）：原 1–2MB → 約 200–400KB
+**檢查時機：** Phase 3 開始時先確認圖片尺寸，再執行壓縮：
 
-若原圖已經 < 300KB，直接複製即可，不需要額外壓縮。
-
-**檢查時機：** Phase 3 開始時先跑 `ls -lh src/public/images/` 確認大小，
-再決定是否壓縮。若有圖片 > 500KB，必須建立 `images-mobile/`。
+```bash
+for f in src/public/images/*.jpg; do
+  dims=$(sips -g pixelWidth -g pixelHeight "$f" | grep pixel | awk '{print $2}' | tr '\n' 'x' | sed 's/x$//')
+  size=$(ls -lh "$f" | awk '{print $5}')
+  echo "$(basename $f)  ${dims}  ${size}"
+done
+```
 
 ### PDF 下載按鈕（頁尾）
 ```tsx
