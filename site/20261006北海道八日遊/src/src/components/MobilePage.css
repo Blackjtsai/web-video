@@ -702,6 +702,13 @@
   border-color: #bf4400;
 }
 .mp-fb-textarea { resize: none; }
+.mp-fb-counter {
+  text-align: right;
+  font-size: 11px;
+  color: #b09070;
+  margin-top: -12px;
+  margin-bottom: 12px;
+}
 .mp-fb-error {
   font-size: 13px;
   color: #c0392b;

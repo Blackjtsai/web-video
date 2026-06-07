@@ -280,17 +280,21 @@ function FeedbackModal({ onClose }: { onClose: () => void }) {
               placeholder="輸入你的名字"
               value={name}
               onChange={e => setName(e.target.value)}
+              maxLength={20}
               required
             />
+            <div className="mp-fb-counter">{name.length} / 20</div>
             <label className="mp-fb-label">你的想法</label>
             <textarea
               className="mp-fb-textarea"
               placeholder="對這次北海道行程有什麼期待或建議？"
               value={message}
               onChange={e => setMessage(e.target.value)}
+              maxLength={300}
               required
               rows={4}
             />
+            <div className="mp-fb-counter">{message.length} / 300</div>
             {status === 'error' && (
               <div className="mp-fb-error">送出失敗，請再試一次</div>
             )}

@@ -53,6 +53,7 @@ Phase 3   手機版（MobilePage 組件）
   3.2  MobilePage.css — mp- prefix 樣式
   3.3  PDF 下載按鈕 + 日期文字（頁底）
   3.4  LINE 偵測（自動跳出 + banner 備案）
+  3.5  意見回饋 FAB（Formspree，行程確認前使用）
   ▼
 [Checkpoint Audio]  是否合成口播音頻？
   ▼
@@ -374,6 +375,121 @@ for f in src/public/images/*.jpg; do
   echo "$(basename $f)  ${dims}  ${size}"
 done
 ```
+
+### 意見回饋 FAB（Phase 3.5，每個新專案必做）
+
+行程手冊分享給家人前，加一個暫時性意見按鈕讓家人提建議。行程確認後可移除。
+
+**Step 1：開新 Formspree 表單**
+
+> 📌 請先完成這個步驟，再繼續寫程式碼。
+
+1. 前往 [formspree.io](https://formspree.io) → 登入帳號 `blackjtsai@gmail.com`
+2. 點「+ New Form」→ 名稱填 `{專案名稱}-feedback`（例如 `花蓮-feedback`）
+3. 建立後複製 endpoint URL（格式：`https://formspree.io/f/xxxxxxxx`）
+4. 把 endpoint 告訴我，我幫你貼進程式碼
+
+**Step 2：程式碼實作**
+
+收到 endpoint 後，在 `MobilePage.tsx` 加入：
+
+```tsx
+/* ── 意見回饋 Modal（行程確認前暫時性功能） ── */
+function FeedbackModal({ onClose }: { onClose: () => void }) {
+  const [name, setName]       = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus]   = useState<'idle'|'sending'|'success'|'error'>('idle');
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setStatus('sending');
+    try {
+      const res = await fetch('https://formspree.io/f/XXXXXXXX', {  // ← 換成新端點
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ name, message }),
+      });
+      setStatus(res.ok ? 'success' : 'error');
+    } catch { setStatus('error'); }
+  }
+
+  return (
+    <div className="mp-fb-overlay" onClick={onClose}>
+      <div className="mp-fb-sheet" onClick={e => e.stopPropagation()}>
+        {status === 'success' ? (
+          <div className="mp-fb-success">
+            <div className="mp-fb-check">✓</div>
+            <div className="mp-fb-success-title">謝謝你的意見！</div>
+            <div className="mp-fb-success-sub">我們會認真參考的 🍁</div>
+            <button className="mp-fb-done-btn" onClick={onClose}>關閉</button>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit}>
+            <div className="mp-fb-header">
+              <div className="mp-fb-title">行程意見回饋</div>
+              <button type="button" className="mp-fb-x" onClick={onClose}>✕</button>
+            </div>
+            <div className="mp-fb-trip-info">
+              ✈️ 出發 {出發日期} · 回程 {回程日期}
+            </div>
+            <label className="mp-fb-label">你是誰？</label>
+            <input className="mp-fb-input" type="text" placeholder="輸入你的名字"
+              value={name} onChange={e => setName(e.target.value)} maxLength={20} required />
+            <div className="mp-fb-counter">{name.length} / 20</div>
+            <label className="mp-fb-label">你的想法</label>
+            <textarea className="mp-fb-textarea" rows={4}
+              placeholder="對這次行程有什麼期待或建議？"
+              value={message} onChange={e => setMessage(e.target.value)} maxLength={300} required />
+            <div className="mp-fb-counter">{message.length} / 300</div>
+            {status === 'error' && <div className="mp-fb-error">送出失敗，請再試一次</div>}
+            <button type="submit" className="mp-fb-submit" disabled={status === 'sending'}>
+              {status === 'sending' ? '送出中…' : '送出意見'}
+            </button>
+          </form>
+        )}
+      </div>
+    </div>
+  );
+}
+```
+
+在 `MobilePage` 組件內加狀態與 FAB：
+```tsx
+const [feedbackOpen, setFeedbackOpen] = useState(false);
+
+// FAB（放在 MobileAudioFab 前）
+<button className="mp-feedback-fab" onClick={() => setFeedbackOpen(true)} aria-label="意見回饋">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22" aria-hidden>
+    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+  </svg>
+</button>
+{feedbackOpen && <FeedbackModal onClose={() => setFeedbackOpen(false)} />}
+```
+
+FAB CSS（圓形，與聲音 FAB 同款，放正上方）：
+```css
+.mp-feedback-fab {
+  position: fixed; bottom: 96px; right: 20px;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--accent); border: none; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  z-index: 100; cursor: pointer; transition: transform 120ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.mp-feedback-fab:active { transform: scale(0.92); }
+```
+
+字數計數 CSS：
+```css
+.mp-fb-counter { text-align: right; font-size: 11px; color: #b09070; margin-top: -12px; margin-bottom: 12px; }
+```
+
+完整 Modal 樣式參考 北海道 MobilePage.css 的 `.mp-fb-*` 段落。
+
+**每週看意見：** Formspree 後台 → Submissions → Export CSV → 貼給 Claude Desktop 分析。
+
+---
 
 ### PDF 下載按鈕（頁尾）
 ```tsx
