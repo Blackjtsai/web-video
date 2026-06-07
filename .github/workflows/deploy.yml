@@ -34,11 +34,18 @@ jobs:
           npm install
           VITE_BASE=/web-video/sendai/ npm run build
 
+      - name: Build 北海道
+        run: |
+          cd "site/20261006北海道八日遊/src"
+          npm install
+          VITE_BASE=/web-video/hokkaido/ npm run build
+
       - name: Assemble dist
         run: |
-          mkdir -p dist/penghu dist/sendai
+          mkdir -p dist/penghu dist/sendai dist/hokkaido
           cp -r "site/20260528澎湖四日遊/src/dist/." dist/penghu/
           cp -r "site/20261220仙台/src/dist/." dist/sendai/
+          cp -r "site/20261006北海道八日遊/src/dist/." dist/hokkaido/
           cp index.html dist/index.html
 
       - uses: actions/configure-pages@v4
