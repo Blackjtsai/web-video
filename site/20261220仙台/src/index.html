@@ -1,9 +1,19 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-TW">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Presentation</title>
+    <title>仙台五日遊</title>
+    <script>history.scrollRestoration = "manual";</script>
+    <script>
+      (function () {
+        if (navigator.userAgent.indexOf('Line/') > -1) {
+          var href = location.href;
+          if (href.indexOf('openExternalBrowser') === -1)
+            location.replace(href + (href.indexOf('?') > -1 ? '&' : '?') + 'openExternalBrowser=1');
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

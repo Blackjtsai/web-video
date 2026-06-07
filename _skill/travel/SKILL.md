@@ -108,6 +108,36 @@ rm -rf site/{project}/src/src/chapters/01-example
 # 並在 registry/chapters.ts 移除 EXAMPLE_CHAPTER import 與陣列項
 ```
 
+**scaffold 完成後立刻補 index.html（必做，scaffold 不會自動加）：**
+
+```html
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{旅遊名稱}</title>
+    <script>history.scrollRestoration = "manual";</script>
+    <script>
+      (function () {
+        if (navigator.userAgent.indexOf('Line/') > -1) {
+          var href = location.href;
+          if (href.indexOf('openExternalBrowser') === -1)
+            location.replace(href + (href.indexOf('?') > -1 ? '&' : '?') + 'openExternalBrowser=1');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+```
+
+> ⚠️ 少了 LINE script → LINE 分享後收件人只能在 LINE 內建瀏覽器看，體驗差且功能受限。
+> 少了 `scrollRestoration = "manual"` → 手機版重整後捲動位置不回頂部。
+
 ### 2.2 複製圖片
 ```bash
 cp ./site/{project}/doc/封面圖.jpg  site/{project}/src/public/images/cover.jpg
