@@ -361,6 +361,71 @@ useEffect(() => {
 SEGMENTS 中每個 chapter 的**第一步** cardId 指向 `mp-s-dayX`（section 頂部）；
 後續步驟的 cardId 指向各卡片（`mp-c-dX-slug`）。
 
+### 每日住宿卡（Phase 3 必做）
+
+**每個 Day section 結尾都必須加一張住宿卡**，包含飯店名、英文名、地圖按鈕、餐食標籤。
+
+```tsx
+{/* 每天 section 最後一張卡 */}
+<div id="mp-c-dN-hotel" className="mp-card">
+  <div className="mp-card-title mp-card-title--row">
+    <span>🏨 今晚住宿</span>
+    <MapBtn q="Hotel English Search Query" />
+  </div>
+  <div className="mp-hotel-name">中文飯店名</div>
+  <div className="mp-hotel-en">Hotel English Name</div>
+  <span className="mp-meal-badge mp-meal-badge--bf">🍳 附早餐</span>
+</div>
+```
+
+若為**暗色卡**（`mp-card--dark`），在 card-title 加 `mp-card-title--light`，
+並改用 `mp-meal-badge--bfdn-dark`（金黃色）：
+
+```tsx
+<div id="mp-c-dN-hotel" className="mp-card mp-card--dark">
+  <div className="mp-card-title mp-card-title--row mp-card-title--light">
+    <span>🏨 飯店名</span>
+    <MapBtn q="Hotel Query" />
+  </div>
+  <div className="mp-hotel-en" style={{ color: "rgba(255,255,255,0.5)", marginBottom: 8 }}>English Name</div>
+  <span className="mp-meal-badge mp-meal-badge--bfdn-dark">🍳🥩 附早晚餐</span>
+</div>
+```
+
+**必要 CSS**（複製到 MobilePage.css）：
+
+```css
+/* ── Hotel card ── */
+.mp-hotel-name {
+  font-family: var(--font-display-cn, inherit);
+  font-size: 18px; font-weight: 800;
+  color: var(--text, #2a1a0e); margin-bottom: 2px;
+}
+.mp-hotel-en {
+  font-size: 12px; color: var(--text-mute, #7a5a3a); margin-bottom: 8px;
+}
+.mp-meal-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 12px; font-weight: 700; border-radius: 100px;
+  padding: 4px 12px; margin-top: 2px;
+}
+.mp-meal-badge--bf       { background: rgba(40,140,80,0.12);    color: #1a6e3a; }
+.mp-meal-badge--bfdn     { background: rgba(180,120,0,0.12);    color: #8a5c00; }
+.mp-meal-badge--bfdn-dark{ background: rgba(255,200,80,0.18);   color: rgba(255,215,100,0.95); }
+.mp-meal-badge--none     { background: rgba(0,0,0,0.06);        color: var(--text-mute, #7a5a3a); }
+```
+
+**餐食標籤對照：**
+
+| 狀況 | class | 顯示 |
+|---|---|---|
+| 附早餐 | `mp-meal-badge--bf` | `🍳 附早餐`（綠） |
+| 附早晚餐（淺色卡）| `mp-meal-badge--bfdn` | `🍳🥩 附早晚餐`（金） |
+| 附早晚餐（暗色卡）| `mp-meal-badge--bfdn-dark` | 同上，適配暗底 |
+| 無附早餐 | `mp-meal-badge--none` | `⭕ 無附早餐`（灰） |
+
+> ⚠️ **MapBtn 用英文搜尋字串**（如 `"Hotel Emion Sapporo"`），不要用中文或日文地址 — Google Maps 英文搜尋最可靠。
+
 ### Section / Card 命名規則
 | 元素 | id 格式 | 範例 |
 |---|---|---|
