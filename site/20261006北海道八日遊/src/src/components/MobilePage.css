@@ -765,3 +765,43 @@
   color: #7a5c3e;
   cursor: pointer;
 }
+
+/* ── Hotel card ── */
+.mp-hotel-name {
+  font-family: var(--font-display-cn, inherit);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text, #2a1a0e);
+  margin-bottom: 2px;
+}
+.mp-hotel-en {
+  font-size: 12px;
+  color: var(--text-mute, #7a5a3a);
+  margin-bottom: 8px;
+}
+.mp-meal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 100px;
+  padding: 4px 12px;
+  margin-top: 2px;
+}
+.mp-meal-badge--bf {
+  background: rgba(40,140,80,0.12);
+  color: #1a6e3a;
+}
+.mp-meal-badge--bfdn {
+  background: rgba(180,120,0,0.12);
+  color: #8a5c00;
+}
+.mp-meal-badge--bfdn-dark {
+  background: rgba(255,200,80,0.18);
+  color: rgba(255,215,100,0.95);
+}
+.mp-meal-badge--none {
+  background: rgba(0,0,0,0.06);
+  color: var(--text-mute, #7a5a3a);
+}

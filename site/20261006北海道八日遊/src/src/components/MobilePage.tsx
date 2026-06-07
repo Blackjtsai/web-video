@@ -404,7 +404,7 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-card-title">🚃 抵達後 · 市區慢活</div>
           {[
             { name: "JR 快速 Airport 入市區", sub: "新千歲 → 札幌 約 38 分" },
-            { name: "入住飯店 · 放行李", sub: "建議 Dormy Inn / Vessel Hotel" },
+            { name: "入住飯店 · 放行李", sub: "Hotel Emion Sapporo" },
             { name: "麒麟啤酒廠（含長輩）", sub: "免費導覽 + 試飲，室內不用走遠" },
           ].map(i => (
             <div className="mp-list-item" key={i.name}>
@@ -412,6 +412,16 @@ export function MobilePage({ baseUrl }: Props) {
               <div className="mp-list-sub">{i.sub}</div>
             </div>
           ))}
+        </div>
+
+        <div id="mp-c-d1-hotel" className="mp-card">
+          <div className="mp-card-title mp-card-title--row">
+            <span>🏨 今晚住宿</span>
+            <MapBtn q="Hotel Emion Sapporo" />
+          </div>
+          <div className="mp-hotel-name">札幌伊夢酒店</div>
+          <div className="mp-hotel-en">Hotel Emion Sapporo</div>
+          <span className="mp-meal-badge mp-meal-badge--bf">🍳 附早餐</span>
         </div>
 
         <div id="mp-c-d1-dinner" className="mp-card">
@@ -476,6 +486,16 @@ export function MobilePage({ baseUrl }: Props) {
             </div>
           ))}
         </div>
+
+        <div id="mp-c-d2-hotel" className="mp-card">
+          <div className="mp-card-title mp-card-title--row">
+            <span>🏨 今晚住宿</span>
+            <MapBtn q="Hotel Emion Sapporo" />
+          </div>
+          <div className="mp-hotel-name">札幌伊夢酒店</div>
+          <div className="mp-hotel-en">Hotel Emion Sapporo</div>
+          <span className="mp-meal-badge mp-meal-badge--bf">🍳 附早餐</span>
+        </div>
       </section>
 
       {/* ── Day 3 ── */}
@@ -525,6 +545,16 @@ export function MobilePage({ baseUrl }: Props) {
             </div>
           ))}
         </div>
+
+        <div id="mp-c-d3-hotel" className="mp-card">
+          <div className="mp-card-title mp-card-title--row">
+            <span>🏨 今晚住宿</span>
+            <MapBtn q="Hotel Emion Sapporo" />
+          </div>
+          <div className="mp-hotel-name">札幌伊夢酒店</div>
+          <div className="mp-hotel-en">Hotel Emion Sapporo</div>
+          <span className="mp-meal-badge mp-meal-badge--bf">🍳 附早餐</span>
+        </div>
       </section>
 
       {/* ── Day 4 ── */}
@@ -569,16 +599,21 @@ export function MobilePage({ baseUrl }: Props) {
         </div>
 
         <div id="mp-c-d4-toya" className="mp-card mp-card--dark">
-          <div className="mp-card-title mp-card-title--light">🎆 洞爺湖萬世閣</div>
-          <img className="mp-spot-img" src={img("toya-lake.jpg")} alt="洞爺湖" />
+          <div className="mp-card-title mp-card-title--row mp-card-title--light">
+            <span>🏨 洞爺湖萬世閣</span>
+            <MapBtn q="Toya Manseikaku Hotel Hokkaido" />
+          </div>
+          <div className="mp-hotel-en" style={{ color: "rgba(255,255,255,0.5)", marginBottom: 8 }}>Toya Manseikaku Hotel</div>
+          <span className="mp-meal-badge mp-meal-badge--bfdn-dark">🍳🥩 附早晚餐</span>
+          <img className="mp-spot-img" src={img("toya-lake.jpg")} alt="洞爺湖" style={{ marginTop: 12 }} />
           <div className="mp-two-col" style={{ marginTop: 10 }}>
-            <div className="mp-col-item mp-col-item--dark">
-              <div className="mp-col-label-light">入住</div>
-              <div className="mp-col-val-light">頂級溫泉晚宴<br />飯店附早晚餐</div>
-            </div>
             <div className="mp-col-item mp-col-item--dark">
               <div className="mp-col-label-light">夜間</div>
               <div className="mp-col-val-light">洞爺湖花火大會<br />在房間輕鬆觀賞</div>
+            </div>
+            <div className="mp-col-item mp-col-item--dark">
+              <div className="mp-col-label-light">溫泉</div>
+              <div className="mp-col-val-light">頂級露天溫泉<br />泡湯看湖景</div>
             </div>
           </div>
         </div>
@@ -630,6 +665,16 @@ export function MobilePage({ baseUrl }: Props) {
             </div>
           ))}
         </div>
+
+        <div id="mp-c-d5-hotel" className="mp-card">
+          <div className="mp-card-title mp-card-title--row">
+            <span>🏨 今晚住宿</span>
+            <MapBtn q="Torifito Hotel Niseko Hokkaido" />
+          </div>
+          <div className="mp-hotel-name">托里菲托新雪谷飯店</div>
+          <div className="mp-hotel-en">Torifito Hotel &amp; Niseko</div>
+          <span className="mp-meal-badge mp-meal-badge--bf">🍳 附早餐</span>
+        </div>
       </section>
 
       {/* ── Day 6 ── */}
@@ -661,7 +706,9 @@ export function MobilePage({ baseUrl }: Props) {
             <span>🏡 Glow 包棟別墅</span>
             <MapBtn q="Glow villa Otaru Hokkaido" />
           </div>
-          <div className="mp-highlight">小樽近郊質感別墅</div>
+          <div className="mp-hotel-en">Glow — 小樽近郊高級特色別墅</div>
+          <span className="mp-meal-badge mp-meal-badge--none">⭕ 無附早餐</span>
+          <div className="mp-highlight" style={{ marginTop: 10 }}>小樽近郊質感別墅</div>
           <div className="mp-muted">下午提早入住，傍晚全家開車去生鮮超市採買</div>
           <div className="mp-tags-row">
             {["北海道鮮乳", "手作麵包", "麝香葡萄", "頂級和牛"].map(t => (
@@ -725,6 +772,17 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-muted-light" style={{ marginTop: 8, fontWeight: 700, color: "#ffcc88" }}>
             ⚠️ 全員不吃羊肉！訂位前確認菜單
           </div>
+        </div>
+
+        <div id="mp-c-d7-hotel" className="mp-card">
+          <div className="mp-card-title mp-card-title--row">
+            <span>🏨 今晚住宿</span>
+            <MapBtn q="Hotel Emion Sapporo" />
+          </div>
+          <div className="mp-hotel-name">札幌伊夢酒店</div>
+          <div className="mp-hotel-en">Hotel Emion Sapporo</div>
+          <div className="mp-muted" style={{ marginTop: 4, marginBottom: 6 }}>方便隔日早班機返台</div>
+          <span className="mp-meal-badge mp-meal-badge--bf">🍳 附早餐</span>
         </div>
       </section>
 
