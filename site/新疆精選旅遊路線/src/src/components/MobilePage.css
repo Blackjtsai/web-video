@@ -1,0 +1,713 @@
+/* ── MobilePage.css — 新疆精選旅遊路線 ── */
+/* prefix: mp- */
+
+/* ─── Root ─── */
+.mp-root {
+  width: 100%;
+  min-height: 100dvh;
+  background: var(--surface);
+  padding-bottom: 0;
+}
+
+/* ─── LINE Banner ─── */
+.mp-line-banner {
+  background: #06c755;
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+  padding: 10px 16px;
+  line-height: 1.5;
+}
+
+/* ─── Hero ─── */
+.mp-hero { overflow: hidden; }
+
+.mp-hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.mp-hero-text {
+  background: var(--surface);
+  padding: 16px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mp-hero-sub {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+  text-transform: uppercase;
+}
+
+.mp-hero-title {
+  font-size: clamp(28px, 7.5vw, 44px);
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1.1;
+  font-family: var(--font-display-cn);
+}
+
+.mp-hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.mp-badge {
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 100px;
+  padding: 4px 10px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(196, 87, 26, 0.25);
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+.mp-scroll-hint {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+  opacity: 0.6;
+  margin-top: 4px;
+}
+
+/* ─── Section / Day Cover ─── */
+.mp-section {
+  margin-top: 8px;
+}
+
+.mp-day-cover { overflow: hidden; }
+
+.mp-day-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.mp-day-overlay {
+  background: var(--surface);
+  padding: 10px 16px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mp-day-label-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.mp-day-tag {
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 6px;
+  padding: 4px 12px;
+}
+
+.mp-day-date {
+  font-size: 13px;
+  color: var(--text-mute);
+  font-weight: 500;
+}
+
+/* ─── Cards ─── */
+.mp-card {
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  margin: 8px 12px;
+  padding: 14px 16px;
+}
+
+.mp-card--dark {
+  background: #2a1508;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.mp-card--know {
+  background: #fff8f0;
+  border-color: rgba(196, 87, 26, 0.15);
+}
+
+.mp-card-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-mute);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.mp-card-title--light {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ─── Route Compare Table ─── */
+.mp-compare-row {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  border-left: 4px solid transparent;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 120ms ease;
+}
+
+.mp-compare-row:active { opacity: 0.7; }
+
+.mp-compare-row--blue   { background: rgba(30, 100, 200, 0.06); border-left-color: #3b82f6; }
+.mp-compare-row--green  { background: rgba(30, 150, 80, 0.06);  border-left-color: #22c55e; }
+.mp-compare-row--amber  { background: rgba(196, 87, 26, 0.07);  border-left-color: var(--accent); }
+.mp-compare-row--red    { background: rgba(190, 50, 50, 0.06);  border-left-color: #ef4444; }
+.mp-compare-row--snow   { background: rgba(74, 159, 212, 0.06); border-left-color: #4a9fd4; }
+
+.mp-compare-label {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.mp-compare-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--text-mute);
+  margin-bottom: 4px;
+}
+
+.mp-compare-row-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.mp-compare-note {
+  font-size: 12px;
+  color: var(--text-mute);
+  font-style: italic;
+}
+
+.mp-compare-arrow {
+  font-size: 14px;
+  color: var(--text-mute);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+/* ─── Route Summary ─── */
+.mp-route-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.mp-meta-chip {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(196, 87, 26, 0.2);
+  color: var(--accent);
+}
+
+.mp-route-audience {
+  font-size: 13px;
+  color: var(--text-mute);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.mp-route-desc {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* ─── Spots section label ─── */
+.mp-spots-section-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-mute);
+  text-transform: uppercase;
+  padding: 12px 16px 4px;
+}
+
+/* ─── Spot Card (rich) ─── */
+.mp-spot-card {
+  margin: 6px 12px;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.mp-spot-card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.mp-spot-card-body {
+  padding: 12px 14px 14px;
+}
+
+.mp-spot-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.mp-spot-card-name {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+}
+
+.mp-spot-card-desc {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.75;
+  margin: 0 0 12px 0;
+}
+
+/* ─── Food section ─── */
+.mp-spot-food-section {
+  background: rgba(196, 87, 26, 0.05);
+  border: 1px solid rgba(196, 87, 26, 0.12);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+
+.mp-spot-food-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.mp-spot-food-row {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+
+.mp-spot-food-row:last-child { margin-bottom: 0; }
+
+.mp-spot-food-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.mp-spot-food-name::before {
+  content: "•";
+  color: var(--accent);
+  margin-right: 6px;
+}
+
+.mp-spot-food-note {
+  font-size: 12px;
+  color: var(--text-mute);
+  line-height: 1.5;
+}
+
+/* ─── Tip section ─── */
+.mp-spot-tip {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  background: rgba(255, 248, 230, 0.7);
+  border: 1px solid rgba(196, 87, 26, 0.1);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.mp-spot-tip-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+.mp-spot-tip-text {
+  font-size: 12px;
+  color: var(--text-mute);
+  line-height: 1.6;
+}
+
+/* ─── Legacy spot row (kept for fallback) ─── */
+.mp-spot-row {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.mp-spot-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+.mp-spot-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mp-spot-note {
+  font-size: 12px;
+  color: var(--text-mute);
+  line-height: 1.5;
+}
+
+/* ─── Map Button (pin icon) ─── */
+.mp-map-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid rgba(196, 87, 26, 0.25);
+  flex-shrink: 0;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ─── Day-by-day ─── */
+.mp-days-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mp-day-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.mp-day-badge {
+  font-size: 10px;
+  font-weight: 700;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 4px;
+  padding: 2px 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.mp-day-text {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.6;
+}
+
+.mp-day-note {
+  margin-top: 10px;
+  font-size: 12px;
+  color: rgba(255, 200, 100, 0.8);
+  background: rgba(255, 200, 100, 0.08);
+  border-radius: 6px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 200, 100, 0.2);
+}
+
+/* ─── Google Maps Route Button ─── */
+.mp-gmap-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 120ms ease;
+  margin-bottom: 8px;
+}
+
+.mp-gmap-btn:active { opacity: 0.85; }
+
+.mp-map-note {
+  font-size: 11px;
+  color: var(--text-mute);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ─── Must-know section ─── */
+.mp-know-header {
+  padding: 20px 16px 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mp-know-tag {
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 6px;
+  padding: 4px 10px;
+}
+
+.mp-know-title {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--text);
+}
+
+.mp-know-item-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.mp-know-emoji {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.mp-know-item-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.mp-know-item-desc {
+  font-size: 13px;
+  color: var(--text-mute);
+  line-height: 1.7;
+}
+
+/* ─── Route dividers (colored, one per route) ─── */
+.mp-route-divider {
+  margin: 20px 12px 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mp-route-divider::before,
+.mp-route-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+}
+
+.mp-route-divider span {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  font-family: var(--font-display-cn);
+}
+
+.mp-route-divider--blue   span { color: #3b82f6; }
+.mp-route-divider--blue::before,
+.mp-route-divider--blue::after   { background: rgba(59, 130, 246, 0.35); }
+
+.mp-route-divider--green  span { color: #22c55e; }
+.mp-route-divider--green::before,
+.mp-route-divider--green::after  { background: rgba(34, 197, 94, 0.35); }
+
+.mp-route-divider--amber  span { color: var(--accent); }
+.mp-route-divider--amber::before,
+.mp-route-divider--amber::after  { background: rgba(196, 87, 26, 0.35); }
+
+.mp-route-divider--red    span { color: #ef4444; }
+.mp-route-divider--red::before,
+.mp-route-divider--red::after    { background: rgba(239, 68, 68, 0.35); }
+
+/* ─── Winter section ─── */
+.mp-winter-divider {
+  margin: 20px 12px 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mp-winter-divider::before,
+.mp-winter-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(74, 159, 212, 0.35);
+}
+
+.mp-winter-divider span {
+  font-size: 12px;
+  font-weight: 700;
+  color: #4a9fd4;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.mp-card--winter-intro {
+  background: rgba(74, 159, 212, 0.05);
+  border-color: rgba(74, 159, 212, 0.25);
+}
+
+.mp-meta-chip--snow {
+  background: rgba(74, 159, 212, 0.12);
+  border-color: rgba(74, 159, 212, 0.3);
+  color: #2a7ab8;
+}
+
+/* ─── Ski plan image ─── */
+.mp-ski-plan-wrap {
+  margin: 8px 12px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(74, 159, 212, 0.25);
+}
+
+.mp-amap-pin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(22, 119, 255, 0.1);
+  border: 1px solid rgba(22, 119, 255, 0.3);
+  color: #1677ff;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+}
+
+.mp-amap-pin-btn:active { background: rgba(22, 119, 255, 0.2); }
+
+.mp-ski-plan-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.mp-ski-plan-caption {
+  background: rgba(74, 159, 212, 0.08);
+  font-size: 11px;
+  color: #2a7ab8;
+  text-align: center;
+  padding: 6px 0;
+  letter-spacing: 0.06em;
+}
+
+
+/* ─── Gaode coords panel ─── */
+.mp-amap-note {
+  font-size: 12px;
+  color: var(--text-mute);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.mp-amap-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.mp-amap-row:last-child { border-bottom: none; }
+
+.mp-amap-name {
+  font-size: 13px;
+  color: var(--text);
+  flex: 1;
+  min-width: 0;
+}
+
+.mp-amap-coord {
+  font-size: 12px;
+  font-family: "SF Mono", "Fira Code", ui-monospace, monospace;
+  background: rgba(74, 159, 212, 0.08);
+  border: 1px solid rgba(74, 159, 212, 0.2);
+  border-radius: 4px;
+  padding: 3px 8px;
+  color: #2a7ab8;
+  white-space: nowrap;
+  flex-shrink: 0;
+  -webkit-user-select: all;
+  user-select: all;
+}
+
+/* ─── PDF Footer ─── */
+.mp-pdf-section {
+  padding: 20px 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.mp-footer-label {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--text);
+  letter-spacing: 0.05em;
+  font-family: var(--font-display-cn);
+}
+
+.mp-pdf-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  background: #2d1a0a;
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 120ms ease;
+}
+
+.mp-pdf-btn:active { opacity: 0.85; }
+
+.mp-pdf-date {
+  font-size: 11px;
+  color: var(--text-mute);
+  letter-spacing: 0.08em;
+  padding-bottom: calc(32px + env(safe-area-inset-bottom));
+}

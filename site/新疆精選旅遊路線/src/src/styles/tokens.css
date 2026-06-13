@@ -1,0 +1,49 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * Theme · 新疆絲路
+ *   沙漠米白底、胡楊橙紅強調色、深棕文字。
+ *   絲路 / 夕陽 / 胡楊林調性。
+ * ───────────────────────────────────────────────────────────────────── */
+:root {
+  /* ─── palette ─── */
+  --shell:        #1a0d05;
+  --surface:      #faf3e8;
+  --surface-2:    #f0e6d0;
+  --surface-3:    #e4d4b8;
+  --text:         #2d1a0a;
+  --text-2:       #3d2a1a;
+  --text-mute:    #8a6040;
+  --text-faint:   #b08060;
+  --rule:         #d4b890;
+  --accent:       #c4571a;
+  --accent-soft:  rgba(196, 87, 26, 0.10);
+  --accent-glow:  rgba(196, 87, 26, 0.40);
+
+  /* ─── fonts ─── */
+  --font-display-cn: "Noto Serif SC", "Source Han Serif SC", serif;
+  --font-display-en: "Fraunces", "Recoleta", "Playfair Display", serif;
+  --font-body:       "Noto Serif SC", "Source Han Serif SC", serif;
+  --font-mono:       "JetBrains Mono", "SF Mono", ui-monospace, monospace;
+  --font-features:   "tnum";
+
+  /* ─── motion ─── */
+  --dur-base:       500ms;
+  --dur-slow:       800ms;
+  --dur-cinematic:  1200ms;
+
+  /* ─── design identity ─── */
+  --r-card:        12px;
+  --r-stage:       0;
+  --rule-w:        1px;
+  --rule-style:    solid;
+  --hero-num-font:    var(--font-display-en);
+  --hero-num-style:   normal;
+  --hero-num-weight:  700;
+  --hero-num-track:   -0.02em;
+  --stage-pad-x:   64px;
+  --stage-pad-y:   48px;
+  --card-shadow:   0 2px 8px rgba(45, 26, 10, 0.08);
+  --shadow-stage:
+    0 60px 160px rgba(45, 26, 10, 0.40),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+  --surface-pattern: none;
+}
