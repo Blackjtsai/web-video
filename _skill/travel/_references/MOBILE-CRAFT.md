@@ -161,38 +161,38 @@ useEffect(() => {
 
 ## 滑動鎖定（Scroll Lock）
 
-**目的**：播放口播時，使用者選了某天跳轉後，頁面鎖定不能手動捲動。
-FAB 繼續控制自動捲動，暫停或點擊遮罩解鎖。
+**目的**：播放口播時，頁面鎖定不能手動捲動（FAB 繼續控制自動捲動）；暫停後立刻解鎖。
 
-### 機制
+### ⚠️ 勿用 transparent overlay
 
-- `playing → true`：在 MobilePage 上顯示 `position: fixed` 全透明遮罩（z-index 50）
-- 遮罩阻擋所有 pointer / touch 事件 → 使用者無法手動捲動
-- FAB z-index 100，在遮罩上方，仍可操作
-- `scrollIntoView` 是 DOM 操作，不走 pointer 事件，**不受遮罩影響**，仍正常自動捲動
-- 點擊遮罩 → `setScrollLocked(false)` 解鎖
-- `playing → false`（暫停）→ 自動解鎖
+`position: fixed; background: transparent; pointer-events: auto` 的 overlay 在 **iOS Safari** 上 unmount 後，scroll 狀態有時不立刻恢復，導致暫停後仍無法手動捲動。澎湖、北海道、新疆都踩過這個坑。
 
-### MobilePage state
+### 正確做法：touchmove ref
+
+ref 即時更新（不等 React re-render），暫停後下一個 touch 事件立刻解鎖。
+
+### MobilePage
 
 ```tsx
-const [scrollLocked, setScrollLocked] = useState(false);
+import { useCallback, useEffect, useRef } from "react";
 
-return (
-  <div className="mp-root">
-    {scrollLocked && (
-      <div className="mp-scroll-lock" onClick={() => setScrollLocked(false)}>
-        <div className="mp-unlock-hint">點此自由瀏覽</div>
-      </div>
-    )}
-    {/* ... */}
-    <MobileAudioFab
-      baseUrl={baseUrl}
-      onLock={() => setScrollLocked(true)}
-      onUnlock={() => setScrollLocked(false)}
-    />
-  </div>
-);
+// scroll lock：ref 即時更新，touchmove preventDefault 立刻生效
+const scrollLockedRef = useRef(false);
+const handleLock   = useCallback(() => { scrollLockedRef.current = true;  }, []);
+const handleUnlock = useCallback(() => { scrollLockedRef.current = false; }, []);
+
+useEffect(() => {
+  const root = document.getElementById("root");
+  if (!root) return;
+  const preventScroll = (e: TouchEvent) => {
+    if (scrollLockedRef.current) e.preventDefault();
+  };
+  root.addEventListener("touchmove", preventScroll, { passive: false });
+  return () => root.removeEventListener("touchmove", preventScroll);
+}, []);
+
+// JSX：直接傳 ref callback，不需要 state
+<MobileAudioFab baseUrl={baseUrl} onLock={handleLock} onUnlock={handleUnlock} />
 ```
 
 ### MobileAudioFab props
@@ -208,31 +208,13 @@ function MobileAudioFab({ baseUrl, onLock, onUnlock }: FabProps) {
   const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
-    if (playing) onLock();
-    else onUnlock();
+    if (playing) onLock(); else onUnlock();
   }, [playing, onLock, onUnlock]);
   // ...
 }
 ```
 
-### CSS
-
-```css
-.mp-scroll-lock {
-  position: fixed; inset: 0; z-index: 50;
-  background: transparent;           /* 全透明，內容可見 */
-  pointer-events: auto;              /* 必須接收事件才能阻擋 */
-  display: flex; align-items: flex-end; justify-content: center;
-  padding-bottom: 96px;              /* 不蓋到 FAB */
-}
-.mp-unlock-hint {
-  background: rgba(0,0,0,0.55); color: #fff;
-  font-size: 13px; font-weight: 600;
-  border-radius: 100px; padding: 8px 20px;
-  letter-spacing: .04em;
-  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
-}
-```
+> **不需要任何 CSS**：scroll lock 純靠 JS，不渲染任何額外元素。
 
 ---
 
