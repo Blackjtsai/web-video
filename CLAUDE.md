@@ -126,6 +126,11 @@ web-video/
 
 只存 Memory 不夠——Memory 可能過期或被忽略；只改 CLAUDE.md 也不完整。兩者都寫才算落地。
 
+**修正 bug 或踩到系統性坑（與工法大局有關）時，必須同時回寫 `_skill/travel/_references/` 對應文件。**
+
+判斷標準：「下次做新行程時，不看這段會再踩同樣的坑嗎？」答案是就要寫。
+例：iOS scroll lock 機制 → 回寫 `_references/MOBILE-CRAFT.md`。
+
 使用者給規則或任務時，若有更好的做法、潛在問題、或值得確認的邊界條件，
 先說出來，對齊後再執行。不要沉默地直接照做。
 
