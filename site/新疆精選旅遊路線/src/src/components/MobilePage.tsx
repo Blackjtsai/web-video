@@ -1,5 +1,188 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./MobilePage.css";
+
+// ── 18 段口播，對應頁面各節主卡片 id ────────────────────────────────
+const SEGMENTS = [
+  // intro (開場 · 2段)
+  { id: "intro",  step: 1, cardId: "mp-s-hero" },
+  { id: "intro",  step: 2, cardId: "mp-s-overview" },
+  // winter (冬季線 · 2段)
+  { id: "winter", step: 1, cardId: "mp-s-r1-winter" },
+  { id: "winter", step: 2, cardId: "mp-s-r1-winter" },
+  // r1 (北疆大環線 · 3段)
+  { id: "r1",     step: 1, cardId: "mp-s-r1" },
+  { id: "r1",     step: 2, cardId: "mp-s-r1" },
+  { id: "r1",     step: 3, cardId: "mp-c-r1-days" },
+  // r2 (南疆大環線 · 3段)
+  { id: "r2",     step: 1, cardId: "mp-s-r2" },
+  { id: "r2",     step: 2, cardId: "mp-s-r2" },
+  { id: "r2",     step: 3, cardId: "mp-c-r2-days" },
+  // r3 (伊犁河谷 · 3段)
+  { id: "r3",     step: 1, cardId: "mp-s-r3" },
+  { id: "r3",     step: 2, cardId: "mp-s-r3" },
+  { id: "r3",     step: 3, cardId: "mp-c-r3-days" },
+  // r4 (東疆絲路 · 3段)
+  { id: "r4",     step: 1, cardId: "mp-s-r4" },
+  { id: "r4",     step: 2, cardId: "mp-s-r4" },
+  { id: "r4",     step: 3, cardId: "mp-c-r4-days" },
+  // know (行前必知 · 2段)
+  { id: "know",   step: 1, cardId: "mp-s-know" },
+  { id: "know",   step: 2, cardId: "mp-s-know" },
+];
+
+const CHAPTER_GROUPS = [
+  { label: "開場",    start: 0,  end: 1  },
+  { label: "冬季線",  start: 2,  end: 3  },
+  { label: "北疆環線", start: 4,  end: 6  },
+  { label: "南疆環線", start: 7,  end: 9  },
+  { label: "伊犁縱貫", start: 10, end: 12 },
+  { label: "東疆秘境", start: 13, end: 15 },
+  { label: "行前必知", start: 16, end: 17 },
+];
+
+function scrollToCard(idx: number) {
+  const seg = SEGMENTS[idx];
+  if (!seg) return;
+  const el = document.getElementById(seg.cardId);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+// ── 右下角圓形 FAB + 長按 Scrubber ──────────────────────────────────
+function MobileAudioFab({ baseUrl }: { baseUrl: string }) {
+  const [playing, setPlaying]           = useState(false);
+  const [index, setIndex]               = useState(0);
+  const [showScrubber, setShowScrubber] = useState(false);
+  const [scrubIdx, setScrubIdx]         = useState(0);
+  const audioRef   = useRef<HTMLAudioElement | null>(null);
+  const indexRef   = useRef(index);
+  const lpTimer    = useRef<ReturnType<typeof setTimeout> | null>(null);
+  indexRef.current = index;
+
+  useEffect(() => {
+    const audio = new Audio();
+    audioRef.current = audio;
+    audio.addEventListener("ended", () => {
+      const next = indexRef.current + 1;
+      if (next < SEGMENTS.length) setIndex(next);
+      else { setPlaying(false); setIndex(0); }
+    });
+    return () => { audio.pause(); audio.src = ""; };
+  }, []);
+
+  useEffect(() => { scrollToCard(index); }, [index]);
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const seg = SEGMENTS[index];
+    if (!seg) return;
+    if (playing) { audio.src = `${baseUrl}audio/${seg.id}/${seg.step}.mp3`; audio.play().catch(() => {}); }
+    else audio.pause();
+  }, [index, playing, baseUrl]);
+
+  const longFired = useRef(false);
+  const startPos  = useRef<{ x: number; y: number } | null>(null);
+
+  const openScrubber = () => {
+    longFired.current = true;
+    setPlaying(false);
+    setScrubIdx(index);
+    setShowScrubber(true);
+    if (navigator.vibrate) navigator.vibrate(40);
+  };
+  const cancelLongPress = () => {
+    if (lpTimer.current) { clearTimeout(lpTimer.current); lpTimer.current = null; }
+  };
+  const handlePointerDown = (e: React.PointerEvent) => {
+    startPos.current = { x: e.clientX, y: e.clientY };
+    longFired.current = false;
+    lpTimer.current = setTimeout(openScrubber, 500);
+  };
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!startPos.current || !lpTimer.current) return;
+    const dx = Math.abs(e.clientX - startPos.current.x);
+    const dy = Math.abs(e.clientY - startPos.current.y);
+    if (dx > 8 || dy > 8) cancelLongPress();
+  };
+  const handlePointerUp = () => cancelLongPress();
+  const handleClick = () => {
+    if (longFired.current) { longFired.current = false; return; }
+    if (!showScrubber) setPlaying(p => !p);
+  };
+
+  const confirmScrub = (idx: number) => {
+    setShowScrubber(false);
+    setIndex(idx);
+    setPlaying(true);
+  };
+
+  const circ = 125.7;
+  const dash = circ - (index / SEGMENTS.length) * circ;
+
+  return (
+    <>
+      <button
+        className={`mp-audio-fab ${playing ? "mp-audio-fab--playing" : ""}`}
+        onClick={handleClick}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerLeave={cancelLongPress}
+        onPointerCancel={cancelLongPress}
+        aria-label={playing ? "暫停" : "播放語音導讀"}
+      >
+        <svg className="mp-fab-ring" viewBox="0 0 44 44" aria-hidden="true">
+          <circle cx="22" cy="22" r="20" className="mp-fab-ring-bg" />
+          <circle cx="22" cy="22" r="20" className="mp-fab-ring-fill"
+            strokeDasharray={circ} strokeDashoffset={dash} />
+        </svg>
+        <span className="mp-fab-icon">{playing ? "⏸" : "🔊"}</span>
+      </button>
+
+      {showScrubber && (
+        <div className="mp-scrubber-overlay" onPointerDown={() => setShowScrubber(false)}>
+          <div className="mp-scrubber-sheet" onPointerDown={e => e.stopPropagation()}>
+            <div className="mp-scrubber-handle" />
+            <div className="mp-scrubber-current">
+              <span className="mp-scrubber-current-ch">
+                {CHAPTER_GROUPS.find(c => scrubIdx >= c.start && scrubIdx <= c.end)?.label}
+              </span>
+              <span className="mp-scrubber-current-num">{scrubIdx + 1} / {SEGMENTS.length}</span>
+            </div>
+            <div className="mp-scrubber-chips">
+              {CHAPTER_GROUPS.map(ch => (
+                <button
+                  key={ch.label}
+                  className={`mp-scrubber-chip ${scrubIdx >= ch.start && scrubIdx <= ch.end ? "mp-scrubber-chip--active" : ""}`}
+                  onPointerDown={e => { e.stopPropagation(); setScrubIdx(ch.start); scrollToCard(ch.start); }}
+                >
+                  {ch.label}
+                </button>
+              ))}
+            </div>
+            <input
+              type="range"
+              className="mp-scrubber-range"
+              min={0} max={SEGMENTS.length - 1}
+              value={scrubIdx}
+              onChange={e => { const v = Number(e.target.value); setScrubIdx(v); scrollToCard(v); }}
+            />
+            <div className="mp-scrubber-ticks">
+              {CHAPTER_GROUPS.map(ch => (
+                <span key={ch.label} className="mp-scrubber-tick"
+                  style={{ left: `${(ch.start / (SEGMENTS.length - 1)) * 100}%` }}>
+                  {ch.label}
+                </span>
+              ))}
+            </div>
+            <button className="mp-scrubber-confirm" onPointerDown={() => confirmScrub(scrubIdx)}>
+              從這裡播放
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
 
 interface Props { baseUrl: string; }
 
@@ -729,6 +912,9 @@ export function MobilePage({ baseUrl }: Props) {
         </a>
         <div className="mp-pdf-date">資料來源：導遊小雅新疆攻略 · 圖片來源：Wikimedia Commons CC授權</div>
       </div>
+
+      {/* 右下角語音導讀 FAB */}
+      <MobileAudioFab baseUrl={baseUrl} />
     </div>
   );
 }

@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "extract-narrations": "tsx scripts/extract-narrations.ts",
+    "extract-narrations": "tsx scripts/extract-mobile-narrations.ts",
     "synthesize-audio": "bash scripts/synthesize-audio.sh"
   },
   "dependencies": {
