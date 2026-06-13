@@ -117,6 +117,16 @@ rm -rf site/{project}/src/src/chapters/01-example
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{旅遊名稱}</title>
+    <!-- OG / LINE 預覽卡（必填，否則 LINE 分享無圖無描述） -->
+    <meta name="description" content="{一句話描述，例如：五條精選路線・12天深度自駕}" />
+    <meta property="og:type"        content="website" />
+    <meta property="og:title"       content="{旅遊名稱}" />
+    <meta property="og:description" content="{一句話描述}" />
+    <meta property="og:image"       content="https://blackjtsai.github.io/web-video/{slug}/images-mobile/{橫幅圖檔名}.jpg" />
+    <meta property="og:image:width" content="{實際寬度}" />
+    <meta property="og:image:height"content="{實際高度}" />
+    <meta property="og:url"         content="https://blackjtsai.github.io/web-video/{slug}/?layout=mobile" />
+    <meta name="twitter:card"       content="summary_large_image" />
     <script>history.scrollRestoration = "manual";</script>
     <script>
       (function () {
@@ -135,8 +145,10 @@ rm -rf site/{project}/src/src/chapters/01-example
 </html>
 ```
 
-> ⚠️ 少了 LINE script → LINE 分享後收件人只能在 LINE 內建瀏覽器看，體驗差且功能受限。
-> 少了 `scrollRestoration = "manual"` → 手機版重整後捲動位置不回頂部。
+> ⚠️ 少了 LINE script → LINE 分享後收件人只能在 LINE 內建瀏覽器看，體驗差且功能受限。  
+> ⚠️ 少了 OG tags → LINE / iMessage 預覽卡無圖、無標題，只顯示網址，家人不知道在點什麼。  
+> ⚠️ `og:image` 必須用**橫幅圖**（寬 > 高），LINE 預覽卡才會好看。用 `sips -g pixelWidth -g pixelHeight` 確認尺寸後填入。  
+> ⚠️ 少了 `scrollRestoration = "manual"` → 手機版重整後捲動位置不回頂部。
 
 ### 2.2 複製圖片
 ```bash
@@ -1023,6 +1035,7 @@ bash ~/.claude/skills/web-video-presentation/scripts/scaffold.sh src --theme=sun
 - [ ] 重新整理後回到頂部？
 - [ ] PDF 下載按鈕可正常下載？
 - [ ] LINE 開啟自動跳出外部瀏覽器？
+- [ ] LINE 分享預覽卡有圖、有標題、有描述？（og:image 用橫幅圖）
 
 ### Phase 4 音頻驗收
 - [ ] 播放時頁面自動捲到對應卡片？
