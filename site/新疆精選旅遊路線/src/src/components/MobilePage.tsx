@@ -241,7 +241,7 @@ const SPOTS: Record<string, SpotData> = {
   },
   urho: {
     name: "烏爾禾魔鬼城",
-    img: null,
+    img: "urho.jpg",
     q: "Urho World Ghost City Xinjiang",
     desc: "準噶爾盆地邊緣的雅丹地貌奇景，億萬年風蝕造就無數奇形怪狀的土丘與石柱，烈風呼嘯時發出陰森鬼嚎聲，故得此名。日落時分，金色光芒將整片「城堡」染成古銅色，曾是《臥虎藏龍》的取景地。",
     food: [
@@ -275,7 +275,7 @@ const SPOTS: Record<string, SpotData> = {
   },
   duku: {
     name: "獨庫公路",
-    img: null,
+    img: "duku.jpg",
     q: "Duku Highway Xinjiang China",
     desc: "全長561公里、被譽為「中國最美公路」，穿越天山山脈，一路切換雪山冰川、高山草甸、峽谷溪流與戈壁荒漠，每年僅開放約4個月，造就「天路穿越」的傳奇地位。行駛其中，窗外風景每隔幾十公里就換了一個世界。",
     food: [
@@ -297,7 +297,7 @@ const SPOTS: Record<string, SpotData> = {
   },
   lavender: {
     name: "霍城薰衣草莊園",
-    img: null,
+    img: "lavender.jpg",
     q: "Huocheng Lavender Xinjiang China",
     desc: "伊犁霍城縣是中國最大的薰衣草種植基地，每年6至7月，綿延數十公里的紫色花海在天山腳下盛開，與雪頂山巒相互映襯，馥郁花香隨風而來令人沉醉。站在田壟間，一望無際的紫色讓人誤以為身處普羅旺斯。",
     food: [
@@ -309,7 +309,7 @@ const SPOTS: Record<string, SpotData> = {
   },
   xiata: {
     name: "昭蘇夏塔古道",
-    img: null,
+    img: "xiata.jpg",
     q: "Zhaosu Xiata Ancient Road Xinjiang",
     desc: "橫跨天山的古絲路驛道，海拔從1800公尺急升至3600公尺，沿途草甸如茵、冰川近在咫尺，冰涼融雪化成的溪流在腳邊奔流。這條路承載了兩千年的商旅記憶，走在上面，腳下是歷史，眼前是雪山。",
     food: [
@@ -331,7 +331,7 @@ const SPOTS: Record<string, SpotData> = {
   },
   tangbula: {
     name: "唐布拉百里畫廊",
-    img: null,
+    img: "tangbula.jpg",
     q: "Tangbula Scenic Area Xinjiang",
     desc: "沿著喀什河綿延100公里的山谷，兩岸高山草甸、峽谷瀑布與白樺林相互交替，每一個轉彎都是一幅新的風景畫。從喀什河谷驅車緩行，窗外的美景幾乎令人目不暇接，被稱為「百里畫廊」絕非誇張。",
     food: [
@@ -354,7 +354,7 @@ const SPOTS: Record<string, SpotData> = {
   },
   baisha: {
     name: "帕米爾白沙湖",
-    img: null,
+    img: "baisha.jpg",
     q: "Baisha Lake Pamir Xinjiang China",
     desc: "位於帕米爾高原海拔3300公尺的隱秘湖泊，湖水顏色如孔雀石般藍綠，四周環繞著柔白沙丘，山湖沙融為一體的奇景在地球上幾乎找不到第二處。被柯爾克孜牧民視為沙漠聖泉，傳說全年水位不變。",
     food: [
@@ -387,7 +387,7 @@ const SPOTS: Record<string, SpotData> = {
   },
   panlong: {
     name: "盤龍古道（瓦恰鄉）",
-    img: null,
+    img: "panlong.jpg",
     q: "Panlong Ancient Road Wucha Xinjiang",
     desc: "帕米爾高原上以髮夾彎著稱的山路，從河谷底部盤旋而上，連續急彎在衛星圖上宛如一條蜷曲的龍，是中國最壯觀的盤山公路之一。沿途視野開闊，可俯瞰整個克孜勒河谷，遠方雪山層疊，每一個急彎都成為難忘記憶。",
     food: [
@@ -398,7 +398,7 @@ const SPOTS: Record<string, SpotData> = {
   },
   bandir: {
     name: "班迪爾藍湖",
-    img: null,
+    img: "bandir.jpg",
     q: "Bandil Lake Xinjiang China",
     desc: "隱藏在帕米爾山褶皺中的小型高山湖群，湖水呈現罕見的孔雀藍，透明度極高，湖底岩石紋理清晰可見。湖群周圍是柯爾克孜族的夏季牧場，白色氈房星星點點，寧靜得讓人不忍大聲說話。",
     food: [
@@ -421,7 +421,7 @@ const SPOTS: Record<string, SpotData> = {
   },
   kumtag: {
     name: "庫木塔格沙漠（鄯善）",
-    img: null,
+    img: "kumtag.jpg",
     q: "Kumtagh Desert Shanshan Xinjiang",
     desc: "世界上唯一一處與城鎮直接相連的沙漠，金色沙丘直接從鄯善縣城邊緣拔起，不需驅車長途跋涉就能踏上柔軟的沙海。沙丘連綿起伏如凝固的海浪，清晨光影在沙壟上勾勒出千萬條流動的線條，美得極為純粹。",
     food: [
@@ -432,7 +432,7 @@ const SPOTS: Record<string, SpotData> = {
   },
   hamiGhost: {
     name: "哈密五堡魔鬼城",
-    img: null,
+    img: "hamiGhost.jpg",
     q: "Hami Wubao Ghost City Xinjiang",
     desc: "哈密郊外的雅丹地貌群，千萬年風蝕造就的土丘如古堡、如蘑菇、如羅馬廢墟，在晨昏光線下呈現溫暖的赤橙色調。相比烏爾禾知名度較低，遊客稀少，更能在安靜中感受大自然的雕塑藝術，是攝影愛好者的隱藏秘境。",
     food: [
@@ -454,7 +454,7 @@ const SPOTS: Record<string, SpotData> = {
   },
   jsjm: {
     name: "將軍山國際滑雪度假區",
-    img: null,
+    img: "jsjm.jpg",
     q: "Jiangjunshan Ski Resort Altay Xinjiang",
     desc: "全中國唯一與城市直接相連的高山滑雪場，天然阿勒泰粉雪享譽雪界，雪質輕盈乾燥、摩擦力低，每一次落地都像踩入棉花。傍晚滑雪者在金橘色光芒籠罩的「日落橘子海」中飛馳而下，這一幕被公認是中國最壯觀的滑雪夕陽景象。",
     food: [
@@ -466,7 +466,7 @@ const SPOTS: Record<string, SpotData> = {
   },
   jikpu: {
     name: "吉克普林滑雪場",
-    img: null,
+    img: "jikpu.jpg",
     q: "Jikepulin Ski Resort Burqin Xinjiang",
     desc: "緊鄰禾木景區的高難度技術型雪場，雪道陡峭起伏，比將軍山更具挑戰性，是新疆滑雪發燒友的朝聖之地。背景是阿爾泰山雪白山脊與整片白樺林，風景原始開闊，滑完高難度道路後抬眼便是絕對的荒野靜謐。",
     food: [
