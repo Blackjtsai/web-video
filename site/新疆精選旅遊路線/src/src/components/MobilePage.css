@@ -461,6 +461,10 @@
 
 .mp-gmap-btn:active { opacity: 0.85; }
 
+.mp-gmap-btn--google {
+  background: #EA4335;
+}
+
 .mp-map-note {
   font-size: 11px;
   color: var(--text-mute);
@@ -614,6 +618,23 @@
 }
 
 .mp-amap-pin-btn:active { background: rgba(22, 119, 255, 0.2); }
+
+.mp-gmap-pin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(234, 67, 53, 0.1);
+  border: 1px solid rgba(234, 67, 53, 0.3);
+  color: #EA4335;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+}
+
+.mp-gmap-pin-btn:active { background: rgba(234, 67, 53, 0.2); }
 
 .mp-ski-plan-img {
   width: 100%;
