@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import "./MobilePage.css";
 
 // ── 18 段口播，對應頁面各節主卡片 id ────────────────────────────────
@@ -48,7 +48,8 @@ function scrollToCard(idx: number) {
 }
 
 // ── 右下角圓形 FAB + 長按 Scrubber ──────────────────────────────────
-function MobileAudioFab({ baseUrl }: { baseUrl: string }) {
+interface FabProps { baseUrl: string; onLock: () => void; onUnlock: () => void; }
+function MobileAudioFab({ baseUrl, onLock, onUnlock }: FabProps) {
   const [playing, setPlaying]           = useState(false);
   const [index, setIndex]               = useState(0);
   const [showScrubber, setShowScrubber] = useState(false);
@@ -68,6 +69,11 @@ function MobileAudioFab({ baseUrl }: { baseUrl: string }) {
     });
     return () => { audio.pause(); audio.src = ""; };
   }, []);
+
+  /* playing 變化 → 鎖定 / 解鎖捲動（ref 立即更新，不等 React re-render） */
+  useEffect(() => {
+    if (playing) onLock(); else onUnlock();
+  }, [playing, onLock, onUnlock]);
 
   useEffect(() => { scrollToCard(index); }, [index]);
   useEffect(() => {
@@ -691,6 +697,22 @@ export function MobilePage({ baseUrl }: Props) {
     };
   }, []);
 
+  /* scroll lock：ref 即時更新，touchmove preventDefault 立刻生效，不等 React re-render
+     勿用 position:fixed transparent overlay — iOS Safari 解除後 scroll 狀態有時不恢復 */
+  const scrollLockedRef = useRef(false);
+  const handleLock   = useCallback(() => { scrollLockedRef.current = true;  }, []);
+  const handleUnlock = useCallback(() => { scrollLockedRef.current = false; }, []);
+
+  useEffect(() => {
+    const root = document.getElementById("root");
+    if (!root) return;
+    const preventScroll = (e: TouchEvent) => {
+      if (scrollLockedRef.current) e.preventDefault();
+    };
+    root.addEventListener("touchmove", preventScroll, { passive: false });
+    return () => root.removeEventListener("touchmove", preventScroll);
+  }, []);
+
   const isLineBrowser = navigator.userAgent.indexOf("Line/") > -1;
 
   return (
@@ -914,7 +936,7 @@ export function MobilePage({ baseUrl }: Props) {
       </div>
 
       {/* 右下角語音導讀 FAB */}
-      <MobileAudioFab baseUrl={baseUrl} />
+      <MobileAudioFab baseUrl={baseUrl} onLock={handleLock} onUnlock={handleUnlock} />
     </div>
   );
 }
