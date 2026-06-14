@@ -236,7 +236,7 @@ export function MobilePage({ baseUrl }: Props) {
 
       {/* ── Hero ── */}
       <div id="mp-s-hero" className="mp-hero">
-        <div className="mp-hero-gradient">
+        <div className="mp-hero-gradient" style={{ ["--hero-bg-image" as string]: `url('${import.meta.env.BASE_URL}images/spots/zao.jpg') center/cover no-repeat` }}>
           {/* 雪花 */}
           <div className="mp-hero-snow" aria-hidden="true">
             {Array.from({ length: 20 }, (_, i) => (

@@ -38,7 +38,7 @@
     radial-gradient(ellipse at 30% 20%, rgba(79,195,247,0.1) 0%, transparent 50%),
     radial-gradient(ellipse at 70% 80%, rgba(30,80,140,0.3) 0%, transparent 50%),
     linear-gradient(160deg, rgba(7,21,35,0.82) 0%, rgba(13,27,42,0.80) 50%, rgba(10,22,40,0.82) 100%),
-    url('images/spots/zao.jpg') center/cover no-repeat;
+    var(--hero-bg-image, linear-gradient(#0d1b2a, #0d1b2a));
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -68,6 +68,13 @@
   75%  { transform: translateY(75dvh)  translateX(22px) rotate(270deg); }
   92%  { opacity: 0.7; }
   100% { transform: translateY(115dvh) translateX(-8px) rotate(360deg); opacity: 0; }
+}
+
+/* 下方成員區塊 */
+.mp-hero-bottom {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center; gap: 24px;
+  width: 100%;
 }
 
 /* 三位滑雪小人 */
