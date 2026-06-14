@@ -501,7 +501,6 @@ const ROUTES = [
       ["Day 12", "巴音布魯克 → 獨庫公路（一日歷四季）→ 返回烏魯木齊"],
     ],
     r1note: null,
-    amapUrl: "https://uri.amap.com/navigation?from=87.6168,43.8256,烏魯木齊出發&to=87.6168,43.8256,返回烏魯木齊&via=88.1500,43.8500,天山天池|89.5180,46.9940,可可托海|87.4321,48.5678,禾木村|87.0155,48.6912,喀納斯湖|87.5312,47.9811,五彩灘|84.9062,44.4221,烏爾禾魔鬼城|81.1942,44.6015,賽里木湖|80.8715,44.0221,霍城薰衣草|83.6472,43.3255,那拉提草原|84.1600,42.6800,巴音布魯克&mode=car&callnative=1",
     gmapUrl: "https://www.google.com/maps/dir/?api=1&origin=43.8256,87.6168&destination=43.8256,87.6168&waypoints=43.85,88.15|46.994,89.518|48.5678,87.4321|48.6912,87.0155|47.9811,87.5312|44.4221,84.9062|44.6015,81.1942|43.3255,83.6472|42.68,84.16&travelmode=driving",
   },
   {
@@ -526,7 +525,6 @@ const ROUTES = [
       ["Day 12", "吐和高速 → 返回烏魯木齊（國際大巴扎採購收官）"],
     ],
     r1note: null,
-    amapUrl: "https://uri.amap.com/navigation?from=87.6168,43.8256,烏魯木齊出發&to=87.6168,43.8256,返回烏魯木齊&via=89.1805,42.9425,吐魯番|86.1586,41.7254,庫爾勒|82.9600,41.7200,庫車大峽谷|81.2758,40.5430,阿拉爾胡楊林|79.9227,37.1120,和田夜市|75.9892,39.4677,喀什古城|75.2332,37.7752,塔什庫爾干|75.0672,38.4385,喀拉庫里湖|75.5728,37.7085,盤龍古道&mode=car&callnative=1",
     gmapUrl: "https://www.google.com/maps/dir/?api=1&origin=43.8256,87.6168&destination=43.8256,87.6168&waypoints=42.9425,89.1805|41.7254,86.1586|41.72,82.96|40.543,81.2758|37.112,79.9227|39.4677,75.9892|37.7752,75.2332|38.4385,75.0672|37.7085,75.5728&travelmode=driving",
   },
   {
@@ -551,7 +549,6 @@ const ROUTES = [
       ["Day 12", "乾溝峽谷 → 吐和高速 → 返回烏魯木齊"],
     ],
     r1note: null,
-    amapUrl: "https://uri.amap.com/navigation?from=87.6168,43.8256,烏魯木齊出發&to=87.6168,43.8256,返回烏魯木齊&via=84.8820,44.3200,獨山子大峽谷|83.6472,43.3255,那拉提草原|81.8380,43.2170,特克斯八卦城|80.8665,42.7082,喀拉峻草原|81.1312,43.1200,昭蘇夏塔|80.8715,44.0221,霍城薰衣草|81.1942,44.6015,賽里木湖|84.1600,42.6800,巴音布魯克|82.9600,41.7200,庫車大峽谷|86.1586,41.7254,庫爾勒&mode=car&callnative=1",
     gmapUrl: "https://www.google.com/maps/dir/?api=1&origin=43.8256,87.6168&destination=43.8256,87.6168&waypoints=44.32,84.882|43.3255,83.6472|43.217,81.838|42.7082,80.8665|43.12,81.1312|44.0221,80.8715|44.6015,81.1942|42.68,84.16|41.72,82.96&travelmode=driving",
   },
   {
@@ -566,7 +563,7 @@ const ROUTES = [
       ["Day 2",  "奇台 → 木壘（6500年原始胡楊林 · 鳴沙山滑沙轟鳴）"],
       ["Day 3",  "翻越東天山景觀公路 → 巴里坤大草原 · 巴里坤湖（高山鹹水湖 · 水鳥雪山）"],
       ["Day 4",  "巴里坤 → 哈密東天山（林海雪原一小時切換至戈壁綠洲）"],
-      ["Day 5",  "大海道雅丹地貌（地球最像火星之地 · 出發前高德下載離線地圖）"],
+      ["Day 5",  "大海道雅丹地貌（地球最像火星之地 · 出發前下載 Google Maps 離線地圖）"],
       ["Day 6",  "哈密人文歷史（哈密王陵 · 市博物館 · 回王府）"],
       ["Day 7",  "哈密 → 連霍高速穿越百里風區 → 庫木塔格沙漠（城市零距離沙漠 · 日落金沙）→ 鄯善"],
       ["Day 8",  "鄯善 → 吐峪溝麻扎村（1700年古老維吾爾族土坂村）→ 吐魯番"],
@@ -576,7 +573,6 @@ const ROUTES = [
       ["Day 12", "達坂城風力發電廠（延綿數十公里的風車陣）→ 返回烏魯木齊"],
     ],
     r1note: null,
-    amapUrl: "https://uri.amap.com/navigation?from=87.6168,43.8256,烏魯木齊出發&to=87.6168,43.8256,返回烏魯木齊&via=89.5900,44.0200,奇台江布拉克|90.2870,43.8350,木壘胡楊林|93.0168,43.5942,巴里坤草原|93.5192,42.8142,哈密市|91.5000,42.5000,大海道雅丹|90.2100,42.8600,鄯善庫木塔格|89.1805,42.9425,吐魯番火焰山|88.6500,42.7900,托克遜紅河谷&mode=car&callnative=1",
     gmapUrl: "https://www.google.com/maps/dir/?api=1&origin=43.8256,87.6168&destination=43.8256,87.6168&waypoints=44.02,89.59|43.835,90.287|43.5942,93.0168|42.8142,93.5192|42.5,91.5|42.86,90.21|42.9425,89.1805|42.79,88.65&travelmode=driving",
   },
 ];
@@ -586,7 +582,6 @@ const MUST_KNOW = [
   { emoji: "☀️", title: "防曬必備", desc: "氣候乾燥、紫外線強烈。護唇膏、保濕乳液、高係數防曬乳、墨鏡、遮陽帽缺一不可。" },
   { emoji: "🚗", title: "路途遙遠", desc: "景點間車程動輒 4–6 小時以上。出發前備好隨身充電、舒適頸枕、打發時間的零食。" },
   { emoji: "🛣️", title: "獨庫公路", desc: "每年約 6月中旬至 10月初開放，視天氣可能提前關閉。規劃行程前務必查詢最新公告。" },
-  { emoji: "📍", title: "導航注意", desc: "中國大陸境內自駕建議用高德地圖（GCJ-02 座標系最精準）。Google Maps（WGS-84）在中國境內座標有偏移，導航較不可靠。" },
 ];
 
 // ── 將軍山冬季滑雪版資料 ─────────────────────────────────────────────
@@ -599,14 +594,6 @@ const ROUTE1_WINTER = {
     ["Day 4", "禾木清晨「潑水成冰」體驗 → 吉克普林高難度雪道 → 傍晚返回阿勒泰"],
     ["Day 5", "市區採買乾果 · 駝奶粉伴手禮 → 雪都機場還車賦歸"],
   ],
-  amap: [
-    { name: "阿勒泰雪都機場", coord: "88.0825,47.7492" },
-    { name: "將軍山滑雪場遊客中心", coord: "88.1455,47.8412" },
-    { name: "阿勒泰市區", coord: "88.1362,47.8285" },
-    { name: "禾木風景區遊客中心", coord: "87.4321,48.5678" },
-    { name: "吉克普林滑雪度假區", coord: "87.3215,48.6122" },
-  ],
-  amapUrl: "https://uri.amap.com/navigation?from=88.0825,47.7492,阿勒泰雪都機場&to=88.0825,47.7492,阿勒泰雪都機場&via=88.1455,47.8412,將軍山滑雪場|88.1362,47.8285,阿勒泰市區|87.4321,48.5678,禾木風景區|87.3215,48.6122,吉克普林滑雪場&mode=car&callnative=1",
   gmapUrl: "https://www.google.com/maps/dir/?api=1&origin=47.7492,88.0825&destination=47.7492,88.0825&waypoints=47.8412,88.1455|47.8285,88.1362|48.5678,87.4321|48.6122,87.3215&travelmode=driving",
 };
 
@@ -625,7 +612,7 @@ function SpotCard({ spotId, baseUrl }: { spotId: string; baseUrl: string }) {
         <div className="mp-spot-card-header">
           <span className="mp-spot-card-name">{spot.name}</span>
           <a
-            href={`https://uri.amap.com/search?keyword=${encodeURIComponent(spot.name)}&callnative=1`}
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(spot.name)}`}
             target="_blank" rel="noopener noreferrer"
             className="mp-map-btn"
             onClick={e => e.stopPropagation()}
@@ -654,17 +641,6 @@ function SpotCard({ spotId, baseUrl }: { spotId: string; baseUrl: string }) {
         </div>
       </div>
     </div>
-  );
-}
-
-function AmapRouteBtn({ href }: { href: string }) {
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="mp-gmap-btn">
-      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden>
-        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-      </svg>
-      在高德地圖開啟完整路線
-    </a>
   );
 }
 
@@ -792,11 +768,6 @@ export function MobilePage({ baseUrl }: Props) {
             <span className="mp-meta-chip">🕒 5 天 4 夜</span>
             <span className="mp-meta-chip">📅 12 月 ~ 3 月</span>
             <span className="mp-meta-chip mp-meta-chip--snow">🏂 滑雪版</span>
-            <a href={ROUTE1_WINTER.amapUrl} target="_blank" rel="noopener noreferrer" className="mp-amap-pin-btn" onClick={e => e.stopPropagation()}>
-              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden>
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-              </svg>
-            </a>
             <a href={ROUTE1_WINTER.gmapUrl} target="_blank" rel="noopener noreferrer" className="mp-gmap-pin-btn" onClick={e => e.stopPropagation()}>
               <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden>
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
@@ -829,15 +800,7 @@ export function MobilePage({ baseUrl }: Props) {
 
         <div className="mp-card">
           <div className="mp-card-title">🗺 路線導航</div>
-          <AmapRouteBtn href={ROUTE1_WINTER.amapUrl} />
           <GMapRouteBtn href={ROUTE1_WINTER.gmapUrl} />
-          <div className="mp-amap-note" style={{ marginTop: "10px" }}>也可手動複製以下座標貼入高德搜尋框</div>
-          {ROUTE1_WINTER.amap.map(item => (
-            <div key={item.name} className="mp-amap-row">
-              <span className="mp-amap-name">{item.name}</span>
-              <code className="mp-amap-coord">{item.coord}</code>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -855,11 +818,6 @@ export function MobilePage({ baseUrl }: Props) {
             <div className="mp-route-meta-row">
               <span className="mp-meta-chip">🕒 {route.duration}</span>
               <span className="mp-meta-chip">📅 {route.season}</span>
-              <a href={route.amapUrl} target="_blank" rel="noopener noreferrer" className="mp-amap-pin-btn" onClick={e => e.stopPropagation()}>
-                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden>
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                </svg>
-              </a>
               <a href={route.gmapUrl} target="_blank" rel="noopener noreferrer" className="mp-gmap-pin-btn" onClick={e => e.stopPropagation()}>
                 <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden>
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
@@ -898,7 +856,6 @@ export function MobilePage({ baseUrl }: Props) {
           {/* 路線導航 */}
           <div id={`mp-c-${route.id}-map`} className="mp-card">
             <div className="mp-card-title">🗺 路線導航</div>
-            <AmapRouteBtn href={route.amapUrl} />
             <GMapRouteBtn href={route.gmapUrl} />
             <div className="mp-map-note">裝置上已安裝對應地圖 App 則直接開啟，否則以網頁版呈現</div>
           </div>
