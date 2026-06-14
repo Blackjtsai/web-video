@@ -145,6 +145,14 @@ ls ./doc/
 列出所有檔案，確認每一個（.md / .png / .jpg / .pdf）都已搬至 `site/{專案名稱}/doc/`，
 才開始處理內容。不能因為 IDE 已開啟某個檔案就假設「只有那一個」。
 
+## 網址規則
+
+**所有 web-video-presentation 專案的手機版永遠是 query string，不是路徑：**
+- ❌ 錯誤：`http://localhost:517X/mobile`
+- ✅ 正確：`http://localhost:517X/?layout=mobile`
+
+這是工法本身的設計（App.tsx 用 `params.get("layout") === "mobile"` 切換），所有現在和未來的行程專案都適用。
+
 ## 關鍵架構規則
 
 - `narrations.ts` 的長度 = step 數 = 音頻段數（**唯一真相源**，三者必須一致）

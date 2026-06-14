@@ -237,16 +237,49 @@ export function MobilePage({ baseUrl }: Props) {
       {/* ── Hero ── */}
       <div id="mp-s-hero" className="mp-hero">
         <div className="mp-hero-gradient">
+          {/* 雪花 */}
+          <div className="mp-hero-snow" aria-hidden="true">
+            {Array.from({ length: 20 }, (_, i) => (
+              <div
+                key={i}
+                className={`mp-hero-flake mp-hero-flake--${i % 3 === 0 ? "lg" : i % 3 === 1 ? "md" : "sm"}`}
+                style={{
+                  left: `${(i * 5.2 + 2) % 98}%`,
+                  animationDelay:    `${(i * 0.4) % 5}s`,
+                  animationDuration: `${6 + (i % 5) * 1.2}s`,
+                }}
+              />
+            ))}
+          </div>
+
           <div className="mp-hero-text">
             <div className="mp-hero-sub">純爺們東北雪季自駕</div>
             <div className="mp-hero-title">仙台滑雪</div>
+            <div className="mp-hero-dates">2026 / 12 / 20 &nbsp;—&nbsp; 12 / 24</div>
             <div className="mp-hero-badges">
               <span className="mp-badge">三人成行</span>
               <span className="mp-badge">五天四夜</span>
               <span className="mp-badge">3座雪場</span>
-              <span className="mp-badge">2026 · 十二月</span>
             </div>
           </div>
+
+          {/* 三位滑雪小人 */}
+          <div className="mp-hero-members">
+            {[
+              { icon: "🏂", label: "型男一號" },
+              { icon: "⛷️", label: "型男二號" },
+              { icon: "🎿", label: "型男三號" },
+            ].map((m, i) => (
+              <div key={i} className="mp-hero-member" style={{ animationDelay: `${i * 150}ms` }}>
+                <div className="mp-hero-member-avatar">
+                  <span className="mp-hero-member-icon">{m.icon}</span>
+                </div>
+                <div className="mp-hero-member-num">0{i + 1}</div>
+                <div className="mp-hero-member-label">{m.label}</div>
+              </div>
+            ))}
+          </div>
+          <div className="mp-hero-members-tag">THREE MEN · ONE MISSION · PURE POWDER</div>
         </div>
       </div>
 
@@ -273,6 +306,7 @@ export function MobilePage({ baseUrl }: Props) {
         </div>
 
         <div id="mp-c-d1-hotel" className="mp-card">
+          <img src="images/spots/hotel-metropolitan.jpg" alt="Hotel Metropolitan Sendai" className="mp-card-img" />
           <div className="mp-card-title mp-card-title--row">
             <span>🏨 市區飯店入住</span>
             <MapBtn q="Hotel Metropolitan Sendai 仙台駅" />
@@ -282,6 +316,7 @@ export function MobilePage({ baseUrl }: Props) {
         </div>
 
         <div id="mp-c-d1-beef" className="mp-card">
+          <img src="images/spots/beef-tongue.jpg" alt="仙台牛舌" className="mp-card-img" />
           <div className="mp-card-title">🥩 型男美食第一彈：牛舌</div>
           <div className="mp-highlight">炭火燒厚切牛舌</div>
           <div className="mp-muted">仙台名物 · 多汁有嚼勁</div>
@@ -321,6 +356,7 @@ export function MobilePage({ baseUrl }: Props) {
         </div>
 
         <div id="mp-c-d2-eboshi" className="mp-card">
+          <img src="images/spots/eboshi.jpg" alt="宮城藏王 Eboshi" className="mp-card-img" />
           <div className="mp-card-title mp-card-title--row">
             <span>⛷️ 宮城藏王 Eboshi</span>
             <MapBtn q="みやぎ蔵王えぼしリゾート 宮城県刈田郡蔵王町" />
@@ -355,6 +391,7 @@ export function MobilePage({ baseUrl }: Props) {
         </div>
 
         <div id="mp-c-d2-onsen" className="mp-card mp-card--dark">
+          <img src="images/spots/zao-onsen.jpg" alt="藏王溫泉" className="mp-card-img" />
           <div className="mp-card-title mp-card-title--light">♨️ 純天然硫磺泉</div>
           <div className="mp-big-light">強酸性白濁硫磺泉</div>
           <div className="mp-muted-light">泡進去，滑雪的疲憊瞬間化解</div>
@@ -369,6 +406,7 @@ export function MobilePage({ baseUrl }: Props) {
         </div>
 
         <div id="mp-c-d3-zao" className="mp-card">
+          <img src="images/spots/zao.jpg" alt="山形藏王溫泉滑雪場" className="mp-card-img" />
           <div className="mp-card-title mp-card-title--row">
             <span>🏔️ 山形藏王溫泉滑雪場</span>
             <MapBtn q="蔵王温泉スキー場 山形県山形市蔵王温泉" />
@@ -397,6 +435,7 @@ export function MobilePage({ baseUrl }: Props) {
         </div>
 
         <div id="mp-c-d3-genghis" className="mp-card mp-card--dark">
+          <img src="images/spots/genghis-khan.jpg" alt="成吉思汗烤羊肉" className="mp-card-img" />
           <div className="mp-card-title mp-card-title--light">🔥 成吉思汗烤生羊肉</div>
           <div className="mp-big-light">ろばた（溫泉街）</div>
           <div className="mp-muted-light">圍著炭火 + 生啤酒，男人聚會最棒的氛圍</div>
@@ -417,6 +456,7 @@ export function MobilePage({ baseUrl }: Props) {
         </div>
 
         <div id="mp-c-d4-valley" className="mp-card mp-card--dark">
+          <img src="images/spots/spring-valley.jpg" alt="Spring Valley 夜滑" className="mp-card-img" />
           <div className="mp-card-title mp-card-title--light mp-card-title--row">
             <span>🌙 Spring Valley 仙台泉夜滑</span>
             <MapBtn q="スプリングバレー仙台泉 宮城県仙台市" />
@@ -460,6 +500,7 @@ export function MobilePage({ baseUrl }: Props) {
         </div>
 
         <div id="mp-c-d5-outlet" className="mp-card">
+          <img src="images/spots/outlet.jpg" alt="仙台港三井 Outlet" className="mp-card-img" />
           <div className="mp-card-title mp-card-title--row">
             <span>🛍️ 仙台港三井 Outlet</span>
             <MapBtn q="三井アウトレットパーク仙台港" />

@@ -32,18 +32,75 @@
 .mp-hero-gradient {
   flex: 1;
   min-height: 100dvh;
+  position: relative;
+  overflow: hidden;
   background:
     radial-gradient(ellipse at 30% 20%, rgba(79,195,247,0.1) 0%, transparent 50%),
     radial-gradient(ellipse at 70% 80%, rgba(30,80,140,0.3) 0%, transparent 50%),
-    linear-gradient(160deg, #071523 0%, #0d1b2a 50%, #0a1628 100%);
+    linear-gradient(160deg, rgba(7,21,35,0.82) 0%, rgba(13,27,42,0.80) 50%, rgba(10,22,40,0.82) 100%),
+    url('images/spots/zao.jpg') center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 64px;
   padding: 48px 24px 48px;
 }
 
+/* 雪花 */
+.mp-hero-snow { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.mp-hero-flake {
+  position: absolute; top: -24px;
+  color: rgba(79,195,247,0.55);
+  user-select: none;
+  animation: mp-snow-drift linear infinite;
+}
+.mp-hero-flake::before { content: "❄"; }
+.mp-hero-flake--lg { font-size: 20px; color: rgba(79,195,247,0.65); }
+.mp-hero-flake--md { font-size: 13px; color: rgba(79,195,247,0.45); }
+.mp-hero-flake--sm { font-size: 8px;  color: rgba(79,195,247,0.3); }
+
+@keyframes mp-snow-drift {
+  0%   { transform: translateY(0)      translateX(0)    rotate(0deg);   opacity: 0; }
+  8%   { opacity: 1; }
+  25%  { transform: translateY(25dvh)  translateX(18px) rotate(90deg); }
+  50%  { transform: translateY(50dvh)  translateX(-12px) rotate(180deg); }
+  75%  { transform: translateY(75dvh)  translateX(22px) rotate(270deg); }
+  92%  { opacity: 0.7; }
+  100% { transform: translateY(115dvh) translateX(-8px) rotate(360deg); opacity: 0; }
+}
+
+/* 三位滑雪小人 */
+.mp-hero-members {
+  position: relative; z-index: 1;
+  display: flex; justify-content: space-around; align-items: flex-start;
+  width: 100%; max-width: 360px;
+}
+.mp-hero-member {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  animation: mp-member-up 500ms cubic-bezier(0.34,1.56,0.64,1) both;
+}
+@keyframes mp-member-up {
+  from { opacity: 0; transform: translateY(20px) scale(0.9); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.mp-hero-member-avatar {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: var(--surface-3); border: 2px solid var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 20px rgba(79,195,247,0.2);
+}
+.mp-hero-member-icon { font-size: 36px; line-height: 1; }
+.mp-hero-member-num { font-size: 12px; font-weight: 700; letter-spacing: 0.2em; color: var(--accent); }
+.mp-hero-member-label { font-size: 15px; font-weight: 600; color: var(--text); }
+.mp-hero-members-tag {
+  position: relative; z-index: 1;
+  font-size: 12px; letter-spacing: 0.2em; color: var(--text-faint);
+  text-transform: uppercase;
+}
+
 .mp-hero-text {
+  position: relative; z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,18 +109,25 @@
 }
 
 .mp-hero-sub {
-  font-size: 12px;
+  font-size: 15px;
   color: var(--text-mute);
   letter-spacing: 0.1em;
 }
 
 .mp-hero-title {
   font-family: var(--font-display-cn);
-  font-size: 48px;
+  font-size: 64px;
   font-weight: 900;
   color: var(--text);
   line-height: 1.1;
   letter-spacing: 0.05em;
+}
+
+.mp-hero-dates {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.08em;
 }
 
 .mp-hero-badges {
@@ -77,8 +141,8 @@
   background: var(--accent-soft);
   border: 1px solid rgba(79,195,247,0.25);
   color: var(--accent);
-  font-size: 12px;
-  padding: 4px 12px;
+  font-size: 14px;
+  padding: 5px 14px;
   border-radius: 0;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -125,6 +189,15 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  overflow: hidden;
+}
+
+.mp-card-img {
+  width: calc(100% + 32px);
+  margin: -14px -16px 6px;
+  height: 180px;
+  object-fit: cover;
+  display: block;
 }
 
 .mp-card--dark {
