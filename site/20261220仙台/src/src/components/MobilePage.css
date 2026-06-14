@@ -56,9 +56,9 @@
   animation: mp-snow-drift linear infinite;
 }
 .mp-hero-flake::before { content: "❄"; }
-.mp-hero-flake--lg { font-size: 20px; color: rgba(79,195,247,0.65); }
-.mp-hero-flake--md { font-size: 13px; color: rgba(79,195,247,0.45); }
-.mp-hero-flake--sm { font-size: 8px;  color: rgba(79,195,247,0.3); }
+.mp-hero-flake--lg { font-size: 13px; color: rgba(79,195,247,0.30); }
+.mp-hero-flake--md { font-size: 9px;  color: rgba(79,195,247,0.20); }
+.mp-hero-flake--sm { font-size: 6px;  color: rgba(79,195,247,0.14); }
 
 @keyframes mp-snow-drift {
   0%   { transform: translateY(0)      translateX(0)    rotate(0deg);   opacity: 0; }
