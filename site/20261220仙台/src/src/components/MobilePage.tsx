@@ -242,11 +242,13 @@ export function MobilePage({ baseUrl }: Props) {
             {Array.from({ length: 20 }, (_, i) => (
               <div
                 key={i}
-                className={`mp-hero-flake mp-hero-flake--${i % 3 === 0 ? "lg" : i % 3 === 1 ? "md" : "sm"}`}
+                className="mp-hero-flake"
                 style={{
                   left: `${(i * 5.2 + 2) % 98}%`,
-                  animationDelay:    `${(i * 0.4) % 5}s`,
-                  animationDuration: `${6 + (i % 5) * 1.2}s`,
+                  width:  i % 3 === 0 ? "5px" : i % 3 === 1 ? "3px" : "2px",
+                  height: i % 3 === 0 ? "5px" : i % 3 === 1 ? "3px" : "2px",
+                  animationDelay:    `${(i * 0.35) % 4}s`,
+                  animationDuration: `${4 + (i % 5) * 0.6}s`,
                 }}
               />
             ))}

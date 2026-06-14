@@ -50,24 +50,13 @@
 /* 雪花 */
 .mp-hero-snow { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
 .mp-hero-flake {
-  position: absolute; top: -24px;
-  color: rgba(79,195,247,0.55);
-  user-select: none;
-  animation: mp-snow-drift linear infinite;
+  position: absolute; top: -8px; border-radius: 50%;
+  background: rgba(79,195,247,0.35);
+  animation: mp-snow-fall linear infinite;
 }
-.mp-hero-flake::before { content: "❄"; }
-.mp-hero-flake--lg { font-size: 13px; color: rgba(79,195,247,0.30); }
-.mp-hero-flake--md { font-size: 9px;  color: rgba(79,195,247,0.20); }
-.mp-hero-flake--sm { font-size: 6px;  color: rgba(79,195,247,0.14); }
-
-@keyframes mp-snow-drift {
-  0%   { transform: translateY(0)      translateX(0)    rotate(0deg);   opacity: 0; }
-  8%   { opacity: 1; }
-  25%  { transform: translateY(25dvh)  translateX(18px) rotate(90deg); }
-  50%  { transform: translateY(50dvh)  translateX(-12px) rotate(180deg); }
-  75%  { transform: translateY(75dvh)  translateX(22px) rotate(270deg); }
-  92%  { opacity: 0.7; }
-  100% { transform: translateY(115dvh) translateX(-8px) rotate(360deg); opacity: 0; }
+@keyframes mp-snow-fall {
+  0%   { transform: translateY(0); opacity: 0.6; }
+  100% { transform: translateY(110dvh) translateX(16px); opacity: 0; }
 }
 
 /* 下方成員區塊 */
