@@ -1,5 +1,7 @@
 import "./ColdOpen.css";
 
+const base = import.meta.env.BASE_URL;
+
 interface Props { step: number; }
 
 const FLAKES = Array.from({ length: 20 }, (_, i) => ({
@@ -24,7 +26,10 @@ const STATS = [
 
 export default function ColdOpen({ step }: Props) {
   return (
-    <div className="co-stage">
+    <div
+      className="co-stage"
+      style={{ ["--co-bg-image" as string]: `url('${base}images/spots/zao.jpg') center/cover no-repeat` }}
+    >
       <div className="co-snow">
         {FLAKES.map(f => (
           <div key={f.id} className="co-flake" style={{ left: f.left, width: f.size, height: f.size, animationDelay: f.delay, animationDuration: f.dur }} />

@@ -10,7 +10,7 @@ export function SplitLayout({ imageSrc, children }: Props) {
   return (
     <div className="split-layout">
       <div className="split-left">
-        <img className="split-img" src={imageSrc} alt="" />
+        <img key={imageSrc} className="split-img" src={imageSrc} alt="" />
       </div>
       <div className="split-right">
         {children}
