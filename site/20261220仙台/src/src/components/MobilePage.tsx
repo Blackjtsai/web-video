@@ -295,7 +295,7 @@ export function MobilePage({ baseUrl }: Props) {
         <div id="mp-c-d1-arrive" className="mp-card">
           <img src="images/spots/sendai-airport.jpg" alt="仙台機場" className="mp-card-img" />
           <div className="mp-card-title">✈️ IT254 去程班機</div>
-          <div className="mp-row-between mp-vcenter" style={{ padding: "12px 0" }}>
+          <div className="mp-row-between mp-vcenter" style={{ padding: "14px 0", borderTop: "1px solid var(--rule)", borderBottom: "1px solid var(--rule)" }}>
             <div className="mp-flight-node">
               <div className="mp-flight-airport">TPE 桃園</div>
               <div className="mp-flight-time">14:35</div>
@@ -306,7 +306,7 @@ export function MobilePage({ baseUrl }: Props) {
               <div className="mp-flight-time">18:45</div>
             </div>
           </div>
-          <div className="mp-note" style={{ marginBottom: 8 }}>落地後直衝 1F 租車，勿在機場逗留</div>
+          <div className="mp-muted" style={{ marginBottom: 8 }}>落地後直衝 1F 租車，勿在機場逗留</div>
           <div className="mp-card-title" style={{ marginTop: 10 }}>🚗 機場取車</div>
           <div className="mp-two-col">
             <div className="mp-col-item">
@@ -644,7 +644,7 @@ export function MobilePage({ baseUrl }: Props) {
 
         <div id="mp-c-d5-farewell" className="mp-card mp-card--dark">
           <div className="mp-card-title mp-card-title--light">✈️ IT255 回程班機</div>
-          <div className="mp-row-between mp-vcenter" style={{ padding: "12px 0" }}>
+          <div className="mp-row-between mp-vcenter" style={{ padding: "14px 0", borderTop: "1px solid var(--rule)", borderBottom: "1px solid var(--rule)" }}>
             <div className="mp-flight-node">
               <div className="mp-flight-airport">SDJ 仙台</div>
               <div className="mp-flight-time">19:40</div>
@@ -655,7 +655,7 @@ export function MobilePage({ baseUrl }: Props) {
               <div className="mp-flight-time">23:00</div>
             </div>
           </div>
-          <div className="mp-note" style={{ marginBottom: 8 }}>17:10 前抵達機場・提早 2.5h 完成大件行李託運</div>
+          <div className="mp-muted" style={{ marginBottom: 8 }}>17:10 前抵達機場・提早 2.5h 完成大件行李託運</div>
           <div className="mp-finale" style={{ marginTop: 10 }}>仙台滑雪，圓滿落幕</div>
           <div className="mp-tags-row" style={{ marginTop: 8 }}>
             {["5天4夜", "3座雪場", "牛舌", "山形牛", "羊肉", "深夜拉麵", "硫磺溫泉"].map(r => (
