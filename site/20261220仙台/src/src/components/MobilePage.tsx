@@ -295,7 +295,7 @@ export function MobilePage({ baseUrl }: Props) {
         <div id="mp-c-d1-arrive" className="mp-card">
           <img src="images/spots/sendai-airport.jpg" alt="仙台機場" className="mp-card-img" />
           <div className="mp-card-title">✈️ IT254 去程班機</div>
-          <div className="mp-row-between mp-vcenter" style={{ marginBottom: 4 }}>
+          <div className="mp-row-between mp-vcenter" style={{ padding: "12px 0" }}>
             <div className="mp-flight-node">
               <div className="mp-flight-airport">TPE 桃園</div>
               <div className="mp-flight-time">14:35</div>
@@ -644,7 +644,7 @@ export function MobilePage({ baseUrl }: Props) {
 
         <div id="mp-c-d5-farewell" className="mp-card mp-card--dark">
           <div className="mp-card-title mp-card-title--light">✈️ IT255 回程班機</div>
-          <div className="mp-row-between mp-vcenter" style={{ marginBottom: 4 }}>
+          <div className="mp-row-between mp-vcenter" style={{ padding: "12px 0" }}>
             <div className="mp-flight-node">
               <div className="mp-flight-airport">SDJ 仙台</div>
               <div className="mp-flight-time">19:40</div>
