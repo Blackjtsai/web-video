@@ -1,5 +1,5 @@
 # 系統藍圖 — 20261220仙台
-> 最後更新：2026-05-29
+> 最後更新：2026-06-15
 
 ## 章節登錄
 
@@ -24,11 +24,24 @@
 | `src/App.tsx:29`                            | `isMobileMode = params.get("layout") === "mobile"`              |
 | `src/hooks/useStepper.ts:8`                 | `STORAGE_KEY = "presentation-cursor-v1-sendai"`（新增章節要 bump）|
 | `src/styles/tokens.css`                     | 主題色 midnight-ice                                             |
-| `src/styles/split.css`                      | split layout + 左側雪山漸層 placeholder（images 空目錄時顯示）   |
+| `src/styles/split.css`                      | split layout + 左側雪山漸層 placeholder                         |
 | `src/components/MobilePage.tsx:22`          | `SEGMENTS` 陣列（34 段，TTS 播放 + scrollIntoView 唯一真相源）   |
 | `src/components/SplitEnding.tsx`            | 結尾資源面板（PDF 下載）                                        |
 | `public/audio/<chapter-id>/<N>.mp3`         | 口播音頻（共 34 段）                                            |
-| `public/images/`                            | ⚠ 空目錄，需放 day1~day5.jpg 滑雪照片                          |
+| `public/images/spots/`                      | 15 張景點圖（見下方圖片清單）                                   |
+
+## 圖片清單（public/images/spots/）
+
+```
+beef-tongue.jpg      eboshi.jpg           genghis-khan.jpg
+hotel-metropolitan.jpg  izakaya.jpg       outlet.jpg
+ramen.jpg            sendai-airport.jpg   sendai-beef.jpg
+snow-road.jpg        souvenirs.jpg        spring-valley.jpg
+sukiyaki.jpg         zao-onsen.jpg        zao.jpg
+```
+
+手機版 `<img src="images/spots/xxx.jpg">` 用相對路徑（不加 `import.meta.env.BASE_URL`）。
+桌面版 ColdOpen CSS 背景圖用 `var(--co-bg-image)` inline style + `${base}images/spots/zao.jpg`。
 
 ## 主題色（midnight-ice）
 
@@ -45,6 +58,29 @@
 ```
 
 字體：`Archivo Black`（英文顯示）＋ `Noto Sans SC`（中文）
+
+## 班機資訊
+
+| 方向 | 日期 | 班號 | 出發 | 抵達 | 飛行時間 |
+|------|------|------|------|------|----------|
+| 去程 | 12/20（日） | IT254（虎航） | TPE 14:35 | SDJ 18:45 | 3h10m |
+| 回程 | 12/24（四） | IT255（虎航） | SDJ 19:40 | TPE 23:00 | 3h20m |
+
+手機版 Day1/Day5 班機區塊 CSS：`borderTop + borderBottom + marginTop: 24 + padding: 14px 0`。
+統一使用 `mp-flight-time`（白色）而非 `mp-flight-time-light`（藍色）以保持一致性。
+
+## 手機版 Must-Know 卡片結構（2026-06-15 更新）
+
+Must-Know 章節改為各景點 / 美食獨立卡片，不再是純文字 list：
+
+**三座雪場（各一卡）**：`mp-c-mk-ski`（Eboshi）、無 id（藏王）、無 id（Spring Valley）
+- 每卡：圖片 + stats two-col + Maps chip + 官方網站 chip + mp-note
+
+**四道美食（各一卡）**：`mp-c-mk-food`（牛舌）、無 id（壽喜燒 / 成吉思汗 / 拉麵）
+- 每卡：圖片 + 多店 Maps chip
+
+⚠️ `id="mp-c-mk-ski"` 和 `id="mp-c-mk-food"` 必須保留在各類別的第一張卡，
+供 SEGMENTS 音頻 scroll sync 使用（step 4 / step 5）。
 
 ## 特殊注意事項
 
@@ -70,10 +106,26 @@ Day4 step2: d4-resort-card min-width:0 / d4-night-visual 20vw→12vw
 Day5 step1: d5-outlet-info min-width:0 / d5-outlet-map 20vw→13vw / d5-dist-num 6.5vw→4vw
 ```
 
-### split.css 左側 placeholder
+### 手機版圖片全寬出血（mp-card-img）
 
-`public/images/` 目前為空。`.split-left` 已設雪山深藍漸層作為 placeholder。
-若加入實際照片，`<img>` 會自動蓋掉漸層。
+```css
+.mp-card-img {
+  width: calc(100% + 32px);
+  max-width: none;        /* 必填：覆蓋 base.css img { max-width: 100% } */
+  margin: -14px -16px 6px;
+  height: 180px;
+  object-fit: cover;
+}
+```
+
+`max-width: none` 是關鍵。base.css line 24 全域 `img { max-width: 100% }` 會讓
+`width: calc(100% + 32px)` 失效，右側留白。
+
+### mp-card 改為 display: block
+
+原 `display: flex; flex-direction: column` → 改 `display: block`，
+`gap` 改用 `.mp-card > * + * { margin-top: 8px }`。
+讓 `calc(100% + 32px)` 全寬圖正確出血，不被 flex 限制。
 
 ### ProgressBar
 
