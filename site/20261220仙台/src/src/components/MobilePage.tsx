@@ -699,33 +699,151 @@ export function MobilePage({ baseUrl }: Props) {
           ))}
         </div>
 
+        {/* ── 雪場 1：Eboshi ── */}
         <div id="mp-c-mk-ski" className="mp-card">
-          <div className="mp-card-title">🎿 三座雪場速查</div>
-          {[
-            { name: "Eboshi（Day 2）", tip: "5h 或全日券 · 4.3km 滑道" },
-            { name: "山形藏王（Day 3）", tip: "全日券 · 43 條滑道 · 樹冰奇景" },
-            { name: "Spring Valley（Day 4）", tip: "夜滑 17:00-22:00 · 帶面罩" },
-          ].map(s => (
-            <div className="mp-list-item" key={s.name}>
-              <div className="mp-list-name">{s.name}</div>
-              <div className="mp-list-sub">{s.tip}</div>
+          <img src="images/spots/eboshi.jpg" alt="宮城藏王 Eboshi" className="mp-card-img" />
+          <div className="mp-card-title mp-card-title--row">
+            <span>⛷️ Eboshi（Day 2）</span>
+            <MapBtn q="みやぎ蔵王えぼしリゾート 宮城県刈田郡蔵王町" />
+          </div>
+          <div className="mp-two-col">
+            <div className="mp-col-item">
+              <div className="mp-col-label">滑道 / 最長</div>
+              <div className="mp-col-val">22 條 · 4.3 km</div>
             </div>
-          ))}
+            <div className="mp-col-item">
+              <div className="mp-col-label">最高標高</div>
+              <div className="mp-col-val">930 m</div>
+            </div>
+          </div>
+          <div className="mp-two-col">
+            <div className="mp-col-item">
+              <div className="mp-col-label">纜車券</div>
+              <div className="mp-col-val">5h 或全日券</div>
+            </div>
+            <div className="mp-col-item">
+              <div className="mp-col-label">雪具租借</div>
+              <div className="mp-col-val">現場可租借</div>
+            </div>
+          </div>
+          <div className="mp-tags-row" style={{ marginTop: 8 }}>
+            <a href="https://maps.google.com/?q=みやぎ蔵王えぼしリゾート" target="_blank" rel="noopener noreferrer" className="mp-tag-chip mp-tag-chip--map">地圖 🗺</a>
+            <a href="https://www.eboshi.co.jp/" target="_blank" rel="noopener noreferrer" className="mp-tag-chip">🌐 官方網站</a>
+          </div>
+          <div className="mp-note">距仙台市區 60 min · 宮城縣最大雪場 · 適合各級滑手</div>
         </div>
 
-        <div id="mp-c-mk-food" className="mp-card">
-          <div className="mp-card-title">🍽️ 東北美食清單</div>
-          {[
-            { name: "仙台牛舌", shop: "司（Tsukasa）", note: "厚切炭火燒，多汁有嚼勁" },
-            { name: "山形牛壽喜燒", shop: "藏王溫泉飯店", note: "A5 和牛，飯後泡溫泉" },
-            { name: "成吉思汗烤羊肉", shop: "ろばた（溫泉街）", note: "東北名物，搭配生啤酒" },
-            { name: "深夜拉麵", shop: "仙台市區隨便走", note: "三連戰後的最好句點" },
-          ].map(f => (
-            <div className="mp-list-item" key={f.name}>
-              <div className="mp-list-name">{f.name} <span style={{ color: "var(--text-mute)", fontWeight: 400 }}>· {f.shop}</span></div>
-              <div className="mp-list-sub">{f.note}</div>
+        {/* ── 雪場 2：山形藏王 ── */}
+        <div className="mp-card">
+          <img src="images/spots/zao.jpg" alt="山形藏王溫泉滑雪場" className="mp-card-img" />
+          <div className="mp-card-title mp-card-title--row">
+            <span>🏔️ 山形藏王（Day 3）</span>
+            <MapBtn q="蔵王温泉スキー場 山形県山形市蔵王温泉" />
+          </div>
+          <div className="mp-two-col">
+            <div className="mp-col-item">
+              <div className="mp-col-label">滑道 / 落差</div>
+              <div className="mp-col-val">43 條 · 855 m</div>
             </div>
-          ))}
+            <div className="mp-col-item">
+              <div className="mp-col-label">最高標高</div>
+              <div className="mp-col-val">1661 m</div>
+            </div>
+          </div>
+          <div className="mp-two-col">
+            <div className="mp-col-item">
+              <div className="mp-col-label">纜車券</div>
+              <div className="mp-col-val">全日券推薦</div>
+            </div>
+            <div className="mp-col-item">
+              <div className="mp-col-label">雪具租借</div>
+              <div className="mp-col-val">溫泉街配合店</div>
+            </div>
+          </div>
+          <div className="mp-tags-row" style={{ marginTop: 8 }}>
+            <a href="https://maps.google.com/?q=蔵王温泉スキー場" target="_blank" rel="noopener noreferrer" className="mp-tag-chip mp-tag-chip--map">地圖 🗺</a>
+            <a href="https://zaoskiarea.com/" target="_blank" rel="noopener noreferrer" className="mp-tag-chip">🌐 官方網站</a>
+          </div>
+          <div className="mp-note">12月限定樹冰奇景 · 可下至溫泉街的「樹冰原滑道」· 車停飯店不用開車</div>
+        </div>
+
+        {/* ── 雪場 3：Spring Valley ── */}
+        <div className="mp-card mp-card--dark">
+          <img src="images/spots/spring-valley.jpg" alt="Spring Valley 仙台泉" className="mp-card-img" />
+          <div className="mp-card-title mp-card-title--light mp-card-title--row">
+            <span>🌙 Spring Valley（Day 4）</span>
+            <MapBtn q="スプリングバレー仙台泉 宮城県仙台市泉区" />
+          </div>
+          <div className="mp-two-col">
+            <div className="mp-col-item">
+              <div className="mp-col-label">夜滑時段</div>
+              <div className="mp-col-val">17:00–22:00</div>
+            </div>
+            <div className="mp-col-item">
+              <div className="mp-col-label">距市區</div>
+              <div className="mp-col-val">約 40 分鐘</div>
+            </div>
+          </div>
+          <div className="mp-tags-row" style={{ marginTop: 8 }}>
+            <a href="https://maps.google.com/?q=スプリングバレー仙台泉" target="_blank" rel="noopener noreferrer" className="mp-tag-chip mp-tag-chip--map">地圖 🗺</a>
+            <a href="https://www.springvalley.co.jp/" target="_blank" rel="noopener noreferrer" className="mp-tag-chip">🌐 官方網站</a>
+          </div>
+          <div className="mp-note">大型人工造雪 + 公園區 · ⚠ 夜間氣溫驟降，帶面罩與保暖層</div>
+        </div>
+
+        {/* ── 美食 1：仙台牛舌 ── */}
+        <div id="mp-c-mk-food" className="mp-card">
+          <img src="images/spots/beef-tongue.jpg" alt="仙台牛舌" className="mp-card-img" />
+          <div className="mp-card-title">🥩 仙台牛舌</div>
+          <div className="mp-highlight">炭火燒厚切牛舌</div>
+          <div className="mp-muted">仙台名物 · 多汁有嚼勁 · 附麥飯 + 牛尾湯</div>
+          <div className="mp-tags-row" style={{ marginTop: 8 }}>
+            <a href="https://maps.google.com/?q=仙台 司 牛タン 本店" target="_blank" rel="noopener noreferrer" className="mp-tag-chip mp-tag-chip--map">司（Tsukasa）🗺</a>
+            <a href="https://maps.google.com/?q=伊達の牛たん本舗 仙台駅" target="_blank" rel="noopener noreferrer" className="mp-tag-chip mp-tag-chip--map">伊達の牛たん本舗 🗺</a>
+          </div>
+          <div className="mp-note">仙台車站商圈均有分店 · Day 1 晚餐首選</div>
+        </div>
+
+        {/* ── 美食 2：山形牛壽喜燒 ── */}
+        <div className="mp-card">
+          <img src="images/spots/sukiyaki.jpg" alt="山形牛壽喜燒" className="mp-card-img" />
+          <div className="mp-card-title mp-card-title--row">
+            <span>🥩 山形牛壽喜燒</span>
+            <MapBtn q="蔵王国際ホテル 山形県山形市蔵王温泉" />
+          </div>
+          <div className="mp-highlight">蔵王国際ホテル</div>
+          <div className="mp-muted">A5 山形和牛 · 飯店會席料理 · 入口即化</div>
+          <div className="mp-note">換上浴衣享用精緻晚餐 · 飯後泡硫磺溫泉 · Day 2 住宿含餐</div>
+        </div>
+
+        {/* ── 美食 3：成吉思汗 ── */}
+        <div className="mp-card mp-card--dark">
+          <img src="images/spots/genghis-khan.jpg" alt="成吉思汗烤羊肉" className="mp-card-img" />
+          <div className="mp-card-title mp-card-title--light mp-card-title--row">
+            <span>🔥 成吉思汗烤生羊肉</span>
+            <MapBtn q="ろばた 蔵王温泉街" />
+          </div>
+          <div className="mp-big-light">ろばた</div>
+          <div className="mp-muted-light">溫泉街名店 · 東北名物 · 炭火直烤 + 生啤酒</div>
+          <div className="mp-tags-row" style={{ marginTop: 8 }}>
+            <a href="https://maps.google.com/?q=ろばた+蔵王温泉" target="_blank" rel="noopener noreferrer" className="mp-tag-chip mp-tag-chip--map">ろばた 地圖 🗺</a>
+          </div>
+          <div className="mp-note">圍著炭火烤肉，男人聚會最棒的氛圍 · Day 3 晚餐</div>
+        </div>
+
+        {/* ── 美食 4：深夜拉麵 ── */}
+        <div className="mp-card">
+          <img src="images/spots/ramen.jpg" alt="仙台拉麵" className="mp-card-img" />
+          <div className="mp-card-title mp-card-title--row">
+            <span>🍜 仙台深夜拉麵</span>
+            <MapBtn q="仙台 ラーメン 深夜営業" />
+          </div>
+          <div className="mp-muted">22:00 下山後 · 仙台市區隨便走</div>
+          <div className="mp-tags-row" style={{ marginTop: 8 }}>
+            <a href="https://maps.google.com/?q=仙台 らーめん 繁昌" target="_blank" rel="noopener noreferrer" className="mp-tag-chip mp-tag-chip--map">繁昌 🗺</a>
+            <a href="https://maps.google.com/?q=仙台 中華そば 源氏" target="_blank" rel="noopener noreferrer" className="mp-tag-chip mp-tag-chip--map">源氏 🗺</a>
+          </div>
+          <div className="mp-note">三連戰完結的最好句點 · 叫碗濃郁熱湯，一切圓滿 · Day 4 宵夜</div>
         </div>
       </section>
 
