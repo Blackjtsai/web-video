@@ -102,6 +102,10 @@ export default function Day5({ step }: Props) {
       {/* Step 3: 圓滿落幕 */}
       {step === 3 && (
         <div className="d5-finale">
+          <div className="d5-finale-flight">
+            <span className="d5-finale-flight-num">IT255</span>
+            <span className="d5-finale-flight-seg">SDJ 19:40 → TPE 23:00</span>
+          </div>
           <div className="d5-finale-icon">✈️</div>
           <div className="d5-finale-title">熱血滿載<br />平安返台</div>
           <div className="d5-finale-recap">

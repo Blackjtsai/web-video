@@ -646,13 +646,13 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-card-title mp-card-title--light">✈️ IT255 回程班機</div>
           <div className="mp-row-between mp-vcenter" style={{ marginBottom: 4 }}>
             <div className="mp-flight-node">
-              <div className="mp-flight-airport-light">SDJ 仙台</div>
-              <div className="mp-flight-time-light">19:40</div>
+              <div className="mp-flight-airport">SDJ 仙台</div>
+              <div className="mp-flight-time">19:40</div>
             </div>
-            <div className="mp-flight-mid-light">虎航 · 3h20m →</div>
+            <div className="mp-flight-mid">虎航 · 3h20m →</div>
             <div className="mp-flight-node" style={{ textAlign: "right" }}>
-              <div className="mp-flight-airport-light">TPE 桃園</div>
-              <div className="mp-flight-time-light">23:00</div>
+              <div className="mp-flight-airport">TPE 桃園</div>
+              <div className="mp-flight-time">23:00</div>
             </div>
           </div>
           <div className="mp-note" style={{ marginBottom: 8 }}>17:10 前抵達機場・提早 2.5h 完成大件行李託運</div>

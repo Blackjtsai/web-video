@@ -48,6 +48,9 @@
 
 /* Step 3 */
 .d5-finale { align-items: center; animation: d5-in 500ms ease-out both; }
+.d5-finale-flight { display: flex; align-items: center; gap: 16px; }
+.d5-finale-flight-num { font-family: 'Inter', sans-serif; font-size: clamp(14px,1.4vw,18px); font-weight: 700; color: var(--accent); letter-spacing: 0.12em; }
+.d5-finale-flight-seg { font-family: 'Inter', sans-serif; font-size: clamp(16px,1.8vw,22px); font-weight: 700; color: var(--text); letter-spacing: 0.04em; }
 .d5-finale-icon { font-size: clamp(52px,7vw,88px); animation: d5-pop 600ms cubic-bezier(0.34,1.56,0.64,1) 150ms both; }
 .d5-finale-title { font-family: 'Inter', var(--font-display-cn); font-size: clamp(40px,5vw,64px); font-weight: 900; color: var(--text); text-align: center; line-height: 1.2; }
 .d5-finale-recap { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }

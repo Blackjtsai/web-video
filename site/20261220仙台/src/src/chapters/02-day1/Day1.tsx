@@ -22,16 +22,16 @@ export default function Day1({ step }: Props) {
         <div className="d1-arrive">
           <div className="d1-flight-row">
             <div className="d1-airport-node">
-              <div className="d1-airport-name">仙台機場</div>
-              <div className="d1-airport-time">落地</div>
+              <div className="d1-airport-name">TPE 桃園</div>
+              <div className="d1-airport-time">14:35</div>
             </div>
             <div className="d1-flight-arrow">
               <div className="d1-flight-line" />
-              <div className="d1-flight-dur">下午班機</div>
+              <div className="d1-flight-dur">IT254 · 3h10m</div>
             </div>
             <div className="d1-airport-node">
-              <div className="d1-airport-name">仙台市區</div>
-              <div className="d1-airport-time">40 min</div>
+              <div className="d1-airport-name">SDJ 仙台</div>
+              <div className="d1-airport-time">18:45</div>
             </div>
           </div>
           <div className="d1-note-box">
