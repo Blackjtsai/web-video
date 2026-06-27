@@ -480,7 +480,7 @@ const SPOTS: Record<string, SpotData> = {
 // ── 路線資料 ──────────────────────────────────────────────────────────
 const ROUTES = [
   {
-    id: "r1", img: "route1.jpg", label: "路線一", title: "北疆大環線",
+    id: "r1", img: "route1.png", label: "路線一", title: "北疆大環線",
     color: "blue", planCaption: "北疆大環線 12天 逐日路線規劃圖",
     duration: "12 天", season: "5 月 ~ 9 月",
     audience: "第一次去新疆、假期充裕，想一次收齊可可托海 · 禾木 · 喀納斯 · 賽里木湖 · 獨庫公路",
@@ -504,7 +504,7 @@ const ROUTES = [
     gmapUrl: "https://www.google.com/maps/dir/?api=1&origin=43.8256,87.6168&destination=43.8256,87.6168&waypoints=43.85,88.15|46.994,89.518|48.5678,87.4321|48.6912,87.0155|47.9811,87.5312|44.4221,84.9062|44.6015,81.1942|43.3255,83.6472|42.68,84.16&travelmode=driving",
   },
   {
-    id: "r2", img: "route2.jpg", label: "路線二", title: "南疆風情大環線",
+    id: "r2", img: "route2.png", label: "路線二", title: "南疆風情大環線",
     color: "green", planCaption: "南疆風情大環線 12天 逐日路線規劃圖",
     duration: "12 天", season: "4 月 ~ 10 月",
     audience: "深度旅人，熱愛絲路人文 · 沙漠公路 · 帕米爾高原極限風光",
@@ -528,7 +528,7 @@ const ROUTES = [
     gmapUrl: "https://www.google.com/maps/dir/?api=1&origin=43.8256,87.6168&destination=43.8256,87.6168&waypoints=42.9425,89.1805|41.7254,86.1586|41.72,82.96|40.543,81.2758|37.112,79.9227|39.4677,75.9892|37.7752,75.2332|38.4385,75.0672|37.7085,75.5728&travelmode=driving",
   },
   {
-    id: "r3", img: "route3.jpg", label: "路線三", title: "伊犁河谷深度縱貫獨庫",
+    id: "r3", img: "route3.png", label: "路線三", title: "伊犁河谷深度縱貫獨庫",
     color: "amber", planCaption: "伊犁河谷深度縱貫獨庫 12天 逐日路線規劃圖",
     duration: "12 天", season: "5 月 ~ 8 月",
     audience: "公路自駕控 · 花海攝影愛好者，想完整征服獨庫公路全段",
@@ -552,7 +552,7 @@ const ROUTES = [
     gmapUrl: "https://www.google.com/maps/dir/?api=1&origin=43.8256,87.6168&destination=43.8256,87.6168&waypoints=44.32,84.882|43.3255,83.6472|43.217,81.838|42.7082,80.8665|43.12,81.1312|44.0221,80.8715|44.6015,81.1942|42.68,84.16|41.72,82.96&travelmode=driving",
   },
   {
-    id: "r4", img: "route4.jpg", label: "路線四", title: "東疆全景絲路秘境",
+    id: "r4", img: "route4.png", label: "路線四", title: "東疆全景絲路秘境",
     color: "red", planCaption: "東疆全景絲路秘境 12天 逐日路線規劃圖",
     duration: "12 天", season: "4 月 ~ 10 月",
     audience: "絲路歷史迷 · 大漠探險玩家，想探索新疆最少人知的秘境",
@@ -563,7 +563,7 @@ const ROUTES = [
       ["Day 2",  "奇台 → 木壘（6500年原始胡楊林 · 鳴沙山滑沙轟鳴）"],
       ["Day 3",  "翻越東天山景觀公路 → 巴里坤大草原 · 巴里坤湖（高山鹹水湖 · 水鳥雪山）"],
       ["Day 4",  "巴里坤 → 哈密東天山（林海雪原一小時切換至戈壁綠洲）"],
-      ["Day 5",  "大海道雅丹地貌（地球最像火星之地 · 出發前下載 Google Maps 離線地圖）"],
+      ["Day 5",  "大海道雅丹地貌（地球最像火星之地 · 出發前務必在高德地圖下載新疆離線地圖並加滿油）"],
       ["Day 6",  "哈密人文歷史（哈密王陵 · 市博物館 · 回王府）"],
       ["Day 7",  "哈密 → 連霍高速穿越百里風區 → 庫木塔格沙漠（城市零距離沙漠 · 日落金沙）→ 鄯善"],
       ["Day 8",  "鄯善 → 吐峪溝麻扎村（1700年古老維吾爾族土坂村）→ 吐魯番"],
@@ -777,7 +777,7 @@ export function MobilePage({ baseUrl }: Props) {
         </div>
 
         <div className="mp-ski-plan-wrap">
-          <img className="mp-ski-plan-img" src={img("ski-plan.jpg")} alt="將軍山5天4夜行程規劃圖" loading="lazy" />
+          <img className="mp-ski-plan-img" src={img("ski-plan.png")} alt="將軍山5天4夜行程規劃圖" loading="lazy" />
           <div className="mp-ski-plan-caption">將軍山5天4夜行程規劃圖</div>
         </div>
 

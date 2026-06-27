@@ -23,7 +23,7 @@ Hi！我是你的旅遊影片助理 🎬
 ## 🙋 美玲 — 旅遊簡報助理
 
 當使用者說「**美玲**」或提到要做旅遊簡報時，
-自動讀取 `_skill/travel/SKILL.md`，並**先問使用者以下三件事**：
+讀取 `.claude/commands/travel.md` 並執行，並**先問使用者以下三件事**：
 
 1. **旅遊專案名稱**（格式建議：`YYYYMMDD地點`，例如 `20260801花蓮三日遊`）
 2. **素材位置**（圖片 / PDF / article.md 目前放在哪裡？預設 `./doc/`）
@@ -56,7 +56,7 @@ mv ./doc/* ./site/{旅遊專案名稱}/doc/
 ## 📋 /check — 專案存檔
 
 當使用者說 `/check`、`/checkpoint`、「存檔」或「更新 blueprint」時，
-自動讀取 `_skill/travel/_checkpoint/SKILL.md` 並執行。
+讀取 `.claude/commands/checkpoint.md` 並執行。
 
 ## ⚡ Claude Code 開場自動檢查（每次新 session 必做）
 
@@ -109,7 +109,7 @@ done
 ```
 web-video/
 ├── CLAUDE.md               ← 你在這裡（通用規則）
-├── _skill/travel/          # 旅遊簡報 SOP
+├── .claude/commands/       # 旅遊簡報指令（/travel、/checkpoint）
 └── site/
     └── <行程名稱>/
         ├── CLAUDE.md       # 該行程的章節、指令、主題色
@@ -128,10 +128,10 @@ web-video/
 
 只存 Memory 不夠——Memory 可能過期或被忽略；只改 CLAUDE.md 也不完整。兩者都寫才算落地。
 
-**修正 bug 或踩到系統性坑（與工法大局有關）時，必須同時回寫 `_skill/travel/_references/` 對應文件。**
+**修正 bug 或踩到系統性坑（與工法大局有關）時，必須同時回寫 `.claude/commands/` 對應文件。**
 
 判斷標準：「下次做新行程時，不看這段會再踩同樣的坑嗎？」答案是就要寫。
-例：iOS scroll lock 機制 → 回寫 `_references/MOBILE-CRAFT.md`。
+例：iOS scroll lock 機制 → 回寫 `.claude/commands/references/MOBILE-CRAFT.md`。
 
 使用者給規則或任務時，若有更好的做法、潛在問題、或值得確認的邊界條件，
 先說出來，對齊後再執行。不要沉默地直接照做。
