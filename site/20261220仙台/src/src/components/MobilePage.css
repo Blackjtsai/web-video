@@ -66,7 +66,7 @@
   width: 100%;
 }
 
-/* 三位滑雪小人 */
+/* 四位滑雪小人 */
 .mp-hero-members {
   position: relative; z-index: 1;
   display: flex; justify-content: space-around; align-items: flex-start;

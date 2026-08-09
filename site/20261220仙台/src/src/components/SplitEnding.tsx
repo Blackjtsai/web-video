@@ -17,10 +17,11 @@ function MapLink({ href, label }: { href: string; label: string }) {
 
 const MAPS = [
   { label: "仙台機場",            q: "仙台空港 宮城県名取市" },
-  { label: "仙台大都會飯店",       q: "Hotel Metropolitan Sendai 仙台駅" },
+  { label: "The OneFive Sendai",  q: "The OneFive Sendai 仙台市" },
   { label: "みやぎ藏王 Eboshi",   q: "みやぎ蔵王えぼしリゾート 宮城県刈田郡蔵王町" },
-  { label: "藏王溫泉飯店",        q: "蔵王国際ホテル 山形県山形市蔵王温泉" },
+  { label: "山形大飯店",          q: "Yamagata Grand Hotel 山形市香澄町" },
   { label: "山形藏王溫泉滑雪場",  q: "蔵王温泉スキー場 山形県山形市蔵王温泉" },
+  { label: "仙台國分町大露台酒店", q: "Hotel Grand Terrace Sendai Kokubuncho 仙台市" },
   { label: "Spring Valley 仙台泉", q: "スプリングバレー仙台泉 宮城県仙台市" },
   { label: "仙台港三井 Outlet",   q: "三井アウトレットパーク仙台港" },
 ];
@@ -54,12 +55,16 @@ export function SplitEnding({ baseUrl }: Props) {
           <div className="se-block">
             <div className="se-block-label">住宿聯絡</div>
             <div className="se-hotel-card">
-              <div className="se-hotel-name">Hotel Metropolitan Sendai</div>
-              <div className="se-hotel-phone">仙台市青葉区中央1丁目1-1</div>
+              <div className="se-hotel-name">The OneFive Sendai</div>
+              <div className="se-hotel-phone">Day 1 · 仙台市區（近仙台站）</div>
             </div>
             <div className="se-hotel-card">
-              <div className="se-hotel-name">蔵王国際ホテル</div>
-              <div className="se-hotel-phone">山形市蔵王温泉951</div>
+              <div className="se-hotel-name">山形大飯店 Yamagata Grand Hotel</div>
+              <div className="se-hotel-phone">Day 2–3 · 山形市香澄町</div>
+            </div>
+            <div className="se-hotel-card">
+              <div className="se-hotel-name">仙台國分町大露台酒店 Grand Terrace Sendai</div>
+              <div className="se-hotel-phone">Day 4 · 仙台市青葉区国分町</div>
             </div>
           </div>
           <div className="se-block">

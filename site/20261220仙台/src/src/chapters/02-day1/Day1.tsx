@@ -50,13 +50,13 @@ export default function Day1({ step }: Props) {
           <div className="d1-info-row">
             <div className="d1-info-item">
               <div className="d1-info-label">車型</div>
-              <div className="d1-info-value">中型 SUV</div>
-              <div className="d1-info-sub">Toyota RAV4 / Subaru Forester<br />後車廂容納 3 套滑雪板 + 行李</div>
+              <div className="d1-info-value">7-8 人座休旅</div>
+              <div className="d1-info-sub">Alphard / Vellfire / Delica<br />4 人 4 套雪具 + 行李從容</div>
             </div>
             <div className="d1-info-item">
               <div className="d1-info-label">飯店</div>
-              <div className="d1-info-value">仙台市區</div>
-              <div className="d1-info-sub">Hotel Metropolitan Sendai<br />或同級市區飯店</div>
+              <div className="d1-info-value">The OneFive</div>
+              <div className="d1-info-sub">The OneFive Sendai<br />仙台市區・近仙台站</div>
             </div>
           </div>
           <div className="d1-checklist">

@@ -22,13 +22,13 @@ const DRIVE_RULES = [
 
 const SKI_INFO = [
   { resort: "Eboshi", lift: "5小時 / 全日", gear: "可現場租借", note: "宮城縣最大，4.3km 超長滑道" },
-  { resort: "山形藏王", lift: "全日（推薦）", gear: "溫泉街配合店", note: "橫跨多山頭，12月樹冰奇景" },
+  { resort: "山形藏王", lift: "全日（推薦）", gear: "現場可租借", note: "橫跨多山頭，12月樹冰奇景" },
   { resort: "Spring Valley", lift: "夜滑 17:00-22:00", gear: "現場租借", note: "人工造雪 + 公園區，極速感" },
 ];
 
 const FOOD_LIST = [
   { name: "仙台牛舌", shop: "司（Tsukasa）", note: "厚切炭火燒，多汁有嚼勁", delay: "0ms" },
-  { name: "山形牛壽喜燒", shop: "藏王溫泉飯店", note: "A5 和牛，飯後泡溫泉", delay: "100ms" },
+  { name: "米澤牛燒肉", shop: "山形市區名店", note: "A5 和牛，山形名物", delay: "100ms" },
   { name: "成吉思汗烤羊肉", shop: "ろばた（溫泉街）", note: "東北名物，搭配生啤酒", delay: "200ms" },
   { name: "深夜拉麵", shop: "仙台市區隨便走", note: "三連戰後的最好句點", delay: "300ms" },
 ];
@@ -66,10 +66,10 @@ export default function MustKnow({ step }: Props) {
           <div className="mk-rental-row">
             <div className="mk-car-block">
               <div className="mk-car-label">推薦車型</div>
-              <div className="mk-car-name">中型 SUV</div>
+              <div className="mk-car-name">7-8 人座休旅</div>
               <div className="mk-car-sub">
-                Toyota RAV4 / Subaru Forester<br />
-                3人 + 3套滑雪板 + 大型行李箱<br />
+                Alphard / Vellfire / Delica<br />
+                4人 + 4套滑雪板 + 大型行李箱<br />
                 後車廂空間必須充足
               </div>
             </div>

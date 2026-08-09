@@ -34,7 +34,7 @@ const SPLIT_IMAGES: Record<string, string[]> = {
     `${base}images/spots/zao-onsen.jpg`,            // step 5: 藏王溫泉
   ],
   day3: [
-    `${base}images/spots/zao.jpg`,                  // step 0: 今日不用開車
+    `${base}images/spots/zao.jpg`,                  // step 0: 開車 30 分上山
     `${base}images/spots/zao.jpg`,                  // step 1: 藏王雪場介紹
     `${base}images/spots/zao.jpg`,                  // step 2: 全日滑雪
     `${base}images/spots/zao-onsen.jpg`,            // step 3: 公共浴場

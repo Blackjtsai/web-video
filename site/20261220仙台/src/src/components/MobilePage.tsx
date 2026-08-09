@@ -259,18 +259,19 @@ export function MobilePage({ baseUrl }: Props) {
             <div className="mp-hero-title">仙台滑雪</div>
             <div className="mp-hero-dates">2026 / 12 / 20 &nbsp;—&nbsp; 12 / 24</div>
             <div className="mp-hero-badges">
-              <span className="mp-badge">三人成行</span>
+              <span className="mp-badge">四人成行</span>
               <span className="mp-badge">五天四夜</span>
               <span className="mp-badge">3座雪場</span>
             </div>
           </div>
 
-          {/* 三位滑雪小人 */}
+          {/* 四位滑雪小人 */}
           <div className="mp-hero-members">
             {[
               { icon: "🏂", label: "型男一號" },
               { icon: "⛷️", label: "型男二號" },
               { icon: "🎿", label: "型男三號" },
+              { icon: "🏔️", label: "型男四號" },
             ].map((m, i) => (
               <div key={i} className="mp-hero-member" style={{ animationDelay: `${i * 150}ms` }}>
                 <div className="mp-hero-member-avatar">
@@ -281,7 +282,7 @@ export function MobilePage({ baseUrl }: Props) {
               </div>
             ))}
           </div>
-          <div className="mp-hero-members-tag">THREE MEN · ONE MISSION · PURE POWDER</div>
+          <div className="mp-hero-members-tag">FOUR MEN · ONE MISSION · PURE POWDER</div>
         </div>
       </div>
 
@@ -315,7 +316,7 @@ export function MobilePage({ baseUrl }: Props) {
             </div>
             <div className="mp-col-item">
               <div className="mp-col-label">推薦車型</div>
-              <div className="mp-col-val">Toyota RAV4<br />Subaru Forester</div>
+              <div className="mp-col-val">7-8 人座休旅<br />Alphard / Delica</div>
             </div>
           </div>
           <div className="mp-note">出關 → 1F 租車櫃檯 → 免費接駁車 ~5 min → 營業所辦手續</div>
@@ -328,13 +329,13 @@ export function MobilePage({ baseUrl }: Props) {
         </div>
 
         <div id="mp-c-d1-hotel" className="mp-card">
-          <img src="images/spots/hotel-metropolitan.jpg" alt="Hotel Metropolitan Sendai" className="mp-card-img" />
+          <img src="images/spots/hotel-metropolitan.jpg" alt="The OneFive Sendai" className="mp-card-img" />
           <div className="mp-card-title mp-card-title--row">
             <span>🏨 市區飯店入住</span>
-            <MapBtn q="Hotel Metropolitan Sendai 仙台駅" />
+            <MapBtn q="The OneFive Sendai 仙台市" />
           </div>
-          <div className="mp-highlight">Hotel Metropolitan Sendai</div>
-          <div className="mp-muted">仙台站旁 · 特約停車場（注意車高限制）</div>
+          <div className="mp-highlight">The OneFive Sendai</div>
+          <div className="mp-muted">仙台市區 · 近仙台站 · 停車注意車高限制</div>
         </div>
 
         <div id="mp-c-d1-beef" className="mp-card">
@@ -383,8 +384,8 @@ export function MobilePage({ baseUrl }: Props) {
           {[
             { time: "08:00", title: "飯店退房，出發", sub: "行李上車，往宮城藏王 Eboshi" },
             { time: "09:30", title: "抵達 Eboshi", sub: "現場辦雪具租借 + 購買纜車券" },
-            { time: "16:30", title: "歸還雪具，出發", sub: "翻越山脈前往山形藏王溫泉" },
-            { time: "18:00", title: "溫泉飯店入住", sub: "晚餐 + 溫泉" },
+            { time: "16:30", title: "歸還雪具，出發", sub: "翻越山脈前往山形市區" },
+            { time: "18:00", title: "山形大飯店入住", sub: "山形市區米澤牛晚餐" },
           ].map((t, i) => (
             <div key={i} className="mp-list-item">
               <div className="mp-list-name"><span style={{ color: "var(--accent)", fontWeight: 700, marginRight: 8 }}>{t.time}</span>{t.title}</div>
@@ -439,27 +440,27 @@ export function MobilePage({ baseUrl }: Props) {
 
         <div id="mp-c-d2-drive" className="mp-card mp-card--warn">
           <img src="images/spots/snow-road.jpg" alt="翻越山脈雪路" className="mp-card-img" />
-          <div className="mp-card-title">🚗 翻越山脈前往藏王溫泉</div>
+          <div className="mp-card-title">🚗 翻越山脈前往山形市區</div>
           <div className="mp-big-light">16:30 出發</div>
           <div className="mp-muted-light">⚠ 傍晚山路易起霧降雪，開霧燈、保持距離</div>
         </div>
 
         <div id="mp-c-d2-dinner" className="mp-card">
-          <img src="images/spots/sukiyaki.jpg" alt="山形牛壽喜燒" className="mp-card-img" />
+          <img src="images/spots/sukiyaki.jpg" alt="米澤牛燒肉" className="mp-card-img" />
           <div className="mp-card-title mp-card-title--row">
-            <span>🥩 山形牛壽喜燒</span>
-            <MapBtn q="蔵王国際ホテル 山形県山形市蔵王温泉" />
+            <span>🥩 米澤牛燒肉</span>
+            <MapBtn q="米沢牛 焼肉 山形市" />
           </div>
-          <div className="mp-highlight">蔵王国際ホテル</div>
-          <div className="mp-muted">A5 山形牛 · 飯店會席料理 · 入口即化</div>
-          <div className="mp-note">換上浴衣，享用飯店精心準備的極致晚餐</div>
+          <div className="mp-highlight">山形市區名店</div>
+          <div className="mp-muted">A5 米澤牛 · 山形名物 · 入口即化</div>
+          <div className="mp-note">入住山形大飯店，到市區享用頂級米澤牛燒肉</div>
         </div>
 
         <div id="mp-c-d2-onsen" className="mp-card mp-card--dark">
-          <img src="images/spots/zao-onsen.jpg" alt="藏王溫泉" className="mp-card-img" />
-          <div className="mp-card-title mp-card-title--light">♨️ 純天然硫磺泉</div>
-          <div className="mp-big-light">強酸性白濁硫磺泉</div>
-          <div className="mp-muted-light">泡進去，滑雪的疲憊瞬間化解</div>
+          <img src="images/spots/zao-onsen.jpg" alt="山形溫泉" className="mp-card-img" />
+          <div className="mp-card-title mp-card-title--light">♨️ 回飯店泡湯放鬆</div>
+          <div className="mp-big-light">洗去一天疲憊</div>
+          <div className="mp-muted-light">藏王強酸性硫磺泉，留到明天滑完雪再享受</div>
         </div>
       </section>
 
@@ -471,10 +472,10 @@ export function MobilePage({ baseUrl }: Props) {
         </div>
 
         <div id="mp-c-d3-sched" className="mp-card mp-card--dark">
-          <div className="mp-card-title mp-card-title--light">🗓 今日行程（不用開車！）</div>
+          <div className="mp-card-title mp-card-title--light">🗓 今日行程（開車 30 分上山）</div>
           {[
-            { time: "08:30", title: "溫泉早餐", sub: "豐盛日式溫泉早餐 · 溫泉街配合店鋪租借雪具" },
-            { time: "09:00", title: "直衝藏王", sub: "步行到大門 · 全日纜車券衝上頂峰" },
+            { time: "08:00", title: "飯店早餐", sub: "山形大飯店早餐 · 驅車 30 分上藏王" },
+            { time: "09:00", title: "直衝藏王", sub: "抵達雪場租雪具 · 全日纜車券衝上頂峰" },
             { time: "17:00", title: "公共浴場", sub: "上湯 / 下湯巡禮 · 歷史名湯泡完再說" },
             { time: "19:00", title: "成吉思汗", sub: "烤生羊肉 + 生啤酒 · 男人的痛快晚餐" },
           ].map((t, i) => (
@@ -532,17 +533,17 @@ export function MobilePage({ baseUrl }: Props) {
         </div>
 
         <div id="mp-c-d4-farewell" className="mp-card">
-          <img src="images/spots/snow-road.jpg" alt="告別藏王" className="mp-card-img" />
-          <div className="mp-card-title">🏔️ 告別藏王・返回仙台</div>
+          <img src="images/spots/snow-road.jpg" alt="告別山形" className="mp-card-img" />
+          <div className="mp-card-title">🏔️ 告別山形・返回仙台</div>
           <div className="mp-row-between mp-time-row">
             <div className="mp-flight-node">
               <div className="mp-flight-airport">09:30 退房</div>
-              <div className="mp-flight-time-sm">藏王溫泉出發</div>
+              <div className="mp-flight-time-sm">山形市區出發</div>
             </div>
             <div className="mp-flight-mid">途中可停</div>
             <div className="mp-flight-node">
               <div className="mp-flight-airport">12:30 抵達</div>
-              <div className="mp-flight-time-sm">仙台市區入住</div>
+              <div className="mp-flight-time-sm">國分町大露台入住</div>
             </div>
           </div>
           <div className="mp-note">可停山形城跡散步 · 白天路程充裕，輪流開車補眠</div>
@@ -789,7 +790,7 @@ export function MobilePage({ baseUrl }: Props) {
             <a href="https://maps.google.com/?q=蔵王温泉スキー場" target="_blank" rel="noopener noreferrer" className="mp-tag-chip mp-tag-chip--map">地圖 🗺</a>
             <a href="https://zaoskiarea.com/" target="_blank" rel="noopener noreferrer" className="mp-tag-chip">🌐 官方網站</a>
           </div>
-          <div className="mp-note">12月限定樹冰奇景 · 可下至溫泉街的「樹冰原滑道」· 車停飯店不用開車</div>
+          <div className="mp-note">12月限定樹冰奇景 · 可下至溫泉街的「樹冰原滑道」· 從山形市區驅車約 30 分上山</div>
         </div>
 
         {/* ── 雪場 3：Spring Valley ── */}
@@ -829,16 +830,16 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-note">仙台車站商圈均有分店 · Day 1 晚餐首選</div>
         </div>
 
-        {/* ── 美食 2：山形牛壽喜燒 ── */}
+        {/* ── 美食 2：米澤牛燒肉 ── */}
         <div className="mp-card">
-          <img src="images/spots/sukiyaki.jpg" alt="山形牛壽喜燒" className="mp-card-img" />
+          <img src="images/spots/sukiyaki.jpg" alt="米澤牛燒肉" className="mp-card-img" />
           <div className="mp-card-title mp-card-title--row">
-            <span>🥩 山形牛壽喜燒</span>
-            <MapBtn q="蔵王国際ホテル 山形県山形市蔵王温泉" />
+            <span>🥩 米澤牛燒肉</span>
+            <MapBtn q="米沢牛 焼肉 山形市" />
           </div>
-          <div className="mp-highlight">蔵王国際ホテル</div>
-          <div className="mp-muted">A5 山形和牛 · 飯店會席料理 · 入口即化</div>
-          <div className="mp-note">換上浴衣享用精緻晚餐 · 飯後泡硫磺溫泉 · Day 2 住宿含餐</div>
+          <div className="mp-highlight">山形市區名店</div>
+          <div className="mp-muted">A5 米澤牛 · 山形名物 · 入口即化</div>
+          <div className="mp-note">入住山形大飯店，到市區享用頂級米澤牛燒肉 · Day 2 晚餐</div>
         </div>
 
         {/* ── 美食 3：成吉思汗 ── */}

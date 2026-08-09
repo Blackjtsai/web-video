@@ -26,11 +26,11 @@ export default function Day4({ step }: Props) {
       {/* Step 0: 告別藏王 */}
       {step === 0 && (
         <div className="d4-farewell">
-          <div className="d4-farewell-tag">FAREWELL ZAO</div>
-          <div className="d4-farewell-title">最後一次晨湯<br />公路旅行，出發</div>
+          <div className="d4-farewell-tag">FAREWELL YAMAGATA</div>
+          <div className="d4-farewell-title">告別山形<br />公路旅行，返回宮城</div>
           <div className="d4-route-strip">
             <div className="d4-route-node">
-              <div className="d4-route-city">藏王溫泉</div>
+              <div className="d4-route-city">山形市區</div>
               <div className="d4-route-time">09:30 退房</div>
             </div>
             <div className="d4-route-mid-strip">
@@ -42,7 +42,7 @@ export default function Day4({ step }: Props) {
               <div className="d4-route-time">12:30 抵達</div>
             </div>
           </div>
-          <div className="d4-optional-note">今天主攻夜滑，白天開車時間充裕，可以輪流開車、補眠</div>
+          <div className="d4-optional-note">白天開車時間充裕，可以輪流開車、補眠；今晚入住仙台國分町大露台酒店</div>
         </div>
       )}
 

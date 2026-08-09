@@ -58,7 +58,7 @@
   text-transform: uppercase; animation: co-fade 600ms 450ms ease-out both;
 }
 
-/* ── Step 1: 三位成員 ── */
+/* ── Step 1: 四位成員 ── */
 .co-members-wrap {
   position: relative; z-index: 1;
   display: flex; flex-direction: column; align-items: center; gap: 40px; width: 100%;

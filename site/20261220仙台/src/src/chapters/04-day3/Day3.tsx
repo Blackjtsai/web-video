@@ -10,17 +10,17 @@ export default function Day3({ step }: Props) {
         <div className="d3-day-title">制霸日本最大藏王雪場・溫泉名湯</div>
       </div>
 
-      {/* Step 0: 今天不用開車 */}
+      {/* Step 0: 開車 30 分上山 */}
       {step === 0 && (
         <div className="d3-noDrive">
           <div className="d3-no-car-badge">
             <span style={{ fontSize: 24 }}>🚗</span>
-            <div className="d3-no-car-text">今天不用開車！車停飯店，大夥放鬆暢滑</div>
+            <div className="d3-no-car-text">今天開車 30 分上山，衝日本東北最大雪場</div>
           </div>
           <div className="d3-schedule-row">
             {[
-              { time: "08:30", title: "溫泉早餐", sub: "豐盛日式溫泉早餐\n溫泉街配合店鋪租借雪具", delay: "0ms" },
-              { time: "09:00", title: "直衝藏王", sub: "步行到大門\n全日纜車券衝上頂峰", delay: "150ms" },
+              { time: "08:00", title: "飯店早餐", sub: "山形大飯店早餐\n驅車 30 分上藏王溫泉滑雪場", delay: "0ms" },
+              { time: "09:00", title: "直衝藏王", sub: "抵達雪場租雪具\n全日纜車券衝上頂峰", delay: "150ms" },
               { time: "17:00", title: "公共浴場", sub: "上湯 / 下湯巡禮\n歷史名湯泡完再說", delay: "300ms" },
               { time: "19:00", title: "成吉思汗", sub: "烤生羊肉＋生啤酒\n男人的痛快晚餐", delay: "450ms" },
             ].map((s, i) => (

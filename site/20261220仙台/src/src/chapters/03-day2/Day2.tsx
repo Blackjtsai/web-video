@@ -11,8 +11,8 @@ const SLOPES = [
 const TIMELINE = [
   { time: "08:00", title: "飯店退房，出發", sub: "行李上車，往宮城藏王 Eboshi", delay: "0ms" },
   { time: "09:30", title: "抵達 Eboshi", sub: "現場辦雪具租借 + 購買纜車券", delay: "120ms" },
-  { time: "16:30", title: "歸還雪具，出發", sub: "翻越山脈前往山形藏王溫泉", delay: "240ms" },
-  { time: "18:00", title: "溫泉飯店入住", sub: "晚餐 + 溫泉", delay: "360ms" },
+  { time: "16:30", title: "歸還雪具，出發", sub: "翻越山脈前往山形市區", delay: "240ms" },
+  { time: "18:00", title: "山形大飯店入住", sub: "山形市區米澤牛晚餐", delay: "360ms" },
 ];
 
 const TIPS = [
@@ -128,7 +128,7 @@ export default function Day2({ step }: Props) {
               <div className="d2-route-dur">60–70 min</div>
             </div>
             <div className="d2-route-place">
-              <div className="d2-route-name">山形藏王<br />溫泉街</div>
+              <div className="d2-route-name">山形<br />市區</div>
               <div className="d2-route-sub">18:00 抵達</div>
             </div>
           </div>
@@ -147,17 +147,17 @@ export default function Day2({ step }: Props) {
         <div className="d2-dinner">
           <div className="d2-dinner-visual">
             <div className="d2-dinner-icon">🥩</div>
-            <div className="d2-dinner-cn">山形牛壽喜燒</div>
+            <div className="d2-dinner-cn">米澤牛燒肉</div>
           </div>
           <div className="d2-dinner-info">
-            <div className="d2-dinner-name">山形牛<br />壽喜燒</div>
+            <div className="d2-dinner-name">米澤牛<br />燒肉</div>
             <div className="d2-dinner-tags">
               <span className="d2-dtag">山形 A5 和牛</span>
-              <span className="d2-dtag">飯店會席料理</span>
+              <span className="d2-dtag">山形市區名店</span>
               <span className="d2-dtag">入口即化</span>
             </div>
             <div className="d2-tl-sub" style={{ fontSize: 14, color: "var(--text-mute)" }}>
-              換上浴衣，享用飯店精心準備的極致晚餐
+              入住山形大飯店，到市區享用頂級米澤牛燒肉
             </div>
           </div>
         </div>
@@ -174,17 +174,17 @@ export default function Day2({ step }: Props) {
                 <div className="d2-steam-line" />
               </div>
               <div className="d2-onsen-icon">♨️</div>
-              <div className="d2-onsen-cn">藏王溫泉</div>
+              <div className="d2-onsen-cn">山形溫泉</div>
             </div>
             <div className="d2-onsen-info">
-              <div className="d2-onsen-name">純天然<br />強酸性白濁<br />硫磺泉</div>
+              <div className="d2-onsen-name">回飯店<br />泡湯放鬆<br />洗去疲憊</div>
               <div className="d2-onsen-desc">
                 泡進去，第一天滑雪的疲憊<br />瞬間化解
               </div>
             </div>
           </div>
           <div className="d2-onsen-note">
-            睡前可至溫泉街散步，體驗充滿昭和風味的雪景小鎮
+            真正的藏王強酸性硫磺泉，留到明天滑完雪再去溫泉街好好享受
           </div>
         </div>
       )}
