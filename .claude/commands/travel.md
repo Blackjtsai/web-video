@@ -640,6 +640,27 @@ PRESENTATION_TTS=edge-tts npm run synthesize-audio   # 增量合成
 ```
 語音：`zh-TW-HsiaoChenNeural`（台灣中文女聲）
 
+### ⚠️ 更新既有行程時，改過文字的音頻必須重合成
+
+合成腳本 `synthesize-audio.sh` **預設 skip 已存在的 mp3**（`--force` 才全部重來）。
+所以當你只是「更新既有行程內容」（例如飯店、人數、行程調整）而**改動了 narrations.ts 的文字**時，
+直接跑 synthesize 不會更新那幾段——它們會被當成已存在而跳過，導致語音念舊稿、和畫面矛盾。
+
+**正確做法**（只重合成有變、不動其餘）：
+```bash
+# 1. 先算出「文字有改」的 narration → 對應 mp3：narrations 索引 i → 檔名 (i+1).mp3
+#    例：day2[4] 改了 → day2/5.mp3；coldopen[0] 改了 → coldopen/1.mp3
+# 2. 刪除這些變動的 mp3
+rm -f public/audio/day2/5.mp3 public/audio/coldopen/1.mp3 ...
+# 3. 重新產生 audio-segments.json，再增量合成（只補被刪的）
+npm run extract-narrations
+PRESENTATION_TTS=edge-tts npm run synthesize-audio
+```
+不要圖省事直接 `--force` 全部重合成——那會讓 34 段 mp3 全部進 git diff（二進位微差），造成無謂 churn。
+
+> **只改文字、step 數不變 → 不用 bump STORAGE_KEY**（cursor 位置仍有效）。
+> 只有「增刪 step / 章節」才 bump。
+
 ---
 
 ## Phase 5 — 交付
