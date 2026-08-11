@@ -661,6 +661,47 @@ PRESENTATION_TTS=edge-tts npm run synthesize-audio
 > **只改文字、step 數不變 → 不用 bump STORAGE_KEY**（cursor 位置仍有效）。
 > 只有「增刪 step / 章節」才 bump。
 
+### ⚠️ 大改內容（換景點 / 改行程結構）要盤查「舊主體殘留」
+
+當某章節是「建構在某個特定 subject 上」（例如整個 Day 2 都在講 Eboshi 雪場），
+而該 subject 被抽換掉時，殘留會散落在很多非顯眼處，只改口播與主卡不夠。
+**用舊主體名 grep 一次全庫**（含 src 與各 .md），逐一盤查以下落點：
+
+```bash
+rtk proxy grep -rn "舊主體名" src   # 例：grep -rn "Eboshi\|宮城藏王\|えぼし" src
+```
+
+| 常被漏掉的落點 | 檔案 |
+|---|---|
+| `SPLIT_IMAGES` 的圖片與註解 | `src/App.tsx` |
+| 章節標題 / day-date / cardId 註解 | 各 `*.tsx` |
+| RECAP / 結尾 tag 陣列 | `Day5.tsx`、`MobilePage.tsx` |
+| 地圖清單 MAPS | `SplitEnding.tsx` |
+| hero badge / STATS / 路線 RESORTS | `ColdOpen.tsx`、`MobilePage.tsx` |
+| 全站文案（`3 座雪場` 之類） | narrations、article、CLAUDE、blueprint、outline |
+
+CSS class 名（如 `.d2-eboshi`）、cardId（如 `mp-c-d2-eboshi`）可留著不改（純選擇器，改了徒增風險）。
+
+### 💡 script.md 用程式從 narrations.ts 重新生成，別逐行手改
+
+`script.md` 是各章 `narrations.ts` 的串接鏡像。內容大改後與其逐行 Edit（易錯、易漏），
+不如直接依 registry 章節順序重新生成，保證 100% 同步：
+
+```bash
+python3 - <<'PY'
+import re, pathlib
+base = pathlib.Path("src/src/chapters")
+order = ["01-coldopen","02-day1","03-day2","04-day3","05-day4","06-day5","07-must-know"]
+segs = []
+for ch in order:
+    body = (base/ch/"narrations.ts").read_text(encoding="utf-8").split("[",1)[1]
+    segs += re.findall(r'"((?:[^"\\]|\\.)*)"\s*,', body)
+pathlib.Path("script.md").write_text(
+    "# 口播稿\n\n" + "\n\n---\n\n".join(segs) + "\n", encoding="utf-8")
+print(f"script.md 重生成 {len(segs)} 段")
+PY
+```
+
 ---
 
 ## Phase 5 — 交付
