@@ -3,22 +3,22 @@ import "./Day2.css";
 interface Props { step: number; }
 
 const SLOPES = [
-  { name: "初級", pct: 0.5, km: "2.1km" },
-  { name: "中級", pct: 0.85, km: "3.6km" },
-  { name: "高級", pct: 1.0, km: "4.3km" },
+  { name: "中央區", pct: 0.75, km: "主纜車集散" },
+  { name: "橫倉區", pct: 1.0, km: "中級長巡航" },
+  { name: "上ノ台", pct: 0.5, km: "初級練身" },
 ];
 
 const TIMELINE = [
-  { time: "08:00", title: "飯店退房，出發", sub: "行李上車，往宮城藏王 Eboshi", delay: "0ms" },
-  { time: "09:30", title: "抵達 Eboshi", sub: "現場辦雪具租借 + 購買纜車券", delay: "120ms" },
-  { time: "16:30", title: "歸還雪具，出發", sub: "翻越山脈前往山形市區", delay: "240ms" },
-  { time: "18:00", title: "山形大飯店入住", sub: "山形市區米澤牛晚餐", delay: "360ms" },
+  { time: "06:30", title: "仙台退房，出發", sub: "開車約 1.5h 前往藏王溫泉滑雪場", delay: "0ms" },
+  { time: "08:00", title: "抵達雪場", sub: "租雪具、購 Lift 券、換裝（提前 1h）", delay: "120ms" },
+  { time: "16:30", title: "收板下山", sub: "開車回山形市區", delay: "240ms" },
+  { time: "17:30", title: "山形大飯店入住", sub: "18:30 山形市米澤牛晚餐", delay: "360ms" },
 ];
 
 const TIPS = [
-  "結伴滑雪，互相照應",
-  "注意體力分配，還有後面兩天",
-  "纜車 12 月通常 16:30 視天色關閉",
+  "第一天先熟悉，別急著攻頂",
+  "把中央區、橫倉區主要路線滑順",
+  "體力留給明天進階、後天夜滑",
 ];
 
 export default function Day2({ step }: Props) {
@@ -26,7 +26,7 @@ export default function Day2({ step }: Props) {
     <div className="d2-stage">
       <div className="d2-header">
         <div className="d2-day-tag">DAY 02 &nbsp;·&nbsp; 12.21 MON</div>
-        <div className="d2-day-title">宮城藏王 Eboshi 衝鋒・翻山越嶺</div>
+        <div className="d2-day-title">山形藏王溫泉滑雪場・熟悉雪場</div>
       </div>
 
       {/* Step 0: 今日行程 */}
@@ -48,18 +48,18 @@ export default function Day2({ step }: Props) {
         </div>
       )}
 
-      {/* Step 1: Eboshi 雪場介紹 */}
+      {/* Step 1: 藏王溫泉滑雪場（熟悉日） */}
       {step === 1 && (
         <div className="d2-eboshi">
           <div className="d2-resort-card">
-            <div className="d2-resort-name">みやぎ蔵王<br />えぼしリゾート</div>
-            <div className="d2-resort-en">MIYAGI ZAO EBOSHI RESORT</div>
+            <div className="d2-resort-name">山形藏王溫泉<br />スキー場</div>
+            <div className="d2-resort-en">YAMAGATA ZAO ONSEN · DAY 1 熟悉</div>
             <div className="d2-stats-grid">
               {[
-                { num: "4.3", unit: "km", label: "最長滑道" },
-                { num: "22", unit: "條", label: "滑道數量" },
-                { num: "930", unit: "m", label: "最高標高" },
-                { num: "60", unit: "min", label: "距市區車程" },
+                { num: "90", unit: "min", label: "仙台車程" },
+                { num: "1661", unit: "m", label: "最高標高" },
+                { num: "855", unit: "m", label: "最大落差" },
+                { num: "樹氷", unit: "", label: "12月奇景" },
               ].map((s, i) => (
                 <div key={i} className="d2-stat-box">
                   <div><span className="d2-stat-num">{s.num}</span><span className="d2-stat-unit">{s.unit}</span></div>
@@ -69,7 +69,7 @@ export default function Day2({ step }: Props) {
             </div>
           </div>
           <div className="d2-slope-visual">
-            <div className="d2-slope-label">SLOPE LENGTH</div>
+            <div className="d2-slope-label">今日熟悉區域</div>
             <div className="d2-slope-bars">
               {SLOPES.map((s, i) => (
                 <div key={i} className="d2-slope-row">
@@ -92,10 +92,10 @@ export default function Day2({ step }: Props) {
       {step === 2 && (
         <div className="d2-ski-day">
           <div className="d2-time-block">
-            <div className="d2-time-big">09:30</div>
+            <div className="d2-time-big">09:00</div>
             <div className="d2-time-sep">→</div>
-            <div className="d2-time-big">16:00</div>
-            <div className="d2-time-label">全日飆雪<br />約 6.5 小時</div>
+            <div className="d2-time-big">16:30</div>
+            <div className="d2-time-label">全日熟悉<br />約 7.5 小時</div>
           </div>
           <div className="d2-tips">
             {TIPS.map((t, i) => (
@@ -115,27 +115,27 @@ export default function Day2({ step }: Props) {
         </div>
       )}
 
-      {/* Step 3: 翻山越嶺 */}
+      {/* Step 3: 收板下山回山形 */}
       {step === 3 && (
         <div className="d2-drive">
           <div className="d2-route-arrow">
             <div className="d2-route-place">
-              <div className="d2-route-name">宮城藏王<br />Eboshi</div>
-              <div className="d2-route-sub">16:30 出發</div>
+              <div className="d2-route-name">藏王溫泉<br />滑雪場</div>
+              <div className="d2-route-sub">16:30 收板</div>
             </div>
             <div className="d2-route-mid">
               <div className="d2-route-line-h" />
-              <div className="d2-route-dur">60–70 min</div>
+              <div className="d2-route-dur">30–40 min</div>
             </div>
             <div className="d2-route-place">
               <div className="d2-route-name">山形<br />市區</div>
-              <div className="d2-route-sub">18:00 抵達</div>
+              <div className="d2-route-sub">17:30 入住</div>
             </div>
           </div>
           <div className="d2-warn-box">
             <div className="d2-warn-title">⚠ 山路自駕注意</div>
             <div className="d2-warn-text">
-              傍晚翻越山脈極易起霧或降大雪<br />
+              傍晚下山山路極易起霧或降大雪<br />
               開啟霧燈，拉大與前車距離，慢慢開
             </div>
           </div>

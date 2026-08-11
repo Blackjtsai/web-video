@@ -15,14 +15,14 @@ export default function Day3({ step }: Props) {
         <div className="d3-noDrive">
           <div className="d3-no-car-badge">
             <span style={{ fontSize: 24 }}>🚗</span>
-            <div className="d3-no-car-text">今天開車 30 分上山，衝日本東北最大雪場</div>
+            <div className="d3-no-car-text">進階日：開車 30 分上山，攻頂地藏山頂與樹冰區</div>
           </div>
           <div className="d3-schedule-row">
             {[
               { time: "08:00", title: "飯店早餐", sub: "山形大飯店早餐\n驅車 30 分上藏王溫泉滑雪場", delay: "0ms" },
-              { time: "09:00", title: "直衝藏王", sub: "抵達雪場租雪具\n全日纜車券衝上頂峰", delay: "150ms" },
+              { time: "09:00", title: "攻頂進階", sub: "昨天已租好雪具，不用排隊\n地藏山頂・樹冰區・Long Cruise", delay: "150ms" },
               { time: "17:00", title: "公共浴場", sub: "上湯 / 下湯巡禮\n歷史名湯泡完再說", delay: "300ms" },
-              { time: "19:00", title: "成吉思汗", sub: "烤生羊肉＋生啤酒\n男人的痛快晚餐", delay: "450ms" },
+              { time: "19:00", title: "成吉思汗", sub: "烤生羊肉＋生啤酒\n晚餐後返山形大飯店", delay: "450ms" },
             ].map((s, i) => (
               <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 32 }}>
                 <div className="d3-sched-item d3-sched-item--visible" style={{ animationDelay: s.delay }}>

@@ -22,7 +22,7 @@
 .d2-tl-title { font-family: 'Inter', var(--font-display-cn); font-size: clamp(18px,1.8vw,24px); font-weight: 700; color: var(--text); margin-bottom: 4px; }
 .d2-tl-sub { font-size: clamp(15px,1.4vw,19px); color: var(--text-mute); line-height: 1.6; }
 
-/* Step 1 Eboshi */
+/* Step 1 藏王溫泉滑雪場（熟悉） */
 .d2-eboshi { flex-direction: row; align-items: center; animation: d2-in 450ms ease-out both; }
 .d2-resort-card { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
 .d2-resort-name { font-family: 'Inter', var(--font-display-cn); font-size: clamp(26px,2.8vw,40px); font-weight: 900; color: var(--text); line-height: 1.1; }

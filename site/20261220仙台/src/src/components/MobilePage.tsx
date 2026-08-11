@@ -261,7 +261,7 @@ export function MobilePage({ baseUrl }: Props) {
             <div className="mp-hero-badges">
               <span className="mp-badge">四人成行</span>
               <span className="mp-badge">五天四夜</span>
-              <span className="mp-badge">3座雪場</span>
+              <span className="mp-badge">滑雪三日</span>
             </div>
           </div>
 
@@ -376,16 +376,16 @@ export function MobilePage({ baseUrl }: Props) {
       <section id="mp-s-day2" className="mp-day">
         <div className="mp-day-header">
           <span className="mp-day-tag">Day 2</span>
-          <span className="mp-day-date">12月21日（一）・Eboshi 衝鋒</span>
+          <span className="mp-day-date">12月21日（一）・藏王溫泉 熟悉日</span>
         </div>
 
         <div id="mp-c-d2-sched" className="mp-card mp-card--dark">
           <div className="mp-card-title mp-card-title--light">🗓 今日行程</div>
           {[
-            { time: "08:00", title: "飯店退房，出發", sub: "行李上車，往宮城藏王 Eboshi" },
-            { time: "09:30", title: "抵達 Eboshi", sub: "現場辦雪具租借 + 購買纜車券" },
-            { time: "16:30", title: "歸還雪具，出發", sub: "翻越山脈前往山形市區" },
-            { time: "18:00", title: "山形大飯店入住", sub: "山形市區米澤牛晚餐" },
+            { time: "06:30", title: "仙台退房，出發", sub: "開車約 1.5h 前往藏王溫泉滑雪場" },
+            { time: "08:00", title: "抵達雪場", sub: "租雪具、購 Lift 券、換裝（提前 1h）" },
+            { time: "16:30", title: "收板下山", sub: "開車回山形市區" },
+            { time: "17:30", title: "山形大飯店入住", sub: "18:30 山形市米澤牛晚餐" },
           ].map((t, i) => (
             <div key={i} className="mp-list-item">
               <div className="mp-list-name"><span style={{ color: "var(--accent)", fontWeight: 700, marginRight: 8 }}>{t.time}</span>{t.title}</div>
@@ -395,41 +395,41 @@ export function MobilePage({ baseUrl }: Props) {
         </div>
 
         <div id="mp-c-d2-eboshi" className="mp-card">
-          <img src="images/spots/eboshi.jpg" alt="宮城藏王 Eboshi" className="mp-card-img" />
+          <img src="images/spots/zao.jpg" alt="山形藏王溫泉滑雪場" className="mp-card-img" />
           <div className="mp-card-title mp-card-title--row">
-            <span>⛷️ 宮城藏王 Eboshi</span>
-            <MapBtn q="みやぎ蔵王えぼしリゾート 宮城県刈田郡蔵王町" />
+            <span>⛷️ 山形藏王溫泉滑雪場（Day 1 熟悉）</span>
+            <MapBtn q="蔵王温泉スキー場 山形県山形市蔵王温泉" />
           </div>
           <div className="mp-row-between mp-time-row">
             <div className="mp-flight-node">
-              <div className="mp-flight-airport">09:30 抵達</div>
-              <div className="mp-flight-time-sm">市區出發 08:00</div>
+              <div className="mp-flight-airport">08:00 抵達</div>
+              <div className="mp-flight-time-sm">仙台出發 06:30</div>
             </div>
-            <div className="mp-flight-mid">全日飆雪</div>
+            <div className="mp-flight-mid">熟悉雪場</div>
             <div className="mp-flight-node">
-              <div className="mp-flight-airport">16:00 結束</div>
-              <div className="mp-flight-time-sm">最長 4.3km 滑道</div>
+              <div className="mp-flight-airport">16:30 收板</div>
+              <div className="mp-flight-time-sm">中央・橫倉區</div>
             </div>
           </div>
           <div className="mp-two-col" style={{ marginTop: 4 }}>
             <div className="mp-col-item">
-              <div className="mp-col-label">滑道數量</div>
-              <div className="mp-col-val">22 條</div>
+              <div className="mp-col-label">今日區域</div>
+              <div className="mp-col-val">中央區・橫倉區</div>
             </div>
             <div className="mp-col-item">
               <div className="mp-col-label">最高標高</div>
-              <div className="mp-col-val">930 m</div>
+              <div className="mp-col-val">1661 m</div>
             </div>
           </div>
-          <div className="mp-note">宮城縣最大雪場 · 距市區 60min · 現場可租借全套雪具</div>
+          <div className="mp-note">藏王溫泉滑雪場 · 仙台開車約 1.5h · 現場可租借全套雪具</div>
         </div>
 
         <div id="mp-c-d2-skiday" className="mp-card">
-          <div className="mp-card-title">🎿 全日飆雪 6.5 小時</div>
+          <div className="mp-card-title">🎿 熟悉雪場 · 先滑主要路線</div>
           {[
-            "結伴滑雪，互相照應",
-            "注意體力分配，還有後面兩天",
-            "纜車 12 月通常 16:30 視天色關閉",
+            "第一天先熟悉，別急著攻頂",
+            "把中央區、橫倉區主要路線滑順",
+            "體力留給明天進階、後天夜滑",
           ].map((t, i) => (
             <div key={i} className="mp-list-item">
               <div className="mp-list-name">{t}</div>
@@ -439,9 +439,9 @@ export function MobilePage({ baseUrl }: Props) {
         </div>
 
         <div id="mp-c-d2-drive" className="mp-card mp-card--warn">
-          <img src="images/spots/snow-road.jpg" alt="翻越山脈雪路" className="mp-card-img" />
-          <div className="mp-card-title">🚗 翻越山脈前往山形市區</div>
-          <div className="mp-big-light">16:30 出發</div>
+          <img src="images/spots/snow-road.jpg" alt="下山雪路" className="mp-card-img" />
+          <div className="mp-card-title">🚗 收板下山回山形市區</div>
+          <div className="mp-big-light">16:30 下山</div>
           <div className="mp-muted-light">⚠ 傍晚山路易起霧降雪，開霧燈、保持距離</div>
         </div>
 
@@ -468,14 +468,14 @@ export function MobilePage({ baseUrl }: Props) {
       <section id="mp-s-day3" className="mp-day">
         <div className="mp-day-header">
           <span className="mp-day-tag">Day 3</span>
-          <span className="mp-day-date">12月22日（二）・制霸藏王大雪場</span>
+          <span className="mp-day-date">12月22日（二）・藏王 進階攻頂</span>
         </div>
 
         <div id="mp-c-d3-sched" className="mp-card mp-card--dark">
           <div className="mp-card-title mp-card-title--light">🗓 今日行程（開車 30 分上山）</div>
           {[
             { time: "08:00", title: "飯店早餐", sub: "山形大飯店早餐 · 驅車 30 分上藏王" },
-            { time: "09:00", title: "直衝藏王", sub: "抵達雪場租雪具 · 全日纜車券衝上頂峰" },
+            { time: "09:00", title: "攻頂進階", sub: "地藏山頂・樹冰區・Long Cruise（雪具昨已租）" },
             { time: "17:00", title: "公共浴場", sub: "上湯 / 下湯巡禮 · 歷史名湯泡完再說" },
             { time: "19:00", title: "成吉思汗", sub: "烤生羊肉 + 生啤酒 · 男人的痛快晚餐" },
           ].map((t, i) => (
@@ -659,7 +659,7 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-muted" style={{ marginBottom: 8 }}>17:10 前抵達機場・提早 2.5h 完成大件行李託運</div>
           <div className="mp-finale" style={{ marginTop: 10 }}>仙台滑雪，圓滿落幕</div>
           <div className="mp-tags-row" style={{ marginTop: 8 }}>
-            {["5天4夜", "3座雪場", "牛舌", "山形牛", "羊肉", "深夜拉麵", "硫磺溫泉"].map(r => (
+            {["5天4夜", "滑雪三日", "牛舌", "米澤牛", "羊肉", "深夜拉麵", "硫磺溫泉"].map(r => (
               <span key={r} className="mp-tag-chip">{r}</span>
             ))}
           </div>
@@ -725,27 +725,27 @@ export function MobilePage({ baseUrl }: Props) {
           ))}
         </div>
 
-        {/* ── 雪場 1：Eboshi ── */}
+        {/* ── 雪場 1：藏王溫泉 Day 2（熟悉） ── */}
         <div id="mp-c-mk-ski" className="mp-card">
-          <img src="images/spots/eboshi.jpg" alt="宮城藏王 Eboshi" className="mp-card-img" />
+          <img src="images/spots/zao.jpg" alt="藏王溫泉滑雪場" className="mp-card-img" />
           <div className="mp-card-title mp-card-title--row">
-            <span>⛷️ Eboshi（Day 2）</span>
-            <MapBtn q="みやぎ蔵王えぼしリゾート 宮城県刈田郡蔵王町" />
+            <span>⛷️ 藏王溫泉 Day 2（熟悉）</span>
+            <MapBtn q="蔵王温泉スキー場 山形県山形市蔵王温泉" />
           </div>
           <div className="mp-two-col">
             <div className="mp-col-item">
-              <div className="mp-col-label">滑道 / 最長</div>
-              <div className="mp-col-val">22 條 · 4.3 km</div>
+              <div className="mp-col-label">今日區域</div>
+              <div className="mp-col-val">中央區 · 橫倉區</div>
             </div>
             <div className="mp-col-item">
               <div className="mp-col-label">最高標高</div>
-              <div className="mp-col-val">930 m</div>
+              <div className="mp-col-val">1661 m</div>
             </div>
           </div>
           <div className="mp-two-col">
             <div className="mp-col-item">
               <div className="mp-col-label">纜車券</div>
-              <div className="mp-col-val">5h 或全日券</div>
+              <div className="mp-col-val">全日券</div>
             </div>
             <div className="mp-col-item">
               <div className="mp-col-label">雪具租借</div>
@@ -753,17 +753,17 @@ export function MobilePage({ baseUrl }: Props) {
             </div>
           </div>
           <div className="mp-tags-row" style={{ marginTop: 8 }}>
-            <a href="https://maps.google.com/?q=みやぎ蔵王えぼしリゾート" target="_blank" rel="noopener noreferrer" className="mp-tag-chip mp-tag-chip--map">地圖 🗺</a>
-            <a href="https://www.eboshi.co.jp/" target="_blank" rel="noopener noreferrer" className="mp-tag-chip">🌐 官方網站</a>
+            <a href="https://maps.google.com/?q=蔵王温泉スキー場" target="_blank" rel="noopener noreferrer" className="mp-tag-chip mp-tag-chip--map">地圖 🗺</a>
+            <a href="https://zaoskiarea.com/" target="_blank" rel="noopener noreferrer" className="mp-tag-chip">🌐 官方網站</a>
           </div>
-          <div className="mp-note">距仙台市區 60 min · 宮城縣最大雪場 · 適合各級滑手</div>
+          <div className="mp-note">仙台開車約 1.5h · 第一天先熟悉中央、橫倉等主要路線</div>
         </div>
 
-        {/* ── 雪場 2：山形藏王 ── */}
+        {/* ── 雪場 2：藏王溫泉 Day 3 進階 ── */}
         <div className="mp-card">
-          <img src="images/spots/zao.jpg" alt="山形藏王溫泉滑雪場" className="mp-card-img" />
+          <img src="images/spots/zao.jpg" alt="藏王溫泉滑雪場 進階" className="mp-card-img" />
           <div className="mp-card-title mp-card-title--row">
-            <span>🏔️ 山形藏王（Day 3）</span>
+            <span>🏔️ 藏王溫泉 Day 3（進階）</span>
             <MapBtn q="蔵王温泉スキー場 山形県山形市蔵王温泉" />
           </div>
           <div className="mp-two-col">
@@ -783,14 +783,14 @@ export function MobilePage({ baseUrl }: Props) {
             </div>
             <div className="mp-col-item">
               <div className="mp-col-label">雪具租借</div>
-              <div className="mp-col-val">溫泉街配合店</div>
+              <div className="mp-col-val">同一張券（昨已租）</div>
             </div>
           </div>
           <div className="mp-tags-row" style={{ marginTop: 8 }}>
             <a href="https://maps.google.com/?q=蔵王温泉スキー場" target="_blank" rel="noopener noreferrer" className="mp-tag-chip mp-tag-chip--map">地圖 🗺</a>
             <a href="https://zaoskiarea.com/" target="_blank" rel="noopener noreferrer" className="mp-tag-chip">🌐 官方網站</a>
           </div>
-          <div className="mp-note">12月限定樹冰奇景 · 可下至溫泉街的「樹冰原滑道」· 從山形市區驅車約 30 分上山</div>
+          <div className="mp-note">進階攻頂地藏山頂、樹冰區、Long Cruise · 從山形市區驅車約 30 分上山</div>
         </div>
 
         {/* ── 雪場 3：Spring Valley ── */}

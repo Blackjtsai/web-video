@@ -15,7 +15,7 @@ const RETURN_STEPS = [
   { num: "04", text: "搭接駁車到仙台機場航廈辦理登機" },
 ];
 
-const RECAP = ["5天4夜", "3座雪場", "牛舌", "山形牛", "羊肉", "深夜拉麵", "硫磺溫泉"];
+const RECAP = ["5天4夜", "滑雪三日", "牛舌", "米澤牛", "羊肉", "深夜拉麵", "硫磺溫泉"];
 
 export default function Day5({ step }: Props) {
   return (

@@ -13,14 +13,14 @@ const FLAKES = Array.from({ length: 20 }, (_, i) => ({
 }));
 
 const RESORTS = [
-  { name: "宮城藏王\nEboshi", date: "12/21", delay: "0ms" },
-  { name: "山形藏王\n溫泉滑雪場", date: "12/22", delay: "200ms" },
+  { name: "山形藏王溫泉\nDAY 1 熟悉", date: "12/21", delay: "0ms" },
+  { name: "山形藏王溫泉\nDAY 2 攻頂", date: "12/22", delay: "200ms" },
   { name: "仙台泉\nSpring Valley", date: "12/23", delay: "400ms" },
 ];
 
 const STATS = [
   { num: "5", unit: "天", label: "五天四夜", delay: "0ms" },
-  { num: "3", unit: "座", label: "雪場連破", delay: "150ms" },
+  { num: "3", unit: "日", label: "滑雪三日", delay: "150ms" },
   { num: "4WD", unit: "", label: "全程自駕", delay: "300ms" },
 ];
 

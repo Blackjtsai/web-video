@@ -18,9 +18,8 @@ function MapLink({ href, label }: { href: string; label: string }) {
 const MAPS = [
   { label: "仙台機場",            q: "仙台空港 宮城県名取市" },
   { label: "The OneFive Sendai",  q: "The OneFive Sendai 仙台市" },
-  { label: "みやぎ藏王 Eboshi",   q: "みやぎ蔵王えぼしリゾート 宮城県刈田郡蔵王町" },
   { label: "山形大飯店",          q: "Yamagata Grand Hotel 山形市香澄町" },
-  { label: "山形藏王溫泉滑雪場",  q: "蔵王温泉スキー場 山形県山形市蔵王温泉" },
+  { label: "藏王溫泉滑雪場",      q: "蔵王温泉スキー場 山形県山形市蔵王温泉" },
   { label: "仙台國分町大露台酒店", q: "Hotel Grand Terrace Sendai Kokubuncho 仙台市" },
   { label: "Spring Valley 仙台泉", q: "スプリングバレー仙台泉 宮城県仙台市" },
   { label: "仙台港三井 Outlet",   q: "三井アウトレットパーク仙台港" },

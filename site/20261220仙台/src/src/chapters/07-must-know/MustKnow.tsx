@@ -21,8 +21,8 @@ const DRIVE_RULES = [
 ];
 
 const SKI_INFO = [
-  { resort: "Eboshi", lift: "5小時 / 全日", gear: "可現場租借", note: "宮城縣最大，4.3km 超長滑道" },
-  { resort: "山形藏王", lift: "全日（推薦）", gear: "現場可租借", note: "橫跨多山頭，12月樹冰奇景" },
+  { resort: "藏王溫泉 Day2", lift: "全日券", gear: "現場可租借", note: "熟悉日：中央區、橫倉區主要路線" },
+  { resort: "藏王溫泉 Day3", lift: "全日券", gear: "同一張券", note: "進階日：地藏山頂、樹冰區、Long Cruise" },
   { resort: "Spring Valley", lift: "夜滑 17:00-22:00", gear: "現場租借", note: "人工造雪 + 公園區，極速感" },
 ];
 

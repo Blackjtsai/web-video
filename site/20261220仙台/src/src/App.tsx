@@ -26,12 +26,12 @@ const SPLIT_IMAGES: Record<string, string[]> = {
     `${base}images/spots/hotel-metropolitan.jpg`,   // step 4: 早點睡
   ],
   day2: [
-    `${base}images/spots/eboshi.jpg`,               // step 0: 今日行程
-    `${base}images/spots/eboshi.jpg`,               // step 1: Eboshi 介紹
-    `${base}images/spots/eboshi.jpg`,               // step 2: 全日飆雪
-    `${base}images/spots/snow-road.jpg`,            // step 3: 翻山越嶺
-    `${base}images/spots/sukiyaki.jpg`,             // step 4: 山形牛晚餐
-    `${base}images/spots/zao-onsen.jpg`,            // step 5: 藏王溫泉
+    `${base}images/spots/zao.jpg`,                  // step 0: 今日行程
+    `${base}images/spots/zao.jpg`,                  // step 1: 藏王溫泉滑雪場（熟悉）
+    `${base}images/spots/zao.jpg`,                  // step 2: 全日熟悉
+    `${base}images/spots/snow-road.jpg`,            // step 3: 收板下山
+    `${base}images/spots/sukiyaki.jpg`,             // step 4: 米澤牛晚餐
+    `${base}images/spots/zao-onsen.jpg`,            // step 5: 山形溫泉
   ],
   day3: [
     `${base}images/spots/zao.jpg`,                  // step 0: 開車 30 分上山
@@ -57,7 +57,7 @@ const SPLIT_IMAGES: Record<string, string[]> = {
     `${base}images/spots/sendai-airport.jpg`,       // step 0: 必備文件
     `${base}images/spots/snow-road.jpg`,            // step 1: 租車攻略
     `${base}images/spots/snow-road.jpg`,            // step 2: 雪地自駕原則
-    `${base}images/spots/zao.jpg`,                  // step 3: 三座雪場速查
+    `${base}images/spots/zao.jpg`,                  // step 3: 雪場速查
     `${base}images/spots/beef-tongue.jpg`,          // step 4: 東北美食清單
   ],
 };
