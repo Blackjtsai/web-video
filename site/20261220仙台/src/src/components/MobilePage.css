@@ -66,14 +66,14 @@
   width: 100%;
 }
 
-/* 四位滑雪小人 */
+/* 五位滑雪小人 */
 .mp-hero-members {
   position: relative; z-index: 1;
   display: flex; justify-content: space-around; align-items: flex-start;
-  width: 100%; max-width: 360px;
+  width: 100%; max-width: 400px;
 }
 .mp-hero-member {
-  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
   animation: mp-member-up 500ms cubic-bezier(0.34,1.56,0.64,1) both;
 }
 @keyframes mp-member-up {
@@ -81,12 +81,12 @@
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 .mp-hero-member-avatar {
-  width: 72px; height: 72px; border-radius: 50%;
+  width: 60px; height: 60px; border-radius: 50%;
   background: var(--surface-3); border: 2px solid var(--accent);
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 0 20px rgba(79,195,247,0.2);
 }
-.mp-hero-member-icon { font-size: 36px; line-height: 1; }
+.mp-hero-member-icon { font-size: 30px; line-height: 1; }
 .mp-hero-member-num { font-size: 12px; font-weight: 700; letter-spacing: 0.2em; color: var(--accent); }
 .mp-hero-member-label { font-size: 15px; font-weight: 600; color: var(--text); }
 .mp-hero-members-tag {

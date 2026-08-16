@@ -8,7 +8,7 @@
 .d2-day-tag { font-size: 13px; font-weight: 700; letter-spacing: 0.26em; color: var(--accent); text-transform: uppercase; }
 .d2-day-title { font-family: 'Inter', var(--font-display-cn); font-size: clamp(32px,3.6vw,48px); font-weight: 900; color: var(--text); line-height: 1.15; margin-top: 4px; }
 
-.d2-depart,.d2-eboshi,.d2-ski-day,.d2-drive,.d2-dinner,.d2-onsen {
+.d2-depart,.d2-eboshi,.d2-ski-day,.d2-dinner,.d2-onsen {
   flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 24px;
 }
 
@@ -53,19 +53,6 @@
 .d2-tip-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 9px; }
 
 /* Step 3 */
-.d2-drive { animation: d2-in 450ms ease-out both; }
-.d2-route-arrow { display: flex; align-items: center; gap: 24px; }
-.d2-route-place { display: flex; flex-direction: column; gap: 6px; }
-.d2-route-name { font-family: 'Inter', var(--font-display-cn); font-size: clamp(24px,2.8vw,36px); font-weight: 700; color: var(--text); line-height: 1.25; }
-.d2-route-sub { font-size: clamp(14px,1.4vw,18px); color: var(--text-mute); }
-.d2-route-mid { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px; }
-.d2-route-line-h { width: 100%; height: 1px; background: linear-gradient(to right, var(--accent), rgba(79,195,247,0.3)); }
-.d2-route-dur { font-size: 13px; color: var(--text-mute); }
-.d2-warn-box { background: rgba(255,180,50,0.07); border: 1px solid rgba(255,180,50,0.25); padding: 16px 22px; }
-.d2-warn-title { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; color: rgba(255,180,50,0.85); text-transform: uppercase; margin-bottom: 6px; }
-.d2-warn-text { font-size: clamp(17px,1.7vw,22px); color: var(--text-2); line-height: 1.6; }
-
-/* Step 4 */
 .d2-dinner { flex-direction: row; align-items: center; gap: 48px; animation: d2-in 450ms ease-out both; }
 .d2-dinner-visual {
   width: clamp(140px,16vw,200px); height: clamp(140px,16vw,200px); border-radius: 50%;

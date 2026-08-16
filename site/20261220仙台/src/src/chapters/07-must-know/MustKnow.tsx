@@ -27,9 +27,9 @@ const SKI_INFO = [
 ];
 
 const FOOD_LIST = [
-  { name: "仙台牛舌", shop: "司（Tsukasa）", note: "厚切炭火燒，多汁有嚼勁", delay: "0ms" },
-  { name: "米澤牛燒肉", shop: "山形市區名店", note: "A5 和牛，山形名物", delay: "100ms" },
-  { name: "成吉思汗烤羊肉", shop: "ろばた（溫泉街）", note: "東北名物，搭配生啤酒", delay: "200ms" },
+  { name: "藏王溫泉街晚餐", shop: "溫泉街小食堂", note: "步行可達，在地家常料理", delay: "0ms" },
+  { name: "成吉思汗烤羊肉", shop: "ろばた（溫泉街）", note: "東北名物，搭配生啤酒", delay: "100ms" },
+  { name: "仙台牛燒肉", shop: "仙台市區名店", note: "A5 和牛，Day4 午餐", delay: "200ms" },
   { name: "深夜拉麵", shop: "仙台市區隨便走", note: "三連戰後的最好句點", delay: "300ms" },
 ];
 
@@ -69,7 +69,7 @@ export default function MustKnow({ step }: Props) {
               <div className="mk-car-name">7-8 人座休旅</div>
               <div className="mk-car-sub">
                 Alphard / Vellfire / Delica<br />
-                4人 + 4套滑雪板 + 大型行李箱<br />
+                5人 + 5套滑雪板 + 大型行李箱<br />
                 後車廂空間必須充足
               </div>
             </div>

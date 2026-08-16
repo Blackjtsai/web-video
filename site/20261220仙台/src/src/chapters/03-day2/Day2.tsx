@@ -9,10 +9,10 @@ const SLOPES = [
 ];
 
 const TIMELINE = [
-  { time: "06:30", title: "仙台退房，出發", sub: "開車約 1.5h 前往藏王溫泉滑雪場", delay: "0ms" },
-  { time: "08:00", title: "抵達雪場", sub: "租雪具、購 Lift 券、換裝（提前 1h）", delay: "120ms" },
-  { time: "16:30", title: "收板下山", sub: "開車回山形市區", delay: "240ms" },
-  { time: "17:30", title: "山形大飯店入住", sub: "18:30 山形市米澤牛晚餐", delay: "360ms" },
+  { time: "07:30", title: "飯店早餐、換裝", sub: "確認雪場與纜車開放狀況", delay: "0ms" },
+  { time: "08:30", title: "前往租借店／纜車站", sub: "租裝備、購 Lift 券", delay: "120ms" },
+  { time: "09:00", title: "上午滑行", sub: "熟悉雪況與回飯店方向", delay: "240ms" },
+  { time: "16:00", title: "收板回飯店", sub: "不用開車，就在雪場旁", delay: "360ms" },
 ];
 
 const TIPS = [
@@ -56,7 +56,7 @@ export default function Day2({ step }: Props) {
             <div className="d2-resort-en">YAMAGATA ZAO ONSEN · DAY 1 熟悉</div>
             <div className="d2-stats-grid">
               {[
-                { num: "90", unit: "min", label: "仙台車程" },
+                { num: "3", unit: "晚", label: "連住雪場旁" },
                 { num: "1661", unit: "m", label: "最高標高" },
                 { num: "855", unit: "m", label: "最大落差" },
                 { num: "樹氷", unit: "", label: "12月奇景" },
@@ -115,56 +115,29 @@ export default function Day2({ step }: Props) {
         </div>
       )}
 
-      {/* Step 3: 收板下山回山形 */}
+      {/* Step 3: 藏王溫泉街晚餐 */}
       {step === 3 && (
-        <div className="d2-drive">
-          <div className="d2-route-arrow">
-            <div className="d2-route-place">
-              <div className="d2-route-name">藏王溫泉<br />滑雪場</div>
-              <div className="d2-route-sub">16:30 收板</div>
-            </div>
-            <div className="d2-route-mid">
-              <div className="d2-route-line-h" />
-              <div className="d2-route-dur">30–40 min</div>
-            </div>
-            <div className="d2-route-place">
-              <div className="d2-route-name">山形<br />市區</div>
-              <div className="d2-route-sub">17:30 入住</div>
-            </div>
-          </div>
-          <div className="d2-warn-box">
-            <div className="d2-warn-title">⚠ 山路自駕注意</div>
-            <div className="d2-warn-text">
-              傍晚下山山路極易起霧或降大雪<br />
-              開啟霧燈，拉大與前車距離，慢慢開
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Step 4: 山形牛晚餐 */}
-      {step === 4 && (
         <div className="d2-dinner">
           <div className="d2-dinner-visual">
-            <div className="d2-dinner-icon">🥩</div>
-            <div className="d2-dinner-cn">米澤牛燒肉</div>
+            <div className="d2-dinner-icon">🍶</div>
+            <div className="d2-dinner-cn">溫泉街晚餐</div>
           </div>
           <div className="d2-dinner-info">
-            <div className="d2-dinner-name">米澤牛<br />燒肉</div>
+            <div className="d2-dinner-name">藏王溫泉街<br />小食堂</div>
             <div className="d2-dinner-tags">
-              <span className="d2-dtag">山形 A5 和牛</span>
-              <span className="d2-dtag">山形市區名店</span>
-              <span className="d2-dtag">入口即化</span>
+              <span className="d2-dtag">步行可達</span>
+              <span className="d2-dtag">在地家常料理</span>
+              <span className="d2-dtag">不用開車</span>
             </div>
             <div className="d2-tl-sub" style={{ fontSize: 14, color: "var(--text-mute)" }}>
-              入住山形大飯店，到市區享用頂級米澤牛燒肉
+              就住在溫泉街上，晚餐後直接回飯店，不用再開車
             </div>
           </div>
         </div>
       )}
 
-      {/* Step 5: 溫泉 */}
-      {step === 5 && (
+      {/* Step 4: 溫泉 */}
+      {step === 4 && (
         <div className="d2-onsen">
           <div className="d2-onsen-hero">
             <div className="d2-onsen-visual">
@@ -174,17 +147,17 @@ export default function Day2({ step }: Props) {
                 <div className="d2-steam-line" />
               </div>
               <div className="d2-onsen-icon">♨️</div>
-              <div className="d2-onsen-cn">山形溫泉</div>
+              <div className="d2-onsen-cn">藏王溫泉</div>
             </div>
             <div className="d2-onsen-info">
               <div className="d2-onsen-name">回飯店<br />泡湯放鬆<br />洗去疲憊</div>
               <div className="d2-onsen-desc">
-                泡進去，第一天滑雪的疲憊<br />瞬間化解
+                藏王強酸性硫磺泉<br />第一天滑雪的疲憊瞬間化解
               </div>
             </div>
           </div>
           <div className="d2-onsen-note">
-            真正的藏王強酸性硫磺泉，留到明天滑完雪再去溫泉街好好享受
+            溫泉街的公共浴場（上湯／下湯）留到明天滑完雪再去逛
           </div>
         </div>
       )}

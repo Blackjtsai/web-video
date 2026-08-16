@@ -20,29 +20,29 @@ export default function Day4({ step }: Props) {
     <div className="d4-stage">
       <div className="d4-header">
         <div className="d4-day-tag">DAY 04 &nbsp;·&nbsp; 12.23 WED</div>
-        <div className="d4-day-title">重返宮城・仙台泉 Spring Valley 夜滑</div>
+        <div className="d4-day-title">告別藏王・仙台泉 Spring Valley 夜滑</div>
       </div>
 
       {/* Step 0: 告別藏王 */}
       {step === 0 && (
         <div className="d4-farewell">
-          <div className="d4-farewell-tag">FAREWELL YAMAGATA</div>
-          <div className="d4-farewell-title">告別山形<br />公路旅行，返回宮城</div>
+          <div className="d4-farewell-tag">FAREWELL ZAO</div>
+          <div className="d4-farewell-title">告別藏王<br />公路旅行，返回仙台</div>
           <div className="d4-route-strip">
             <div className="d4-route-node">
-              <div className="d4-route-city">山形市區</div>
+              <div className="d4-route-city">藏王溫泉</div>
               <div className="d4-route-time">09:30 退房</div>
             </div>
             <div className="d4-route-mid-strip">
               <div className="d4-route-line-h" />
-              <div className="d4-route-km">可停山形城跡</div>
+              <div className="d4-route-km">車程約 1.5–2h</div>
             </div>
             <div className="d4-route-node">
               <div className="d4-route-city">仙台市區</div>
               <div className="d4-route-time">12:30 抵達</div>
             </div>
           </div>
-          <div className="d4-optional-note">白天開車時間充裕，可以輪流開車、補眠；今晚入住仙台國分町大露台酒店</div>
+          <div className="d4-optional-note">連住三晚，一次整理行李、退房；今晚入住仙台國分町大露台酒店</div>
         </div>
       )}
 

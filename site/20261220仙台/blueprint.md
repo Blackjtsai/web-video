@@ -1,19 +1,19 @@
 # 系統藍圖 — 20261220仙台
-> 最後更新：2026-08-09（更新行程.md：Eboshi 拿掉，Day2/Day3 都在藏王溫泉滑雪場——熟悉→進階；並前次的 4 人、三家飯店、住山形市區）
+> 最後更新：2026-08-16（5人自駕確定版 PDF：4人→5人，Day1–3 改連住藏王溫泉オーベルジュ樹氷 3 晚，不進仙台市區、不住山形市區，Day2/Day3 不用開車往返；Day4 仙台國分町大露台酒店維持不變）
 
 ## 章節登錄
 
 | NN  | id        | CSS prefix | Steps | 標題                              |
 |-----|-----------|------------|-------|-----------------------------------|
-| 01  | coldopen  | `.co-`     |   4   | 開場：四位型男，東北雪季自駕       |
-| 02  | day1      | `.d1-`     |   5   | Day 1：抵達仙台・牛舌初夜          |
-| 03  | day2      | `.d2-`     |   6   | Day 2：藏王溫泉滑雪場・熟悉日      |
+| 01  | coldopen  | `.co-`     |   4   | 開場：五位型男，東北雪季自駕       |
+| 02  | day1      | `.d1-`     |   4   | Day 1：抵達仙台・直奔藏王          |
+| 03  | day2      | `.d2-`     |   5   | Day 2：藏王溫泉滑雪場・熟悉日      |
 | 04  | day3      | `.d3-`     |   5   | Day 3：制霸藏王大雪場・溫泉名湯    |
-| 05  | day4      | `.d4-`     |   5   | Day 4：仙台泉夜滑・三連戰完結      |
+| 05  | day4      | `.d4-`     |   5   | Day 4：告別藏王・仙台泉夜滑        |
 | 06  | day5      | `.d5-`     |   4   | Day 5：聖誕夜返台・圓滿落幕        |
 | 07  | must-know | `.mk-`     |   5   | 出發前必知・雪地自駕攻略           |
 
-**總步數：34 步 = narrations.ts 段數 = 音頻數量（三者必須一致）**
+**總步數：32 步 = narrations.ts 段數 = 音頻數量（三者必須一致）**
 
 ## 關鍵檔案
 
@@ -22,12 +22,12 @@
 | `src/registry/chapters.ts`                  | CHAPTERS 陣列，章節順序唯一真相源                               |
 | `src/App.tsx:20`                            | SPLIT_IMAGES（day1–day5 有 split；coldopen/must-know 走 `.scene`）|
 | `src/App.tsx:29`                            | `isMobileMode = params.get("layout") === "mobile"`              |
-| `src/hooks/useStepper.ts:8`                 | `STORAGE_KEY = "presentation-cursor-v1-sendai"`（新增章節要 bump）|
+| `src/hooks/useStepper.ts:8`                 | `STORAGE_KEY = "presentation-cursor-v2-sendai"`（新增章節要 bump）|
 | `src/styles/tokens.css`                     | 主題色 midnight-ice                                             |
 | `src/styles/split.css`                      | split layout + 左側雪山漸層 placeholder                         |
-| `src/components/MobilePage.tsx:22`          | `SEGMENTS` 陣列（34 段，TTS 播放 + scrollIntoView 唯一真相源）   |
+| `src/components/MobilePage.tsx:22`          | `SEGMENTS` 陣列（32 段，TTS 播放 + scrollIntoView 唯一真相源）   |
 | `src/components/SplitEnding.tsx`            | 結尾資源面板（PDF 下載）                                        |
-| `public/audio/<chapter-id>/<N>.mp3`         | 口播音頻（共 34 段）                                            |
+| `public/audio/<chapter-id>/<N>.mp3`         | 口播音頻（共 32 段）                                            |
 | `public/images/spots/`                      | 15 張景點圖（見下方圖片清單）                                   |
 
 ## 圖片清單（public/images/spots/）
@@ -133,7 +133,13 @@ Day5 step1: d5-outlet-info min-width:0 / d5-outlet-map 20vw→13vw / d5-dist-num
 
 ### STORAGE_KEY
 
-目前為 `v1-sendai`。章節 step 數有異動時務必 bump（參考 `useStepper.ts:8`）。
+目前為 `v2-sendai`。章節 step 數有異動時務必 bump（參考 `useStepper.ts:8`）。
+
+### 住宿結構（2026-08-16 起）
+
+- Day1–3（12/20–23）：**オーベルジュ樹氷 Auberge Juhyo**，連住 3 晚，藏王溫泉現地・滑雪場旁。不進仙台市區、不用每天往返開車。
+- Day4（12/23–24）：仙台國分町大露台酒店 Hotel Grand Terrace Sendai Kokubuncho（未變動）。
+- 共 2 個住宿地點（原本 3 個：The OneFive Sendai / 山形大飯店 / 仙台國分町，已合併簡化）。
 
 ## TTS 狀態
 
@@ -141,7 +147,7 @@ Day5 step1: d5-outlet-info min-width:0 / d5-outlet-map 20vw→13vw / d5-dist-num
 |------|----|
 | Provider | edge-tts |
 | Voice | `zh-TW-HsiaoChenNeural` |
-| 已合成 | 34 / 34 段 |
+| 已合成 | 32 / 32 段 |
 | 合成指令 | `cd site/20261220仙台/src && PRESENTATION_TTS=edge-tts npm run synthesize-audio` |
 
 ## 啟動指令
@@ -162,4 +168,4 @@ npm run dev
 5. `npx tsc --noEmit` 確認零錯誤
 6. `npm run extract-narrations` 更新 audio-segments.json
 7. `PRESENTATION_TTS=edge-tts npm run synthesize-audio` 合成新段音頻
-8. Bump `STORAGE_KEY`（`v1-sendai` → `v2-sendai`）
+8. Bump `STORAGE_KEY`（`v2-sendai` → `v3-sendai`）

@@ -58,14 +58,14 @@
   text-transform: uppercase; animation: co-fade 600ms 450ms ease-out both;
 }
 
-/* ── Step 1: 四位成員 ── */
+/* ── Step 1: 五位成員 ── */
 .co-members-wrap {
   position: relative; z-index: 1;
   display: flex; flex-direction: column; align-items: center; gap: 40px; width: 100%;
 }
 .co-members {
   display: flex; justify-content: space-around; align-items: flex-start;
-  width: 90%; max-width: 900px;
+  width: 92%; max-width: 1080px;
 }
 .co-member {
   display: flex; flex-direction: column; align-items: center; gap: 16px;

@@ -20,21 +20,19 @@ const base = import.meta.env.BASE_URL;
 const SPLIT_IMAGES: Record<string, string[]> = {
   day1: [
     `${base}images/spots/sendai-airport.jpg`,       // step 0: 機場取車
-    `${base}images/spots/hotel-metropolitan.jpg`,   // step 1: 飯店入住
-    `${base}images/spots/beef-tongue.jpg`,          // step 2: 牛舌盛宴
-    `${base}images/spots/izakaya.jpg`,              // step 3: 居酒屋
-    `${base}images/spots/hotel-metropolitan.jpg`,   // step 4: 早點睡
+    `${base}images/spots/zao-onsen.jpg`,            // step 1: 取車資訊（藏王飯店）
+    `${base}images/spots/snow-road.jpg`,            // step 2: 直奔藏王
+    `${base}images/spots/zao-onsen.jpg`,            // step 3: 晚到入住 + 早點睡
   ],
   day2: [
     `${base}images/spots/zao.jpg`,                  // step 0: 今日行程
     `${base}images/spots/zao.jpg`,                  // step 1: 藏王溫泉滑雪場（熟悉）
     `${base}images/spots/zao.jpg`,                  // step 2: 全日熟悉
-    `${base}images/spots/snow-road.jpg`,            // step 3: 收板下山
-    `${base}images/spots/sukiyaki.jpg`,             // step 4: 米澤牛晚餐
-    `${base}images/spots/zao-onsen.jpg`,            // step 5: 山形溫泉
+    `${base}images/spots/zao-onsen.jpg`,            // step 3: 溫泉街晚餐
+    `${base}images/spots/zao-onsen.jpg`,            // step 4: 藏王溫泉
   ],
   day3: [
-    `${base}images/spots/zao.jpg`,                  // step 0: 開車 30 分上山
+    `${base}images/spots/zao.jpg`,                  // step 0: 進階攻頂日
     `${base}images/spots/zao.jpg`,                  // step 1: 藏王雪場介紹
     `${base}images/spots/zao.jpg`,                  // step 2: 全日滑雪
     `${base}images/spots/zao-onsen.jpg`,            // step 3: 公共浴場

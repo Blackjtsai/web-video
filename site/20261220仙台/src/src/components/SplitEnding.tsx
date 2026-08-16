@@ -17,8 +17,7 @@ function MapLink({ href, label }: { href: string; label: string }) {
 
 const MAPS = [
   { label: "仙台機場",            q: "仙台空港 宮城県名取市" },
-  { label: "The OneFive Sendai",  q: "The OneFive Sendai 仙台市" },
-  { label: "山形大飯店",          q: "Yamagata Grand Hotel 山形市香澄町" },
+  { label: "オーベルジュ樹氷",     q: "Auberge Juhyo 山形県山形市蔵王温泉" },
   { label: "藏王溫泉滑雪場",      q: "蔵王温泉スキー場 山形県山形市蔵王温泉" },
   { label: "仙台國分町大露台酒店", q: "Hotel Grand Terrace Sendai Kokubuncho 仙台市" },
   { label: "Spring Valley 仙台泉", q: "スプリングバレー仙台泉 宮城県仙台市" },
@@ -54,12 +53,8 @@ export function SplitEnding({ baseUrl }: Props) {
           <div className="se-block">
             <div className="se-block-label">住宿聯絡</div>
             <div className="se-hotel-card">
-              <div className="se-hotel-name">The OneFive Sendai</div>
-              <div className="se-hotel-phone">Day 1 · 仙台市區（近仙台站）</div>
-            </div>
-            <div className="se-hotel-card">
-              <div className="se-hotel-name">山形大飯店 Yamagata Grand Hotel</div>
-              <div className="se-hotel-phone">Day 2–3 · 山形市香澄町</div>
+              <div className="se-hotel-name">オーベルジュ樹氷 Auberge Juhyo</div>
+              <div className="se-hotel-phone">Day 1–3 · 藏王溫泉現地（連住 3 晚）</div>
             </div>
             <div className="se-hotel-card">
               <div className="se-hotel-name">仙台國分町大露台酒店 Grand Terrace Sendai</div>

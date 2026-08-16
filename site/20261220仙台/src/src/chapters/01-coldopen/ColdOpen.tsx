@@ -41,7 +41,7 @@ export default function ColdOpen({ step }: Props) {
           <div className="co-year">2026 · TOHOKU · WINTER</div>
           <div className="co-title">SENDAI</div>
           <div className="co-title-cn">仙台滑雪</div>
-          <div className="co-dates">DEC 20 — DEC 24 &nbsp;·&nbsp; 5 DAYS &nbsp;·&nbsp; 4 MEN</div>
+          <div className="co-dates">DEC 20 — DEC 24 &nbsp;·&nbsp; 5 DAYS &nbsp;·&nbsp; 5 MEN</div>
         </div>
       )}
 
@@ -53,6 +53,7 @@ export default function ColdOpen({ step }: Props) {
               { icon: "⛷️", label: "型男二號", delay: "150ms" },
               { icon: "🎿", label: "型男三號", delay: "300ms" },
               { icon: "🏔️", label: "型男四號", delay: "450ms" },
+              { icon: "❄️", label: "型男五號", delay: "600ms" },
             ].map((m, i) => (
               <div key={i} className="co-member co-member--visible" style={{ animationDelay: m.delay }}>
                 <div className="co-member-avatar"><div className="co-member-icon">{m.icon}</div></div>
@@ -61,7 +62,7 @@ export default function ColdOpen({ step }: Props) {
               </div>
             ))}
           </div>
-          <div className="co-members-label">FOUR MEN · ONE MISSION · PURE POWDER</div>
+          <div className="co-members-label">FIVE MEN · ONE MISSION · PURE POWDER</div>
         </div>
       )}
 
