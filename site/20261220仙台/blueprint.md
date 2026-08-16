@@ -1,5 +1,5 @@
 # 系統藍圖 — 20261220仙台
-> 最後更新：2026-08-16（5人自駕確定版 PDF：4人→5人，Day1–3 改連住藏王溫泉オーベルジュ樹氷 3 晚，不進仙台市區、不住山形市區，Day2/Day3 不用開車往返；Day4 仙台國分町大露台酒店維持不變）
+> 最後更新：2026-08-17（新增 TrailMap 滑道地圖元件；手機版精簡出發前必知重複區塊；修正 Day2 晚餐重複圖片）
 
 ## 章節登錄
 
@@ -27,8 +27,9 @@
 | `src/styles/split.css`                      | split layout + 左側雪山漸層 placeholder                         |
 | `src/components/MobilePage.tsx:22`          | `SEGMENTS` 陣列（32 段，TTS 播放 + scrollIntoView 唯一真相源）   |
 | `src/components/SplitEnding.tsx`            | 結尾資源面板（PDF 下載）                                        |
+| `src/components/TrailMap.tsx` / `.css`      | 滑道地圖縮圖 + 點擊全螢幕燈箱元件（見下方專節）                 |
 | `public/audio/<chapter-id>/<N>.mp3`         | 口播音頻（共 32 段）                                            |
-| `public/images/spots/`                      | 15 張景點圖（見下方圖片清單）                                   |
+| `public/images/spots/`                      | 17 張景點圖 + 2 張官方滑道地圖（見下方圖片清單）                |
 
 ## 圖片清單（public/images/spots/）
 
@@ -38,10 +39,14 @@ hotel-metropolitan.jpg  izakaya.jpg       outlet.jpg
 ramen.jpg            sendai-airport.jpg   sendai-beef.jpg
 snow-road.jpg        souvenirs.jpg        spring-valley.jpg
 sukiyaki.jpg         zao-onsen.jpg        zao.jpg
+zao-trail-map.jpg    spring-valley-trail-map.png
 ```
 
 手機版 `<img src="images/spots/xxx.jpg">` 用相對路徑（不加 `import.meta.env.BASE_URL`）。
 桌面版 ColdOpen CSS 背景圖用 `var(--co-bg-image)` inline style + `${base}images/spots/zao.jpg`。
+
+`izakaya.jpg` 專供 Day2 晚餐卡使用，`zao-onsen.jpg` 專供泡湯卡使用——
+兩者原本共用同一張照片、在手機版相鄰顯示很突兀，2026-08-17 拆開。
 
 ## 主題色（midnight-ice）
 
@@ -69,18 +74,38 @@ sukiyaki.jpg         zao-onsen.jpg        zao.jpg
 手機版 Day1/Day5 班機區塊 CSS：`borderTop + borderBottom + marginTop: 24 + padding: 14px 0`。
 統一使用 `mp-flight-time`（白色）而非 `mp-flight-time-light`（藍色）以保持一致性。
 
-## 手機版 Must-Know 卡片結構（2026-06-15 更新）
+## 手機版 Must-Know 卡片結構（2026-08-17 精簡重寫）
 
-Must-Know 章節改為各景點 / 美食獨立卡片，不再是純文字 list：
+原本 must-know 章節有 3 張雪場卡 + 4 張美食卡，內容跟 Day2–4 的專屬卡片幾乎逐字重複
+（同張照片、同樣的統計數字），使用者滑到這裡會覺得「跟上面看過的一樣」。已砍成 2 張：
 
-**三座雪場（各一卡）**：`mp-c-mk-ski`（Eboshi）、無 id（藏王）、無 id（Spring Valley）
-- 每卡：圖片 + stats two-col + Maps chip + 官方網站 chip + mp-note
+- `mp-c-mk-ski`：一張「滑雪場實用資訊」卡，濃縮 narrations.ts step4 的文字重點，
+  底下放兩個 `<TrailMap>` 縮圖（藏王 + Spring Valley），不重複 Day2/3/4 的照片與統計格。
+- `mp-c-mk-food`：一張「東北美食清單」卡，濃縮 narrations.ts step5 文字，
+  不重複各 Day 晚餐卡的照片。
 
-**四道美食（各一卡）**：`mp-c-mk-food`（牛舌）、無 id（壽喜燒 / 成吉思汗 / 拉麵）
-- 每卡：圖片 + 多店 Maps chip
+⚠️ `id="mp-c-mk-ski"` 和 `id="mp-c-mk-food"` 必須保留，
+供 SEGMENTS 音頻 scroll sync 使用（step 4 / step 5）——就算之後想再精簡文案，
+這兩個 id 不能拿掉，否則 audio 播放時該段不會自動捲動。
 
-⚠️ `id="mp-c-mk-ski"` 和 `id="mp-c-mk-food"` 必須保留在各類別的第一張卡，
-供 SEGMENTS 音頻 scroll sync 使用（step 4 / step 5）。
+## TrailMap 滑道地圖元件（2026-08-17 新增）
+
+`src/components/TrailMap.tsx` — 傳入 `src` + `label`，渲染一個縮圖按鈕，
+點擊後彈出可點擊背景關閉的全螢幕燈箱（放大看滑道細節）。桌面版用在
+Day2 step1 / Day3 step1（藏王）、Day4 step2（Spring Valley）；手機版用在
+must-know 的「滑雪場實用資訊」卡。
+
+**⚠️ 燈箱必須用 `createPortal(..., document.body)`，不能直接在卡片內 render。**
+
+原因：桌面版卡片（如 `.d2-eboshi`）的進場動畫用 `transform: translateX(...)`，
+即使動畫結束停在 `translateX(0)`，該元素仍然「有 transform 屬性值」，
+會依 CSS 規範對子孫的 `position: fixed` 元素建立新的 containing block——
+導致燈箱被限制在卡片的框內顯示，蓋不滿全螢幕。手機版的長捲動頁面同樣適用同一顆
+`TrailMap` 元件，portal 到 `document.body` 才能保證兩種版型都正確蓋滿視窗。
+
+驗證方式：headless screenshot 對這種 portal+fixed 疊層有時會有渲染假象
+（screenshot 看起來没蓋滿，但實際元素已經蓋滿），**要用 `elementFromPoint` 或
+實際點擊測試確認，不要只看 screenshot 判斷。**
 
 ## 特殊注意事項
 

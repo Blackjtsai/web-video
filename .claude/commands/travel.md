@@ -852,6 +852,22 @@ useEffect(() => {
 ```
 split.css：`.split-left { flex: 0 0 50%; }`（不用 960px）
 
+### 5.5 全螢幕 Lightbox / Modal 必須用 Portal 掛到 document.body
+
+卡片進場動畫常見寫法 `@keyframes card-in { from{transform:translateX(20px)} to{transform:translateX(0)} }`，
+即使動畫結束停在 `translateX(0)`，該元素仍然「有 transform 屬性值」（不是 `none`），
+依 CSS 規範會對子孫的 `position: fixed` 元素建立新的 containing block——
+若在卡片內直接 render 一個 `position:fixed; inset:0` 的全螢幕燈箱，
+會被限制在卡片的框內顯示，蓋不滿全螢幕（桌面版被鎖在 split-right 面板、手機版被鎖在單一卡片高度）。
+
+**正確做法**：任何全螢幕 overlay（圖片放大、Modal）一律用 `createPortal(<Overlay/>, document.body)`，
+不要依賴卡片本身的定位脈絡。
+
+**⚠️ 驗證陷阱**：headless screenshot 對這種 portal + fixed 疊層有時會有渲染假象
+（screenshot 看起來沒蓋滿全螢幕，但 DOM 的 `getBoundingClientRect()` 和
+`elementFromPoint()` 都顯示已經蓋滿）。**判斷是否真的蓋滿，要用 `elementFromPoint`
+或實際點擊測試，不要只看 screenshot。**
+
 ### 6. Scaffold 中文路徑問題
 ```bash
 # ❌ 錯誤：絕對路徑含中文
