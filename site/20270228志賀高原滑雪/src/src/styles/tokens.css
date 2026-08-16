@@ -1,0 +1,58 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * Theme · alpine-frost（志賀高原滑雪版）
+ *   白日雪原 ── 霧白為底、冰川灰藍為殼、暖橙警示旗為強調色
+ *   （雪場旗幟橙 × 霜白，呼應長野高山晴日雪原的清冽與活力）。
+ *   Noto Sans 顯示中文，Bebas Neue 顯示英文數字，俐落高山感。
+ * ───────────────────────────────────────────────────────────────────── */
+:root {
+  /* ─── palette · 霧白雪原 ─── */
+  --shell:        #dce6ec;             /* 遠山霧灰藍 */
+  --surface:      #f4f8fb;             /* 霧白雪面 */
+  --surface-2:    #e6eef4;             /* 淡冰灰藍 */
+  --surface-3:    #d2e0ea;             /* 中冰灰藍 */
+  --text:         #16232e;             /* 深松藍黑 */
+  --text-2:       #2c4356;
+  --text-mute:    #5c7488;
+  --text-faint:   #8ea3b4;
+  --rule:         #b8cad6;
+  --accent:       #e8631c;             /* 雪場旗幟橙 */
+  --accent-soft:  rgba(232, 99, 28, 0.10);
+  --accent-glow:  rgba(232, 99, 28, 0.40);
+
+  /* ─── fonts ─── */
+  --font-display-cn: "Noto Sans TC", "Noto Sans SC", sans-serif;
+  --font-display-en: "Bebas Neue", "Archivo Black", "Inter", sans-serif;
+  --font-body:       "Noto Sans TC", "Manrope", "Inter", sans-serif;
+  --font-mono:       "IBM Plex Mono", "JetBrains Mono", ui-monospace, monospace;
+  --font-features:   "tnum", "ss01";
+
+  /* ─── motion: crisp alpine glide ─── */
+  --dur-base:       420ms;
+  --dur-slow:       680ms;
+  --dur-cinematic:  1150ms;
+
+  /* ─── design identity: crisp alpine ─── */
+  --r-card:        4px;
+  --r-stage:       0;
+  --rule-w:        1px;
+  --rule-style:    solid;
+  --hero-num-font:    var(--font-display-en);
+  --hero-num-style:   normal;
+  --hero-num-weight:  400;
+  --hero-num-track:   0.01em;
+  --stage-pad-x:   100px;
+  --stage-pad-y:   76px;
+  --card-shadow:
+    0 1px 0 var(--rule),
+    0 2px 16px rgba(22, 35, 46, 0.08);
+  --shadow-stage:
+    0 60px 160px rgba(22, 35, 46, 0.16),
+    0 0 0 1px rgba(22, 35, 46, 0.04);
+
+  /* ─── decoration: subtle powder-snow texture ─── */
+  --surface-pattern:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 0.10 0 0 0 0 0.20 0 0 0 0 0.30 0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  --surface-pattern-size: 180px 180px;
+  --surface-pattern-blend: multiply;
+  --surface-pattern-opacity: 0.35;
+}

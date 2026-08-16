@@ -1,0 +1,64 @@
+/* Cold Open — prefix: .co- */
+
+.co-stage {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  overflow: hidden; font-family: var(--font-body);
+}
+
+/* ── Step 0: Hero ── */
+.co-hero { position: relative; flex: 1; overflow: hidden; }
+.co-hero-bg  { position: absolute; inset: -40px; width: calc(100% + 80px); height: calc(100% + 80px); object-fit: cover; filter: blur(32px) brightness(0.55); }
+.co-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; animation: co-fade 700ms ease-out both; }
+.co-hero-overlay {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  background: linear-gradient(to top, rgba(10,20,30,0.72) 0%, transparent 55%);
+}
+.co-hero-sub { font-size: clamp(13px,1.2vw,16px); letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.75); animation: co-in 550ms ease-out 100ms both; }
+.co-hero-title {
+  font-family: var(--font-display-en), var(--font-display-cn);
+  font-size: clamp(48px, 6.5vw, 96px); font-weight: 900; color: #fff;
+  line-height: 1.02; letter-spacing: -0.01em; margin: 8px 0 14px;
+  animation: co-in 600ms ease-out 200ms both;
+  text-shadow: 0 8px 40px rgba(0,0,0,0.5);
+}
+.co-hero-badges { display: flex; gap: 10px; flex-wrap: wrap; animation: co-in 600ms ease-out 350ms both; }
+.co-badge {
+  font-size: clamp(13px,1.2vw,15px); font-weight: 700; color: #fff;
+  background: rgba(232,99,28,0.85); border-radius: 100px; padding: 6px 16px;
+}
+
+/* ── Step 1: 雪場串連 ── */
+.co-map { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 28px; padding: var(--stage-pad-y) var(--stage-pad-x); }
+.co-map-title { font-family: var(--font-display-cn); font-size: clamp(30px,3.2vw,44px); font-weight: 900; color: var(--text); animation: co-in 500ms ease-out both; }
+.co-map-grid { display: flex; gap: 14px; flex-wrap: wrap; animation: co-in 550ms ease-out 120ms both; }
+.co-map-node {
+  background: var(--surface-2); border: 1px solid var(--rule); border-radius: var(--r-card);
+  padding: 14px 22px; display: flex; flex-direction: column; gap: 4px; min-width: 140px;
+}
+.co-map-node--base { background: var(--accent); border-color: var(--accent); }
+.co-map-node--base .co-map-node-name, .co-map-node--base .co-map-node-tag { color: #fff; }
+.co-map-node-name { font-size: clamp(17px,1.7vw,22px); font-weight: 800; color: var(--text); }
+.co-map-node-tag { font-size: 12px; color: var(--text-mute); letter-spacing: 0.06em; }
+.co-map-note { font-size: clamp(16px,1.5vw,20px); color: var(--text-mute); line-height: 1.7; max-width: 720px; }
+
+/* ── Step 2: 4天3夜 teaser ── */
+.co-days { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 24px; padding: var(--stage-pad-y) var(--stage-pad-x); }
+.co-days-title { font-family: var(--font-display-cn); font-size: clamp(30px,3.2vw,44px); font-weight: 900; color: var(--text); animation: co-in 500ms ease-out both; }
+.co-days-row { display: flex; gap: 16px; animation: co-in 550ms ease-out 120ms both; }
+.co-day-card { flex: 1; background: var(--surface-2); border-radius: var(--r-card); padding: 18px 20px; border-left: 3px solid var(--accent); }
+.co-day-num { font-family: var(--font-display-en); font-size: clamp(28px,3vw,40px); font-weight: 700; color: var(--accent); line-height: 1; }
+.co-day-label { font-size: clamp(15px,1.4vw,19px); font-weight: 700; color: var(--text); margin-top: 8px; }
+.co-day-desc { font-size: clamp(13px,1.2vw,15px); color: var(--text-mute); margin-top: 4px; line-height: 1.5; }
+
+/* ── Step 3: budget teaser ── */
+.co-budget { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 20px; padding: var(--stage-pad-y) var(--stage-pad-x); text-align: center; }
+.co-budget-label { font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-mute); animation: co-in 500ms ease-out both; }
+.co-budget-num { font-family: var(--font-display-en); font-size: clamp(64px,9vw,130px); font-weight: 400; color: var(--accent); line-height: 1; animation: co-in 600ms ease-out 120ms both; }
+.co-budget-sub { font-size: clamp(16px,1.6vw,22px); color: var(--text-2); animation: co-in 550ms ease-out 220ms both; }
+.co-budget-note { font-size: clamp(14px,1.3vw,17px); color: var(--text-mute); max-width: 640px; line-height: 1.7; animation: co-in 550ms ease-out 320ms both; }
+
+@keyframes co-in   { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes co-fade { from { opacity: 0; } to { opacity: 1; } }

@@ -1,0 +1,33 @@
+/* Day 3 — prefix: .d3- */
+
+.d3-stage {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  overflow: hidden; font-family: var(--font-body);
+}
+
+.d3-header { flex-shrink: 0; margin-bottom: 32px; }
+.d3-day-tag { font-size: 13px; font-weight: 700; letter-spacing: 0.26em; color: var(--accent); text-transform: uppercase; }
+.d3-day-title { font-family: var(--font-display-cn); font-size: clamp(32px, 3.6vw, 48px); font-weight: 900; color: var(--text); line-height: 1.15; margin-top: 4px; }
+
+.d3-block { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 24px; animation: d3-in 450ms ease-out both; }
+
+.d3-ticket { display: inline-flex; align-items: center; gap: 12px; background: var(--accent); color: #fff; border-radius: var(--r-card); padding: 14px 24px; align-self: flex-start; }
+.d3-ticket-label { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.85; }
+.d3-ticket-day { font-family: var(--font-display-en); font-size: clamp(24px,2.6vw,34px); font-weight: 700; }
+
+.d3-route { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.d3-route-stop { background: var(--surface-2); border-radius: var(--r-card); padding: 12px 20px; font-size: clamp(16px,1.6vw,21px); font-weight: 700; color: var(--text); }
+.d3-route-stop--active { background: var(--accent); color: #fff; }
+.d3-route-sep { font-size: 20px; color: var(--accent); }
+
+.d3-spot { display: flex; flex-direction: column; gap: 10px; }
+.d3-spot-name { font-family: var(--font-display-cn); font-size: clamp(32px,3.6vw,50px); font-weight: 900; color: var(--text); }
+.d3-spot-tag { font-size: 13px; font-weight: 700; background: var(--accent-soft); color: var(--accent); border-radius: 100px; padding: 5px 14px; align-self: flex-start; }
+
+.d3-note-box { background: var(--surface-2); border-left: 3px solid var(--accent); padding: 16px 22px; max-width: 720px; }
+.d3-note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.18em; color: var(--accent); text-transform: uppercase; margin-bottom: 6px; }
+.d3-note-text { font-size: clamp(18px, 1.8vw, 24px); color: var(--text-2); line-height: 1.6; }
+
+@keyframes d3-in { from { opacity: 0; transform: translateX(22px); } to { opacity: 1; transform: translateX(0); } }

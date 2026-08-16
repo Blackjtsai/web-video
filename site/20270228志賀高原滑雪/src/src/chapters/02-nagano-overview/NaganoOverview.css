@@ -1,0 +1,57 @@
+/* Nagano Overview — prefix: .no- */
+
+.no-stage {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  overflow: hidden; font-family: var(--font-body);
+}
+
+/* ── Step 0: 長野介紹 ── */
+.no-intro { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 24px; animation: no-in 500ms ease-out both; }
+.no-intro-sub { font-size: 13px; font-weight: 700; letter-spacing: 0.26em; color: var(--accent); text-transform: uppercase; }
+.no-intro-title {
+  font-family: var(--font-display-cn);
+  font-size: clamp(32px, 3.8vw, 52px); font-weight: 900; color: var(--text);
+  line-height: 1.15;
+}
+.no-intro-stats { display: flex; gap: 20px; margin-top: 8px; }
+.no-stat { background: var(--surface-2); border-radius: var(--r-card); padding: 18px 26px; border-left: 3px solid var(--accent); }
+.no-stat-num { font-family: var(--font-display-en); font-size: clamp(38px, 4.2vw, 60px); font-weight: 700; color: var(--accent); line-height: 1; }
+.no-stat-label { font-size: clamp(13px, 1.2vw, 15px); color: var(--text-mute); margin-top: 6px; }
+.no-intro-note { font-size: clamp(17px, 1.7vw, 22px); color: var(--text-2); line-height: 1.7; max-width: 760px; }
+
+/* ── Step 1-3: 三大雪場比較卡 ── */
+.no-compare { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+.no-compare-title {
+  font-family: var(--font-display-cn);
+  font-size: clamp(26px, 2.8vw, 38px); font-weight: 900; color: var(--text);
+  animation: no-in 500ms ease-out both;
+}
+.no-compare-row { display: flex; gap: 18px; animation: no-in 550ms ease-out 100ms both; }
+
+.no-card {
+  flex: 1; display: flex; flex-direction: column;
+  background: var(--surface-2); border-radius: var(--r-card); overflow: hidden;
+  border: 2px solid transparent;
+  transition: opacity 320ms ease, transform 320ms ease, border-color 320ms ease;
+}
+.no-card--dim { opacity: 0.42; transform: scale(0.97); }
+.no-card--active { border-color: var(--accent); transform: scale(1.02); }
+.no-card--picked.no-card--active { box-shadow: 0 12px 40px var(--accent-glow); }
+
+.no-card-imgwrap { position: relative; width: 100%; aspect-ratio: 4 / 3; overflow: hidden; }
+.no-card-img { width: 100%; height: 100%; object-fit: cover; }
+.no-card-tag {
+  position: absolute; top: 10px; left: 10px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
+  background: rgba(22,35,46,0.72); color: #fff; border-radius: 100px; padding: 4px 12px;
+}
+.no-card-tag--picked { background: var(--accent); }
+
+.no-card-body { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 4px; }
+.no-card-name { font-family: var(--font-display-cn); font-size: clamp(19px, 1.9vw, 25px); font-weight: 900; color: var(--text); }
+.no-card-en { font-family: var(--font-display-en); font-size: clamp(12px, 1.1vw, 14px); color: var(--text-mute); letter-spacing: 0.04em; margin-bottom: 4px; }
+.no-card-desc { font-size: clamp(13px, 1.25vw, 16px); color: var(--text-mute); line-height: 1.6; }
+
+@keyframes no-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }

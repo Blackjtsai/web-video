@@ -1,0 +1,42 @@
+/* Day 5 — prefix: .d5- */
+
+.d5-stage {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  padding: var(--stage-pad-y) var(--stage-pad-x);
+  overflow: hidden; font-family: var(--font-body);
+}
+
+.d5-header { flex-shrink: 0; margin-bottom: 32px; }
+.d5-day-tag { font-size: 13px; font-weight: 700; letter-spacing: 0.26em; color: var(--accent); text-transform: uppercase; }
+.d5-day-title { font-family: var(--font-display-cn); font-size: clamp(32px, 3.6vw, 48px); font-weight: 900; color: var(--text); line-height: 1.15; margin-top: 4px; }
+
+.d5-block { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 24px; animation: d5-in 450ms ease-out both; }
+
+.d5-route { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.d5-route-stop { background: var(--surface-2); border-radius: var(--r-card); padding: 12px 20px; font-size: clamp(16px,1.6vw,21px); font-weight: 700; color: var(--text); }
+.d5-route-sep { font-size: 20px; color: var(--accent); }
+
+.d5-flight-row { display: flex; align-items: center; gap: 32px; }
+.d5-node { display: flex; flex-direction: column; gap: 6px; }
+.d5-node-name { font-size: clamp(15px, 1.4vw, 20px); color: var(--text-mute); }
+.d5-node-time { font-family: var(--font-display-en); font-size: clamp(52px, 6vw, 80px); font-weight: 700; color: var(--text); letter-spacing: -0.01em; line-height: 1; }
+.d5-arrow { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.d5-arrow-line { width: 160px; height: 2px; background: linear-gradient(to right, var(--text-mute), var(--accent), var(--text-mute)); }
+.d5-arrow-dur { font-size: 13px; color: var(--text-mute); letter-spacing: 0.08em; }
+
+.d5-end { align-items: center; text-align: center; }
+.d5-end-title { font-family: var(--font-display-cn); font-size: clamp(30px, 3.6vw, 46px); font-weight: 900; color: var(--text); }
+.d5-end-sub { font-size: clamp(16px,1.6vw,21px); color: var(--text-mute); line-height: 1.7; max-width: 680px; }
+
+/* Step 0: detailed descent timeline */
+.d5-timeline { display: flex; flex-direction: column; gap: 8px; list-style: none; padding: 0; margin: 0; }
+.d5-timeline-item { display: flex; align-items: baseline; gap: 18px; padding: 9px 20px; background: var(--surface-2); border-radius: var(--r-card); }
+.d5-timeline-time { flex-shrink: 0; width: 170px; font-family: var(--font-display-en); font-size: clamp(13px,1.2vw,16px); font-weight: 700; color: var(--accent); }
+.d5-timeline-text { font-size: clamp(15px,1.5vw,19px); color: var(--text); }
+
+.d5-note-box { background: var(--surface-2); border-left: 3px solid var(--accent); padding: 16px 22px; max-width: 720px; }
+.d5-note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.18em; color: var(--accent); text-transform: uppercase; margin-bottom: 6px; }
+.d5-note-text { font-size: clamp(18px, 1.8vw, 24px); color: var(--text-2); line-height: 1.6; }
+
+@keyframes d5-in   { from { opacity: 0; transform: translateX(22px); } to { opacity: 1; transform: translateX(0); } }
