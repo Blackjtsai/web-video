@@ -1,4 +1,5 @@
 import "./Day3.css";
+import TrailMap from "../../components/TrailMap";
 
 interface Props { step: number; }
 
@@ -82,6 +83,7 @@ export default function Day3({ step }: Props) {
                 </g>
               ))}
             </svg>
+            <TrailMap src="images/spots/zao-trail-map.jpg" label="藏王雪場滑道地圖" />
           </div>
         </div>
       )}

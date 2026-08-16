@@ -1,4 +1,5 @@
 import "./Day4.css";
+import TrailMap from "../../components/TrailMap";
 
 interface Props { step: number; }
 
@@ -100,6 +101,7 @@ export default function Day4({ step }: Props) {
               燈光探照的夜間雪坡<br />
               仙台泉的決勝一戰
             </div>
+            <TrailMap src="images/spots/spring-valley-trail-map.png" label="Spring Valley 滑道地圖" />
           </div>
         </div>
       )}

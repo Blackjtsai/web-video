@@ -1,0 +1,28 @@
+.tm-thumb {
+  position: relative; width: 100%; aspect-ratio: 4 / 3; overflow: hidden;
+  border: 1px solid var(--rule); background: var(--surface-2); cursor: pointer; padding: 0;
+}
+.tm-thumb-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 300ms ease; }
+.tm-thumb:hover .tm-thumb-img { transform: scale(1.05); }
+.tm-thumb-overlay {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+  color: #fff;
+}
+.tm-thumb-icon { font-size: clamp(18px, 2vw, 26px); }
+.tm-thumb-label { font-size: clamp(12px, 1.1vw, 14px); font-weight: 700; letter-spacing: 0.04em; }
+
+.tm-lightbox {
+  position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.88);
+  display: flex; align-items: center; justify-content: center; padding: 4vh 4vw;
+  animation: tm-fade 200ms ease-out both;
+}
+.tm-lightbox-img { max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+.tm-lightbox-close {
+  position: absolute; top: 24px; right: 32px; width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: #fff;
+  font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+}
+.tm-lightbox-close:hover { background: rgba(255,255,255,0.22); }
+
+@keyframes tm-fade { from { opacity: 0; } to { opacity: 1; } }
