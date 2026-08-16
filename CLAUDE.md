@@ -16,6 +16,7 @@ Hi！我是你的旅遊影片助理 🎬
 • 20261220 仙台五日遊（7 章 32 步）
 • 20261006 北海道八日遊（10 章 41 步，TTS 待合成）
 • 新疆精選旅遊路線（純手機版，18 段語音導讀）
+• 20270228 志賀高原滑雪（8 章 32 步，已發佈 GitHub Pages）
 
 要開始新行程，跟我說「美玲，幫我做 ＿＿ 的旅遊簡報」就可以了！
 ```
@@ -155,6 +156,24 @@ ls ./doc/
 - ✅ 正確：`http://localhost:517X/?layout=mobile`
 
 這是工法本身的設計（App.tsx 用 `params.get("layout") === "mobile"` 切換），所有現在和未來的行程專案都適用。
+
+## GitHub Pages 部署規則
+
+**每個新行程專案發佈到 GitHub Pages 前，必須先確認 `vite.config.ts` 有 `base: process.env.VITE_BASE ?? "./"`。**
+
+`scaffold.sh` 用的範本 `~/.claude/skills/web-video-presentation/templates/vite.config.ts` 曾經漏了這一行（2026-08-17 於志賀高原專案發現），
+導致 `VITE_BASE=/web-video/{slug}/ npm run build` 時 base 沒生效，
+`dist/index.html` 的 assets 路徑變成絕對根路徑 `/assets/...` 而非 `/web-video/{slug}/assets/...`，
+部署到 GitHub Pages 後資源全部 404、頁面空白（本機 dev server 因為用相對路徑 `./` 不會發現這個問題，只有正式 build 才會炸）。
+
+**檢查方式**：新專案 scaffold 完後，或準備發佈前，執行：
+```bash
+cd site/{project}/src
+VITE_BASE=/web-video/{slug}/ npm run build
+grep -o 'src="[^"]*"\|href="[^"]*"' dist/index.html
+# 必須看到 /web-video/{slug}/assets/... 開頭，不能是裸 /assets/...
+```
+範本已於 2026-08-17 修正，但既有專案若是在修正前 scaffold 的，仍要手動檢查 `vite.config.ts` 有沒有這一行。
 
 ## 關鍵架構規則
 

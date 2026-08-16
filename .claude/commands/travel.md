@@ -874,6 +874,33 @@ bash ~/.claude/skills/web-video-presentation/scripts/scaffold.sh src --theme=sun
 5. `PRESENTATION_TTS=edge-tts npm run synthesize-audio`
 6. Bump `STORAGE_KEY`（`hooks/useStepper.ts`：v5 → v6）
 
+### 9. GitHub Pages 部署前必檢查 `vite.config.ts` 的 `base`
+
+`vite.config.ts` 必須有這一行，scaffold 範本曾經漏掉過（2026-08-17 於志賀高原專案發現並修正範本本身）：
+```ts
+export default defineConfig({
+  plugins: [react()],
+  base: process.env.VITE_BASE ?? "./",   // ← 這行不能少
+  server: { ... },
+});
+```
+少了這行，本機 `npm run dev` 完全正常（用相對路徑），但正式部署 build 會出事：
+`VITE_BASE=/web-video/{slug}/ npm run build` 後 `dist/index.html` 的 assets 路徑會是絕對根路徑
+`/assets/...` 而非 `/web-video/{slug}/assets/...`，部署到 GitHub Pages 子路徑後資源全部 404、頁面空白。
+`curl` 測資源本身可能還是 200（因為裸 `/assets/...` 路徑在 `blackjtsai.github.io` 根目錄可能剛好也有其他專案的同名資源，或單純測試的是錯誤網域），
+不能只靠 curl 判斷部署成功，**發佈前務必跑一次帶 `VITE_BASE` 的正式 build，grep `dist/index.html` 確認路徑前綴正確**：
+```bash
+cd site/{project}/src
+VITE_BASE=/web-video/{slug}/ npm run build
+grep -o 'src="[^"]*"\|href="[^"]*"' dist/index.html
+# 必須看到 /web-video/{slug}/assets/... 開頭
+```
+若已經推上去才發現空白，用 Playwright 打開頁面看 network 404（比單純 curl 更可靠，能看出瀏覽器實際載入失敗的請求）：
+```python
+page.on("response", lambda r: print(r.status, r.url) if r.status >= 400 else None)
+page.goto("https://blackjtsai.github.io/web-video/{slug}/?layout=mobile", wait_until="networkidle")
+```
+
 ---
 
 ## Checkpoint 清單
