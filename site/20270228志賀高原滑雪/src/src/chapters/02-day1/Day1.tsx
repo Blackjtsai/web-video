@@ -112,6 +112,18 @@ export default function Day1({ step }: Props) {
           <div className="d1-sleep-sub">
             第一天以租借雪具和休息為主，養足體力應付接下來三天連滑。是否夜滑，依當季志賀高原營業規定而定，不強排。
           </div>
+          <div className="d1-rental-callout">
+            <div className="d1-rental-callout-label">🎿 沒帶雪具？志賀百樂酒店館內就能租（住宿客價）</div>
+            <div className="d1-rental-callout-row">
+              <span>Snowboard 套裝</span>
+              <span>1 日 ¥3,500・2 日 ¥5,500</span>
+            </div>
+            <div className="d1-rental-callout-row">
+              <span>Full Set（含雪衣）</span>
+              <span>1 日 ¥7,000・2 日 ¥11,000</span>
+            </div>
+            <div className="d1-rental-callout-note">完整價目與比價，詳見「出發前必知」章節 ↓</div>
+          </div>
         </div>
       )}
     </div>

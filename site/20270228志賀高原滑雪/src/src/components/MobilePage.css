@@ -290,6 +290,19 @@
   padding: 6px 10px;
   margin-top: 8px;
 }
+.mp-rental-box {
+  margin-top: 12px;
+  background: var(--surface-3, #efe0cc);
+  border: 1px solid var(--accent, #bf4400);
+  border-radius: 10px;
+  padding: 12px;
+}
+.mp-rental-box-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent, #bf4400);
+  margin-bottom: 6px;
+}
 .mp-big-light {
   font-family: var(--font-display-cn, inherit);
   font-size: 22px;

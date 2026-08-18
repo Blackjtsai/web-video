@@ -48,11 +48,12 @@ const SEGMENTS = [
   { id: "day5",      step: 1, cardId: "mp-c-d5-flight" },
   { id: "must-know", step: 1, cardId: "mp-s-know" },
   { id: "must-know", step: 2, cardId: "mp-c-mk-checklist" },
-  { id: "must-know", step: 3, cardId: "mp-c-mk-warn" },
-  { id: "must-know", step: 4, cardId: "mp-c-mk-onsen" },
-  { id: "must-know", step: 5, cardId: "mp-c-mk-souvenir" },
-  { id: "must-know", step: 6, cardId: "mp-c-mk-budget" },
-  { id: "must-know", step: 7, cardId: "mp-c-mk-map" },
+  { id: "must-know", step: 3, cardId: "mp-c-mk-rental" },
+  { id: "must-know", step: 4, cardId: "mp-c-mk-warn" },
+  { id: "must-know", step: 5, cardId: "mp-c-mk-onsen" },
+  { id: "must-know", step: 6, cardId: "mp-c-mk-souvenir" },
+  { id: "must-know", step: 7, cardId: "mp-c-mk-budget" },
+  { id: "must-know", step: 8, cardId: "mp-c-mk-map" },
 ];
 
 const CHAPTER_GROUPS = [
@@ -62,7 +63,7 @@ const CHAPTER_GROUPS = [
   { label: "Day 2",  start: 13, end: 16 },
   { label: "Day 3",  start: 17, end: 20 },
   { label: "Day 4",  start: 21, end: 23 },
-  { label: "出發前", start: 24, end: 30 },
+  { label: "出發前", start: 24, end: 31 },
 ];
 
 function scrollToCard(idx: number) {
@@ -376,6 +377,18 @@ export function MobilePage({ baseUrl }: Props) {
         <div id="mp-c-d1-nightski" className="mp-card">
           <div className="mp-card-title">🎿 租裝備・休息為主</div>
           <div className="mp-muted">第一天以租借雪具和休息為主，養足體力應付接下來三天連滑。是否夜滑，依當季志賀高原營業規定而定，不強排。</div>
+          <div className="mp-rental-box">
+            <div className="mp-rental-box-label">沒帶雪具？志賀百樂酒店館內就能租（住宿客價）</div>
+            <div className="mp-row-between">
+              <span className="mp-list-name">Snowboard 套裝</span>
+              <span className="mp-list-sub">1 日 ¥3,500・2 日 ¥5,500</span>
+            </div>
+            <div className="mp-row-between">
+              <span className="mp-list-name">Full Set（含雪衣）</span>
+              <span className="mp-list-sub">1 日 ¥7,000・2 日 ¥11,000</span>
+            </div>
+            <div className="mp-note">完整價目與比價，詳見文末「出發前必知」章節 ↓</div>
+          </div>
         </div>
       </section>
 
@@ -547,6 +560,23 @@ export function MobilePage({ baseUrl }: Props) {
           ))}
         </div>
 
+        <div id="mp-c-mk-rental" className="mp-card">
+          <div className="mp-card-title">🎿 志賀百樂酒店館內雪具租借（住宿客價）</div>
+          {[
+            { name: "Snowboard 套裝（板＋雪鞋）", sub: "1 日 ¥3,500・2 日 ¥5,500・第 3 天起 +¥1,000/天" },
+            { name: "Full Set（板＋雪鞋＋雪衣＋小物）", sub: "1 日 ¥7,000・2 日 ¥11,000・第 3 天起 +¥1,500/天" },
+          ].map(i => (
+            <div className="mp-list-item" key={i.name}>
+              <div className="mp-list-name">{i.name}</div>
+              <div className="mp-list-sub">{i.sub}</div>
+            </div>
+          ))}
+          <div className="mp-note">
+            外面像 Alpina Sports 這類雪場周邊店，Snowboard 套裝 1 日 ¥5,000、4 日 ¥17,000——
+            飯店館內租划算不少，抵達當天就能拿裝備、最後一天滑完直接還。
+          </div>
+        </div>
+
         <div id="mp-c-mk-warn" className="mp-card mp-card--warn">
           <div className="mp-card-title">⚠️ 出發前務必再確認</div>
           <div className="mp-muted">
@@ -573,18 +603,19 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-card-title">💰 參考預算・每人</div>
           {[
             { name: "機票", sub: "NT$9,000" },
-            { name: "住宿", sub: "NT$8,000" },
+            { name: "住宿（3晚含早晚餐，訂單已確認）", sub: "NT$6,270" },
             { name: "交通", sub: "約 NT$5,200" },
             { name: "雪票", sub: "約 NT$5,200" },
             { name: "保險", sub: "NT$1,000" },
-            { name: "餐費", sub: "NT$4,000" },
+            { name: "餐費（午餐）", sub: "NT$2,000" },
           ].map(i => (
             <div className="mp-row-between" key={i.name}>
               <span className="mp-list-name">{i.name}</span>
               <span className="mp-list-sub">{i.sub}</span>
             </div>
           ))}
-          <div className="mp-note">合計約 NT$32,400・建議準備 NT$35,000（含機動金）</div>
+          <div className="mp-note">合計約 NT$28,700・建議準備 NT$30,000（含機動金）</div>
+          <div className="mp-muted">住宿依 3 張 Shiga Park Hotel 實際訂單換算：每人 3 晚 ¥31,320（含早晚餐），約每晚 ¥10,440</div>
         </div>
 
         <div id="mp-c-mk-map" className="mp-card">

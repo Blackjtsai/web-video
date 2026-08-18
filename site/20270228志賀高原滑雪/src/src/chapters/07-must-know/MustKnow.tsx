@@ -15,13 +15,18 @@ const SOUVENIRS = [
   { icon: "🎿", name: "滑雪場限定周邊" },
 ];
 
+const RENTAL_ITEMS = [
+  { name: "Snowboard 套裝（板＋雪鞋）", d1: "¥3,500", d2: "¥5,500", extra: "+¥1,000/天" },
+  { name: "Full Set（板＋雪鞋＋雪衣＋小物）", d1: "¥7,000", d2: "¥11,000", extra: "+¥1,500/天" },
+];
+
 const BUDGET_ITEMS = [
   { name: "機票", amount: "NT$9,000" },
-  { name: "住宿", amount: "NT$8,000" },
+  { name: "住宿（3晚含早晚餐，訂單已確認）", amount: "NT$6,270" },
   { name: "交通", amount: "約 NT$5,200" },
   { name: "雪票", amount: "約 NT$5,200" },
   { name: "保險", amount: "NT$1,000" },
-  { name: "餐費", amount: "NT$4,000" },
+  { name: "餐費（午餐）", amount: "NT$2,000" },
 ];
 
 export default function MustKnow({ step }: Props) {
@@ -54,6 +59,34 @@ export default function MustKnow({ step }: Props) {
 
       {step === 2 && (
         <div className="mk-block">
+          <div className="mk-rental-card">
+            <div className="mk-rental-label">🎿 志賀百樂酒店館內雪具租借（住宿客價）</div>
+            <div className="mk-rental-table">
+              <div className="mk-rental-row mk-rental-row--head">
+                <span className="mk-rental-name">項目</span>
+                <span>1 日</span>
+                <span>2 日</span>
+                <span>第 3 天起</span>
+              </div>
+              {RENTAL_ITEMS.map(r => (
+                <div key={r.name} className="mk-rental-row">
+                  <span className="mk-rental-name">{r.name}</span>
+                  <span>{r.d1}</span>
+                  <span>{r.d2}</span>
+                  <span>{r.extra}</span>
+                </div>
+              ))}
+            </div>
+            <div className="mk-rental-note">
+              外面像 Alpina Sports 這類雪場周邊店，Snowboard 套裝 1 日 ¥5,000、4 日 ¥17,000——
+              飯店館內租划算不少，抵達當天就能拿、最後一天滑完直接還，不用每天扛裝備。
+            </div>
+          </div>
+        </div>
+      )}
+
+      {step === 3 && (
+        <div className="mk-block">
           <div className="mk-warn">
             <div className="mk-warn-label">⚠ 出發前務必再確認</div>
             <div className="mk-warn-text">
@@ -64,7 +97,7 @@ export default function MustKnow({ step }: Props) {
         </div>
       )}
 
-      {step === 3 && (
+      {step === 4 && (
         <div className="mk-block">
           <div className="mk-note-box">
             <div className="mk-note-label">溫泉飯店須知</div>
@@ -73,7 +106,7 @@ export default function MustKnow({ step }: Props) {
         </div>
       )}
 
-      {step === 4 && (
+      {step === 5 && (
         <div className="mk-block">
           <div className="mk-souvenir-row">
             {SOUVENIRS.map(s => (
@@ -86,7 +119,7 @@ export default function MustKnow({ step }: Props) {
         </div>
       )}
 
-      {step === 5 && (
+      {step === 6 && (
         <div className="mk-block">
           <div className="mk-budget-card">
             <div className="mk-budget-label">參考預算・每人</div>
@@ -100,14 +133,15 @@ export default function MustKnow({ step }: Props) {
             </div>
             <div className="mk-budget-total">
               <span>合計約</span>
-              <span className="mk-budget-total-amount">NT$32,400</span>
+              <span className="mk-budget-total-amount">NT$28,700</span>
             </div>
-            <div className="mk-budget-suggest">建議準備 NT$35,000（含機動金）</div>
+            <div className="mk-budget-suggest">建議準備 NT$30,000（含機動金）</div>
+            <div className="mk-budget-suggest">住宿依 3 張 Shiga Park Hotel 實際訂單換算：每人 3 晚 ¥31,320（含早晚餐），約每晚 ¥10,440</div>
           </div>
         </div>
       )}
 
-      {step === 6 && (
+      {step === 7 && (
         <div className="mk-block mk-block--map">
           <div className="mk-map-wrap">
             <img

@@ -43,6 +43,15 @@
 .mk-budget-total-amount { font-family: var(--font-display-en); font-size: clamp(24px, 2.6vw, 32px); font-weight: 900; color: var(--accent); }
 .mk-budget-suggest { margin-top: 10px; font-size: clamp(14px, 1.3vw, 17px); color: var(--text-2); }
 
+.mk-rental-card { background: var(--surface-2); border-radius: var(--r-card); padding: 26px 30px; max-width: 720px; }
+.mk-rental-label { font-size: 12px; font-weight: 700; letter-spacing: 0.18em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; }
+.mk-rental-table { display: flex; flex-direction: column; }
+.mk-rental-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--rule, rgba(0,0,0,0.08)); font-size: clamp(14px, 1.4vw, 18px); font-variant-numeric: tabular-nums; }
+.mk-rental-row:last-child { border-bottom: none; }
+.mk-rental-row--head { color: var(--text-2); font-size: clamp(12px, 1.1vw, 14px); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+.mk-rental-name { color: var(--text); font-weight: 700; }
+.mk-rental-note { margin-top: 16px; font-size: clamp(13px, 1.3vw, 16px); color: var(--text-2); line-height: 1.6; }
+
 .mk-block--map { align-items: center; gap: 14px; }
 .mk-map-wrap { flex: 1; width: 100%; min-height: 0; display: flex; align-items: center; justify-content: center; }
 .mk-map-img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: var(--r-card); box-shadow: 0 8px 32px rgba(22,35,46,0.18); }
