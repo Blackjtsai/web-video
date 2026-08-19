@@ -293,6 +293,10 @@ export function MobilePage({ baseUrl }: Props) {
 
       {/* ── Overview ── */}
       <section id="mp-s-overview" className="mp-section">
+        <div className="mp-overview-photo">
+          <img className="mp-cover-img" src={img("overview.jpg")} alt="斑尾高原村莊與纜車" />
+          <div className="mp-cover-scrim" />
+        </div>
         <div className="mp-section-header">
           <span className="mp-day-tag">行程總覽</span>
           <span className="mp-day-date">MADARAO / IIYAMA</span>
@@ -309,6 +313,20 @@ export function MobilePage({ baseUrl }: Props) {
           <p className="mp-route-desc">
             Hotel Madam Mirei，距斑尾高原滑雪場約數分鐘步行，2/28 入住、3/3 退房，3 房 3 晚。
           </p>
+        </div>
+        <div className="mp-card">
+          <div className="mp-card-title">🗺️ 雪場路線圖</div>
+          <p className="mp-route-desc">
+            出發前先熟悉雪道分佈與纜車動線，官方路線圖會隨雪季更新，出發前建議重新下載最新版。
+          </p>
+          <div className="mp-trailmap-links">
+            <a className="mp-link-btn" href="https://madaraokogen.com/ski/madarao_ski_trail_maps/" target="_blank" rel="noopener noreferrer">
+              Madarao 路線圖 ↗
+            </a>
+            <a className="mp-link-btn" href="https://madaraokogen.com/ski/tangram-ski-circus/" target="_blank" rel="noopener noreferrer">
+              Tangram 路線圖 ↗
+            </a>
+          </div>
         </div>
         <div className="mp-card mp-card--note">
           <div className="mp-card-title">V1 規劃基準</div>

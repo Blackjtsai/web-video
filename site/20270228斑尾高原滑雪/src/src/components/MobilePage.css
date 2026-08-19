@@ -115,6 +115,35 @@
   margin-top: 8px;
 }
 
+/* ─── Overview photo ─── */
+.mp-overview-photo {
+  position: relative;
+  min-height: 180px;
+  overflow: hidden;
+}
+
+/* ─── Trail map links ─── */
+.mp-trailmap-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.mp-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid rgba(79, 195, 247, 0.3);
+  border-radius: 100px;
+  padding: 6px 14px;
+  text-decoration: none;
+}
+.mp-link-btn:active { opacity: 0.75; }
+
 /* ─── Section / Day ─── */
 .mp-section { margin-top: 20px; }
 .mp-day { margin-top: 20px; }
