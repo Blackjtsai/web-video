@@ -1,0 +1,603 @@
+/* ── MobilePage.css — 2027 斑尾高原滑雪 ── */
+/* prefix: mp- / 無實景照片，用漸層雪夜色塊取代封面圖 */
+
+/* ─── Root ─── */
+.mp-root {
+  width: 100%;
+  min-height: 100dvh;
+  background: var(--surface);
+  font-family: system-ui, -apple-system, "Noto Sans TC", "Helvetica Neue", sans-serif;
+}
+
+/* ─── LINE Banner ─── */
+.mp-line-banner {
+  background: #06c755;
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+  padding: 10px 16px;
+  line-height: 1.5;
+}
+
+/* ─── 漸層色塊（取代實景照片） ─── */
+.mp-grad--hero {
+  background:
+    radial-gradient(120% 90% at 20% 0%, rgba(79, 195, 247, 0.28) 0%, transparent 55%),
+    linear-gradient(160deg, #071523 0%, #0d1b2a 45%, #132338 100%);
+}
+.mp-grad--dawn {
+  background:
+    radial-gradient(100% 80% at 80% 0%, rgba(255, 200, 150, 0.18) 0%, transparent 55%),
+    linear-gradient(160deg, #0d1b2a 0%, #132338 60%, #1c3050 100%);
+}
+.mp-grad--forest {
+  background:
+    radial-gradient(100% 80% at 10% 100%, rgba(120, 220, 180, 0.16) 0%, transparent 55%),
+    linear-gradient(160deg, #071523 0%, #0d1b2a 55%, #132338 100%);
+}
+.mp-grad--dusk {
+  background:
+    radial-gradient(100% 80% at 90% 100%, rgba(196, 140, 240, 0.16) 0%, transparent 55%),
+    linear-gradient(160deg, #0d1b2a 0%, #17253d 55%, #1c3050 100%);
+}
+.mp-grad--night {
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(79, 195, 247, 0.22) 0%, transparent 60%),
+    linear-gradient(160deg, #050d18 0%, #0d1b2a 55%, #071523 100%);
+}
+
+/* ─── Cover photo (hero + day covers) ─── */
+.mp-cover-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mp-cover-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7,21,35,0.15) 0%, rgba(7,21,35,0.55) 55%, rgba(7,21,35,0.88) 100%);
+}
+
+/* ─── Hero ─── */
+.mp-hero { overflow: hidden; position: relative; }
+
+.mp-hero-text {
+  position: relative;
+  z-index: 1;
+  padding: 56px 20px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 360px;
+  justify-content: flex-end;
+}
+
+.mp-hero-sub {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--text-mute);
+  text-transform: uppercase;
+}
+
+.mp-hero-title {
+  font-size: clamp(32px, 9vw, 48px);
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1.15;
+  font-family: var(--font-display-cn);
+}
+
+.mp-hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.mp-badge {
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 100px;
+  padding: 4px 10px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(79, 195, 247, 0.3);
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+.mp-scroll-hint {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+  opacity: 0.75;
+  margin-top: 8px;
+}
+
+/* ─── Section / Day ─── */
+.mp-section { margin-top: 20px; }
+.mp-day { margin-top: 20px; }
+
+.mp-section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 16px 10px;
+  border-top: 2px solid var(--rule);
+  margin-top: 8px;
+}
+
+.mp-section-header--gold {
+  border-top-color: rgba(255, 210, 130, 0.3);
+}
+
+.mp-day-cover {
+  position: relative;
+  min-height: 220px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.mp-day-overlay {
+  position: relative;
+  z-index: 1;
+  padding: 20px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.mp-day-label-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.mp-day-tag {
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--accent);
+  color: #071523;
+  border-radius: 6px;
+  padding: 4px 12px;
+}
+
+.mp-day-tag--gold {
+  background: #f0b25c;
+}
+
+.mp-day-date {
+  font-size: 13px;
+  color: var(--text-mute);
+  font-weight: 500;
+}
+
+/* ─── Cards ─── */
+.mp-card {
+  margin: 10px 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+
+.mp-card--dark {
+  background: #071523;
+  border-color: rgba(79, 195, 247, 0.14);
+}
+
+.mp-card--note {
+  background: rgba(255, 210, 130, 0.06);
+  border-color: rgba(255, 210, 130, 0.2);
+}
+
+.mp-card--know {
+  background: var(--surface-2);
+  border-color: rgba(79, 195, 247, 0.2);
+}
+
+.mp-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-mute);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.mp-card-title--light {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.mp-route-desc {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.mp-route-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.mp-meta-chip {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(79, 195, 247, 0.25);
+  color: var(--accent);
+}
+
+/* ─── Map Button ─── */
+.mp-map-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid rgba(79, 195, 247, 0.3);
+  flex-shrink: 0;
+  text-decoration: none;
+  margin-top: 10px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ─── Transit list（交通時刻表）─── */
+.mp-transit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mp-transit-row {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.mp-transit-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+.mp-transit-time {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+  min-width: 44px;
+}
+
+.mp-transit-text {
+  font-size: 13.5px;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+
+.mp-day-note {
+  margin-top: 12px;
+  font-size: 12px;
+  color: rgba(255, 200, 100, 0.85);
+  background: rgba(255, 200, 100, 0.08);
+  border-radius: 6px;
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 200, 100, 0.2);
+  line-height: 1.6;
+}
+
+/* ─── Budget table ─── */
+.mp-budget-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mp-budget-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(79, 195, 247, 0.14);
+}
+
+.mp-budget-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+.mp-budget-label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.mp-budget-amount {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.mp-budget-row--total {
+  margin-top: 4px;
+  padding-top: 10px;
+  border-top: 2px solid var(--accent);
+  border-bottom: none;
+}
+.mp-budget-row--total .mp-budget-label { font-weight: 800; color: #fff; }
+.mp-budget-row--total .mp-budget-amount { font-size: 16px; }
+
+/* ─── Must-know section ─── */
+.mp-know-header {
+  padding: 20px 16px 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mp-know-tag {
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--accent);
+  color: #071523;
+  border-radius: 6px;
+  padding: 4px 10px;
+}
+
+.mp-know-title {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+}
+
+.mp-know-item-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.mp-know-emoji {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.mp-know-item-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.mp-know-item-desc {
+  font-size: 13px;
+  color: var(--text-mute);
+  line-height: 1.7;
+}
+
+/* ─── PDF Footer ─── */
+.mp-pdf-section {
+  padding: 28px 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.mp-footer-label {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--text);
+  letter-spacing: 0.05em;
+  font-family: var(--font-display-cn);
+}
+
+.mp-pdf-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  background: var(--accent);
+  color: #071523;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 700;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 120ms ease;
+}
+
+.mp-pdf-btn:active { opacity: 0.85; }
+
+.mp-pdf-date {
+  font-size: 11px;
+  color: var(--text-mute);
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: 0 20px;
+  line-height: 1.6;
+}
+
+.mp-photo-credit {
+  font-size: 10px;
+  color: var(--text-faint);
+  letter-spacing: 0.03em;
+  text-align: center;
+  padding: 6px 20px calc(32px + env(safe-area-inset-bottom));
+}
+
+/* ── 語音導讀 FAB ── */
+.mp-audio-fab {
+  position: fixed;
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: none;
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px var(--accent-glow);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+  padding: 0;
+  touch-action: none;
+  user-select: none;
+}
+.mp-audio-fab:active {
+  transform: scale(0.92);
+  box-shadow: 0 2px 8px rgba(79, 195, 247, 0.35);
+}
+.mp-audio-fab--playing {
+  box-shadow: 0 4px 20px rgba(79, 195, 247, 0.65);
+}
+
+.mp-fab-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+.mp-fab-ring-bg {
+  fill: none;
+  stroke: rgba(7, 21, 35, 0.3);
+  stroke-width: 2.5;
+}
+.mp-fab-ring-fill {
+  fill: none;
+  stroke: #071523;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 600ms linear;
+}
+
+.mp-fab-icon {
+  position: relative;
+  font-size: 22px;
+  line-height: 1;
+  z-index: 1;
+}
+
+/* ── Scrubber 面板 ── */
+.mp-scrubber-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 21, 35, 0.7);
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+  animation: mp-overlay-in 200ms ease both;
+}
+@keyframes mp-overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.mp-scrubber-sheet {
+  width: 100%;
+  background: var(--surface-2);
+  border-radius: 20px 20px 0 0;
+  padding: 12px 20px calc(32px + env(safe-area-inset-bottom));
+  animation: mp-sheet-up 280ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@keyframes mp-sheet-up {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.mp-scrubber-handle {
+  width: 40px;
+  height: 4px;
+  background: var(--rule);
+  border-radius: 99px;
+  margin: 0 auto 16px;
+}
+
+.mp-scrubber-current {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.mp-scrubber-current-ch {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--font-display-cn);
+}
+.mp-scrubber-current-num {
+  font-size: 13px;
+  color: var(--text-mute);
+}
+
+.mp-scrubber-chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.mp-scrubber-chip {
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1.5px solid var(--rule);
+  background: none;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-mute);
+  cursor: pointer;
+  font-family: var(--font-display-cn);
+  transition: all 150ms ease;
+}
+.mp-scrubber-chip--active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.mp-scrubber-range {
+  width: 100%;
+  accent-color: var(--accent);
+  height: 4px;
+  cursor: pointer;
+  margin-bottom: 6px;
+}
+
+.mp-scrubber-ticks {
+  position: relative;
+  height: 18px;
+  margin-bottom: 20px;
+}
+.mp-scrubber-tick {
+  position: absolute;
+  font-size: 10px;
+  color: var(--text-mute);
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.mp-scrubber-confirm {
+  width: 100%;
+  padding: 14px;
+  background: var(--accent);
+  color: #071523;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: var(--font-display-cn);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(79, 195, 247, 0.4);
+}
