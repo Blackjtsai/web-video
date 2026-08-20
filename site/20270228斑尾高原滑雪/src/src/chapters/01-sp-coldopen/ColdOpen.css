@@ -16,17 +16,17 @@
   padding: var(--stage-pad-y) var(--stage-pad-x);
   background: linear-gradient(to top, rgba(7,21,35,0.78) 0%, transparent 55%);
 }
-.co-hero-sub { font-size: clamp(13px,1.2vw,16px); letter-spacing: 0.3em; text-transform: uppercase; color: rgba(232,244,253,0.75); animation: co-in 550ms ease-out 100ms both; }
+.co-hero-sub { font-size: clamp(16px, 1.4vw, 20px); letter-spacing: 0.3em; text-transform: uppercase; color: rgba(232,244,253,0.75); animation: co-in 550ms ease-out 100ms both; }
 .co-hero-title {
   font-family: var(--font-display-en), var(--font-display-cn);
-  font-size: clamp(44px, 6vw, 88px); font-weight: 900; color: #fff;
+  font-size: clamp(55px, 7.1vw, 110px); font-weight: 900; color: #fff;
   line-height: 1.08; letter-spacing: -0.01em; margin: 8px 0 14px;
   animation: co-in 600ms ease-out 200ms both;
   text-shadow: 0 8px 40px rgba(0,0,0,0.5);
 }
 .co-hero-badges { display: flex; gap: 10px; flex-wrap: wrap; animation: co-in 600ms ease-out 350ms both; }
 .co-badge {
-  font-size: clamp(13px,1.2vw,15px); font-weight: 700; color: #fff;
+  font-size: clamp(16px, 1.4vw, 19px); font-weight: 700; color: #fff;
   background: rgba(79,195,247,0.85); border-radius: 100px; padding: 6px 16px;
 }
 
@@ -40,12 +40,12 @@
   padding: var(--stage-pad-y) var(--stage-pad-x);
   height: 100%;
 }
-.co-overview-title { font-family: var(--font-display-cn); font-size: clamp(28px,3vw,42px); font-weight: 900; color: var(--text); max-width: 780px; line-height: 1.35; animation: co-in 500ms ease-out both; }
-.co-overview-note { font-size: clamp(16px,1.5vw,20px); color: var(--text-2); line-height: 1.7; max-width: 700px; animation: co-in 550ms ease-out 120ms both; }
+.co-overview-title { font-family: var(--font-display-cn); font-size: clamp(35px, 3.5vw, 52px); font-weight: 900; color: var(--text); max-width: 780px; line-height: 1.35; animation: co-in 500ms ease-out both; }
+.co-overview-note { font-size: clamp(20px, 1.8vw, 25px); color: var(--text-2); line-height: 1.7; max-width: 700px; animation: co-in 550ms ease-out 120ms both; }
 .co-overview-grid { display: flex; gap: 14px; flex-wrap: wrap; animation: co-in 550ms ease-out 220ms both; }
 .co-overview-item { background: rgba(19,35,56,0.75); border: 1px solid var(--rule); border-radius: var(--r-card); padding: 14px 22px; min-width: 150px; }
-.co-overview-item-label { font-size: 12px; color: var(--text-mute); letter-spacing: 0.06em; margin-bottom: 4px; }
-.co-overview-item-value { font-size: clamp(16px,1.6vw,21px); font-weight: 800; color: var(--accent); }
+.co-overview-item-label { font-size: 15px; color: var(--text-mute); letter-spacing: 0.06em; margin-bottom: 4px; }
+.co-overview-item-value { font-size: clamp(20px, 1.9vw, 26px); font-weight: 800; color: var(--accent); }
 
 @keyframes co-in   { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes co-fade { from { opacity: 0; } to { opacity: 1; } }
