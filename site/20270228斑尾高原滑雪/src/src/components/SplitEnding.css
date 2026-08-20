@@ -44,7 +44,7 @@
 
 .se-end-tag {
   font-family: var(--font-display-en);
-  font-size: 140px;
+  font-size: 175px;
   font-weight: 400;
   color: var(--accent);
   letter-spacing: 0.06em;
@@ -54,7 +54,7 @@
 
 .se-end-title {
   font-family: var(--font-display-cn);
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 700;
   color: #fff;
   letter-spacing: 0.12em;
@@ -62,7 +62,7 @@
 
 .se-end-date {
   font-family: var(--font-display-en);
-  font-size: 14px;
+  font-size: 17px;
   color: rgba(255,255,255,0.65);
   letter-spacing: 0.22em;
 }
@@ -93,7 +93,7 @@
 }
 
 .se-block-label {
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -106,9 +106,9 @@
   gap: 10px;
   background: var(--accent);
   color: #fff;
-  font-size: 15px;
+  font-size: 19px;
   font-weight: 700;
-  padding: 14px 28px;
+  padding: 16px 32px;
   border-radius: 4px;
   text-decoration: none;
   letter-spacing: 0.04em;
@@ -128,13 +128,13 @@
 }
 
 .se-hotel-name {
-  font-size: 16px;
+  font-size: 21px;
   font-weight: 700;
   color: var(--text);
 }
 
 .se-hotel-phone {
-  font-size: 13px;
+  font-size: 17px;
   color: var(--text-mute);
   letter-spacing: 0.02em;
 }
@@ -152,9 +152,9 @@
   background: var(--surface-3);
   border: 1px solid var(--rule);
   color: var(--accent);
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 600;
-  padding: 8px 14px;
+  padding: 10px 16px;
   border-radius: 4px;
   text-decoration: none;
   letter-spacing: 0.01em;
