@@ -19,6 +19,22 @@ function MapBtn({ q }: { q: string }) {
   );
 }
 
+function DocBtn({ href, download }: { href: string; download: string }) {
+  return (
+    <a
+      href={href}
+      download={download}
+      className="mp-map-btn"
+      aria-label="下載訂單 PDF"
+      onClick={e => e.stopPropagation()}
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
+        <path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5v-2z"/>
+      </svg>
+    </a>
+  );
+}
+
 /* 32 段口播，對應頁面卡片 */
 const SEGMENTS = [
   // coldopen 1-4
@@ -308,20 +324,27 @@ export function MobilePage({ baseUrl }: Props) {
             </div>
           </div>
           <div className="mp-muted" style={{ marginBottom: 8 }}>落地後直衝 1F 租車，勿在機場逗留</div>
-          <div className="mp-card-title" style={{ marginTop: 10 }}>🚗 機場取車</div>
-          <div className="mp-two-col">
-            <div className="mp-col-item">
-              <div className="mp-col-label">取車地點</div>
-              <div className="mp-col-val">仙台機場 1F<br />Toyota / Nippon</div>
-            </div>
-            <div className="mp-col-item">
-              <div className="mp-col-label">推薦車型</div>
-              <div className="mp-col-val">7-8 人座休旅<br />Alphard / Delica</div>
+          <div className="mp-card-title mp-card-title--row" style={{ marginTop: 10 }}>
+            <span>🚗 機場取車</span>
+            <div style={{ display: "flex", gap: 8 }}>
+              <MapBtn q="日産レンタカー仙台空港店 宮城県名取市下増田字小沼28-1" />
+              <DocBtn href={`${baseUrl}docs/仙台租車訂單.pdf`} download="仙台租車訂單.pdf" />
             </div>
           </div>
-          <div className="mp-note">出關 → 1F 租車櫃檯 → 免費接駁車 ~5 min → 營業所辦手續</div>
+          <div className="mp-two-col">
+            <div className="mp-col-item">
+              <div className="mp-col-label">取車門市</div>
+              <div className="mp-col-val">Nissan Rent-A-Car<br />仙台機場店</div>
+            </div>
+            <div className="mp-col-item">
+              <div className="mp-col-label">實際車型</div>
+              <div className="mp-col-val">NISSAN SERENA<br />(W4)・4WD + 無釘雪胎</div>
+            </div>
+          </div>
+          <div className="mp-note" style={{ color: "var(--text)", fontWeight: 600 }}>出關 → 1F 到達大廳租車櫃檯 → 辦手續 → 免費接駁車 ~5 min → 仙台機場店取車</div>
+          <div className="mp-muted" style={{ marginTop: 4 }}>宮城縣名取市下增田字小沼28-1・022-383-2823・營業 08:00–20:00</div>
           <div className="mp-muted" style={{ marginTop: 6, fontWeight: 600 }}>取車確認清單</div>
-          {["雪胎（Studless Tires）確認", "4WD / AWD 確認", "ETC 卡租借", "右駕手感熱身"].map((c, i) => (
+          {["雪胎（Studless Tires）確認", "4WD / AWD 確認", "ETC 卡租借", "右駕手感熱身", "20:00 取車卡在收班邊緣，班機延誤務必電話聯繫店家"].map((c, i) => (
             <div key={i} className="mp-list-item">
               <div className="mp-list-name">✓ {c}</div>
             </div>
@@ -679,25 +702,25 @@ export function MobilePage({ baseUrl }: Props) {
         </div>
 
         <div id="mp-c-mk-rental" className="mp-card">
-          <div className="mp-card-title">🚗 租車必選配備</div>
+          <div className="mp-card-title">🚗 實際租車（NISSAN SERENA）</div>
           <div className="mp-two-col">
             <div className="mp-col-item">
-              <div className="mp-col-label">必選</div>
-              <div className="mp-col-val">雪胎（Studless）<br />4WD / AWD</div>
+              <div className="mp-col-label">配備</div>
+              <div className="mp-col-val">雪胎（無釘）<br />4WD・ETC 卡</div>
             </div>
             <div className="mp-col-item">
-              <div className="mp-col-label">建議加購</div>
-              <div className="mp-col-val">ETC 卡<br />東北高速護照</div>
+              <div className="mp-col-label">取還時間</div>
+              <div className="mp-col-val">12/20 20:00 取<br />12/24 18:00 還</div>
             </div>
           </div>
           <div className="mp-two-col" style={{ marginTop: 4 }}>
             <div className="mp-col-item">
-              <div className="mp-col-label">費用參考（5天）</div>
-              <div className="mp-col-val">¥60,000–80,000</div>
+              <div className="mp-col-label">總費用</div>
+              <div className="mp-col-val">¥83,424</div>
             </div>
             <div className="mp-col-item">
-              <div className="mp-col-label">另計費用</div>
-              <div className="mp-col-val">Winter Season Fee<br />+ ETC 卡租金</div>
+              <div className="mp-col-label">明細</div>
+              <div className="mp-col-val">基本+四驅+保險<br />+ 稅金</div>
             </div>
           </div>
         </div>

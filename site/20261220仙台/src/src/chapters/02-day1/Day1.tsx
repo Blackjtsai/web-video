@@ -7,6 +7,7 @@ const CHECKS = [
   "4WD / AWD 確認",
   "ETC 卡租借",
   "右駕手感熱身",
+  "20:00 取車卡在營業時間收班邊緣，班機若延誤務必電話聯繫店家",
 ];
 
 const CHECKIN_CHECKS = [
@@ -74,7 +75,7 @@ export default function Day1({ step }: Props) {
             </div>
           </div>
           <div className="d1-address">
-            宮城縣名取市下增田字小沼28-1 ・ 022-383-2823
+            宮城縣名取市下增田字小沼28-1 ・ 022-383-2823 ・ 營業時間 08:00–20:00
           </div>
         </div>
       )}

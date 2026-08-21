@@ -4,6 +4,19 @@
 
 ---
 
+## ⚠️ 手機版內容不會自動跟網頁版同步
+
+`MobilePage.tsx` 裡的行程細節（車型、地址、費用、時間等）是**獨立手寫的內容副本**，
+不是從網頁版 `chapters/*/narrations.ts` 或 `.tsx` 自動 derive 出來的。
+
+**事後更正行程資訊（例如拿到訂單 PDF 校正車型/費用/地址）時，網頁版和手機版要分開改，缺一個會造成兩邊資料不一致。**
+修改前先用 `grep -n "關鍵字" src/components/MobilePage.tsx` 確認手機版是否也有同一份內容要同步。
+
+發現脈絡：2026-08-21 於仙台專案依 Nissan 租車訂單校正取車資訊時，只改了網頁版 Day1.tsx / MustKnow.tsx，
+手機版 MobilePage.tsx 裡還留著舊的估算車型（Alphard/Delica）與費用區間，經使用者提醒才補上。
+
+---
+
 ## 整體架構
 
 ```
