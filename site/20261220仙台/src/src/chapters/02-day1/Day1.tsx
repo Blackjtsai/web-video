@@ -44,8 +44,8 @@ export default function Day1({ step }: Props) {
           <div className="d1-note-box">
             <div className="d1-note-label">機場取車流程</div>
             <div className="d1-note-text">
-              出關 → 1 樓租車櫃檯（Toyota / Nippon）<br />
-              搭免費接駁車 ~5 分鐘 → 營業所辦手續
+              出關 → Nissan Rent-A-Car 仙台機場店<br />
+              預約號碼已線上 Check-in，20:00 準時取車
             </div>
           </div>
         </div>
@@ -57,8 +57,8 @@ export default function Day1({ step }: Props) {
           <div className="d1-info-row">
             <div className="d1-info-item">
               <div className="d1-info-label">車型</div>
-              <div className="d1-info-value">7-8 人座休旅</div>
-              <div className="d1-info-sub">Alphard / Vellfire / Delica<br />5 人 5 套雪具 + 行李從容</div>
+              <div className="d1-info-value">NISSAN SERENA</div>
+              <div className="d1-info-sub">(W4) · 4WD + 無釘雪胎<br />5 人 5 套雪具 + 行李從容</div>
             </div>
             <div className="d1-info-item">
               <div className="d1-info-label">飯店</div>

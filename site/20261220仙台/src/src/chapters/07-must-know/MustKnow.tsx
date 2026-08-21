@@ -65,21 +65,21 @@ export default function MustKnow({ step }: Props) {
         <div className="mk-rental">
           <div className="mk-rental-row">
             <div className="mk-car-block">
-              <div className="mk-car-label">推薦車型</div>
-              <div className="mk-car-name">7-8 人座休旅</div>
+              <div className="mk-car-label">實際租車</div>
+              <div className="mk-car-name">NISSAN SERENA (W4)</div>
               <div className="mk-car-sub">
-                Alphard / Vellfire / Delica<br />
+                4WD + 無釘雪胎・Nissan Rent-A-Car<br />
                 5人 + 5套滑雪板 + 大型行李箱<br />
-                後車廂空間必須充足
+                12/20 20:00 取車・12/24 18:00 還車
               </div>
             </div>
             <div className="mk-car-block">
-              <div className="mk-car-label">費用參考</div>
-              <div className="mk-car-name">租車費用</div>
+              <div className="mk-car-label">費用明細</div>
+              <div className="mk-car-name">¥83,424</div>
               <div className="mk-car-sub">
-                5天約 ¥60,000–80,000<br />
-                Winter Season Fee（雪胎費）<br />
-                另加 ETC 卡租金
+                基本 ¥59,040 + 四驅 ¥6,000<br />
+                保險 ¥10,000 + ETC 卡・稅金<br />
+                仙台機場店取還・4 天 4 夜
               </div>
             </div>
           </div>
