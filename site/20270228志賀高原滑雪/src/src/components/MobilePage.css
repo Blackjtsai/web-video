@@ -680,6 +680,22 @@
   padding: 8px 12px;
   text-decoration: none;
 }
+.mp-navmap-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+.mp-navmap-link {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text, #2a1a0e);
+  background: var(--surface-2, rgba(0,0,0,0.04));
+  border: 1px solid var(--accent-soft, rgba(0,0,0,0.1));
+  border-radius: 100px;
+  padding: 6px 14px;
+  text-decoration: none;
+}
 .mp-pdf-mini-btn {
   font-size: 12px;
   font-weight: 700;

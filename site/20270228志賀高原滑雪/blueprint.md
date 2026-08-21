@@ -41,6 +41,10 @@
   分別以長野站／湯田中站為起點指向 Shiga Park Hotel），取代原本只能查地點的 `?q=` 搜尋連結，
   方便使用者直接看到上車路線與下車後步行段。原始訂房 PDF（`doc/2027志賀百樂酒店...IY*.pdf`）
   保留於 doc/ 作為未編輯的原始存證。
+- 2026-08-21（補）：發現手機版 MobilePage.tsx 一直沒有網頁版 SplitEnding.tsx 那組「地圖導航」
+  8 個雪場／巴士站錨點（高天原巴士站・志賀百樂酒店・中央區東館山・寺小屋・一之瀨・燒額山・
+  奧志賀高原・長野站），must-know 章節雪道地圖卡下方補上 `mp-c-mk-navmap` 卡片，MAPS 內容
+  與 SplitEnding 完全同步（同一份 NAV_MAPS 資料，未來新增雪場地點記得兩處一起改）。
 
 總步數：32 步（= narrations.ts 段數 = 音頻數量 = SEGMENTS 陣列長度，三者一致，已用 checkpoint 掃描驗證）
 

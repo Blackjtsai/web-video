@@ -221,6 +221,17 @@ function MobileAudioFab({ baseUrl, onLock, onUnlock }: FabProps) {
   );
 }
 
+const NAV_MAPS = [
+  { label: "高天原巴士站",     q: "Kotanbara Bus Terminal Shiga Kogen Nagano" },
+  { label: "志賀百樂酒店",     q: "Shiga Park Hotel Nagano" },
+  { label: "中央區・東館山",   q: "Shiga Kogen Chuo Ski Area Nagano" },
+  { label: "寺小屋雪場",       q: "Terakoya Ski Area Shiga Kogen Nagano" },
+  { label: "一之瀨雪場",       q: "Ichinose Ski Area Shiga Kogen Nagano" },
+  { label: "燒額山雪場",       q: "Yakebitaiyama Ski Area Shiga Kogen Nagano" },
+  { label: "奧志賀高原雪場",   q: "Okushiga Kogen Ski Area Nagano" },
+  { label: "長野站",           q: "Nagano Station Japan" },
+];
+
 interface Props { baseUrl: string; }
 
 export function MobilePage({ baseUrl }: Props) {
@@ -645,6 +656,23 @@ export function MobilePage({ baseUrl }: Props) {
           </a>
           <div className="mp-muted">
             高天原・中央區・東館山・寺小屋・一之瀨・燒額山・奧志賀——本次行程雪場都在圖上，點圖可放大看細節。
+          </div>
+        </div>
+
+        <div id="mp-c-mk-navmap" className="mp-card">
+          <div className="mp-card-title">📍 地圖導航</div>
+          <div className="mp-navmap-row">
+            {NAV_MAPS.map(m => (
+              <a
+                key={m.label}
+                className="mp-navmap-link"
+                href={`https://maps.google.com/?q=${encodeURIComponent(m.q)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                📍 {m.label}
+              </a>
+            ))}
           </div>
         </div>
       </section>
