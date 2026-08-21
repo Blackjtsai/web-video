@@ -372,6 +372,26 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-hotel-name">志賀百樂酒店</div>
           <div className="mp-hotel-en">Shiga Park Hotel</div>
           <span className="mp-meal-badge mp-meal-badge--bfdn">🍳🥩 附早晚餐</span>
+          <div className="mp-muted">〒381-0401 長野縣下高井郡山之內町大字平穩7149・+81-269-34-2811</div>
+          <div className="mp-transit-row">
+            <a className="mp-transit-btn" target="_blank" rel="noopener noreferrer"
+              href="https://www.google.com/maps/dir/?api=1&origin=Nagano+Station+Japan&destination=Shiga+Park+Hotel&travelmode=transit">
+              🚌 長野站上車（約 80 分）
+            </a>
+            <a className="mp-transit-btn" target="_blank" rel="noopener noreferrer"
+              href="https://www.google.com/maps/dir/?api=1&origin=Yudanaka+Station+Japan&destination=Shiga+Park+Hotel&travelmode=transit">
+              🚌 湯田中站上車（約 50 分）
+            </a>
+          </div>
+          <div className="mp-transit-row">
+            {["房間1", "房間2", "房間3"].map(r => (
+              <a key={r} className="mp-pdf-mini-btn"
+                href={`${baseUrl}志賀百樂酒店訂房確認_${r}.pdf`}
+                download={`志賀百樂酒店訂房確認_${r}.pdf`}>
+                📄 訂房確認・{r}
+              </a>
+            ))}
+          </div>
         </div>
 
         <div id="mp-c-d1-nightski" className="mp-card">

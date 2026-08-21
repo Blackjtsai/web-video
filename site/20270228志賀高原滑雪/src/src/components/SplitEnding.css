@@ -139,6 +139,22 @@
   letter-spacing: 0.02em;
 }
 
+.se-pdf-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.se-pdf-btn--mini {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  box-shadow: none;
+  font-size: 12px;
+  padding: 6px 14px;
+  border-radius: 100px;
+}
+
 .se-maps {
   display: flex;
   flex-wrap: wrap;

@@ -97,10 +97,34 @@ export default function Day1({ step }: Props) {
               <span className="d1-tag">步行 2 分鐘達巴士站</span>
               <span className="d1-tag">含早晚餐</span>
             </div>
+            <div className="d1-hotel-addr">〒381-0401 長野縣下高井郡山之內町大字平穩7149・+81-269-34-2811</div>
           </div>
           <div className="d1-note-box">
             <div className="d1-note-label">Check-in</div>
             <div className="d1-note-text">放下行李，先去溫泉把一天的疲勞泡掉——接下來三天是連續衝山。</div>
+          </div>
+          <div className="d1-transit-options">
+            <a className="d1-transit-btn" target="_blank" rel="noopener noreferrer"
+              href="https://www.google.com/maps/dir/?api=1&origin=Nagano+Station+Japan&destination=Shiga+Park+Hotel&travelmode=transit">
+              🚌 長野站 → 志賀高原急行巴士約 80 分
+            </a>
+            <a className="d1-transit-btn" target="_blank" rel="noopener noreferrer"
+              href="https://www.google.com/maps/dir/?api=1&origin=Yudanaka+Station+Japan&destination=Shiga+Park+Hotel&travelmode=transit">
+              🚌 長野電鐵湯田中站 → 路線巴士約 50 分
+            </a>
+            <a className="d1-transit-btn" target="_blank" rel="noopener noreferrer"
+              href="https://www.google.com/maps/dir/?api=1&origin=Shinshu-nakano+IC&destination=Shiga+Park+Hotel&travelmode=driving">
+              🚗 信州中野 IC → 開車約 45 分
+            </a>
+          </div>
+          <div className="d1-pdf-row">
+            {["房間1", "房間2", "房間3"].map(r => (
+              <a key={r} className="d1-pdf-btn"
+                href={`${import.meta.env.BASE_URL}志賀百樂酒店訂房確認_${r}.pdf`}
+                download={`志賀百樂酒店訂房確認_${r}.pdf`}>
+                📄 訂房確認・{r}
+              </a>
+            ))}
           </div>
         </div>
       )}

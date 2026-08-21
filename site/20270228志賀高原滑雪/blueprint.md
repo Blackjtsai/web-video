@@ -34,6 +34,13 @@
   （高天原／中央區／東館山／寺小屋／一之瀨／燒額山／奧志賀全數涵蓋），STORAGE_KEY bump v5 → v6。
 - 2026-08-17：**修正 `vite.config.ts` 缺少 `base` 設定的 bug**（scaffold 範本本身漏了這行，已回頭修正範本，
   見下方「特殊 hack」）；修正後才能正確部署到 GitHub Pages 子路徑。
+- 2026-08-21：新增 3 份 IKYU 訂房確認 PDF（房間1/2/3，對應 6 人 3 間房）可下載——Day1 step3、
+  MobilePage Day1 住宿卡、SplitEnding 住宿聯絡區塊皆加上「訂房確認・房間N」下載按鈕，
+  檔案存於 `public/志賀百樂酒店訂房確認_房間{1,2,3}.pdf`（複製自 `doc/` 原始 IKYU PDF，未修改內容）。
+  同時三處新增「怎麼去」搭車導航按鈕（Google Maps `dir` API，`travelmode=transit`，
+  分別以長野站／湯田中站為起點指向 Shiga Park Hotel），取代原本只能查地點的 `?q=` 搜尋連結，
+  方便使用者直接看到上車路線與下車後步行段。原始訂房 PDF（`doc/2027志賀百樂酒店...IY*.pdf`）
+  保留於 doc/ 作為未編輯的原始存證。
 
 總步數：32 步（= narrations.ts 段數 = 音頻數量 = SEGMENTS 陣列長度，三者一致，已用 checkpoint 掃描驗證）
 
@@ -52,6 +59,7 @@
 | public/images/trail-map.jpg（2800px 寬）・public/images-mobile/trail-map.jpg（1800px 寬） | 志賀高原全山雪道地圖（官方 SHIGA KOGEN AREA MAP） |
 | public/2027志賀高原滑雪行程_V1~V3.pdf | 行程手冊舊版，保留歷史記錄，不再被按鈕引用 |
 | public/2027志賀高原滑雪行程_V4.pdf | 行程手冊現行版本，4 頁；Day4/Day5 拆分＋回程流程修正＋早晚餐已確認＋每人費用預算表；網頁版 SplitEnding.tsx 與手機版 MobilePage.tsx 下載按鈕皆指向此檔 |
+| public/志賀百樂酒店訂房確認_房間{1,2,3}.pdf | IKYU 原始訂房確認書（2026-08-21 新增），未編輯內容；Day1 step3 / MobilePage Day1 住宿卡 / SplitEnding 住宿聯絡皆有下載按鈕 |
 
 ## 主題色（alpine-frost，自建）
 - `--surface`: #f4f8fb（霧白雪面）

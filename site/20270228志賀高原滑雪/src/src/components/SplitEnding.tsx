@@ -58,6 +58,26 @@ export function SplitEnding({ baseUrl }: Props) {
             <div className="se-hotel-card">
               <div className="se-hotel-name">志賀百樂酒店 Shiga Park Hotel</div>
               <div className="se-hotel-phone">2/28 – 3/3（連住 3 晚）・高天原溫泉現地・含早晚餐</div>
+              <div className="se-hotel-phone">〒381-0401 長野縣下高井郡山之內町大字平穩7149・+81-269-34-2811</div>
+            </div>
+            <div className="se-pdf-row">
+              {["房間1", "房間2", "房間3"].map(r => (
+                <a key={r} className="se-pdf-btn se-pdf-btn--mini"
+                  href={`${baseUrl}志賀百樂酒店訂房確認_${r}.pdf`}
+                  download={`志賀百樂酒店訂房確認_${r}.pdf`}>
+                  📄 訂房確認・{r}
+                </a>
+              ))}
+            </div>
+            <div className="se-pdf-row">
+              <a className="se-pdf-btn se-pdf-btn--mini" target="_blank" rel="noopener noreferrer"
+                href="https://www.google.com/maps/dir/?api=1&origin=Nagano+Station+Japan&destination=Shiga+Park+Hotel&travelmode=transit">
+                🚌 長野站上車路線
+              </a>
+              <a className="se-pdf-btn se-pdf-btn--mini" target="_blank" rel="noopener noreferrer"
+                href="https://www.google.com/maps/dir/?api=1&origin=Yudanaka+Station+Japan&destination=Shiga+Park+Hotel&travelmode=transit">
+                🚌 湯田中站上車路線
+              </a>
             </div>
           </div>
           <div className="se-block">
