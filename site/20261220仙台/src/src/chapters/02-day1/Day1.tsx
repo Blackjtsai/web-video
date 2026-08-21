@@ -44,9 +44,37 @@ export default function Day1({ step }: Props) {
           <div className="d1-note-box">
             <div className="d1-note-label">機場取車流程</div>
             <div className="d1-note-text">
-              出關 → Nissan Rent-A-Car 仙台機場店<br />
-              預約號碼已線上 Check-in，20:00 準時取車
+              出關 → 1 樓到達大廳租車櫃檯（Nissan Rent-A-Car）<br />
+              辦手續 → 搭免費接駁車 ~5 分鐘 → 仙台機場店取車
             </div>
+          </div>
+          <div className="d1-route">
+            <div className="d1-route-node">
+              <div className="d1-route-icon">🛬</div>
+              <div className="d1-route-label">到達大廳</div>
+              <div className="d1-route-sub">1F 出關口</div>
+            </div>
+            <div className="d1-route-arrow">→</div>
+            <div className="d1-route-node">
+              <div className="d1-route-icon">🚗</div>
+              <div className="d1-route-label">日產租車櫃檯</div>
+              <div className="d1-route-sub">辦手續 / Check-in</div>
+            </div>
+            <div className="d1-route-arrow">→</div>
+            <div className="d1-route-node">
+              <div className="d1-route-icon">🚐</div>
+              <div className="d1-route-label">免費接駁車</div>
+              <div className="d1-route-sub">約 5 分鐘</div>
+            </div>
+            <div className="d1-route-arrow">→</div>
+            <div className="d1-route-node">
+              <div className="d1-route-icon">🏢</div>
+              <div className="d1-route-label">仙台機場店</div>
+              <div className="d1-route-sub">20:00 取車</div>
+            </div>
+          </div>
+          <div className="d1-address">
+            宮城縣名取市下增田字小沼28-1 ・ 022-383-2823
           </div>
         </div>
       )}
