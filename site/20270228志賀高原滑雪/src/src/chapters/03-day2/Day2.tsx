@@ -1,5 +1,14 @@
 import "./Day2.css";
 
+function MapPin({ q }: { q: string }) {
+  return (
+    <a className="d2-map-pin" target="_blank" rel="noopener noreferrer"
+      href={`https://maps.google.com/?q=${encodeURIComponent(q)}`}>
+      📍 地圖
+    </a>
+  );
+}
+
 interface Props { step: number; }
 
 export default function Day2({ step }: Props) {
@@ -29,10 +38,12 @@ export default function Day2({ step }: Props) {
             <div className="d2-resort-card">
               <div className="d2-resort-name">高天原</div>
               <div className="d2-resort-desc">住宿基地・坡度平緩</div>
+              <MapPin q="Kotanbara Bus Terminal Shiga Kogen Nagano" />
             </div>
             <div className="d2-resort-card">
               <div className="d2-resort-name">中央區</div>
               <div className="d2-resort-desc">雪道寬・適合熱身</div>
+              <MapPin q="Shiga Kogen Chuo Ski Area Nagano" />
             </div>
           </div>
           <div className="d2-note-box">
@@ -48,10 +59,12 @@ export default function Day2({ step }: Props) {
             <div className="d2-resort-card">
               <div className="d2-resort-name">東館山</div>
               <div className="d2-resort-desc">纜車直達・視野開闊</div>
+              <MapPin q="Higashidateyama Ski Area Shiga Kogen Nagano" />
             </div>
             <div className="d2-resort-card">
               <div className="d2-resort-name">寺小屋</div>
               <div className="d2-resort-desc">中階路線・坡度拉高</div>
+              <MapPin q="Terakoya Ski Area Shiga Kogen Nagano" />
             </div>
           </div>
           <div className="d2-note-box">
@@ -70,7 +83,10 @@ export default function Day2({ step }: Props) {
             <span className="d2-route-sep">→</span>
             <div className="d2-route-stop">寺小屋</div>
             <span className="d2-route-sep">→</span>
-            <div className="d2-route-stop">一之瀨</div>
+            <div className="d2-route-stop">
+              一之瀨
+              <MapPin q="Ichinose Ski Area Shiga Kogen Nagano" />
+            </div>
             <span className="d2-route-sep">→</span>
             <div className="d2-route-stop d2-route-stop--dim">明日：燒額山・奧志賀</div>
           </div>

@@ -1,5 +1,14 @@
 import "./Day3.css";
 
+function MapPin({ q }: { q: string }) {
+  return (
+    <a className="d3-map-pin" target="_blank" rel="noopener noreferrer"
+      href={`https://maps.google.com/?q=${encodeURIComponent(q)}`}>
+      📍 地圖
+    </a>
+  );
+}
+
 interface Props { step: number; }
 
 export default function Day3({ step }: Props) {
@@ -17,11 +26,20 @@ export default function Day3({ step }: Props) {
             <span className="d3-ticket-day">Day 2 / 3</span>
           </div>
           <div className="d3-route">
-            <div className="d3-route-stop d3-route-stop--active">一之瀨</div>
+            <div className="d3-route-stop d3-route-stop--active">
+              一之瀨
+              <MapPin q="Ichinose Ski Area Shiga Kogen Nagano" />
+            </div>
             <span className="d3-route-sep">→</span>
-            <div className="d3-route-stop">燒額山</div>
+            <div className="d3-route-stop">
+              燒額山
+              <MapPin q="Yakebitaiyama Ski Area Shiga Kogen Nagano" />
+            </div>
             <span className="d3-route-sep">→</span>
-            <div className="d3-route-stop">奧志賀</div>
+            <div className="d3-route-stop">
+              奧志賀
+              <MapPin q="Okushiga Kogen Ski Area Nagano" />
+            </div>
           </div>
           <div className="d3-note-box">
             <div className="d3-note-label">主力巡航日</div>
@@ -35,6 +53,7 @@ export default function Day3({ step }: Props) {
           <div className="d3-spot">
             <div className="d3-spot-name">一之瀨</div>
             <div className="d3-spot-tag">志賀高原最大雪場區塊</div>
+            <MapPin q="Ichinose Ski Area Shiga Kogen Nagano" />
           </div>
           <div className="d3-note-box">
             <div className="d3-note-label">開場</div>
@@ -48,6 +67,7 @@ export default function Day3({ step }: Props) {
           <div className="d3-spot">
             <div className="d3-spot-name">燒額山</div>
             <div className="d3-spot-tag">1998 長野冬奧滑降賽道</div>
+            <MapPin q="Yakebitaiyama Ski Area Shiga Kogen Nagano" />
           </div>
           <div className="d3-note-box">
             <div className="d3-note-label">競技級雪道</div>
@@ -61,6 +81,7 @@ export default function Day3({ step }: Props) {
           <div className="d3-spot">
             <div className="d3-spot-name">奧志賀</div>
             <div className="d3-spot-tag">志賀高原最深處</div>
+            <MapPin q="Okushiga Kogen Ski Area Nagano" />
           </div>
           <div className="d3-note-box">
             <div className="d3-note-label">下午：預留回程時間</div>

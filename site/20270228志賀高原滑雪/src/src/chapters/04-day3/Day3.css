@@ -18,13 +18,18 @@
 .d3-ticket-day { font-family: var(--font-display-en); font-size: clamp(24px,2.6vw,34px); font-weight: 700; }
 
 .d3-route { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-.d3-route-stop { background: var(--surface-2); border-radius: var(--r-card); padding: 12px 20px; font-size: clamp(16px,1.6vw,21px); font-weight: 700; color: var(--text); }
+.d3-route-stop { display: flex; align-items: center; gap: 10px; background: var(--surface-2); border-radius: var(--r-card); padding: 12px 20px; font-size: clamp(16px,1.6vw,21px); font-weight: 700; color: var(--text); }
 .d3-route-stop--active { background: var(--accent); color: #fff; }
+.d3-route-stop--active .d3-map-pin { color: #fff; border-color: #fff; }
 .d3-route-sep { font-size: 20px; color: var(--accent); }
 
 .d3-spot { display: flex; flex-direction: column; gap: 10px; }
 .d3-spot-name { font-family: var(--font-display-cn); font-size: clamp(32px,3.6vw,50px); font-weight: 900; color: var(--text); }
 .d3-spot-tag { font-size: 13px; font-weight: 700; background: var(--accent-soft); color: var(--accent); border-radius: 100px; padding: 5px 14px; align-self: flex-start; }
+.d3-map-pin {
+  display: inline-block; align-self: flex-start; font-size: 12px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 100px; padding: 4px 12px; text-decoration: none;
+}
 
 .d3-note-box { background: var(--surface-2); border-left: 3px solid var(--accent); padding: 16px 22px; max-width: 720px; }
 .d3-note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.18em; color: var(--accent); text-transform: uppercase; margin-bottom: 6px; }

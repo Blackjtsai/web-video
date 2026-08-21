@@ -21,13 +21,17 @@
 .d2-resort-card { background: var(--surface-2); border-radius: var(--r-card); padding: 20px 24px; min-width: 200px; border-left: 3px solid var(--accent); }
 .d2-resort-name { font-family: var(--font-display-cn); font-size: clamp(22px,2.4vw,32px); font-weight: 800; color: var(--text); }
 .d2-resort-desc { font-size: clamp(14px,1.3vw,17px); color: var(--text-mute); margin-top: 6px; line-height: 1.6; }
+.d2-map-pin {
+  display: inline-block; margin-top: 10px; font-size: 12px; font-weight: 700; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 100px; padding: 4px 12px; text-decoration: none;
+}
 
 .d2-note-box { background: var(--surface-2); border-left: 3px solid var(--accent); padding: 16px 22px; max-width: 720px; }
 .d2-note-label { font-size: 12px; font-weight: 700; letter-spacing: 0.18em; color: var(--accent); text-transform: uppercase; margin-bottom: 6px; }
 .d2-note-text { font-size: clamp(18px, 1.8vw, 24px); color: var(--text-2); line-height: 1.6; }
 
 .d2-route { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-.d2-route-stop { background: var(--surface-2); border-radius: var(--r-card); padding: 12px 20px; font-size: clamp(16px,1.6vw,21px); font-weight: 700; color: var(--text); }
+.d2-route-stop { display: flex; align-items: center; gap: 10px; background: var(--surface-2); border-radius: var(--r-card); padding: 12px 20px; font-size: clamp(16px,1.6vw,21px); font-weight: 700; color: var(--text); }
 .d2-route-stop--dim { color: var(--text-faint); }
 .d2-route-sep { font-size: 20px; color: var(--accent); }
 

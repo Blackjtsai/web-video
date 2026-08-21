@@ -221,6 +221,20 @@ function MobileAudioFab({ baseUrl, onLock, onUnlock }: FabProps) {
   );
 }
 
+function NavPill({ label, q }: { label: string; q: string }) {
+  return (
+    <a
+      className="mp-navmap-link mp-navmap-link--inline"
+      href={`https://maps.google.com/?q=${encodeURIComponent(q)}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={e => e.stopPropagation()}
+    >
+      📍 {label}
+    </a>
+  );
+}
+
 const NAV_MAPS = [
   { label: "高天原巴士站",     q: "Kotanbara Bus Terminal Shiga Kogen Nagano" },
   { label: "志賀百樂酒店",     q: "Shiga Park Hotel Nagano" },
@@ -440,16 +454,23 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-card-title">🎫 3日券 Day 1 / 3</div>
           <div className="mp-highlight">高天原・中央區</div>
           <div className="mp-muted">坡度平緩、雪道寬，上午先熱身找回滑雪感覺</div>
+          <div className="mp-navmap-row">
+            <NavPill label="高天原巴士站" q="Kotanbara Bus Terminal Shiga Kogen Nagano" />
+            <NavPill label="中央區・東館山" q="Shiga Kogen Chuo Ski Area Nagano" />
+          </div>
         </div>
 
         <div id="mp-c-d2-higashidate" className="mp-card">
           <div className="mp-card-title">🚡 東館山・寺小屋・串一之瀨</div>
           {[
-            { name: "東館山・寺小屋", sub: "纜車直達，坡度拉高，適合中階路線" },
-            { name: "串到一之瀨", sub: "替明天長程路線先探路" },
+            { name: "東館山・寺小屋", sub: "纜車直達，坡度拉高，適合中階路線", q: "Terakoya Ski Area Shiga Kogen Nagano" },
+            { name: "串到一之瀨", sub: "替明天長程路線先探路", q: "Ichinose Ski Area Shiga Kogen Nagano" },
           ].map(i => (
             <div className="mp-list-item" key={i.name}>
-              <div className="mp-list-name">{i.name}</div>
+              <div className="mp-list-item-row">
+                <div className="mp-list-name">{i.name}</div>
+                <MapBtn q={i.q} />
+              </div>
               <div className="mp-list-sub">{i.sub}</div>
             </div>
           ))}
@@ -483,12 +504,19 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-card-title">🎫 3日券 Day 2 / 3</div>
           <div className="mp-highlight">一之瀨 → 燒額山</div>
           <div className="mp-muted">一之瀨是志賀高原最大雪場區塊，纜車網密集；燒額山是 1998 長野冬奧滑降賽道，雪質紮實</div>
+          <div className="mp-navmap-row">
+            <NavPill label="一之瀨雪場" q="Ichinose Ski Area Shiga Kogen Nagano" />
+            <NavPill label="燒額山雪場" q="Yakebitaiyama Ski Area Shiga Kogen Nagano" />
+          </div>
         </div>
 
         <div id="mp-c-d3-yakebitai" className="mp-card">
           <div className="mp-card-title">🏔️ 奧志賀・下午預留回程</div>
           <div className="mp-highlight">奧志賀高原</div>
           <div className="mp-muted">志賀高原最深處，遊客少、雪況原始，主力巡航日，下午預留回程時間</div>
+          <div className="mp-navmap-row">
+            <NavPill label="奧志賀高原雪場" q="Okushiga Kogen Ski Area Nagano" />
+          </div>
         </div>
 
         <div id="mp-c-d3-hotel" className="mp-card">

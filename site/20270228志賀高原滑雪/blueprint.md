@@ -45,6 +45,15 @@
   8 個雪場／巴士站錨點（高天原巴士站・志賀百樂酒店・中央區東館山・寺小屋・一之瀨・燒額山・
   奧志賀高原・長野站），must-know 章節雪道地圖卡下方補上 `mp-c-mk-navmap` 卡片，MAPS 內容
   與 SplitEnding 完全同步（同一份 NAV_MAPS 資料，未來新增雪場地點記得兩處一起改）。
+- 2026-08-21（再補）：使用者指出 Day2/Day3 各雪場行程卡（東館山・寺小屋・一之瀨・燒額山・
+  奧志賀）本身也缺地圖錨點，只有末頁彙總跟 must-know 卡有。依「卡片內容三處同步」規則
+  （見根目錄 CLAUDE.md 行為規則），三處全補：
+  - MobilePage.tsx：`mp-c-d2-central`／`mp-c-d2-higashidate`／`mp-c-d3-ichinose`／`mp-c-d3-yakebitai`
+    新增 `NavPill`（文字+📍圖標小圓角按鈕，開新分頁 Google Maps 搜尋）
+  - Day2.tsx／Day3.tsx（網頁版）：resort-card／spot／route-stop 逐一補上 `MapPin`（📍 地圖 按鈕），
+    Day2.css／Day3.css 新增 `.d2-map-pin`／`.d3-map-pin` 樣式（`.d3-route-stop--active` 內另覆寫白字白框）
+  - SplitEnding.tsx 的 MAPS 陣列本來就涵蓋這些地點，未變動
+  Day1（住宿）與 must-know（全山地圖卡）維持既有做法未受影響。
 
 總步數：32 步（= narrations.ts 段數 = 音頻數量 = SEGMENTS 陣列長度，三者一致，已用 checkpoint 掃描驗證）
 

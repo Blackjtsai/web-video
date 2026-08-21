@@ -254,6 +254,12 @@
   border-bottom: 1px solid var(--rule, rgba(0,0,0,0.07));
   padding: 10px 0;
 }
+.mp-list-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
 .mp-list-item:last-child { border-bottom: none; }
 .mp-list-name {
   font-family: var(--font-display-cn, inherit);
@@ -695,6 +701,9 @@
   border-radius: 100px;
   padding: 6px 14px;
   text-decoration: none;
+}
+.mp-navmap-link--inline {
+  margin-top: 4px;
 }
 .mp-pdf-mini-btn {
   font-size: 12px;
