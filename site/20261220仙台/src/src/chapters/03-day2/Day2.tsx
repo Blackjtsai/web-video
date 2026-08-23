@@ -90,8 +90,27 @@ export default function Day2({ step }: Props) {
         </div>
       )}
 
-      {/* Step 2: 全日飆雪 */}
+      {/* Step 2: 租借裝備＋上山/回程路線攻略 */}
       {step === 2 && (
+        <div className="d2-routes">
+          <div className="d2-routes-intro">
+            <div className="d2-routes-title">租借裝備・上山下山路線攻略</div>
+            <div className="d2-tl-sub">
+              住宿旁就有 9 家租借店，Best Rental Pro Shop 離飯店最近；上山有兩條路線可選，回程也有兩種滑法
+            </div>
+          </div>
+          <div className="d2-routes-grid">
+            <TrailMap src="images/spots/zao-rental-shops.png" label="租借店家列表・街區地圖" />
+            <TrailMap src="images/spots/zao-route-up-a.png" label="上山路線 A・Ropeway 直上（推薦首次）" />
+            <TrailMap src="images/spots/zao-route-up-b.png" label="上山路線 B・Sky Cable 邊滑邊上" />
+            <TrailMap src="images/spots/zao-route-down-1.png" label="回程路線 ①・直滑回上之台" />
+            <TrailMap src="images/spots/zao-route-down-2.png" label="回程路線 ②・挑戰橫倉 38 度名坡" />
+          </div>
+        </div>
+      )}
+
+      {/* Step 3: 全日飆雪 */}
+      {step === 3 && (
         <div className="d2-ski-day">
           <div className="d2-time-block">
             <div className="d2-time-big">09:00</div>
@@ -117,8 +136,8 @@ export default function Day2({ step }: Props) {
         </div>
       )}
 
-      {/* Step 3: 藏王溫泉街晚餐 */}
-      {step === 3 && (
+      {/* Step 4: 藏王溫泉街晚餐 */}
+      {step === 4 && (
         <div className="d2-dinner">
           <div className="d2-dinner-visual">
             <div className="d2-dinner-icon">🍶</div>
@@ -138,8 +157,8 @@ export default function Day2({ step }: Props) {
         </div>
       )}
 
-      {/* Step 4: 溫泉 */}
-      {step === 4 && (
+      {/* Step 5: 溫泉 */}
+      {step === 5 && (
         <div className="d2-onsen">
           <div className="d2-onsen-hero">
             <div className="d2-onsen-visual">

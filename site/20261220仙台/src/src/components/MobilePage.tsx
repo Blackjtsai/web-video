@@ -47,12 +47,13 @@ const SEGMENTS = [
   { id: "day1", step: 2, cardId: "mp-c-d1-hotel" },
   { id: "day1", step: 3, cardId: "mp-c-d1-drive" },
   { id: "day1", step: 4, cardId: "mp-c-d1-checkin" },
-  // day2 1-5
+  // day2 1-6
   { id: "day2", step: 1, cardId: "mp-s-day2" },
   { id: "day2", step: 2, cardId: "mp-c-d2-eboshi" },
-  { id: "day2", step: 3, cardId: "mp-c-d2-skiday" },
-  { id: "day2", step: 4, cardId: "mp-c-d2-dinner" },
-  { id: "day2", step: 5, cardId: "mp-c-d2-onsen" },
+  { id: "day2", step: 3, cardId: "mp-c-d2-routes" },
+  { id: "day2", step: 4, cardId: "mp-c-d2-skiday" },
+  { id: "day2", step: 5, cardId: "mp-c-d2-dinner" },
+  { id: "day2", step: 6, cardId: "mp-c-d2-onsen" },
   // day3 1-5
   { id: "day3", step: 1, cardId: "mp-s-day3" },
   { id: "day3", step: 2, cardId: "mp-c-d3-zao" },
@@ -81,11 +82,11 @@ const SEGMENTS = [
 const CHAPTER_GROUPS = [
   { label: "開場",   start: 0,  end: 3  },
   { label: "Day 1",  start: 4,  end: 7  },
-  { label: "Day 2",  start: 8,  end: 12 },
-  { label: "Day 3",  start: 13, end: 17 },
-  { label: "Day 4",  start: 18, end: 22 },
-  { label: "Day 5",  start: 23, end: 26 },
-  { label: "出發前", start: 27, end: 31 },
+  { label: "Day 2",  start: 8,  end: 13 },
+  { label: "Day 3",  start: 14, end: 18 },
+  { label: "Day 4",  start: 19, end: 23 },
+  { label: "Day 5",  start: 24, end: 27 },
+  { label: "出發前", start: 28, end: 32 },
 ];
 
 function scrollToCard(idx: number) {
@@ -445,6 +446,23 @@ export function MobilePage({ baseUrl }: Props) {
             </div>
           </div>
           <div className="mp-note">藏王溫泉滑雪場 · 連住 3 晚就在雪場旁 · 現場可租借全套雪具</div>
+        </div>
+
+        <div id="mp-c-d2-routes" className="mp-card">
+          <div className="mp-card-title">🗺️ 租借裝備・上山下山路線攻略</div>
+          <div className="mp-muted">住宿旁 9 家租借店比較，上山 2 條路線、回程 2 種滑法（點圖可放大看細節）</div>
+          {[
+            { src: "images/spots/zao-rental-shops.png", label: "租借店家列表・街區地圖" },
+            { src: "images/spots/zao-route-up-a.png", label: "上山路線 A・Ropeway 直上（推薦首次）" },
+            { src: "images/spots/zao-route-up-b.png", label: "上山路線 B・Sky Cable 邊滑邊上" },
+            { src: "images/spots/zao-route-down-1.png", label: "回程路線 ①・直滑回上之台" },
+            { src: "images/spots/zao-route-down-2.png", label: "回程路線 ②・挑戰橫倉 38 度名坡" },
+          ].map((r, i) => (
+            <div key={i} style={{ marginTop: i === 0 ? 4 : 14 }}>
+              <img src={r.src} alt={r.label} className="mp-card-img" />
+              <div className="mp-list-sub" style={{ marginTop: 6 }}>{r.label}</div>
+            </div>
+          ))}
         </div>
 
         <div id="mp-c-d2-skiday" className="mp-card">

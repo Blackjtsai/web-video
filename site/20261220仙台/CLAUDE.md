@@ -8,7 +8,7 @@
 |---|---|---|---|
 | coldopen | 開場：五位型男，東北雪季自駕 | 4 | `.co-` |
 | day1 | Day 1：抵達仙台・直奔藏王 | 4 | `.d1-` |
-| day2 | Day 2：藏王溫泉滑雪場・熟悉日（連住雪場旁） | 5 | `.d2-` |
+| day2 | Day 2：藏王溫泉滑雪場・熟悉日（連住雪場旁） | 6 | `.d2-` |
 | day3 | Day 3：制霸藏王大雪場・溫泉名湯 | 5 | `.d3-` |
 | day4 | Day 4：告別藏王・Spring Valley 夜滑 | 5 | `.d4-` |
 | day5 | Day 5：聖誕夜・採購返台 | 4 | `.d5-` |
@@ -56,6 +56,10 @@ PRESENTATION_TTS=edge-tts npm run synthesize-audio
 - 已同步更新網頁版 Day1（取車流程、車型卡片、機場取車路線示意圖、地址電話）與 must-know（費用明細）
 - 地址：宮城縣名取市下增田字小沼28-1（電話 022-383-2823）；租車櫃檯在航廈 1F 到達大廳，辦手續後搭免費接駁車約 5 分鐘到實際營業所
 - **注意：手機版 MobilePage.tsx 是獨立內容副本，不會自動跟網頁版章節同步**，此次已一併手動校正（機場取車卡片、must-know 租車卡片），並在取車卡片加上訂單 PDF 下載鈕（`public/docs/仙台租車訂單.pdf`）與 Google 地圖按鈕。之後改網頁版行程細節，務必同步檢查 MobilePage.tsx 有無對應內容要改
+
+## 租借裝備・路線攻略（2026-08-23）
+
+Day2 新增第 3 步「租借裝備・上山下山路線攻略」，內容來自 5 張使用者提供的資訊圖（租借店家列表+街區地圖、上山路線 A/B、回程路線 ①/②），圖檔存於 `src/public/images/spots/zao-*.png`。網頁版用 `TrailMap` 元件做縮圖+lightbox；手機版 `mp-c-d2-routes` 卡片全寬堆疊顯示。因插入新步驟，Day2 步數 5→6，`useStepper.ts` STORAGE_KEY 已 bump 為 v3；`MobilePage.tsx` 的 SEGMENTS／CHAPTER_GROUPS 索引已同步位移。
 
 ## 素材備注
 
