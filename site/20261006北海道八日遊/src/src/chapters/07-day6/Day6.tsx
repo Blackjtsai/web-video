@@ -32,7 +32,7 @@ function Step1() {
       <div className="d6-shakotan-title"><span>積丹藍</span>海岸 · 余市</div>
       <div className="d6-shakotan-body">
         沿積丹半島海岸線自駕，先到島武意海岸與神威岬看海。
-        接著到余市，參觀余市威士忌蒸餾所，再到柿崎商店逛逛。
+        接著到余市，參觀余市威士忌蒸餾所，再到柿崎商店，和對面的余市町散策。
       </div>
       <div className="d6-sea">
         <img src={`${base}images/shakotan.jpg`} alt="積丹" className="d6-sea-photo" />
@@ -51,7 +51,7 @@ function Step2() {
         <div className="d6-glow-title"><span>小樽天狗山</span><br />入住 Glow 別墅</div>
         <div className="d6-glow-body">
           下午到小樽天狗山觀景台，再入住 Glow 包棟別墅。
-          Glow 不含餐，傍晚可到超市採買食材。
+          Glow 不含餐，晚餐在小樽市區彈性安排。
         </div>
         <div className="d6-glow-shopping">
           {items.map(item => <span key={item} className="d6-shop-tag">{item}</span>)}
@@ -71,14 +71,12 @@ function Step2() {
 function Step3() {
   return (
     <div className="d6-bbq">
-      <div className="d6-bbq-label">Tonight · Family BBQ</div>
-      <div className="d6-bbq-title">別墅<span>和牛 BBQ</span><br />自己買、自己煮</div>
+      <div className="d6-bbq-label">Tonight · Flexible Dinner</div>
+      <div className="d6-bbq-title">晚餐<span>彈性安排</span><br />小樽市區自由選</div>
       <div className="d6-bbq-body">
-        晚餐沒有安排餐廳，採買食材後全家在別墅廚房一起 BBQ。
+        午餐與晚餐都在行程中彈性安排，
+        可依當天進度，選喜歡的在地美食。入住 Glow 包棟別墅（不含餐）。
         別墅不含早餐，記得連隔天的早餐一起買。
-      </div>
-      <div className="d6-flames">
-        {[...Array(7)].map((_, i) => <div key={i} className="d6-flame" />)}
       </div>
     </div>
   );

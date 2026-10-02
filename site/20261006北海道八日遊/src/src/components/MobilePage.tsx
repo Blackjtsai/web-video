@@ -20,6 +20,9 @@ function MapBtn({ q }: { q: string }) {
   );
 }
 
+/* 意見回饋按鈕開關：行程確認前設 true 開放家人留言（Formspree），目前隱藏 */
+const SHOW_FEEDBACK = false;
+
 /* ── 41 段口播（= narrations.ts 段數 = mp3 數量） ── */
 const SEGMENTS = [
   { id: "coldopen",  step: 1, cardId: "mp-s-hero" },
@@ -464,7 +467,7 @@ export function MobilePage({ baseUrl }: Props) {
           {[
             { name: "早餐：機上", sub: "" },
             { name: "午餐：新千歲機場國內線航廈", sub: "出關後步行前往 3 樓" },
-            { name: "晚餐 18:00：花丸 或 奧芝湯咖哩", sub: "二選一" },
+            { name: "晚餐 18:00：根室花丸 或 奧芝湯咖哩", sub: "二選一" },
           ].map(i => (
             <div className="mp-list-item" key={i.name}>
               <div className="mp-list-name">{i.name}</div>
@@ -711,10 +714,13 @@ export function MobilePage({ baseUrl }: Props) {
           {[
             { name: "早餐：飯店（洞爺湖萬世閣）", sub: "" },
             { name: "午餐：行程中彈性安排", sub: "" },
-            { name: "晚餐：二世谷用餐", sub: "" },
+            { name: "晚餐：札幌らーめん 大心 ニセコ店", sub: "Sapporo Ramen Daishin Niseko", q: "Sapporo Ramen Daishin Niseko" },
           ].map(i => (
             <div className="mp-list-item" key={i.name}>
-              <div className="mp-list-name">{i.name}</div>
+              <div className="mp-list-name" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <span>{i.name}</span>
+                {"q" in i && i.q && <MapBtn q={i.q} />}
+              </div>
             </div>
           ))}
         </div>
@@ -753,7 +759,7 @@ export function MobilePage({ baseUrl }: Props) {
             { name: "島武意海岸", q: "Shimamui Coast Shakotan" },
             { name: "神威岬", q: "Cape Kamui Shakotan" },
             { name: "余市威士忌蒸餾所", q: "Nikka Whisky Yoichi Distillery" },
-            { name: "柿崎商店", q: "Kakizaki Shoten Yoichi" },
+            { name: "柿崎商店與對面的余市", q: "Kakizaki Shoten Yoichi" },
           ].map(i => (
             <div className="mp-list-item" key={i.name}>
               <div className="mp-list-name" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
@@ -777,18 +783,21 @@ export function MobilePage({ baseUrl }: Props) {
           </div>
           <div className="mp-hotel-en" style={{ marginTop: 8 }}>Glow — 小樽近郊包棟別墅</div>
           <span className="mp-meal-badge mp-meal-badge--none">⭕ 不含餐</span>
-          <div className="mp-note">別墅不含餐，早餐與晚餐需自行準備</div>
+          <div className="mp-note">Glow 不含餐，餐食需自行安排</div>
         </div>
 
-        <div id="mp-c-d6-bbq" className="mp-card mp-card--dark">
-          <div className="mp-card-title mp-card-title--light">🔥 採買 + 別墅 BBQ</div>
-          <div className="mp-big-light">晚餐自己買、自己煮</div>
-          <div className="mp-muted-light">沒有安排餐廳，傍晚到超市採買，全家在別墅廚房一起 BBQ</div>
-          <div className="mp-tags-row" style={{ marginTop: 10 }}>
-            {["北海道鮮乳", "手作麵包", "麝香葡萄", "和牛"].map(t => (
-              <span key={t} className="mp-tag-chip mp-tag-chip--light">{t}</span>
-            ))}
-          </div>
+        <div id="mp-c-d6-bbq" className="mp-card">
+          <div className="mp-card-title">🍽️ 今日餐飲</div>
+          {[
+            { name: "早餐：飯店（Torifito）", sub: "" },
+            { name: "午餐：行程中彈性安排", sub: "" },
+            { name: "晚餐：行程中彈性安排", sub: "可依當天進度選擇小樽市區餐廳" },
+          ].map(i => (
+            <div className="mp-list-item" key={i.name}>
+              <div className="mp-list-name">{i.name}</div>
+              {i.sub && <div className="mp-list-sub">{i.sub}</div>}
+            </div>
+          ))}
         </div>
       </section>
 
@@ -928,7 +937,7 @@ export function MobilePage({ baseUrl }: Props) {
           {[
             { name: "全員不吃羊肉", sub: "訂任何餐廳前確認菜單" },
             { name: "Day 4 起自駕", sub: "出發前確認 WNR 取車資料、駕照 / 日文譯本、導航設定" },
-            { name: "10/11 Glow 別墅不含餐", sub: "早餐與晚餐需自行準備，傍晚到超市採買" },
+            { name: "10/11 Glow 別墅不含餐", sub: "不含餐，餐食需自行安排" },
           ].map(n => (
             <div className="mp-list-item" key={n.name}>
               <div className="mp-list-name">{n.name}</div>
@@ -975,13 +984,15 @@ export function MobilePage({ baseUrl }: Props) {
         <div className="mp-pdf-date">2026 / 10 / 06 ~ 2026 / 10 / 13</div>
       </div>
 
-      <button className="mp-feedback-fab" onClick={() => setFeedbackOpen(true)} aria-label="意見回饋">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22" aria-hidden>
-          <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
-        </svg>
-      </button>
+      {SHOW_FEEDBACK && (
+        <button className="mp-feedback-fab" onClick={() => setFeedbackOpen(true)} aria-label="意見回饋">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22" aria-hidden>
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+          </svg>
+        </button>
+      )}
       {mapOpen && <MapLightbox src={img("route-map.jpg")} onClose={() => setMapOpen(false)} />}
-      {feedbackOpen && <FeedbackModal onClose={() => setFeedbackOpen(false)} />}
+      {SHOW_FEEDBACK && feedbackOpen && <FeedbackModal onClose={() => setFeedbackOpen(false)} />}
 
       <MobileAudioFab
         baseUrl={baseUrl}

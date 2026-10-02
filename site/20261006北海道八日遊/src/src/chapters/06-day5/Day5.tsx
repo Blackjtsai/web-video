@@ -77,8 +77,8 @@ function Step3() {
         </div>
         <div className="d5-meal-card">
           <div className="d5-meal-time">Dinner</div>
-          <div className="d5-meal-name">二世谷<br />用餐</div>
-          <div className="d5-meal-detail">住 Torifito Hotel &amp; Pod Niseko（含早餐）</div>
+          <div className="d5-meal-name">札幌らーめん<br />大心 ニセコ店</div>
+          <div className="d5-meal-detail">晚餐後住 Torifito Hotel &amp; Pod Niseko（含早餐）</div>
         </div>
       </div>
     </div>

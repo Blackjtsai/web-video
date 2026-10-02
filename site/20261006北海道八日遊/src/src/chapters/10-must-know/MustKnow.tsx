@@ -79,7 +79,7 @@ function Step3() {
   const notes = [
     { name: "全員不吃羊肉", detail: "訂任何餐廳前請確認菜單" },
     { name: "Day 4 起自駕", detail: "出發前確認 WNR 取車資料、駕照 / 日文譯本與導航設定" },
-    { name: "10/11 Glow 別墅不含餐", detail: "早餐與晚餐要自己準備，傍晚到超市採買食材" },
+    { name: "10/11 Glow 別墅不含餐", detail: "不含餐，餐食需自行安排" },
   ];
   return (
     <div className="mk-notes">

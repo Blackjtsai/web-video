@@ -169,7 +169,7 @@ bottom: 200px; z-index 200  ← Scrubber overlay（長壓開啟）
 
 ## 已知待辦
 
-- 每日英雄圖 `day1–8.jpg`（`public/images/` 與 `public/images-mobile/`）已換成新版 PNG，但圖上內容與 PDF 仍有多處不一致（Day 3–5、7、8 路線／住宿／航班；多日仍推薦成吉思汗羊肉），使用者待逐張修正；修正後重跑 sips 轉檔覆蓋。
+- 每日英雄圖 `day1–8.jpg`（`public/images/` 與 `public/images-mobile/`）已換成第三版 PNG（`doc/new-2026-10-02-v2/`），與網站一致，無已知殘留差異；修正後重跑 sips 轉檔覆蓋。
 - 下載用 `public/北海道家族旅遊行程手冊.pdf` 已於 2026-10-02 依新行程重做（4 頁：路線地圖＋住宿＋每日行程），產生腳本 `doc/new-2026-10-02/make_manual_pdf.py`（字型 STHeiti，勿用 MSung-Light）；行程再改需重跑。
 - 行程文字缺漏處：Day 5 晚餐店家、Day 6 余市柿崎商店對面店名；還車日期（暫定 10/12）。
 

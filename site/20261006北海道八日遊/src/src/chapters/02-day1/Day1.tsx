@@ -93,7 +93,7 @@ function Step3() {
         </div>
         <div className="d1-meal-card">
           <div className="d1-meal-time">Dinner · 18:00</div>
-          <div className="d1-meal-name">花丸 或<br />奧芝湯咖哩</div>
+          <div className="d1-meal-name">根室花丸 或<br />奧芝湯咖哩</div>
           <div className="d1-meal-detail">二選一</div>
         </div>
       </div>

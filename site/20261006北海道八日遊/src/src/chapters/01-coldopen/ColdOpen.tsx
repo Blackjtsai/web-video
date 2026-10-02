@@ -100,7 +100,7 @@ const THEMES = [
   { icon: "🏙️", name: "札幌市區慢遊", detail: "二條市場 · 電視塔 · 狸小路 · 藻岩山夜景" },
   { icon: "♨️", name: "洞爺湖溫泉", detail: "萬世閣溫泉 · 飯店自助晚餐 · 有珠山纜車" },
   { icon: "🚗", name: "Day 4 起自駕", detail: "WNR 取車 · 定山溪 → 洞爺湖 → 二世谷 → 積丹 → 小樽" },
-  { icon: "🏡", name: "Glow 包棟別墅", detail: "小樽近郊 · 採買食材，全家一起 BBQ" },
+  { icon: "🏡", name: "Glow 包棟別墅", detail: "小樽住宿 · 天狗山夜景 · 不含餐" },
 ];
 
 function Step3() {
