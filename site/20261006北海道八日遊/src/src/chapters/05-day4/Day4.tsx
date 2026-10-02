@@ -17,9 +17,9 @@ function Step0() {
     <div className="d4-hero">
       <div className="d4-hero-photo"><img src={`${base}images/day4.jpg`} alt="Day 4 自駕洞爺湖" /></div>
       <div className="d4-hero-info">
-        <div className="d4-day-label">Day 4 · 10/09 (Thu)</div>
-        <div className="d4-day-title">自駕出發！<br />螃蟹 × 花火</div>
-        <div className="d4-day-sub">取車 → 螃蟹大餐 → 羊蹄山 → 洞爺湖花火</div>
+        <div className="d4-day-label">Day 4 · 10/09 (Fri)</div>
+        <div className="d4-day-title">自駕出發！<br />定山溪到洞爺湖</div>
+        <div className="d4-day-sub">WNR 取車 → 定山溪 → 支笏湖 → 洞爺湖</div>
         <div className="d4-accent-bar" />
       </div>
     </div>
@@ -40,7 +40,7 @@ function Step1() {
           <div className="d4-car-wheel" />
         </div>
       </div>
-      <div className="d4-car-info">Toyota Hiace 10 人座 · 六人 + 行李全塞得下 · 10/09–12 四天</div>
+      <div className="d4-car-info">08:30 前往 WNR 取車 · 確認取車資料、駕照與日文譯本、導航設定</div>
     </div>
   );
 }
@@ -48,16 +48,17 @@ function Step1() {
 function Step2() {
   return (
     <div className="d4-crab">
-      <div className="d4-crab-kicker">11:30 · Crab Kaiseki</div>
-      <div className="d4-crab-title">奢華<span>螃蟹大宴</span></div>
+      <div className="d4-crab-kicker">Morning · Jozankei</div>
+      <div className="d4-crab-title"><span>定山溪</span>散步</div>
       <div className="d4-crab-body">
-        精心安排前往札幌螃蟹名店——螃蟹家 或 蝦蟹合戰——享用精緻螃蟹懷石料理。
-        坐得舒服，長輩吃得開心滿意。
+        二見公園、二見吊橋、河童淵，車停定山溪公共停車場（¥500）。
+        午餐在 Konno 拉麵店，或紅葉亭的蕎麥麵、天丼；
+        再看一眼定山湖大壩（豐平峽水庫）。
       </div>
       <div className="d4-crab-chips">
-        <div className="d4-crab-chip">帝王蟹</div>
-        <div className="d4-crab-chip">松葉蟹</div>
-        <div className="d4-crab-chip">螃蟹懷石</div>
+        <div className="d4-crab-chip">二見吊橋</div>
+        <div className="d4-crab-chip">河童淵</div>
+        <div className="d4-crab-chip">定山湖大壩</div>
       </div>
     </div>
   );
@@ -67,18 +68,18 @@ function Step3() {
   return (
     <div className="d4-pass">
       <div className="d4-pass-left">
-        <div className="d4-pass-kicker">En Route · Nakayama Pass</div>
-        <div className="d4-pass-title">中山峠<br />遠眺<span>羊蹄山</span></div>
+        <div className="d4-pass-kicker">Afternoon · Lake Shikotsu</div>
+        <div className="d4-pass-title">支笏湖甜點<br />洞爺湖<span>展望台</span></div>
         <div className="d4-pass-body">
-          途中在中山峠停留片刻，遠眺被稱為「蝦夷富士」的羊蹄山。
-          雲霧間完美的錐形輪廓，不停車拍照實在太可惜。
+          到支笏湖的 Patissier Labo 甜品店吃甜點休息。
+          傍晚經過道之驛洞爺湖展望台，先看看洞爺湖。
         </div>
       </div>
       <div className="d4-pass-right">
         <div className="d4-mountain" />
         <div className="d4-mountain-snow" style={{ marginTop: -8 }} />
-        <div className="d4-mountain-label">羊蹄山</div>
-        <div className="d4-mountain-sub">1,898 m · 蝦夷富士</div>
+        <div className="d4-mountain-label">洞爺湖</div>
+        <div className="d4-mountain-sub">道之驛 · 展望台</div>
       </div>
     </div>
   );
@@ -89,19 +90,16 @@ function Step4() {
     <div className="d4-toya">
       <div className="d4-toya-left">
         <div className="d4-toya-kicker">Evening · Toya Lake</div>
-        <div className="d4-toya-title">洞爺湖萬世閣<br /><span>花火大會</span></div>
+        <div className="d4-toya-title">洞爺湖萬世閣<br /><span>溫泉自助晚餐</span></div>
         <div className="d4-toya-row">
           <div className="d4-toya-card">
-            <div className="d4-toya-card-name">頂級溫泉晚宴</div>
-            <div className="d4-toya-card-detail">飯店附早晚餐，入住即享豪華晚宴</div>
+            <div className="d4-toya-card-name">飯店自助晚餐</div>
+            <div className="d4-toya-card-detail">含早晚餐，晚餐吃飯店自助餐</div>
           </div>
           <div className="d4-toya-card">
-            <div className="d4-toya-card-name">洞爺湖花火大會</div>
-            <div className="d4-toya-card-detail">在房間或湖畔輕鬆觀賞，不需移動</div>
+            <div className="d4-toya-card-name">洞爺湖溫泉</div>
+            <div className="d4-toya-card-detail">吃完泡湯休息，不用再移動</div>
           </div>
-        </div>
-        <div className="d4-fireworks">
-          {[...Array(8)].map((_, i) => <div key={i} className="d4-fw-dot" />)}
         </div>
       </div>
       <div className="d4-toya-photo">

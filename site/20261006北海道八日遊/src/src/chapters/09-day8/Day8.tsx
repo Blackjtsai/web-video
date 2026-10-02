@@ -15,9 +15,9 @@ function Step0() {
     <div className="d8-hero">
       <div className="d8-hero-photo"><img src={`${base}images/day8.jpg`} alt="Day 8 新千歲機場" /></div>
       <div className="d8-hero-info">
-        <div className="d8-day-label">Day 8 · 10/13 (Mon)</div>
+        <div className="d8-day-label">Day 8 · 10/13 (Tue)</div>
         <div className="d8-day-title">快樂賦歸<br />再見北海道</div>
-        <div className="d8-day-sub">機場大補貨 → IT 235 → 台北<br />帶著滿滿回憶圓滿回家</div>
+        <div className="d8-day-sub">JR 前往機場 → IT235 → 台北<br />帶著滿滿回憶圓滿回家</div>
         <div className="d8-accent-bar" />
       </div>
     </div>
@@ -25,14 +25,14 @@ function Step0() {
 }
 
 function Step1() {
-  const items = ["白色戀人", "六花亭奶油葡萄乾", "薯條三兄弟", "北海道起司蛋糕"];
+  const items = ["09:00 → 09:37", "09:04 → 09:48", "09:18 → 09:57"];
   return (
     <div className="d8-shopping">
-      <div className="d8-shopping-kicker">Chitose Airport · Last Shopping</div>
-      <div className="d8-shopping-title">新千歲機場<span>最後大補貨</span></div>
+      <div className="d8-shopping-kicker">08:45 · To Chitose Airport</div>
+      <div className="d8-shopping-title">搭 JR<span>前往機場</span></div>
       <div className="d8-shopping-body">
-        辦完登機手續後，抓緊最後機會掃貨。
-        國際線出發廳有齊全的北海道名產，一次全部買齊。
+        07:00 飯店早餐，08:45 出發前往新千歲機場。
+        JR 班次參考（發車 → 抵達）：
       </div>
       <div className="d8-souvenirs">
         {items.map(i => (
@@ -48,14 +48,14 @@ function Step1() {
 function Step2() {
   return (
     <div className="d8-depart">
-      <div className="d8-depart-label">12:05 · IT 235 · Departure</div>
+      <div className="d8-depart-label">12:05 · IT235 · Departure</div>
       <div className="d8-depart-title">北海道，<br /><span>謝謝你</span>。</div>
       <div className="d8-plane">
         <div className="d8-plane-body" />
         <div className="d8-plane-wing" />
         <div className="d8-plane-tail" />
       </div>
-      <div className="d8-flight-info">IT 235 · 新千歲 12:05 → 台北 15:20</div>
+      <div className="d8-flight-info">IT235 · 新千歲 12:05 → 台北 15:20</div>
       <div className="d8-depart-sub">帶著滿行李箱的回憶，圓滿賦歸。</div>
     </div>
   );

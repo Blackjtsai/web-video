@@ -19,7 +19,7 @@ function MapBtn({ q }: { q: string }) {
   );
 }
 
-/* ── 41 段口播 ── */
+/* ── 41 段口播（= narrations.ts 段數 = mp3 數量） ── */
 const SEGMENTS = [
   { id: "coldopen",  step: 1, cardId: "mp-s-hero" },
   { id: "coldopen",  step: 2, cardId: "mp-s-hero" },
@@ -30,20 +30,20 @@ const SEGMENTS = [
   { id: "day1",      step: 3, cardId: "mp-c-d1-spots" },
   { id: "day1",      step: 4, cardId: "mp-c-d1-dinner" },
   { id: "day2",      step: 1, cardId: "mp-s-day2" },
-  { id: "day2",      step: 2, cardId: "mp-c-d2-koibito" },
-  { id: "day2",      step: 3, cardId: "mp-c-d2-t38" },
+  { id: "day2",      step: 2, cardId: "mp-c-d2-city" },
+  { id: "day2",      step: 3, cardId: "mp-c-d2-moiwa" },
   { id: "day2",      step: 4, cardId: "mp-c-d2-dining" },
   { id: "day3",      step: 1, cardId: "mp-s-day3" },
-  { id: "day3",      step: 2, cardId: "mp-c-d3-market" },
-  { id: "day3",      step: 3, cardId: "mp-c-d3-jozankei" },
+  { id: "day3",      step: 2, cardId: "mp-c-d3-jingu" },
+  { id: "day3",      step: 3, cardId: "mp-c-d3-koibito" },
   { id: "day3",      step: 4, cardId: "mp-c-d3-dining" },
   { id: "day4",      step: 1, cardId: "mp-s-day4" },
   { id: "day4",      step: 2, cardId: "mp-c-d4-car" },
-  { id: "day4",      step: 3, cardId: "mp-c-d4-crab" },
-  { id: "day4",      step: 4, cardId: "mp-c-d4-pass" },
+  { id: "day4",      step: 3, cardId: "mp-c-d4-jozankei" },
+  { id: "day4",      step: 4, cardId: "mp-c-d4-shikotsu" },
   { id: "day4",      step: 5, cardId: "mp-c-d4-toya" },
   { id: "day5",      step: 1, cardId: "mp-s-day5" },
-  { id: "day5",      step: 2, cardId: "mp-c-d5-farm" },
+  { id: "day5",      step: 2, cardId: "mp-c-d5-usu" },
   { id: "day5",      step: 3, cardId: "mp-c-d5-numa" },
   { id: "day5",      step: 4, cardId: "mp-c-d5-dining" },
   { id: "day6",      step: 1, cardId: "mp-s-day6" },
@@ -51,11 +51,11 @@ const SEGMENTS = [
   { id: "day6",      step: 3, cardId: "mp-c-d6-glow" },
   { id: "day6",      step: 4, cardId: "mp-c-d6-bbq" },
   { id: "day7",      step: 1, cardId: "mp-s-day7" },
-  { id: "day7",      step: 2, cardId: "mp-c-d7-canal" },
-  { id: "day7",      step: 3, cardId: "mp-c-d7-shop" },
-  { id: "day7",      step: 4, cardId: "mp-c-d7-wagyu" },
+  { id: "day7",      step: 2, cardId: "mp-c-d7-market" },
+  { id: "day7",      step: 3, cardId: "mp-c-d7-canal" },
+  { id: "day7",      step: 4, cardId: "mp-c-d7-back" },
   { id: "day8",      step: 1, cardId: "mp-s-day8" },
-  { id: "day8",      step: 2, cardId: "mp-c-d8-shopping" },
+  { id: "day8",      step: 2, cardId: "mp-c-d8-jr" },
   { id: "day8",      step: 3, cardId: "mp-c-d8-depart" },
   { id: "must-know", step: 1, cardId: "mp-s-know" },
   { id: "must-know", step: 2, cardId: "mp-c-mk-booking" },
@@ -365,7 +365,7 @@ export function MobilePage({ baseUrl }: Props) {
             <span className="mp-badge">六人成行</span>
             <span className="mp-badge">八天七夜</span>
             <span className="mp-badge">2026 · 十月</span>
-            <span className="mp-badge">自駕四天</span>
+            <span className="mp-badge">Day 4 起自駕</span>
           </div>
           <div className="mp-scroll-hint">▼ 滑動查看行程</div>
         </div>
@@ -389,48 +389,58 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-row-between">
             <div className="mp-flight-node">
               <div className="mp-flight-airport">桃園機場</div>
-              <div className="mp-flight-time">09:15</div>
+              <div className="mp-flight-time">06:20</div>
             </div>
-            <div className="mp-flight-mid">IT 234 → 約 3.5h</div>
+            <div className="mp-flight-mid">IT 236 → 約 3 小時 45 分</div>
             <div className="mp-flight-node">
               <div className="mp-flight-airport">新千歲機場</div>
-              <div className="mp-flight-time">13:50</div>
+              <div className="mp-flight-time">11:05</div>
             </div>
           </div>
-          <div className="mp-tag-inline">台灣虎航</div>
+          <div className="mp-tag-inline">台灣虎航 · 03:40 出發前往桃園機場</div>
         </div>
 
         <div id="mp-c-d1-spots" className="mp-card">
-          <div className="mp-card-title">🚃 抵達後 · 市區慢活</div>
+          <div className="mp-card-title">🚃 抵達後 · 前往札幌</div>
           {[
-            { name: "JR 快速 Airport 入市區", sub: "新千歲 → 札幌 約 38 分" },
-            { name: "入住飯店 · 放行李", sub: "Hotel Emion Sapporo" },
-            { name: "麒麟啤酒廠（含長輩）", sub: "免費導覽 + 試飲，室內不用走遠" },
+            { name: "12:15 出關 · 國內線航廈 3 樓午餐", sub: "出關後步行約 5–8 分鐘（沿 2 樓平面電扶梯）" },
+            { name: "14:19 JR 快速 Airport 號", sub: "約 40 分鐘，自由席 ¥1,230" },
+            { name: "15:30 Check-in · 稍作休息", sub: "札幌京急 EX 酒店" },
+            { name: "16:30 JR 塔觀景台", sub: "傍晚登高看札幌" },
           ].map(i => (
             <div className="mp-list-item" key={i.name}>
               <div className="mp-list-name">{i.name}</div>
               <div className="mp-list-sub">{i.sub}</div>
             </div>
           ))}
+          <div className="mp-card-title mp-card-title--row" style={{ marginTop: 10, marginBottom: 0 }}>
+            <span>📍 JR 塔 T38</span>
+            <MapBtn q="JR Tower Observation Deck T38 Sapporo" />
+          </div>
         </div>
 
         <div id="mp-c-d1-hotel" className="mp-card">
           <div className="mp-card-title mp-card-title--row">
-            <span>🏨 今晚住宿</span>
-            <MapBtn q="Hotel Emion Sapporo" />
+            <span>🏨 今晚住宿（連住 3 晚）</span>
+            <MapBtn q="Sapporo Keikyu EX Hotel" />
           </div>
-          <div className="mp-hotel-name">札幌伊夢酒店</div>
-          <div className="mp-hotel-en">Hotel Emion Sapporo</div>
+          <div className="mp-hotel-name">札幌京急 EX 酒店</div>
+          <div className="mp-hotel-en">Sapporo Keikyu EX Hotel</div>
           <span className="mp-meal-badge mp-meal-badge--bf">🍳 附早餐</span>
         </div>
 
         <div id="mp-c-d1-dinner" className="mp-card">
-          <div className="mp-card-title mp-card-title--row">
-            <span>🍜 晚餐 · 薄野拉麵橫丁</span>
-            <MapBtn q="Susukino Ramen Alley Sapporo" />
-          </div>
-          <div className="mp-highlight">薄野拉麵橫丁</div>
-          <div className="mp-muted">北海道必吃濃厚味噌拉麵，暖胃補體力</div>
+          <div className="mp-card-title">🍽️ 今日餐飲</div>
+          {[
+            { name: "早餐：機上", sub: "" },
+            { name: "午餐：新千歲機場國內線航廈", sub: "出關後步行前往 3 樓" },
+            { name: "晚餐 18:00：花丸 或 奧芝湯咖哩", sub: "二選一" },
+          ].map(i => (
+            <div className="mp-list-item" key={i.name}>
+              <div className="mp-list-name">{i.name}</div>
+              {i.sub && <div className="mp-list-sub">{i.sub}</div>}
+            </div>
+          ))}
         </div>
       </section>
 
@@ -441,48 +451,49 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-day-overlay">
             <div className="mp-day-label-row">
               <span className="mp-day-tag">Day 2</span>
-              <span className="mp-day-date">10/07（三）室內免走路日</span>
+              <span className="mp-day-date">10/07（三）札幌市區慢遊</span>
             </div>
             <div className="mp-scroll-hint">▼ 滑動查看行程</div>
           </div>
         </div>
 
-        <div id="mp-c-d2-koibito" className="mp-card">
-          <div className="mp-card-title mp-card-title--row">
-            <span>🍪 白色戀人公園</span>
-            <MapBtn q="白い恋人パーク 札幌" />
-          </div>
-          <img className="mp-spot-img" src={img("koibito-park.jpg")} alt="白色戀人公園" />
-          <div className="mp-two-col" style={{ marginTop: 10 }}>
-            <div className="mp-col-item">
-              <div className="mp-col-label">長輩</div>
-              <div className="mp-col-val">無障礙電梯、室內咖啡廳、落地窗看紅葉</div>
+        <div id="mp-c-d2-city" className="mp-card">
+          <div className="mp-card-title">🚶 市區步行 · 地鐵 · 路面電車</div>
+          {[
+            { name: "二條市場", sub: "", q: "Nijo Market Sapporo" },
+            { name: "札幌電視塔 · 大通公園", sub: "", q: "Sapporo TV Tower" },
+            { name: "狸小路商店街", sub: "", q: "Tanukikoji Shopping Street Sapporo" },
+          ].map(i => (
+            <div className="mp-list-item" key={i.name}>
+              <div className="mp-list-name" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <span>{i.name}</span>
+                <MapBtn q={i.q} />
+              </div>
             </div>
-            <div className="mp-col-item">
-              <div className="mp-col-label">年輕人</div>
-              <div className="mp-col-val">英式花園紅葉打卡、歐式建築出片</div>
-            </div>
-          </div>
+          ))}
         </div>
 
-        <div id="mp-c-d2-t38" className="mp-card">
+        <div id="mp-c-d2-moiwa" className="mp-card">
           <div className="mp-card-title mp-card-title--row">
-            <span>🗼 JR 塔 T38 展望室</span>
-            <MapBtn q="JR Tower T38 Sapporo" />
+            <span>🌃 藻岩山夜景</span>
+            <MapBtn q="Mt. Moiwa Ropeway Sapporo" />
           </div>
-          <div className="mp-highlight">傍晚登頂 · 看夕陽夜景</div>
-          <div className="mp-muted">直達電梯至 38F，坐著俯瞰全市楓紅與夜景，免吹風</div>
+          <div className="mp-highlight">搭路面電車 → 纜車入口站</div>
+          <div className="mp-muted">
+            下車後步行約 7–10 分鐘；也可搭免費接駁車到藻岩山麓站購票上山。有興趣的人再上山。
+          </div>
         </div>
 
         <div id="mp-c-d2-dining" className="mp-card">
           <div className="mp-card-title">🍽️ 今日餐飲</div>
           {[
-            { name: "午餐：札幌湯咖哩", sub: "北海道必吃，濃郁湯底暖胃" },
-            { name: "晚餐：百貨天婦羅 / 壽司", sub: "JR 塔車站共構，長輩省力" },
+            { name: "早餐：飯店", sub: "" },
+            { name: "午餐：Dekitateya 時計台店", sub: "Dekitateya Tokeidai Branch" },
+            { name: "晚餐 17:30：蟹座", sub: "建議提早訂位" },
           ].map(i => (
             <div className="mp-list-item" key={i.name}>
               <div className="mp-list-name">{i.name}</div>
-              <div className="mp-list-sub">{i.sub}</div>
+              {i.sub && <div className="mp-list-sub">{i.sub}</div>}
             </div>
           ))}
         </div>
@@ -490,10 +501,10 @@ export function MobilePage({ baseUrl }: Props) {
         <div id="mp-c-d2-hotel" className="mp-card">
           <div className="mp-card-title mp-card-title--row">
             <span>🏨 今晚住宿</span>
-            <MapBtn q="Hotel Emion Sapporo" />
+            <MapBtn q="Sapporo Keikyu EX Hotel" />
           </div>
-          <div className="mp-hotel-name">札幌伊夢酒店</div>
-          <div className="mp-hotel-en">Hotel Emion Sapporo</div>
+          <div className="mp-hotel-name">札幌京急 EX 酒店</div>
+          <div className="mp-hotel-en">Sapporo Keikyu EX Hotel</div>
           <span className="mp-meal-badge mp-meal-badge--bf">🍳 附早餐</span>
         </div>
       </section>
@@ -505,39 +516,20 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-day-overlay">
             <div className="mp-day-label-row">
               <span className="mp-day-tag">Day 3</span>
-              <span className="mp-day-date">10/08（四）海鮮 × 紅葉泡湯</span>
+              <span className="mp-day-date">10/08（四）札幌經典景點</span>
             </div>
             <div className="mp-scroll-hint">▼ 滑動查看行程</div>
           </div>
         </div>
 
-        <div id="mp-c-d3-market" className="mp-card">
+        <div id="mp-c-d3-jingu" className="mp-card">
           <div className="mp-card-title mp-card-title--row">
-            <span>🦀 二条市場 08:30</span>
-            <MapBtn q="Nijo Market Sapporo" />
+            <span>⛩️ 北海道神宮 · 場外市場</span>
+            <MapBtn q="Hokkaido Jingu Shrine" />
           </div>
-          <div className="mp-highlight">帝王蟹・海膽・海鮮丼</div>
-          <div className="mp-muted">早上八點半開市，奢華海鮮早午餐</div>
-          <div className="mp-note">長輩不吃生食 → 現烤熟魚定食可選</div>
-        </div>
-
-        <div id="mp-c-d3-jozankei" className="mp-card">
-          <div className="mp-card-title mp-card-title--row">
-            <span>♨️ 定山溪溫泉</span>
-            <MapBtn q="定山渓温泉 北海道" />
-          </div>
-          <img className="mp-spot-img" src={img("jozankei.jpg")} alt="定山溪溫泉" />
-          <div className="mp-muted" style={{ marginTop: 8 }}>
-            Kappa Liner 巴士約 1 小時直達。10 月正值紅葉巔峰，
-            長輩入住溫泉旅館日歸泡湯，不需走路。
-          </div>
-        </div>
-
-        <div id="mp-c-d3-dining" className="mp-card">
-          <div className="mp-card-title">🍽️ 今日餐飲</div>
           {[
-            { name: "早午餐：二条市場海鮮丼", sub: "帝王蟹 + 海膽，奢華主食" },
-            { name: "晚餐：回札幌・極品拉麵", sub: "暖胃完美收尾" },
+            { name: "北海道神宮", sub: "圓山公園站（T06）步行約 14 分鐘" },
+            { name: "場外市場", sub: "二十四軒站（T04）步行約 10 分鐘；或 JR 桑園站西剪票口步行 8–12 分鐘" },
           ].map(i => (
             <div className="mp-list-item" key={i.name}>
               <div className="mp-list-name">{i.name}</div>
@@ -546,13 +538,42 @@ export function MobilePage({ baseUrl }: Props) {
           ))}
         </div>
 
+        <div id="mp-c-d3-koibito" className="mp-card">
+          <div className="mp-card-title mp-card-title--row">
+            <span>🍪 白色戀人公園</span>
+            <MapBtn q="Shiroi Koibito Park Sapporo" />
+          </div>
+          <img className="mp-spot-img" src={img("koibito-park.jpg")} alt="白色戀人公園" />
+          <div className="mp-muted" style={{ marginTop: 8 }}>宮之澤站（T01）下車。</div>
+          <div className="mp-list-item" style={{ marginTop: 8 }}>
+            <div className="mp-list-name" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span>發寒 AEON Mall</span>
+              <MapBtn q="AEON Mall Sapporo Hassamu" />
+            </div>
+            <div className="mp-list-sub">發寒南站（T02）</div>
+          </div>
+        </div>
+
+        <div id="mp-c-d3-dining" className="mp-card">
+          <div className="mp-card-title">🍽️ 今日餐飲</div>
+          {[
+            { name: "早餐：飯店", sub: "" },
+            { name: "午餐：場外市場 或 AEON Mall", sub: "" },
+            { name: "晚餐：札幌車站附近", sub: "" },
+          ].map(i => (
+            <div className="mp-list-item" key={i.name}>
+              <div className="mp-list-name">{i.name}</div>
+            </div>
+          ))}
+        </div>
+
         <div id="mp-c-d3-hotel" className="mp-card">
           <div className="mp-card-title mp-card-title--row">
             <span>🏨 今晚住宿</span>
-            <MapBtn q="Hotel Emion Sapporo" />
+            <MapBtn q="Sapporo Keikyu EX Hotel" />
           </div>
-          <div className="mp-hotel-name">札幌伊夢酒店</div>
-          <div className="mp-hotel-en">Hotel Emion Sapporo</div>
+          <div className="mp-hotel-name">札幌京急 EX 酒店</div>
+          <div className="mp-hotel-en">Sapporo Keikyu EX Hotel</div>
           <span className="mp-meal-badge mp-meal-badge--bf">🍳 附早餐</span>
         </div>
       </section>
@@ -564,38 +585,41 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-day-overlay">
             <div className="mp-day-label-row">
               <span className="mp-day-tag">Day 4</span>
-              <span className="mp-day-date">10/09（五）自駕第一天！螃蟹 × 花火</span>
+              <span className="mp-day-date">10/09（五）取車自駕 · 定山溪到洞爺湖</span>
             </div>
             <div className="mp-scroll-hint">▼ 滑動查看行程</div>
           </div>
         </div>
 
         <div id="mp-c-d4-car" className="mp-card">
-          <div className="mp-card-title">🚗 取車 · 自駕開始</div>
-          <div className="mp-highlight">Toyota Hiace 10 人座</div>
-          <div className="mp-muted">六人 + 行李全塞得下 · 10/09–10/12 四天</div>
+          <div className="mp-card-title mp-card-title--row">
+            <span>🚗 08:30 WNR 取車 · 自駕開始</span>
+            <MapBtn q="WNR Rent a Car Sapporo" />
+          </div>
+          <div className="mp-highlight">出發前先確認</div>
+          <div className="mp-muted">取車資料、駕照與日文譯本、導航設定</div>
         </div>
 
-        <div id="mp-c-d4-crab" className="mp-card">
+        <div id="mp-c-d4-jozankei" className="mp-card">
           <div className="mp-card-title mp-card-title--row">
-            <span>🦀 螃蟹大宴 11:30</span>
-            <MapBtn q="札幌蟹家本店" />
+            <span>🍁 定山溪散步</span>
+            <MapBtn q="Jozankei Onsen Hokkaido" />
           </div>
-          <div className="mp-tags-row">
-            {["螃蟹家", "蝦蟹合戰"].map(r => (
-              <span key={r} className="mp-tag-chip">{r}</span>
-            ))}
+          <img className="mp-spot-img" src={img("jozankei.jpg")} alt="定山溪" />
+          <div className="mp-muted" style={{ marginTop: 8 }}>
+            二見公園、二見吊橋、河童淵。停車：定山溪公共停車場（¥500）。再看定山湖大壩（豐平峽水庫）。
           </div>
-          <div className="mp-highlight">帝王蟹・松葉蟹・懷石料理</div>
-          <div className="mp-note">提早一個月訂位！六人含長輩</div>
+          <div className="mp-note">午餐：Konno 拉麵店 或 紅葉亭（蕎麥麵、天丼）</div>
         </div>
 
-        <div id="mp-c-d4-pass" className="mp-card">
+        <div id="mp-c-d4-shikotsu" className="mp-card">
           <div className="mp-card-title mp-card-title--row">
-            <span>🏔️ 中山峠・遠眺羊蹄山</span>
-            <MapBtn q="中山峠 北海道" />
+            <span>🍰 支笏湖 · 洞爺湖展望台</span>
+            <MapBtn q="Lake Shikotsu Patissier Labo" />
           </div>
-          <div className="mp-muted">途中短暫停留，遠眺「蝦夷富士」，完美錐形輪廓</div>
+          <div className="mp-muted">
+            支笏湖的 Patissier Labo 甜品店；傍晚經過道之驛洞爺湖展望台，先看看洞爺湖。
+          </div>
         </div>
 
         <div id="mp-c-d4-toya" className="mp-card mp-card--dark">
@@ -608,12 +632,12 @@ export function MobilePage({ baseUrl }: Props) {
           <img className="mp-spot-img" src={img("toya-lake.jpg")} alt="洞爺湖" style={{ marginTop: 12 }} />
           <div className="mp-two-col" style={{ marginTop: 10 }}>
             <div className="mp-col-item mp-col-item--dark">
-              <div className="mp-col-label-light">夜間</div>
-              <div className="mp-col-val-light">洞爺湖花火大會<br />在房間輕鬆觀賞</div>
+              <div className="mp-col-label-light">晚餐</div>
+              <div className="mp-col-val-light">飯店自助餐</div>
             </div>
             <div className="mp-col-item mp-col-item--dark">
               <div className="mp-col-label-light">溫泉</div>
-              <div className="mp-col-val-light">頂級露天溫泉<br />泡湯看湖景</div>
+              <div className="mp-col-val-light">洞爺湖溫泉住宿</div>
             </div>
           </div>
         </div>
@@ -626,42 +650,41 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-day-overlay">
             <div className="mp-day-label-row">
               <span className="mp-day-tag">Day 5</span>
-              <span className="mp-day-date">10/10（六）如畫秋景孝親日</span>
+              <span className="mp-day-date">10/10（六）有珠山 · 神仙沼</span>
             </div>
             <div className="mp-scroll-hint">▼ 滑動查看行程</div>
           </div>
         </div>
 
-        <div id="mp-c-d5-farm" className="mp-card">
+        <div id="mp-c-d5-usu" className="mp-card">
           <div className="mp-card-title mp-card-title--row">
-            <span>🐄 Lake Hill Farm</span>
-            <MapBtn q="Lake Hill Farm Kimobetsu Hokkaido" />
+            <span>🚠 有珠山纜車</span>
+            <MapBtn q="Usuzan Ropeway Showa Shinzan Parking" />
           </div>
-          <div className="mp-highlight">網美牧場 · 冰淇淋 × 羊蹄山</div>
-          <div className="mp-muted">北海道鮮乳義式冰淇淋，配大草皮和羊蹄山全景</div>
+          <div className="mp-highlight">導航：「有珠山 昭和新山駐車場」</div>
+          <div className="mp-muted">纜車約每 15 分鐘一班（00、15、30、45 分）。下山後到道之驛洞爺湖展望台看湖景。</div>
         </div>
 
         <div id="mp-c-d5-numa" className="mp-card">
           <div className="mp-card-title mp-card-title--row">
-            <span>🌿 二世谷神仙沼</span>
-            <MapBtn q="神仙沼 二世谷 北海道" />
+            <span>🌿 二世谷 · 神仙沼</span>
+            <MapBtn q="Shinsennuma Niseko Hokkaido" />
           </div>
           <img className="mp-spot-img" src={img("senen-numa.jpg")} alt="神仙沼" />
           <div className="mp-muted" style={{ marginTop: 8 }}>
-            全程無障礙木棧道，無台階無陡坡。秋季濕地楓紅，帶長輩散步如沐畫中。
+            沿途停 Niseko View Plaza 道路休息站、高橋牧場，最後沿木棧道走神仙沼，欣賞秋季濕地與楓紅。
           </div>
-          <div className="mp-note">孝親首選！長輩零障礙</div>
         </div>
 
         <div id="mp-c-d5-dining" className="mp-card">
           <div className="mp-card-title">🍽️ 今日餐飲</div>
           {[
-            { name: "午餐：二世谷在地蔬食 / 手作漢堡", sub: "在地食材，清爽自然" },
-            { name: "晚餐：Torifito 附近居酒屋", sub: "步行即達，道地北海道味" },
+            { name: "早餐：飯店（洞爺湖萬世閣）", sub: "" },
+            { name: "午餐：行程中彈性安排", sub: "" },
+            { name: "晚餐：二世谷用餐", sub: "" },
           ].map(i => (
             <div className="mp-list-item" key={i.name}>
               <div className="mp-list-name">{i.name}</div>
-              <div className="mp-list-sub">{i.sub}</div>
             </div>
           ))}
         </div>
@@ -669,10 +692,10 @@ export function MobilePage({ baseUrl }: Props) {
         <div id="mp-c-d5-hotel" className="mp-card">
           <div className="mp-card-title mp-card-title--row">
             <span>🏨 今晚住宿</span>
-            <MapBtn q="Torifito Hotel Niseko Hokkaido" />
+            <MapBtn q="Torifito Hotel & Pod Niseko" />
           </div>
-          <div className="mp-hotel-name">托里菲托新雪谷飯店</div>
-          <div className="mp-hotel-en">Torifito Hotel &amp; Niseko</div>
+          <div className="mp-hotel-name">Torifito Hotel &amp; Pod Niseko</div>
+          <div className="mp-hotel-en">二世谷</div>
           <span className="mp-meal-badge mp-meal-badge--bf">🍳 附早餐</span>
         </div>
       </section>
@@ -684,7 +707,7 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-day-overlay">
             <div className="mp-day-label-row">
               <span className="mp-day-tag">Day 6</span>
-              <span className="mp-day-date">10/11（日）積丹藍 × 家族 BBQ</span>
+              <span className="mp-day-date">10/11（日）積丹 · 余市 · 小樽</span>
             </div>
             <div className="mp-scroll-hint">▼ 滑動查看行程</div>
           </div>
@@ -692,36 +715,50 @@ export function MobilePage({ baseUrl }: Props) {
 
         <div id="mp-c-d6-shakotan" className="mp-card">
           <div className="mp-card-title mp-card-title--row">
-            <span>🌊 積丹半島自駕</span>
-            <MapBtn q="積丹岬 北海道" />
+            <span>🌊 積丹半島 · 余市</span>
+            <MapBtn q="Kamui Misaki Shakotan Hokkaido" />
           </div>
           <img className="mp-spot-img" src={img("shakotan.jpg")} alt="積丹" />
-          <div className="mp-muted" style={{ marginTop: 8 }}>
-            沿積丹半島海岸線自駕，秋季特有的「積丹藍」——清澈湛藍海色，北海道限定風景。
-          </div>
+          {[
+            { name: "島武意海岸", q: "Shimamui Coast Shakotan" },
+            { name: "神威岬", q: "Cape Kamui Shakotan" },
+            { name: "余市威士忌蒸餾所", q: "Nikka Whisky Yoichi Distillery" },
+            { name: "柿崎商店", q: "Kakizaki Shoten Yoichi" },
+          ].map(i => (
+            <div className="mp-list-item" key={i.name}>
+              <div className="mp-list-name" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <span>{i.name}</span>
+                <MapBtn q={i.q} />
+              </div>
+            </div>
+          ))}
         </div>
 
         <div id="mp-c-d6-glow" className="mp-card">
           <div className="mp-card-title mp-card-title--row">
-            <span>🏡 Glow 包棟別墅</span>
+            <span>🏡 小樽天狗山 · Glow 別墅</span>
             <MapBtn q="Glow villa Otaru Hokkaido" />
           </div>
-          <div className="mp-hotel-en">Glow — 小樽近郊高級特色別墅</div>
-          <span className="mp-meal-badge mp-meal-badge--none">⭕ 無附早餐</span>
-          <div className="mp-highlight" style={{ marginTop: 10 }}>小樽近郊質感別墅</div>
-          <div className="mp-muted">下午提早入住，傍晚全家開車去生鮮超市採買</div>
-          <div className="mp-tags-row">
-            {["北海道鮮乳", "手作麵包", "麝香葡萄", "頂級和牛"].map(t => (
-              <span key={t} className="mp-tag-chip">{t}</span>
-            ))}
+          <div className="mp-list-item">
+            <div className="mp-list-name" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span>小樽天狗山觀景台</span>
+              <MapBtn q="Tenguyama Observation Deck Otaru" />
+            </div>
           </div>
-          <div className="mp-note">別墅無附早餐！需自行採買</div>
+          <div className="mp-hotel-en" style={{ marginTop: 8 }}>Glow — 小樽近郊包棟別墅</div>
+          <span className="mp-meal-badge mp-meal-badge--none">⭕ 不含餐</span>
+          <div className="mp-note">別墅不含餐，早餐與晚餐需自行準備</div>
         </div>
 
         <div id="mp-c-d6-bbq" className="mp-card mp-card--dark">
-          <div className="mp-card-title mp-card-title--light">🔥 家族和牛 BBQ</div>
-          <div className="mp-big-light">頂級和牛私廚饗宴</div>
-          <div className="mp-muted-light">全家在別墅廚房一起下廚——這種感覺，任何飯店都吃不到</div>
+          <div className="mp-card-title mp-card-title--light">🔥 採買 + 別墅 BBQ</div>
+          <div className="mp-big-light">晚餐自己買、自己煮</div>
+          <div className="mp-muted-light">沒有安排餐廳，傍晚到超市採買，全家在別墅廚房一起 BBQ</div>
+          <div className="mp-tags-row" style={{ marginTop: 10 }}>
+            {["北海道鮮乳", "手作麵包", "麝香葡萄", "和牛"].map(t => (
+              <span key={t} className="mp-tag-chip mp-tag-chip--light">{t}</span>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -732,57 +769,52 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-day-overlay">
             <div className="mp-day-label-row">
               <span className="mp-day-tag">Day 7</span>
-              <span className="mp-day-date">10/12（一）小樽遊船 × 和牛慶功宴</span>
+              <span className="mp-day-date">10/12（一）小樽慢遊 · 返回札幌</span>
             </div>
             <div className="mp-scroll-hint">▼ 滑動查看行程</div>
           </div>
         </div>
 
+        <div id="mp-c-d7-market" className="mp-card">
+          <div className="mp-card-title">🛍️ 三角市場 · 堺町通</div>
+          {[
+            { name: "三角市場", q: "Sankaku Market Otaru" },
+            { name: "堺町通商店街", q: "Sakaimachi Street Otaru" },
+          ].map(i => (
+            <div className="mp-list-item" key={i.name}>
+              <div className="mp-list-name" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <span>{i.name}</span>
+                <MapBtn q={i.q} />
+              </div>
+            </div>
+          ))}
+          <div className="mp-muted" style={{ marginTop: 8 }}>早餐自理。順便買伴手禮。</div>
+        </div>
+
         <div id="mp-c-d7-canal" className="mp-card">
           <div className="mp-card-title mp-card-title--row">
-            <span>⛵ 小樽運河遊船</span>
-            <MapBtn q="小樽運河クルーズ" />
+            <span>🏮 小樽運河</span>
+            <MapBtn q="Otaru Canal" />
           </div>
           <img className="mp-spot-img" src={img("otaru-canal.jpg")} alt="小樽運河" />
           <div className="mp-muted" style={{ marginTop: 8 }}>
-            坐船俯瞰浪漫紅磚倉庫群，長輩免走路。拍出的照片比岸上還好看。
+            沿水岸慢慢走，欣賞紅磚倉庫群。
           </div>
         </div>
 
-        <div id="mp-c-d7-shop" className="mp-card">
-          <div className="mp-card-title">🛍️ 下船後採購</div>
-          <div className="mp-tags-row">
-            {["音樂盒堂", "北菓樓"].map(s => (
-              <span key={s} className="mp-tag-chip">{s}</span>
-            ))}
-          </div>
-          <div className="mp-muted">最後一次在小樽採買伴手禮</div>
-          <div className="mp-note">還車前加油！10/12 四天自駕結束</div>
-        </div>
-
-        <div id="mp-c-d7-wagyu" className="mp-card mp-card--dark">
-          <div className="mp-card-title mp-card-title--light">🥩 和牛慶功宴</div>
-          <div className="mp-big-light">自駕四天圓滿成功！</div>
-          <div className="mp-muted-light">札幌頂級燒肉名店，慶祝自駕完結</div>
-          <div className="mp-tags-row" style={{ marginTop: 10 }}>
-            {["燒肉世界肉之兵衛", "德壽"].map(r => (
-              <span key={r} className="mp-tag-chip mp-tag-chip--light">{r}</span>
-            ))}
-          </div>
-          <div className="mp-muted-light" style={{ marginTop: 8, fontWeight: 700, color: "#ffcc88" }}>
-            ⚠️ 全員不吃羊肉！訂位前確認菜單
-          </div>
-        </div>
-
-        <div id="mp-c-d7-hotel" className="mp-card">
+        <div id="mp-c-d7-back" className="mp-card">
           <div className="mp-card-title mp-card-title--row">
-            <span>🏨 今晚住宿</span>
-            <MapBtn q="Hotel Emion Sapporo" />
+            <span>🏨 返回札幌 · 今晚住宿</span>
+            <MapBtn q="Sapporo Keikyu EX Hotel" />
           </div>
-          <div className="mp-hotel-name">札幌伊夢酒店</div>
-          <div className="mp-hotel-en">Hotel Emion Sapporo</div>
-          <div className="mp-muted" style={{ marginTop: 4, marginBottom: 6 }}>方便隔日早班機返台</div>
+          <div className="mp-hotel-name">札幌京急 EX 酒店</div>
+          <div className="mp-hotel-en">Sapporo Keikyu EX Hotel</div>
+          <div className="mp-muted" style={{ marginTop: 4, marginBottom: 6 }}>傍晚回札幌，還車後入住</div>
           <span className="mp-meal-badge mp-meal-badge--bf">🍳 附早餐</span>
+          <div className="mp-list-item" style={{ marginTop: 10 }}>
+            <div className="mp-list-name">午餐 / 晚餐：行程中彈性安排</div>
+          </div>
+          <div className="mp-note">⚠️ 全員不吃羊肉！選餐廳前確認菜單</div>
         </div>
       </section>
 
@@ -799,28 +831,17 @@ export function MobilePage({ baseUrl }: Props) {
           </div>
         </div>
 
-        <div id="mp-c-d8-shopping" className="mp-card">
+        <div id="mp-c-d8-jr" className="mp-card">
           <div className="mp-card-title mp-card-title--row">
-            <span>🛒 新千歲機場最後大補貨</span>
+            <span>🚃 08:45 出發 · JR 前往機場</span>
             <MapBtn q="New Chitose Airport Hokkaido" />
           </div>
-          <div className="mp-muted">辦完登機手續後，國際線出發廳掃貨</div>
-          <div className="mp-souvenir-grid">
-            {[
-              { name: "白色戀人", img: "souvenir-shiroi-koibito.jpg" },
-              { name: "六花亭 Marusei", img: "souvenir-rokkatei.jpg" },
-            ].map(s => (
-              <div className="mp-souvenir-item" key={s.name}>
-                <img className="mp-souvenir-img" src={img(s.img)} alt={s.name} />
-                <div className="mp-souvenir-name">{s.name}</div>
-              </div>
-            ))}
-          </div>
-          <div className="mp-tags-row" style={{ marginTop: 8 }}>
-            {["薯條三兄弟", "北海道起司蛋糕"].map(t => (
-              <span key={t} className="mp-tag-chip">{t}</span>
-            ))}
-          </div>
+          <div className="mp-muted">07:00 飯店早餐。JR 班次參考（發車 → 抵達）：</div>
+          {["09:00 → 09:37", "09:04 → 09:48", "09:18 → 09:57"].map(t => (
+            <div className="mp-list-item" key={t}>
+              <div className="mp-list-name">{t}</div>
+            </div>
+          ))}
         </div>
 
         <div id="mp-c-d8-depart" className="mp-card mp-card--dark">
@@ -837,6 +858,7 @@ export function MobilePage({ baseUrl }: Props) {
               <div className="mp-flight-airport-light">桃園機場</div>
             </div>
           </div>
+          <div className="mp-muted-light" style={{ marginTop: 8 }}>午餐：機上</div>
           <div className="mp-finale">北海道，謝謝你。帶著滿行李箱的回憶圓滿賦歸。</div>
         </div>
       </section>
@@ -850,15 +872,10 @@ export function MobilePage({ baseUrl }: Props) {
 
         <div id="mp-c-mk-booking" className="mp-card mp-card--warn">
           <div className="mp-card-title">📋 提早訂位！</div>
-          {[
-            { date: "10/09 (Thu)", name: "螃蟹大宴", note: "螃蟹家 / 蝦蟹合戰" },
-            { date: "10/12 (Sun)", name: "和牛慶功宴", note: "肉之兵衛 / 德壽" },
-          ].map(b => (
-            <div className="mp-list-item" key={b.date}>
-              <div className="mp-list-name">{b.date} · {b.name}</div>
-              <div className="mp-list-sub">{b.note} · 請提早至少一個月網路訂位</div>
-            </div>
-          ))}
+          <div className="mp-list-item">
+            <div className="mp-list-name">10/07 (Wed) 17:30 · 蟹座</div>
+            <div className="mp-list-sub">Day 2 晚餐 · 六人含長輩，請提早上網訂位</div>
+          </div>
         </div>
 
         <div id="mp-c-mk-warm" className="mp-card">
@@ -873,15 +890,15 @@ export function MobilePage({ baseUrl }: Props) {
               <div className="mp-col-val" style={{ fontSize: 22, fontWeight: 700, color: "#2a7fbd" }}>~5°C</div>
             </div>
           </div>
-          <div className="mp-note">防風防潑水外套必備！洞爺湖 &amp; 二世谷山區更冷</div>
+          <div className="mp-note">早晚溫差大！洞爺湖、二世谷、積丹等戶外景點，帶保暖防風外套</div>
         </div>
 
         <div id="mp-c-mk-notes" className="mp-card">
-          <div className="mp-card-title">⚠️ 飲食 &amp; 出行注意</div>
+          <div className="mp-card-title">⚠️ 注意事項</div>
           {[
-            { name: "全員不吃羊肉", sub: "訂任何餐廳前確認菜單，和牛燒肉選非羊肉套餐" },
-            { name: "長輩交通：計程車代步", sub: "六人分兩台，省力且免爬地鐵樓梯" },
-            { name: "10/11 Glow 別墅無早餐", sub: "傍晚需去附近生鮮超市採買 BBQ 食材" },
+            { name: "全員不吃羊肉", sub: "訂任何餐廳前確認菜單" },
+            { name: "Day 4 起自駕", sub: "出發前確認 WNR 取車資料、駕照 / 日文譯本、導航設定" },
+            { name: "10/11 Glow 別墅不含餐", sub: "早餐與晚餐需自行準備，傍晚到超市採買" },
           ].map(n => (
             <div className="mp-list-item" key={n.name}>
               <div className="mp-list-name">{n.name}</div>
@@ -905,7 +922,7 @@ export function MobilePage({ baseUrl }: Props) {
             ))}
           </div>
           <div className="mp-tags-row" style={{ marginTop: 10 }}>
-            {["薯條三兄弟・北海道限定", "北海道起司蛋糕・新鮮冷藏", "帝王蟹味噌湯包"].map(t => (
+            {["薯條三兄弟・北海道限定", "北海道起司蛋糕・新鮮冷藏"].map(t => (
               <span key={t} className="mp-tag-chip">{t}</span>
             ))}
           </div>

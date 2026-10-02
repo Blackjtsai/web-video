@@ -16,9 +16,9 @@ function Step0() {
     <div className="d6-hero">
       <div className="d6-hero-photo"><img src={`${base}images/day6.jpg`} alt="Day 6 積丹 Glow" /></div>
       <div className="d6-hero-info">
-        <div className="d6-day-label">Day 6 · 10/11 (Sat)</div>
-        <div className="d6-day-title">積丹藍<br />× 家族 BBQ</div>
-        <div className="d6-day-sub">積丹海岸自駕 → Glow 包棟別墅<br />和牛採買 → 家族私廚饗宴</div>
+        <div className="d6-day-label">Day 6 · 10/11 (Sun)</div>
+        <div className="d6-day-title">積丹藍<br />× 小樽 Glow</div>
+        <div className="d6-day-sub">二世谷 → 積丹 → 余市 → 小樽<br />入住 Glow 包棟別墅</div>
         <div className="d6-accent-bar" />
       </div>
     </div>
@@ -28,11 +28,11 @@ function Step0() {
 function Step1() {
   return (
     <div className="d6-shakotan">
-      <div className="d6-shakotan-kicker">Morning Drive · Shakotan</div>
-      <div className="d6-shakotan-title"><span>積丹藍</span>——只有這個季節</div>
+      <div className="d6-shakotan-kicker">Morning Drive · Shakotan &amp; Yoichi</div>
+      <div className="d6-shakotan-title"><span>積丹藍</span>海岸 · 余市</div>
       <div className="d6-shakotan-body">
-        沿積丹半島海岸線自駕，隨車窗悠閒欣賞「積丹藍」——
-        秋季特有的清澈湛藍海色，是北海道只有這個季節才看得到的限定風景。
+        沿積丹半島海岸線自駕，先到島武意海岸與神威岬看海。
+        接著到余市，參觀余市威士忌蒸餾所，再到柿崎商店逛逛。
       </div>
       <div className="d6-sea">
         <img src={`${base}images/shakotan.jpg`} alt="積丹" className="d6-sea-photo" />
@@ -47,11 +47,11 @@ function Step2() {
   return (
     <div className="d6-glow">
       <div className="d6-glow-left">
-        <div className="d6-glow-kicker">Afternoon · Glow Villa</div>
-        <div className="d6-glow-title"><span>Glow</span> 包棟別墅<br />傍晚超市採買</div>
+        <div className="d6-glow-kicker">Afternoon · Otaru</div>
+        <div className="d6-glow-title"><span>小樽天狗山</span><br />入住 Glow 別墅</div>
         <div className="d6-glow-body">
-          下午提早入住小樽近郊極具美學質感的包棟別墅 Glow。
-          入住後全家開車去附近生鮮超市，採買今晚 BBQ 食材。
+          下午到小樽天狗山觀景台，再入住 Glow 包棟別墅。
+          Glow 不含餐，傍晚可到超市採買食材。
         </div>
         <div className="d6-glow-shopping">
           {items.map(item => <span key={item} className="d6-shop-tag">{item}</span>)}
@@ -72,10 +72,10 @@ function Step3() {
   return (
     <div className="d6-bbq">
       <div className="d6-bbq-label">Tonight · Family BBQ</div>
-      <div className="d6-bbq-title">頂級<span>和牛 BBQ</span><br />家族私廚饗宴</div>
+      <div className="d6-bbq-title">別墅<span>和牛 BBQ</span><br />自己買、自己煮</div>
       <div className="d6-bbq-body">
-        全家人在民宿廚房一起下廚，辦一場私密溫馨的家族和牛 BBQ 饗宴。
-        這種感覺，任何飯店都吃不到。
+        晚餐沒有安排餐廳，採買食材後全家在別墅廚房一起 BBQ。
+        別墅不含早餐，記得連隔天的早餐一起買。
       </div>
       <div className="d6-flames">
         {[...Array(7)].map((_, i) => <div key={i} className="d6-flame" />)}

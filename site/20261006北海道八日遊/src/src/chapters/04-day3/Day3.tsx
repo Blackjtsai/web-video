@@ -15,13 +15,13 @@ function Step0() {
   return (
     <div className="d3-hero">
       <div className="d3-hero-photo">
-        <img src={`${base}images/day3.jpg`} alt="Day 3 二条市場 定山溪" />
+        <img src={`${base}images/day3.jpg`} alt="Day 3 札幌經典景點" />
       </div>
       <div className="d3-hero-info">
-        <div className="d3-day-label">Day 3 · 10/08 (Wed)</div>
-        <div className="d3-day-title">海鮮市場<br />紅葉泡湯</div>
-        <div className="d3-day-special">美玲の指定行程</div>
-        <div className="d3-day-sub">二条市場 → 定山溪溫泉<br />帝王蟹 + 溪谷楓紅</div>
+        <div className="d3-day-label">Day 3 · 10/08 (Thu)</div>
+        <div className="d3-day-title">札幌經典<br />景點日</div>
+        <div className="d3-day-special">地鐵東西線為主</div>
+        <div className="d3-day-sub">北海道神宮 · 場外市場<br />白色戀人公園 · 發寒 AEON</div>
         <div className="d3-accent-bar" />
       </div>
     </div>
@@ -31,18 +31,18 @@ function Step0() {
 function Step1() {
   return (
     <div className="d3-market">
-      <div className="d3-market-kicker">08:30 · Nijo Market</div>
-      <div className="d3-market-title"><span>二条市場</span>——美玲指定！</div>
+      <div className="d3-market-kicker">Morning · Jingu &amp; Market</div>
+      <div className="d3-market-title"><span>北海道神宮</span> → 場外市場</div>
       <div className="d3-market-body">
-        早上八點半開市。觀賞現撈帝王蟹、新鮮海膽，
-        現場享用奢華海鮮丼當早午餐。
-        長輩不吃生食？市場有現烤熟魚定食可選。
+        圓山公園站（T06）步行約 14 分鐘到北海道神宮。
+        接著到二十四軒站（T04），步行約 10 分鐘就是場外市場；
+        也可以改搭 JR 在桑園站下車，西剪票口步行 8–12 分鐘。
       </div>
       <div className="d3-seafood-row">
-        <div className="d3-sf-chip">帝王蟹</div>
-        <div className="d3-sf-chip">海膽</div>
-        <div className="d3-sf-chip">海鮮丼</div>
-        <div className="d3-sf-chip alt">烤魚定食（長輩選項）</div>
+        <div className="d3-sf-chip">圓山公園站 T06</div>
+        <div className="d3-sf-chip">北海道神宮</div>
+        <div className="d3-sf-chip">二十四軒站 T04</div>
+        <div className="d3-sf-chip alt">場外市場</div>
       </div>
     </div>
   );
@@ -52,16 +52,15 @@ function Step2() {
   return (
     <div className="d3-onsen">
       <div className="d3-onsen-left">
-        <div className="d3-onsen-kicker">Afternoon · Jozankei Onsen</div>
-        <div className="d3-onsen-title"><span>定山溪溫泉</span><br />溪谷紅葉日歸</div>
+        <div className="d3-onsen-kicker">Afternoon · Koibito Park</div>
+        <div className="d3-onsen-title"><span>白色戀人公園</span><br />+ 發寒 AEON Mall</div>
         <div className="d3-onsen-body">
-          搭 Kappa Liner 巴士約 1 小時直達。
-          10 月正是紅葉巔峰期，大片落地窗外即是滿山溪谷楓紅。
-          長輩不用走路，直接進溫泉旅館日歸泡湯休息，尊榮慢活。
+          下午在宮之澤站（T01）下車，到白色戀人公園。
+          再搭一站到發寒南站（T02），逛發寒 AEON Mall。
         </div>
       </div>
       <div className="d3-onsen-photo">
-        <img src={`${base}images/jozankei.jpg`} alt="定山溪溫泉" />
+        <img src={`${base}images/koibito-park.jpg`} alt="白色戀人公園" />
       </div>
     </div>
   );
@@ -75,13 +74,13 @@ function Step3() {
       <div className="d3-dining-row">
         <div className="d3-meal-card">
           <div className="d3-meal-time">Lunch</div>
-          <div className="d3-meal-name">二条市場<br />海鮮丼大餐</div>
-          <div className="d3-meal-detail">帝王蟹 + 海膽，奢華早午餐</div>
+          <div className="d3-meal-name">場外市場<br />或 AEON Mall</div>
+          <div className="d3-meal-detail">看當天走到哪裡再決定</div>
         </div>
         <div className="d3-meal-card">
           <div className="d3-meal-time">Dinner</div>
-          <div className="d3-meal-name">回札幌<br />極品拉麵</div>
-          <div className="d3-meal-detail">北海道拉麵，暖胃完美收尾</div>
+          <div className="d3-meal-name">札幌車站<br />附近</div>
+          <div className="d3-meal-detail">回到車站周邊用餐</div>
         </div>
       </div>
     </div>

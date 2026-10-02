@@ -18,9 +18,9 @@ function Step0() {
         <img src={`${base}images/day1.jpg`} alt="Day 1 北海道" />
       </div>
       <div className="d1-hero-info">
-        <div className="d1-day-label">Day 1 · 10/06 (Mon)</div>
+        <div className="d1-day-label">Day 1 · 10/06 (Tue)</div>
         <div className="d1-day-title">抵達！<br />北海道</div>
-        <div className="d1-day-sub">IT 234 落地，JR 直達札幌<br />放行李，今天先輕鬆</div>
+        <div className="d1-day-sub">IT236 落地，JR 直達札幌<br />Check-in 後登 JR 塔</div>
         <div className="d1-accent-bar" />
       </div>
     </div>
@@ -29,9 +29,9 @@ function Step0() {
 
 function Step1() {
   const rows = [
-    { time: "06:20", name: "台北桃園出發", detail: "台灣虎航 IT 234" },
-    { time: "11:05", name: "新千歲機場落地", detail: "通關約 12:30" },
-    { time: "13:00", name: "JR 快速 Airport 號", detail: "約 40 分鐘，直達札幌站，無需換車" },
+    { time: "06:20", name: "台北桃園出發", detail: "台灣虎航 IT236" },
+    { time: "11:05", name: "新千歲機場落地", detail: "12:15 出關，步行至國內線航廈 3 樓午餐" },
+    { time: "14:19", name: "JR 快速 Airport 號", detail: "約 40 分鐘，自由席 ¥1,230" },
   ];
   return (
     <div className="d1-transit">
@@ -60,20 +60,20 @@ function Step2() {
     <div className="d1-arrival">
       <div className="d1-arrival-left">
         <div className="d1-arrival-label">Afternoon · Hotel</div>
-        <div className="d1-arrival-title">入住 <span>Hotel Emion</span><br />下午輕鬆慢活</div>
+        <div className="d1-arrival-title">入住 <span>京急 EX 酒店</span><br />稍作休息</div>
         <div className="d1-arrival-body">
-          飯店鄰近札幌車站，行李拖過去就到。
-          下午不趕行程，搭乘紅眼班機的大家先好好休息。
+          15:30 Check-in，先放下行李、稍作休息。
+          傍晚再出門，行程不趕。
         </div>
       </div>
       <div className="d1-arrival-right">
         <div className="d1-spot-card">
-          <div className="d1-spot-name">札幌車站地下街</div>
-          <div className="d1-spot-desc">北海道物產、生活雜貨、咖啡廳，不出門也逛得開心</div>
+          <div className="d1-spot-name">15:30 Check-in</div>
+          <div className="d1-spot-desc">札幌京急 EX 酒店，連住三晚，行李不用天天搬</div>
         </div>
         <div className="d1-spot-card">
-          <div className="d1-spot-name">大通公園</div>
-          <div className="d1-spot-desc">秋季楓葉步道，散步喝咖啡，長輩最愛的下午時光</div>
+          <div className="d1-spot-name">16:30 JR 塔觀景台</div>
+          <div className="d1-spot-desc">登上 JR 塔 T38，俯瞰札幌的傍晚</div>
         </div>
       </div>
     </div>
@@ -88,13 +88,13 @@ function Step3() {
       <div className="d1-dining-row">
         <div className="d1-meal-card">
           <div className="d1-meal-time">Lunch</div>
-          <div className="d1-meal-name">車站美食街<br />日式定食</div>
-          <div className="d1-meal-detail">初抵北海道，先吃一頓地道和食</div>
+          <div className="d1-meal-name">新千歲機場<br />國內線航廈</div>
+          <div className="d1-meal-detail">出關後步行前往 3 樓用餐</div>
         </div>
         <div className="d1-meal-card">
-          <div className="d1-meal-time">Dinner</div>
-          <div className="d1-meal-name">飯店周邊<br />精緻日式料理</div>
-          <div className="d1-meal-detail">輕鬆步行可達，不用遠征</div>
+          <div className="d1-meal-time">Dinner · 18:00</div>
+          <div className="d1-meal-name">花丸 或<br />奧芝湯咖哩</div>
+          <div className="d1-meal-detail">二選一</div>
         </div>
       </div>
     </div>

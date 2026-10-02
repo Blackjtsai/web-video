@@ -1,5 +1,5 @@
 # 系統藍圖 — 20261006北海道八日遊
-> 最後更新：2026-06-08
+> 最後更新：2026-10-02（依最新版 PDF 重做內容；章節/步數結構不變）
 
 ## 章節登錄
 
@@ -7,14 +7,14 @@
 |-----|-----------|------------|-------|-------------------------------------|
 | 01  | coldopen  | `.co-`     |   4   | 開場：六人，秋日北海道見            |
 | 02  | day1      | `.d1-`     |   4   | Day 1：順利抵達，札幌市區慢活       |
-| 03  | day2      | `.d2-`     |   4   | Day 2：白色戀人 & T38 璀璨夜景      |
-| 04  | day3      | `.d3-`     |   4   | Day 3：美玲指定！海鮮市場 & 定山溪  |
-| 05  | day4      | `.d4-`     |   5   | Day 4：螃蟹大宴 & 洞爺湖花火        |
-| 06  | day5      | `.d5-`     |   4   | Day 5：網美牧場 & 二世谷神仙沼      |
-| 07  | day6      | `.d6-`     |   4   | Day 6：積丹海岸自駕 & Glow 和牛 BBQ |
-| 08  | day7      | `.d7-`     |   4   | Day 7：小樽運河遊船 & 和牛慶功宴    |
-| 09  | day8      | `.d8-`     |   3   | Day 8：新千歲大補貨 & 快樂賦歸      |
-| 10  | must-know | `.mk-`     |   5   | 出發前必知 & 北海道名產攻略         |
+| 03  | day2      | `.d2-`     |   4   | Day 2：札幌市區慢遊 & 藻岩山夜景    |
+| 04  | day3      | `.d3-`     |   4   | Day 3：札幌經典景點 & 白色戀人公園  |
+| 05  | day4      | `.d4-`     |   5   | Day 4：取車自駕 & 洞爺湖萬世閣      |
+| 06  | day5      | `.d5-`     |   4   | Day 5：有珠山纜車 & 二世谷神仙沼    |
+| 07  | day6      | `.d6-`     |   4   | Day 6：積丹・余市 & Glow 別墅       |
+| 08  | day7      | `.d7-`     |   4   | Day 7：小樽慢遊 & 返回札幌          |
+| 09  | day8      | `.d8-`     |   3   | Day 8：JR 赴機場 & 快樂賦歸         |
+| 10  | must-know | `.mk-`     |   5   | 出發前必知 & 伴手禮攻略             |
 
 **總步數：41 步 = narrations.ts 段數 = SEGMENTS 段數 = 音頻數量（四者一致 ✓）**
 
@@ -142,10 +142,10 @@ bottom: 200px; z-index 200  ← Scrubber overlay（長壓開啟）
 住宿明細：
 | Day | 飯店 | MapBtn query | 餐食 |
 |---|---|---|---|
-| 1–3, 7 | 札幌伊夢酒店 | `Hotel Emion Sapporo` | 附早餐 |
+| 1–3, 7 | 札幌京急 EX 酒店 | `Sapporo Keikyu EX Hotel` | 附早餐 |
 | 4 | 洞爺湖萬世閣 | `Toya Manseikaku Hotel Hokkaido` | 附早晚餐 |
-| 5 | 托里菲托新雪谷飯店 | `Torifito Hotel Niseko Hokkaido` | 附早餐 |
-| 6 | Glow 別墅 | `Glow villa Otaru Hokkaido` | 無附早餐 |
+| 5 | Torifito Hotel & Pod Niseko | `Torifito Hotel & Pod Niseko` | 附早餐 |
+| 6 | Glow 別墅 | `Glow villa Otaru Hokkaido` | 不含餐 |
 
 ### 意見回饋（Formspree）
 - 端點：`https://formspree.io/f/xvznkbjo`
@@ -162,6 +162,12 @@ bottom: 200px; z-index 200  ← Scrubber overlay（長壓開啟）
 - 圖片必須用 `const img = (n: string) => \`${baseUrl}images-mobile/${n}\`` helper 而非硬碼路徑
 - `index.html` 的 `og:image` 指向 `images-mobile/og-img.jpg`（非 cover.jpg，獨立 OG 圖）
 - LINE 分享後快取 OG 圖需改 URL 或 `?v=N` 強制刷新
+
+## 已知待辦
+
+- 每日英雄圖 `day1–8.jpg`（`public/images/` 與 `public/images-mobile/`）已換成新版 PNG，但圖上內容與 PDF 仍有多處不一致（Day 3–5、7、8 路線／住宿／航班；多日仍推薦成吉思汗羊肉），使用者待逐張修正；修正後重跑 sips 轉檔覆蓋。
+- 下載用 `public/北海道家族旅遊行程手冊.pdf` 是舊版（Hotel Emion 等），新 PDF 有缺字，尚未替換。
+- 行程文字缺漏處：Day 5 晚餐店家、Day 6 余市柿崎商店對面店名；還車日期（暫定 10/12）。
 
 ## TTS 狀態
 

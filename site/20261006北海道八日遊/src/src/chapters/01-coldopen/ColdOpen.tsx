@@ -46,12 +46,12 @@ function Step1() {
       <div className="co-family-desc">
         <strong>長輩 2 位 · Eason & 美玲 · 美惠 & 弈捷</strong>
         <br />
-        三代同堂，秋日慢活
+        家族同行，秋日慢活
       </div>
       <div className="co-family-tags">
-        <span className="co-family-tag">專為長輩設計</span>
-        <span className="co-family-tag">海鮮溫泉</span>
-        <span className="co-family-tag">質感包棟</span>
+        <span className="co-family-tag">慢活步調</span>
+        <span className="co-family-tag">四天自駕</span>
+        <span className="co-family-tag">包棟別墅</span>
       </div>
     </div>
   );
@@ -62,7 +62,7 @@ const STOPS = [
   { name: "札幌", days: "Day 1–3", hub: true },
   { name: "洞爺湖", days: "Day 4", hub: false },
   { name: "二世谷", days: "Day 5", hub: false },
-  { name: "積丹", days: "Day 6", hub: false },
+  { name: "積丹・余市", days: "Day 6", hub: false },
   { name: "小樽", days: "Day 7", hub: false },
   { name: "新千歲", days: "Day 8", hub: true },
 ];
@@ -85,7 +85,7 @@ function Step2() {
     <div className="co-route">
       <div className="co-route-header">
         <div className="co-route-title">北海道 <span>8 天</span> 精華路線</div>
-        <div className="co-route-sub">10/06 — 10/13 · IT234 / IT235</div>
+        <div className="co-route-sub">10/06 — 10/13 · IT236 / IT235</div>
       </div>
       <div className="co-route-track">{items}</div>
     </div>
@@ -94,10 +94,10 @@ function Step2() {
 
 /* ── Step 3: Trip themes ── */
 const THEMES = [
-  { icon: "🦀", name: "精緻海鮮饗宴", detail: "螃蟹懷石 · 海鮮丼 · 現撈漁港料理" },
-  { icon: "♨️", name: "溫泉慢活", detail: "定山溪紅葉日歸 · 洞爺湖萬世閣頂級溫泉晚宴" },
-  { icon: "🚗", name: "四天自駕自由行", detail: "10/09–12 Toyota Hiace · 積丹海岸沿途風景" },
-  { icon: "🏡", name: "包棟別墅 BBQ", detail: "Glow 小樽近郊別墅 · 頂級北海道和牛家族饗宴" },
+  { icon: "🏙️", name: "札幌市區慢遊", detail: "二條市場 · 電視塔 · 狸小路 · 藻岩山夜景" },
+  { icon: "♨️", name: "洞爺湖溫泉", detail: "萬世閣溫泉 · 飯店自助晚餐 · 有珠山纜車" },
+  { icon: "🚗", name: "Day 4 起自駕", detail: "WNR 取車 · 定山溪 → 洞爺湖 → 二世谷 → 積丹 → 小樽" },
+  { icon: "🏡", name: "Glow 包棟別墅", detail: "小樽近郊 · 採買食材，全家一起 BBQ" },
 ];
 
 function Step3() {
