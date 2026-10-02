@@ -805,3 +805,18 @@
   background: rgba(0,0,0,0.06);
   color: var(--text-mute, #7a5a3a);
 }
+
+/* ── 路線地圖燈箱 ── */
+.mp-lb-overlay {
+  position: fixed; inset: 0; z-index: 400;
+  background: rgba(20, 12, 6, 0.92);
+  display: flex; align-items: center; justify-content: center;
+  overflow: auto; padding: 16px;
+}
+.mp-lb-img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; }
+.mp-lb-close {
+  position: fixed; top: 14px; right: 14px; width: 40px; height: 40px;
+  border-radius: 50%; border: none; background: rgba(255,255,255,0.18);
+  color: #fff; font-size: 18px; z-index: 401; cursor: pointer;
+}
+.mp-spot-img.mp-route-img { height: auto; object-fit: contain; }

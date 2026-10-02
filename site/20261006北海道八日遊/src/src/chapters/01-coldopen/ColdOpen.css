@@ -206,6 +206,24 @@
   animation: co-fade-up 400ms 300ms ease-out both;
 }
 
+.co-route-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: clamp(20px, 3vw, 48px);
+  align-items: stretch;
+}
+
+.co-route-map {
+  flex: 0 0 auto;
+  height: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: var(--r-card);
+  box-shadow: var(--card-shadow);
+  animation: co-fade-up 500ms 300ms ease-out both;
+}
+
 .co-route-track {
   flex: 1;
   display: flex;

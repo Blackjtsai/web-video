@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import "./MobilePage.css";
 
 /* ── Google Maps 小按鈕 ── */
@@ -23,7 +24,7 @@ function MapBtn({ q }: { q: string }) {
 const SEGMENTS = [
   { id: "coldopen",  step: 1, cardId: "mp-s-hero" },
   { id: "coldopen",  step: 2, cardId: "mp-s-hero" },
-  { id: "coldopen",  step: 3, cardId: "mp-s-hero" },
+  { id: "coldopen",  step: 3, cardId: "mp-c-route-map" },
   { id: "coldopen",  step: 4, cardId: "mp-s-hero" },
   { id: "day1",      step: 1, cardId: "mp-s-day1" },
   { id: "day1",      step: 2, cardId: "mp-c-d1-flight" },
@@ -308,11 +309,23 @@ function FeedbackModal({ onClose }: { onClose: () => void }) {
   );
 }
 
+/* ── 路線地圖放大燈箱（portal 到 body，避免被卡片 transform 鎖住 fixed 定位） ── */
+function MapLightbox({ src, onClose }: { src: string; onClose: () => void }) {
+  return createPortal(
+    <div className="mp-lb-overlay" onClick={onClose}>
+      <button className="mp-lb-close" onClick={onClose} aria-label="關閉">✕</button>
+      <img className="mp-lb-img" src={src} alt="北海道 8 天自駕路線地圖" onClick={e => e.stopPropagation()} />
+    </div>,
+    document.body,
+  );
+}
+
 interface Props { baseUrl: string; }
 
 export function MobilePage({ baseUrl }: Props) {
   const img = (name: string) => `${baseUrl}images-mobile/${name}`;
   const [feedbackOpen, setFeedbackOpen] = useState(false);
+  const [mapOpen, setMapOpen] = useState(false);
 
   const scrollLockedRef = useRef(false);
   const handleLock   = useCallback(() => { scrollLockedRef.current = true;  }, []);
@@ -370,6 +383,23 @@ export function MobilePage({ baseUrl }: Props) {
           <div className="mp-scroll-hint">▼ 滑動查看行程</div>
         </div>
       </div>
+
+      {/* ── 路線總覽 ── */}
+      <section className="mp-day">
+        <div id="mp-c-route-map" className="mp-card">
+          <div className="mp-card-title">🗺️ 8 天路線總覽</div>
+          <img
+            className="mp-spot-img mp-route-img"
+            src={img("route-map.jpg")}
+            alt="北海道 8 天自駕路線地圖"
+            onClick={() => setMapOpen(true)}
+            style={{ cursor: "zoom-in" }}
+          />
+          <div className="mp-muted" style={{ marginTop: 8 }}>
+            點圖可放大。札幌 → 洞爺湖 → 二世谷 → 積丹・余市 → 小樽 → 札幌 → 新千歲（路線為示意）
+          </div>
+        </div>
+      </section>
 
       {/* ── Day 1 ── */}
       <section id="mp-s-day1" className="mp-day">
@@ -950,6 +980,7 @@ export function MobilePage({ baseUrl }: Props) {
           <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
         </svg>
       </button>
+      {mapOpen && <MapLightbox src={img("route-map.jpg")} onClose={() => setMapOpen(false)} />}
       {feedbackOpen && <FeedbackModal onClose={() => setFeedbackOpen(false)} />}
 
       <MobileAudioFab

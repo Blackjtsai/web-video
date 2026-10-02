@@ -87,7 +87,10 @@ function Step2() {
         <div className="co-route-title">北海道 <span>8 天</span> 精華路線</div>
         <div className="co-route-sub">10/06 — 10/13 · IT236 / IT235</div>
       </div>
-      <div className="co-route-track">{items}</div>
+      <div className="co-route-body">
+        <div className="co-route-track">{items}</div>
+        <img className="co-route-map" src={`${base}images/route-map.jpg`} alt="北海道 8 天自駕路線地圖" />
+      </div>
     </div>
   );
 }
