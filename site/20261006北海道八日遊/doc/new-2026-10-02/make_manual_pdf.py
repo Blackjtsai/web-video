@@ -109,6 +109,15 @@ for x in ["10/07 17:30 蟹座，六人含長輩，請提早上網訂位。",
           "全員不吃羊肉，訂餐廳前請確認菜單。",
           "10/11 Glow 不含餐，餐食需自行安排。"]:
     st.append(Paragraph(x, bul, bulletText="•"))
+import json as _json
+WX = _json.load(open("wx.json", encoding="utf-8"))
+st.append(Paragraph("每日天氣預報（參考）", h2))
+wrows = [[Paragraph(x, cellh) for x in ("日期", "地點", "天氣", "氣溫", "降雨機率", "雨量")]] + \
+        [[Paragraph(f"{w['day']} {w['date']}", cell), Paragraph(w["place"], cell), Paragraph(w["text"], cell),
+          Paragraph(f"{w['min']}–{w['max']}°C", cell), Paragraph(f"{w['pop']}%", cell), Paragraph(f"{w['rain']} mm", cell)] for w in WX]
+t = Table(wrows, colWidths=[40*mm, 22*mm, 24*mm, 28*mm, 24*mm, W-138*mm], repeatRows=1)
+t.setStyle(TableStyle([("BACKGROUND",(0,0),(-1,0),INK),("ROWBACKGROUNDS",(0,1),(-1,-1),[colors.white,SOFT]),("VALIGN",(0,0),(-1,-1),"MIDDLE"),("GRID",(0,0),(-1,-1),0.4,colors.HexColor("#d8c8b0")),("TOPPADDING",(0,0),(-1,-1),4),("BOTTOMPADDING",(0,0),(-1,-1),4)]))
+st += [t, Paragraph("資料：Open-Meteo｜查詢時間 2026/10/03 20:04（台灣時間）｜預報會變動，出發前請再確認。", S("wn", fontSize=8.5, leading=13, textColor=MUTE))]
 st.append(PageBreak())
 # Daily
 st.append(Paragraph("每日詳細行程規劃", h2))

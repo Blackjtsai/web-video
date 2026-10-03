@@ -1,4 +1,5 @@
 import "./MustKnow.css";
+import { WEATHER, WEATHER_QUERIED_AT, WEATHER_SOURCE } from "../../data/weather";
 
 interface Props { step: number; }
 const base = import.meta.env.BASE_URL;
@@ -9,6 +10,7 @@ export default function MustKnow({ step }: Props) {
   if (step === 2) return <Step2 />;
   if (step === 3) return <Step3 />;
   if (step === 4) return <Step4 />;
+  if (step === 5) return <Step5 />;
   return null;
 }
 
@@ -16,10 +18,10 @@ function Step0() {
   return (
     <div className="mk-title-screen">
       <div className="mk-title-kicker">Before Departure</div>
-      <div className="mk-title-main">出發前<br /><span>必知 4 件事</span></div>
+      <div className="mk-title-main">出發前<br /><span>必知 5 件事</span></div>
       <div className="mk-title-sub">確認好這幾點，旅途零煩惱</div>
       <div className="mk-checklist-row">
-        {["訂位", "保暖", "注意", "伴手禮"].map(t => (
+        {["訂位", "保暖", "天氣", "注意", "伴手禮"].map(t => (
           <span key={t} className="mk-check-pill">{t}</span>
         ))}
       </div>
@@ -76,6 +78,28 @@ function Step2() {
 }
 
 function Step3() {
+  return (
+    <div className="mk-wx">
+      <div className="mk-notes-kicker">Item 3 · Weather</div>
+      <div className="mk-notes-title">每日<span style={{ color: "var(--accent)" }}>天氣預報</span></div>
+      <div className="mk-wx-grid">
+        {WEATHER.map(w => (
+          <div key={w.date} className="mk-wx-card">
+            <div className="mk-wx-head">{w.day} · {w.date.slice(0, 5)}</div>
+            <div className="mk-wx-place">{w.place}</div>
+            <div className="mk-wx-icon">{w.icon}</div>
+            <div className="mk-wx-text">{w.text}</div>
+            <div className="mk-wx-temp">{w.min}–{w.max}°C</div>
+            <div className="mk-wx-pop">降雨 {w.pop}%</div>
+          </div>
+        ))}
+      </div>
+      <div className="mk-wx-note">資料：{WEATHER_SOURCE}｜查詢時間 {WEATHER_QUERIED_AT}｜預報會變動，出發前請再確認</div>
+    </div>
+  );
+}
+
+function Step4() {
   const notes = [
     { name: "全員不吃羊肉", detail: "訂任何餐廳前請確認菜單" },
     { name: "Day 4 起自駕", detail: "出發前確認 WNR 取車資料、駕照 / 日文譯本與導航設定" },
@@ -83,7 +107,7 @@ function Step3() {
   ];
   return (
     <div className="mk-notes">
-      <div className="mk-notes-kicker">Item 3 · Notes</div>
+      <div className="mk-notes-kicker">Item 4 · Notes</div>
       <div className="mk-notes-title">飲食 & 出行注意</div>
       <div className="mk-note-list">
         {notes.map(n => (
@@ -100,7 +124,7 @@ function Step3() {
   );
 }
 
-function Step4() {
+function Step5() {
   const featured = [
     { name: "白色戀人", note: "石屋製菓・北海道必買首選", img: "souvenir-shiroi-koibito.jpg" },
     { name: "六花亭 Marusei", note: "奶油葡萄乾夾心餅・香濃必吃", img: "souvenir-rokkatei.jpg" },
@@ -108,7 +132,7 @@ function Step4() {
   const chips = ["薯條三兄弟・北海道限定", "北海道起司蛋糕・新鮮冷藏"];
   return (
     <div className="mk-souvenir">
-      <div className="mk-sv-kicker">Item 4 · Souvenirs</div>
+      <div className="mk-sv-kicker">Item 5 · Souvenirs</div>
       <div className="mk-sv-title">北海道<span>伴手禮攻略</span></div>
       <div className="mk-sv-featured">
         {featured.map((f, idx) => (

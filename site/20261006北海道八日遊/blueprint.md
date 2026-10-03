@@ -14,9 +14,9 @@
 | 07  | day6      | `.d6-`     |   4   | Day 6：積丹・余市 & Glow 別墅       |
 | 08  | day7      | `.d7-`     |   4   | Day 7：小樽慢遊 & 返回札幌          |
 | 09  | day8      | `.d8-`     |   3   | Day 8：JR 赴機場 & 快樂賦歸         |
-| 10  | must-know | `.mk-`     |   5   | 出發前必知 & 伴手禮攻略             |
+| 10  | must-know | `.mk-`     |   6   | 出發前必知 & 伴手禮攻略             |
 
-**總步數：41 步 = narrations.ts 段數 = SEGMENTS 段數 = 音頻數量（四者一致 ✓）**
+**總步數：42 步 = narrations.ts 段數 = SEGMENTS 段數 = 音頻數量（四者一致 ✓）**
 
 ## 關鍵檔案
 
@@ -24,16 +24,16 @@
 |--------------------------------------|---------|
 | `src/registry/chapters.ts`           | CHAPTERS 陣列，章節順序唯一真相源 |
 | `src/App.tsx`                        | `isMobile` 判斷 (`?layout=mobile`) |
-| `src/hooks/useStepper.ts`            | `STORAGE_KEY = "presentation-cursor-v4"` |
+| `src/hooks/useStepper.ts`            | `STORAGE_KEY = "presentation-cursor-v5"` |
 | `src/styles/tokens.css`              | 主題色 token（楓葉秋光） |
-| `src/components/MobilePage.tsx`      | SEGMENTS 41 段；scroll lock 用 touchmove ref（見特殊 hack）|
+| `src/components/MobilePage.tsx`      | SEGMENTS 42 段；scroll lock 用 touchmove ref（見特殊 hack）|
 | `src/components/MobilePage.css`      | 手機版樣式（mp- prefix）；圖片等比例；FAB 設計 |
 | `src/components/ProgressBar.tsx`     | 傳 `githubUrl={null}` |
 | `src/scripts/tts-providers/edge-tts.sh` | 從澎湖複製來的（原本缺失）|
 | `vite.config.ts`                     | `base: process.env.VITE_BASE ?? "./"` |
 | `public/images/`                     | 高畫質原圖（網頁版用） |
 | `public/images-mobile/`              | 壓縮版（quality 75, max 1400px，手機版用）|
-| `public/audio/<id>/<N>.mp3`          | 口播音頻（41 段，已合成）|
+| `public/audio/<id>/<N>.mp3`          | 口播音頻（42 段，已合成）|
 
 ## 主題色（楓葉秋光）
 
@@ -163,6 +163,10 @@ bottom: 200px; z-index 200  ← Scrubber overlay（長壓開啟）
 - `index.html` 的 `og:image` 指向 `images-mobile/og-img.jpg`（非 cover.jpg，獨立 OG 圖）
 - LINE 分享後快取 OG 圖需改 URL 或 `?v=N` 強制刷新
 
+## 天氣預報
+
+`src/data/weather.ts`（`WEATHER`、`WEATHER_QUERIED_AT`）為網頁版 must-know 第 4 步與手機版 `mp-c-mk-weather` 卡共用的快照；PDF 用 `doc/new-2026-10-02/wx.json`。資料來源 Open-Meteo，查詢時間 2026/10/03 20:04（台灣時間），畫面與 PDF 都有標註。預報會變動：出發前重抓（curl Open-Meteo，札幌／洞爺湖／二世谷／小樽各日）→ 更新兩份快照與查詢時間 → 重做 PDF → 口播第 4 段文字若有改要刪 `audio/must-know/4.mp3` 重合成。
+
 ## 路線地圖
 
 `public/images/route-map.jpg`、`public/images-mobile/route-map.jpg`（來源 `doc/new-2026-10-02/行程地圖-直.png`）：網頁版開場第 3 步（路線預告）右側、手機版「8 天路線總覽」卡（點圖放大燈箱，coldopen 第 3 段口播捲到此卡）。`行程地圖-橫.png` 含舊行程文字，不使用。
@@ -179,7 +183,7 @@ bottom: 200px; z-index 200  ← Scrubber overlay（長壓開啟）
 |------|----|
 | Provider | edge-tts |
 | Voice | `zh-TW-HsiaoChenNeural` |
-| 已合成 | 41 / 41 段 ✅ |
+| 已合成 | 42 / 42 段 ✅ |
 | 合成指令 | `cd site/20261006北海道八日遊/src && PRESENTATION_TTS=edge-tts npm run synthesize-audio` |
 
 ## 啟動指令

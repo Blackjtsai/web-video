@@ -1,0 +1,19 @@
+// 天氣預報快照：Open-Meteo（open-meteo.com），各日取行程當天所在地；預報會變動，出發前請再確認
+export const WEATHER_QUERIED_AT = "2026/10/03 20:04（台灣時間）";
+export const WEATHER_SOURCE = "Open-Meteo";
+
+export interface DayWeather {
+  date: string; day: string; place: string; text: string; icon: string;
+  min: number; max: number; pop: number; rain: number; wind: number;
+}
+
+export const WEATHER: DayWeather[] = [
+  {"date": "10/06（二）", "day": "Day 1", "place": "札幌", "text": "大毛雨", "icon": "🌧️", "min": 14, "max": 22, "pop": 100, "rain": 4.3, "wind": 28},
+  {"date": "10/07（三）", "day": "Day 2", "place": "札幌", "text": "陰", "icon": "☁️", "min": 8, "max": 17, "pop": 6, "rain": 0.0, "wind": 26},
+  {"date": "10/08（四）", "day": "Day 3", "place": "札幌", "text": "陰", "icon": "☁️", "min": 3, "max": 18, "pop": 2, "rain": 0.0, "wind": 8},
+  {"date": "10/09（五）", "day": "Day 4", "place": "洞爺湖", "text": "大致晴", "icon": "🌤️", "min": 12, "max": 19, "pop": 2, "rain": 0.0, "wind": 8},
+  {"date": "10/10（六）", "day": "Day 5", "place": "二世谷", "text": "陰", "icon": "☁️", "min": 8, "max": 20, "pop": 4, "rain": 0.0, "wind": 8},
+  {"date": "10/11（日）", "day": "Day 6", "place": "小樽", "text": "小毛雨", "icon": "🌦️", "min": 11, "max": 15, "pop": 19, "rain": 3.8, "wind": 18},
+  {"date": "10/12（一）", "day": "Day 7", "place": "札幌", "text": "小毛雨", "icon": "🌦️", "min": 6, "max": 14, "pop": 14, "rain": 1.0, "wind": 19},
+  {"date": "10/13（二）", "day": "Day 8", "place": "札幌", "text": "陣雨", "icon": "🌦️", "min": 4, "max": 15, "pop": 33, "rain": 7.6, "wind": 27},
+];

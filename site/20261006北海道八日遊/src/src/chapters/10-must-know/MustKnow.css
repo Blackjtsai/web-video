@@ -69,3 +69,20 @@
 @keyframes mk-stamp { from { opacity:0; transform:scale(0.84) translateY(14px); } to { opacity:1; transform:scale(1) translateY(0); } }
 @keyframes mk-fade-up { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
 @keyframes mk-fade-right { from { opacity:0; transform:translateX(-16px); } to { opacity:1; transform:translateX(0); } }
+
+/* ── Weather step ── */
+.mk-wx { position: absolute; inset: 0; display: flex; flex-direction: column; padding: var(--stage-pad-y) var(--stage-pad-x); gap: clamp(8px,1.4vh,16px); }
+.mk-wx .mk-notes-title { font-size: clamp(30px,4vw,60px); }
+.mk-wx-grid { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: clamp(10px,1.4vw,20px); }
+.mk-wx-card { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; overflow: hidden; background: var(--surface-2); border: 1.5px solid var(--rule); border-top: 4px solid var(--accent); border-radius: var(--r-card); box-shadow: var(--card-shadow); padding: 8px; opacity: 0; animation: mk-fade-up 450ms ease-out forwards; }
+.mk-wx-card:nth-child(1) { animation-delay: 250ms; } .mk-wx-card:nth-child(2) { animation-delay: 330ms; }
+.mk-wx-card:nth-child(3) { animation-delay: 410ms; } .mk-wx-card:nth-child(4) { animation-delay: 490ms; }
+.mk-wx-card:nth-child(5) { animation-delay: 570ms; } .mk-wx-card:nth-child(6) { animation-delay: 650ms; }
+.mk-wx-card:nth-child(7) { animation-delay: 730ms; } .mk-wx-card:nth-child(8) { animation-delay: 810ms; }
+.mk-wx-head { font-family: var(--font-mono); font-size: clamp(11px,1vw,14px); letter-spacing: .12em; color: var(--text-mute); }
+.mk-wx-place { font-family: var(--font-display-cn); font-size: clamp(15px,1.6vw,22px); font-weight: 700; color: var(--text); }
+.mk-wx-icon { font-size: clamp(24px,3vh,40px); line-height: 1.05; }
+.mk-wx-text { font-family: var(--font-body); font-size: clamp(14px,1.4vw,20px); color: var(--text); }
+.mk-wx-temp { font-family: var(--font-display-cn); font-size: clamp(15px,1.6vw,22px); font-weight: 700; color: var(--accent); }
+.mk-wx-pop { font-family: var(--font-body); font-size: clamp(12px,1.1vw,16px); color: var(--text-mute); }
+.mk-wx-note { font-family: var(--font-body); font-size: clamp(11px,1vw,14px); color: var(--text-faint); animation: mk-fade-up 400ms 900ms ease-out both; }

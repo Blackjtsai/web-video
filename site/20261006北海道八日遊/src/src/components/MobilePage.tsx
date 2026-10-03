@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import "./MobilePage.css";
+import { WEATHER, WEATHER_QUERIED_AT, WEATHER_SOURCE } from "../data/weather";
 
 /* ── Google Maps 小按鈕 ── */
 function MapBtn({ q }: { q: string }) {
@@ -23,7 +24,7 @@ function MapBtn({ q }: { q: string }) {
 /* 意見回饋按鈕開關：行程確認前設 true 開放家人留言（Formspree），目前隱藏 */
 const SHOW_FEEDBACK = false;
 
-/* ── 41 段口播（= narrations.ts 段數 = mp3 數量） ── */
+/* ── 42 段口播（= narrations.ts 段數 = mp3 數量） ── */
 const SEGMENTS = [
   { id: "coldopen",  step: 1, cardId: "mp-s-hero" },
   { id: "coldopen",  step: 2, cardId: "mp-s-hero" },
@@ -64,8 +65,9 @@ const SEGMENTS = [
   { id: "must-know", step: 1, cardId: "mp-s-know" },
   { id: "must-know", step: 2, cardId: "mp-c-mk-booking" },
   { id: "must-know", step: 3, cardId: "mp-c-mk-warm" },
-  { id: "must-know", step: 4, cardId: "mp-c-mk-notes" },
-  { id: "must-know", step: 5, cardId: "mp-c-mk-souvenir" },
+  { id: "must-know", step: 4, cardId: "mp-c-mk-weather" },
+  { id: "must-know", step: 5, cardId: "mp-c-mk-notes" },
+  { id: "must-know", step: 6, cardId: "mp-c-mk-souvenir" },
 ];
 
 const CHAPTER_GROUPS = [
@@ -78,7 +80,7 @@ const CHAPTER_GROUPS = [
   { label: "Day 6",  start: 25, end: 28 },
   { label: "Day 7",  start: 29, end: 32 },
   { label: "Day 8",  start: 33, end: 35 },
-  { label: "出發前", start: 36, end: 40 },
+  { label: "出發前", start: 36, end: 41 },
 ];
 
 function scrollToCard(idx: number) {
@@ -930,6 +932,20 @@ export function MobilePage({ baseUrl }: Props) {
             </div>
           </div>
           <div className="mp-note">早晚溫差大！洞爺湖、二世谷、積丹等戶外景點，帶保暖防風外套</div>
+        </div>
+
+        <div id="mp-c-mk-weather" className="mp-card">
+          <div className="mp-card-title">🌤️ 每日天氣預報</div>
+          {WEATHER.map(w => (
+            <div className="mp-list-item" key={w.date}>
+              <div className="mp-list-name" style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
+                <span>{w.day} · {w.date} · {w.place}</span>
+                <span>{w.icon} {w.text}</span>
+              </div>
+              <div className="mp-list-sub">{w.min}–{w.max}°C · 降雨機率 {w.pop}% · 雨量 {w.rain} mm · 風速 {w.wind} km/h</div>
+            </div>
+          ))}
+          <div className="mp-note">資料：{WEATHER_SOURCE}｜查詢時間 {WEATHER_QUERIED_AT}｜預報會變動，出發前請再確認</div>
         </div>
 
         <div id="mp-c-mk-notes" className="mp-card">
